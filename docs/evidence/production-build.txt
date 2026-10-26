@@ -1,0 +1,18 @@
+
+> go-pharmacy@1.0.0 build
+> vite build && esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+NODE_ENV=staging is not supported in the .env file. Only NODE_ENV=development is supported to create a development build of your project. If you need to set process.env.NODE_ENV, you can set it in the Vite config instead.
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 1769 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/public/index.html                   0.87 kB │ gzip:   0.48 kB
+../dist/public/assets/index-3OTqqkoL.css  131.04 kB │ gzip:  20.46 kB
+../dist/public/assets/index-D7ng0uIK.js   489.49 kB │ gzip: 152.03 kB
+✓ built in 9.01s
+
+  dist\index.js  71.9kb
+
+Done in 340ms

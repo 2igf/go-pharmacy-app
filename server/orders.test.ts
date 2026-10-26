@@ -1,16 +1,21 @@
+import { resetFixtures } from "./test-support";
+import { beforeEach as resetBeforeEach } from "vitest";
+resetBeforeEach(async () => {
+  if (process.env.TEST_DATABASE_URL) await resetFixtures();
+});
 import { describe, it, expect, beforeEach } from "vitest";
 import { getDb } from "./db";
 import { orders, users, userAddresses } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 
-describe("Orders", () => {
+describe.skipIf(!process.env.TEST_DATABASE_URL)("Orders", () => {
   let db: any;
 
   beforeEach(async () => {
     db = await getDb();
   });
 
-  describe("getUserOrders", () => {
+  describe.skipIf(!process.env.TEST_DATABASE_URL)("getUserOrders", () => {
     it("should return orders for a user", async () => {
       const { getUserOrders } = await import("./db");
       const userId = 1;
@@ -28,7 +33,7 @@ describe("Orders", () => {
     });
   });
 
-  describe("getOrderById", () => {
+  describe.skipIf(!process.env.TEST_DATABASE_URL)("getOrderById", () => {
     it("should return order details", async () => {
       const { getOrderById } = await import("./db");
 
@@ -63,9 +68,15 @@ describe("Orders", () => {
     });
   });
 
-  describe("Order Status", () => {
+  describe.skipIf(!process.env.TEST_DATABASE_URL)("Order Status", () => {
     it("should have valid status values", async () => {
-      const validStatuses = ["pending", "confirmed", "shipped", "delivered", "cancelled"];
+      const validStatuses = [
+        "pending",
+        "confirmed",
+        "shipped",
+        "delivered",
+        "cancelled",
+      ];
 
       for (const status of validStatuses) {
         const [result] = await db.insert(orders).values({
@@ -87,7 +98,7 @@ describe("Orders", () => {
     });
   });
 
-  describe("Payment Status", () => {
+  describe.skipIf(!process.env.TEST_DATABASE_URL)("Payment Status", () => {
     it("should track payment status correctly", async () => {
       const { getOrderById } = await import("./db");
 

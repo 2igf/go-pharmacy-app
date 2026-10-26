@@ -1,3 +1,4 @@
+throw new Error('Legacy seed disabled: run pnpm seed:beta with fictional seed confirmation.');
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
 

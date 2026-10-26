@@ -1,18 +1,35 @@
-import { Bell, Loader2, Trash2, Home as HomeIcon, ShoppingCart, Users, Clock, Pill, User } from "lucide-react";
+import {
+  Bell,
+  Loader2,
+  Trash2,
+  Home as HomeIcon,
+  ShoppingCart,
+  Users,
+  Clock,
+  Pill,
+  User,
+} from "lucide-react";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function Notifications() {
-  const { user, loading: authLoading } = useAuth({ redirectOnUnauthenticated: true });
+  const { user, loading: authLoading } = useAuth({
+    redirectOnUnauthenticated: true,
+  });
   const [, navigate] = useLocation();
 
   // Fetch all notifications
-  const { data: notifications, isLoading, refetch } = trpc.notifications.list.useQuery(
-    undefined,
-    { refetchInterval: 30000 }
-  );
+  const {
+    data: notifications,
+    isLoading,
+    refetch,
+    error,
+  } = trpc.notifications.list.useQuery(undefined, {
+    refetchInterval: 30000,
+    enabled: !!user,
+  });
 
   // Delete notification mutation
   const deleteNotificationMutation = trpc.notifications.delete.useMutation({
@@ -32,7 +49,7 @@ export default function Notifications() {
     try {
       await deleteNotificationMutation.mutateAsync({ id: notificationId });
     } catch (error) {
-      console.error("Failed to delete notification:", error);
+      alert("تعذر حذف الإشعار، حاول مجدداً");
     }
   };
 
@@ -40,7 +57,7 @@ export default function Notifications() {
     try {
       await markAsReadMutation.mutateAsync({ id: notificationId });
     } catch (error) {
-      console.error("Failed to mark notification as read:", error);
+      alert("تعذر تحديث الإشعار، حاول مجدداً");
     }
   };
 
@@ -112,13 +129,15 @@ export default function Notifications() {
       {/* Content */}
       <div className="app-content">
         <div className="container py-6">
-          {isLoading ? (
+          {error ? (
+            <p role="alert">{error.message}</p>
+          ) : isLoading ? (
             <div className="flex justify-center py-12">
               <Loader2 className="animate-spin text-[#00c57d]" size={40} />
             </div>
           ) : notifications && notifications.length > 0 ? (
             <div className="space-y-3">
-              {notifications.map((notification) => (
+              {notifications.map(notification => (
                 <div
                   key={notification.id}
                   className={`p-4 rounded-lg ${getNotificationColor(
@@ -144,16 +163,15 @@ export default function Notifications() {
                             {notification.message}
                           </p>
                           <p className="text-xs text-gray-500">
-                            {new Date(notification.createdAt).toLocaleDateString(
-                              "ar-SA",
-                              {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              }
-                            )}
+                            {new Date(
+                              notification.createdAt
+                            ).toLocaleDateString("ar-SA", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
                           </p>
                         </div>
                         <div className="flex items-center gap-2 flex-shrink-0">
@@ -188,51 +206,6 @@ export default function Notifications() {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Bottom Navigation */}
-      <div className="app-bottom-nav">
-        <a href="/">
-          <div className="app-nav-item">
-            <HomeIcon className="w-6 h-6" />
-            <span className="text-xs">الرئيسية</span>
-          </div>
-        </a>
-
-        <a href="/products">
-          <div className="app-nav-item">
-            <ShoppingCart className="w-6 h-6" />
-            <span className="text-xs">الأدوية</span>
-          </div>
-        </a>
-
-        <a href="/doctors">
-          <div className="app-nav-item">
-            <Users className="w-6 h-6" />
-            <span className="text-xs">الأطباء</span>
-          </div>
-        </a>
-
-        <a href="/appointments">
-          <div className="app-nav-item">
-            <Clock className="w-6 h-6" />
-            <span className="text-xs">المواعيد</span>
-          </div>
-        </a>
-
-        <a href="/reminders">
-          <div className="app-nav-item">
-            <Pill className="w-6 h-6" />
-            <span className="text-xs">التذكيرات</span>
-          </div>
-        </a>
-
-        <a href="/profile">
-          <div className="app-nav-item active">
-            <Bell className="w-6 h-6" />
-            <span className="text-xs">الإشعارات</span>
-          </div>
-        </a>
       </div>
     </div>
   );

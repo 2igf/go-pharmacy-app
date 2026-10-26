@@ -14,6 +14,14 @@ export default defineConfig({
   },
   test: {
     environment: "node",
+    env: {
+      DATABASE_URL: process.env.TEST_DATABASE_URL ?? "",
+      PRIVATE_BETA: "true",
+      BETA_ALLOWED_EMAILS:
+        "customer-a@example.test,customer-b@example.test,admin@example.test",
+    },
+    fileParallelism: false,
+    maxWorkers: 2,
     include: ["server/**/*.test.ts", "server/**/*.spec.ts"],
   },
 });

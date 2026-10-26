@@ -8,7 +8,9 @@ import {
   decimal,
   boolean,
   datetime,
-  json
+  json,
+  uniqueIndex,
+  index
 } from "drizzle-orm/mysql-core";
 
 /**
@@ -49,6 +51,7 @@ export const products = mysqlTable("products", {
   ]).notNull(),
   price: decimal("price", { precision: 10, scale: 2 }).notNull(),
   stock: int("stock").default(0).notNull(),
+  isActive: boolean("isActive").default(true).notNull(),
   image: text("image"),
   requiresPrescription: boolean("requiresPrescription").default(false).notNull(),
   activeIngredient: varchar("activeIngredient", { length: 255 }),
@@ -157,13 +160,13 @@ export type InsertPrescription = typeof prescriptions.$inferInsert;
  */
 export const cartItems = mysqlTable("cartItems", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(),
-  productId: int("productId").notNull(),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: 'restrict' }),
+  productId: int("productId").notNull().references(() => products.id, { onDelete: 'restrict' }),
   quantity: int("quantity").notNull(),
   prescriptionId: int("prescriptionId"), // For prescription-required items
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-});
+}, table => [uniqueIndex('cart_user_product_unique').on(table.userId, table.productId)]);
 
 export type CartItem = typeof cartItems.$inferSelect;
 export type InsertCartItem = typeof cartItems.$inferInsert;
@@ -173,7 +176,12 @@ export type InsertCartItem = typeof cartItems.$inferInsert;
  */
 export const orders = mysqlTable("orders", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: 'restrict' }),
+  idempotencyKey: varchar("idempotencyKey", { length: 64 }),
+  requestHash: varchar("requestHash", { length: 64 }),
+  isSimulated: boolean("isSimulated").default(false).notNull(),
+  contactName: varchar("contactName", { length: 100 }),
+  contactPhone: varchar("contactPhone", { length: 30 }),
   orderNumber: varchar("orderNumber", { length: 50 }).notNull().unique(),
   totalAmount: decimal("totalAmount", { precision: 10, scale: 2 }).notNull(),
   status: mysqlEnum("status", [
@@ -194,7 +202,7 @@ export const orders = mysqlTable("orders", {
   notes: text("notes"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-});
+}, table => [uniqueIndex('order_user_idempotency_unique').on(table.userId, table.idempotencyKey), index('orders_user_created_idx').on(table.userId, table.createdAt)]);
 
 export type Order = typeof orders.$inferSelect;
 export type InsertOrder = typeof orders.$inferInsert;
@@ -204,8 +212,9 @@ export type InsertOrder = typeof orders.$inferInsert;
  */
 export const orderItems = mysqlTable("orderItems", {
   id: int("id").autoincrement().primaryKey(),
-  orderId: int("orderId").notNull(),
-  productId: int("productId").notNull(),
+  orderId: int("orderId").notNull().references(() => orders.id, { onDelete: 'restrict' }),
+  productId: int("productId").notNull().references(() => products.id, { onDelete: 'restrict' }),
+  productName: varchar("productName", { length: 255 }),
   quantity: int("quantity").notNull(),
   price: decimal("price", { precision: 10, scale: 2 }).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -219,7 +228,7 @@ export type InsertOrderItem = typeof orderItems.$inferInsert;
  */
 export const userAddresses = mysqlTable("userAddresses", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: 'restrict' }),
   label: varchar("label", { length: 50 }), // Home, Work, etc.
   address: text("address").notNull(),
   latitude: decimal("latitude", { precision: 10, scale: 8 }),
@@ -320,7 +329,7 @@ export type InsertDoctorReview = typeof doctorReviews.$inferInsert;
  */
 export const notifications = mysqlTable("notifications", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: 'restrict' }),
   type: mysqlEnum("type", [
     "order_status",
     "appointment_reminder",
@@ -333,7 +342,18 @@ export const notifications = mysqlTable("notifications", {
   relatedId: int("relatedId"),
   isRead: boolean("isRead").default(false),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, table => [index('notifications_user_created_idx').on(table.userId, table.createdAt)]);
 
 export type Notification = typeof notifications.$inferSelect;
 export type InsertNotification = typeof notifications.$inferInsert;
+
+export const credentials = mysqlTable('credentials', {
+  userId: int('userId').primaryKey().references(() => users.id, { onDelete: 'restrict' }),
+  email: varchar('email', { length: 320 }).notNull().unique(),
+  passwordHash: text('passwordHash').notNull(),
+});
+export const sessions = mysqlTable('sessions', {
+  tokenHash: varchar('tokenHash', { length: 64 }).primaryKey(),
+  userId: int('userId').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  expiresAt: datetime('expiresAt').notNull(),
+}, table => [index('sessions_expiry_idx').on(table.expiresAt)]);

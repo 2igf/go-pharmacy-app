@@ -1,0 +1,178 @@
+{
+  "actions": [],
+  "advisories": {
+    "1102341": {
+      "findings": [
+        {
+          "version": "0.18.20",
+          "paths": [
+            ".>drizzle-kit>@esbuild-kit/esm-loader>@esbuild-kit/core-utils>esbuild"
+          ]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/evanw/esbuild/security/advisories/GHSA-67mh-4wv8-2f99\n- https://github.com/evanw/esbuild/commit/de85afd65edec9ebc44a11e245fd9e9a2e99760d\n- https://github.com/advisories/GHSA-67mh-4wv8-2f99",
+      "created": "2025-02-10T17:48:07.000Z",
+      "id": 1102341,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\nesbuild allows any websites to send any request to the development server and read the response due to default CORS settings.\n\n### Details\n\nesbuild sets `Access-Control-Allow-Origin: *` header to all requests, including the SSE connection, which allows any websites to send any request to the development server and read the response.\n\nhttps://github.com/evanw/esbuild/blob/df815ac27b84f8b34374c9182a93c94718f8a630/pkg/api/serve_other.go#L121\nhttps://github.com/evanw/esbuild/blob/df815ac27b84f8b34374c9182a93c94718f8a630/pkg/api/serve_other.go#L363\n\n**Attack scenario**:\n\n1. The attacker serves a malicious web page (`http://malicious.example.com`).\n1. The user accesses the malicious web page.\n1. The attacker sends a `fetch('http://127.0.0.1:8000/main.js')` request by JS in that malicious web page. This request is normally blocked by same-origin policy, but that's not the case for the reasons above.\n1. The attacker gets the content of `http://127.0.0.1:8000/main.js`.\n\nIn this scenario, I assumed that the attacker knows the URL of the bundle output file name. But the attacker can also get that information by\n\n- Fetching `/index.html`: normally you have a script tag here\n- Fetching `/assets`: it's common to have a `assets` directory when you have JS files and CSS files in a different directory and the directory listing feature tells the attacker the list of files\n- Connecting `/esbuild` SSE endpoint: the SSE endpoint sends the URL path of the changed files when the file is changed (`new EventSource('/esbuild').addEventListener('change', e => console.log(e.type, e.data))`)\n- Fetching URLs in the known file: once the attacker knows one file, the attacker can know the URLs imported from that file\n\nThe scenario above fetches the compiled content, but if the victim has the source map option enabled, the attacker can also get the non-compiled content by fetching the source map file.\n\n### PoC\n\n1. Download [reproduction.zip](https://github.com/user-attachments/files/18561484/reproduction.zip)\n2. Extract it and move to that directory\n1. Run `npm i`\n1. Run `npm run watch`\n1. Run `fetch('http://127.0.0.1:8000/app.js').then(r => r.text()).then(content => console.log(content))` in a different website's dev tools.\n\n![image](https://github.com/user-attachments/assets/08fc2e4d-e1ec-44ca-b0ea-78a73c3c40e9)\n\n### Impact\n\nUsers using the serve feature may get the source code stolen by malicious websites.",
+      "reported_by": null,
+      "title": "esbuild enables any website to send any requests to the development server and read the response",
+      "metadata": null,
+      "cves": [],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "esbuild",
+      "vulnerable_versions": "<=0.24.2",
+      "github_advisory_id": "GHSA-67mh-4wv8-2f99",
+      "recommendation": "Upgrade to version 0.25.0 or later",
+      "patched_versions": ">=0.25.0",
+      "updated": "2025-02-10T17:48:08.000Z",
+      "cvss": {
+        "score": 5.3,
+        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+      },
+      "cwe": [
+        "CWE-346"
+      ],
+      "url": "https://github.com/advisories/GHSA-67mh-4wv8-2f99"
+    },
+    "1111987": {
+      "findings": [
+        {
+          "version": "4.3.0",
+          "paths": [
+            ".>@aws-sdk/client-s3>@smithy/config-resolver"
+          ]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/aws/aws-sdk-js-v3/security/advisories/GHSA-6475-r3vj-m8vf\n- https://github.com/aws/aws-sdk-js/security/advisories/GHSA-j965-2qgj-vjmq\n- https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/security.html\n- https://github.com/advisories/GHSA-6475-r3vj-m8vf",
+      "created": "2026-01-08T21:52:45.000Z",
+      "id": 1111987,
+      "npm_advisory_id": null,
+      "overview": "CVSSv3.1 Rating: 3.7 (LOW)\n\nSummary\n\nThis notification is related to the use of specific values for the region input field when calling AWS services. An actor with access to the environment in which the SDK is used could set the region input field to an invalid value.\n\nA defense-in-depth enhancement has been implemented in the AWS SDK for JavaScript v3 (versions 3.723.0 and later). This enhancement validates that a region used to construct an endpoint URL is a valid host label. The change was released on November 15, 2025. This advisory is informational to help customers understand their responsibilities regarding configuration security.\n\nImpact\nCustomer applications could be configured to improperly route AWS API calls to non-existent or non-AWS hosts. While the SDK was functioning as designed, additional safeguards have been added to support secure customer implementations.\n\nImpacted versions: @smithy/config-resolver <4.4.0\n\nPatches\n\nOn November 15, 2025, an enhancement was made to the AWS SDK for JavaScript v3 (versions 3.723.0 and later) release, which validates the formatting of a region, providing additional safeguards. A feature enhancement was implemented in @smithy/config-resolver v4.4.0. This enhancement provides additional configuration validation safeguards but does not address a security vulnerability.\n\nWorkarounds\nNo workarounds are needed, but as always you should ensure that your application is following security best practices:\n- Implement proper input validation in your application code\n- Update to the latest AWS SDK for Javascript v3 release on a regular basis\n- Follow AWS security best practices [1] for SDK configuration\n\nResources\nContact AWS Security via the vulnerability reporting page or email [aws-security@amazon.com](mailto:aws-security@amazon.com).\n\nAcknowledgement\nAWS Security thanks Guy Arazi for bringing these customer security considerations to our attention through the coordinated disclosure process.\n\n[1] https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/security.html",
+      "reported_by": null,
+      "title": "AWS SDK for JavaScript v3 adopted defense in depth enhancement for region parameter value",
+      "metadata": null,
+      "cves": [],
+      "access": "public",
+      "severity": "low",
+      "module_name": "@smithy/config-resolver",
+      "vulnerable_versions": "<4.4.0",
+      "github_advisory_id": "GHSA-6475-r3vj-m8vf",
+      "recommendation": "Upgrade to version 4.4.0 or later",
+      "patched_versions": ">=4.4.0",
+      "updated": "2026-01-08T21:52:47.000Z",
+      "cvss": {
+        "score": 3.7,
+        "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:N/A:N"
+      },
+      "cwe": [
+        "CWE-20"
+      ],
+      "url": "https://github.com/advisories/GHSA-6475-r3vj-m8vf"
+    },
+    "1119441": {
+      "findings": [
+        {
+          "version": "11.1.0",
+          "paths": [
+            ".>streamdown>mermaid>uuid"
+          ]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/uuidjs/uuid/security/advisories/GHSA-w5hq-g745-h8pq\n- https://github.com/uuidjs/uuid/commit/3d2c5b0342f0fcb52a5ac681c3d47c13e7444b34\n- https://github.com/uuidjs/uuid/releases/tag/v14.0.0\n- https://nvd.nist.gov/vuln/detail/CVE-2026-41907\n- https://github.com/uuidjs/uuid/commit/32389c887c9e75f90442ee4cc95bbab0c4e8346e\n- https://github.com/uuidjs/uuid/commit/3d61d6ac1f782cf6b1dd8661c60f11722cd49a0d\n- https://github.com/uuidjs/uuid/commit/9d27ddf7046ce496ef39569ff84d948eeff9cb2a\n- https://github.com/uuidjs/uuid/releases/tag/v11.1.1\n- https://github.com/uuidjs/uuid/releases/tag/v12.0.1\n- https://github.com/uuidjs/uuid/releases/tag/v13.0.1\n- https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+      "created": "2026-04-22T20:53:24.000Z",
+      "id": 1119441,
+      "npm_advisory_id": null,
+      "overview": "### Summary\n\nThe `v3()`, `v5()`, and `v6()` [API methods](https://github.com/uuidjs/uuid#api-summary) (not `uuid` release versions) accept external output buffers but do not reject out-of-range writes (small `buf` or large `offset`).  \nBy contrast, `v4()`, `v1()`, and `v7()` API methods explicitly throw `RangeError` on invalid bounds.\n\nThis inconsistency allows **silent partial writes** into caller-provided buffers.\n\n\n### Affected code\n\n- `src/v35.ts` (`v3()`/`v5()` path) writes `buf[offset + i]` without bounds validation.\n- `src/v6.ts` writes `buf[offset + i]` without bounds validation.\n\n### Reproducible PoC\n\n```bash\ncd /home/StrawHat/uuid\nnpm ci\nnpm run build\n\nnode --input-type=module -e \"\nimport {v4,v5,v6} from './dist-node/index.js';\nconst ns='6ba7b810-9dad-11d1-80b4-00c04fd430c8';\nfor (const [name,fn] of [\n  ['v4()',()=>v4({},new Uint8Array(8),4)],\n  ['v5()',()=>v5('x',ns,new Uint8Array(8),4)],\n  ['v6()',()=>v6({},new Uint8Array(8),4)],\n]) {\n  try { fn(); console.log(name,'NO_THROW'); }\n  catch(e){ console.log(name,'THREW',e.name); }\n}\"\n```\n\nObserved:\n\n- `v4() THREW RangeError`\n- `v5() NO_THROW`\n- `v6() NO_THROW`\n\nExample partial overwrite evidence captured during audit:\n\n```text\nsame true buf [\n  170, 170, 170, 170,\n   75, 224, 100,  63\n]\nv6 [\n  187, 187, 187, 187,\n   31,  19, 185,  64\n]\n```\n\n### Security impact\n\n- **Primary**: integrity/robustness issue (silent partial output).\n- If an application assumes full UUID writes into preallocated buffers, this can produce malformed/truncated/partially stale identifiers without error.\n- In systems where caller-controlled offsets/buffer sizes are exposed indirectly, this may become a security-relevant logic flaw.\n\n### Suggested fix\n\nAdd the same guard used by `v4()`/`v1()`/`v7()`:\n\n```ts\nif (offset < 0 || offset + 16 > buf.length) {\n  throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);\n}\n```\n\nApply to:\n\n- `src/v35.ts` (covers `v3()` and `v5()`)\n- `src/v6.ts`",
+      "reported_by": null,
+      "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+      "metadata": null,
+      "cves": [
+        "CVE-2026-41907"
+      ],
+      "access": "public",
+      "severity": "moderate",
+      "module_name": "uuid",
+      "vulnerable_versions": "<11.1.1",
+      "github_advisory_id": "GHSA-w5hq-g745-h8pq",
+      "recommendation": "Upgrade to version 11.1.1 or later",
+      "patched_versions": ">=11.1.1",
+      "updated": "2026-05-21T18:25:57.000Z",
+      "cvss": {
+        "score": 7.5,
+        "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+      },
+      "cwe": [
+        "CWE-787",
+        "CWE-1285"
+      ],
+      "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq"
+    },
+    "1241206": {
+      "findings": [
+        {
+          "version": "0.16.25",
+          "paths": [
+            ".>streamdown>katex"
+          ]
+        },
+        {
+          "version": "0.16.47",
+          "paths": [
+            ".>streamdown>mermaid>katex"
+          ]
+        }
+      ],
+      "found_by": null,
+      "deleted": null,
+      "references": "- https://github.com/KaTeX/KaTeX/security/advisories/GHSA-238p-pmpm-9mq7\n- https://nvd.nist.gov/vuln/detail/CVE-2026-103923\n- https://github.com/KaTeX/KaTeX/pull/4260\n- https://github.com/KaTeX/KaTeX/commit/0adf7e77db6915d991803b29699f82b1ccf8d4f4\n- https://github.com/KaTeX/KaTeX/releases/tag/v0.18.2\n- https://github.com/advisories/GHSA-238p-pmpm-9mq7",
+      "created": "2026-10-05T23:41:05.000Z",
+      "id": 1241206,
+      "npm_advisory_id": null,
+      "overview": "### Impact\n\nKaTeX can act as a read-side prototype pollution gadget in applications where `Object.prototype` has already been polluted, or where an attacker can influence the prototype of the renderer options object. (KaTeX does not enable said prototype pollution. This advisory applies when combining KaTeX with other vulnerable software that allows for prototype pollution.)\n\nAffected versions may treat inherited properties from `Object.prototype` as renderer options, internal setting metadata, or namespace entries. In particular, an inherited `trust` value will be treated as though the application explicitly enabled trusted rendering, rather than using the documented default of `false`.\n\nWith attacker-controlled mathematical expressions, this can produce links capable of user-interaction cross-site scripting or load attacker-selected external resources. Exploitation requires the consuming application to insert KaTeX output into a web page without a separate sanitizer. (KaTeX does not execute scripts merely by rendering an expression.)\n\nOther inherited settings can alter rendering behavior or resource limits. Inherited setting metadata can affect how defaults and supplied options are processed, while inherited namespace properties can be mistaken for defined macros or other internal values.\n\n### Patches\n\nUpgrade to KaTeX v0.18.2 to remove this vulnerability.\n\n### Workarounds\n\n- Address any prototype-pollution vulnerability in the application or its dependencies.\n- `delete Object.prototype.trust`, `delete Object.prototype.default`, and `delete Object.prototype.processor` before calling KaTeX\n- Do not allow untrusted input to control the renderer options object or its prototype.\n- Sanitize KaTeX-generated HTML before inserting it into a document.\n\n### Details\n\nKaTeX previously used ordinary JavaScript property access in the following contexts:\n\n- Renderer settings could be inherited from the prototype of the options object.\n- Internal `default` and `processor` setting metadata could be inherited from `Object.prototype`.\n- Namespace lookup could treat inherited properties as built-in definitions.\n- Namespace group restoration could preserve an inherited property as though it had been an explicitly defined value.\n\nThe fix adds own-property checks to each of these paths. Inherited properties are no longer accepted as renderer settings, setting metadata, namespace definitions, or values to be restored after a group ends.\n\n### For more information\n\nIf you have any questions or comments about this advisory:\n\n- Open an issue or security advisory in the [KaTeX repository](https://github.com/KaTeX/KaTeX/)\n- Email us at [katex-security@mit.edu](mailto:katex-security@mit.edu)",
+      "reported_by": null,
+      "title": "KaTeX: Existing prototype pollution can bypass trust restrictions",
+      "metadata": null,
+      "cves": [
+        "CVE-2026-103923"
+      ],
+      "access": "public",
+      "severity": "low",
+      "module_name": "katex",
+      "vulnerable_versions": ">=0.11.0 <0.18.2",
+      "github_advisory_id": "GHSA-238p-pmpm-9mq7",
+      "recommendation": "Upgrade to version 0.18.2 or later",
+      "patched_versions": ">=0.18.2",
+      "updated": "2026-10-05T23:41:06.000Z",
+      "cvss": {
+        "score": 0,
+        "vectorString": null
+      },
+      "cwe": [
+        "CWE-807"
+      ],
+      "url": "https://github.com/advisories/GHSA-238p-pmpm-9mq7"
+    }
+  },
+  "muted": [],
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 3,
+      "moderate": 2,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 848,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 848
+  }
+}

@@ -1,7 +1,19 @@
-import { Loader2, Star, ShoppingCart, Heart, Home as HomeIcon, Users, Clock, Pill, User, ChevronLeft, AlertCircle } from "lucide-react";
+import {
+  Loader2,
+  Star,
+  ShoppingCart,
+  Heart,
+  Home as HomeIcon,
+  Users,
+  Clock,
+  Pill,
+  User,
+  ChevronLeft,
+  AlertCircle,
+} from "lucide-react";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
-import { useLocation } from "wouter";
+import { useLocation, useRoute } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -14,10 +26,15 @@ export default function ProductDetail() {
 
   // Get product ID from URL
   const params = new URLSearchParams(window.location.search);
-  const productId = parseInt(params.get("id") || "0");
+  const [, routeParams] = useRoute("/product/:id");
+  const productId = Number(routeParams?.id ?? params.get("id") ?? 0);
 
   // Fetch product details
-  const { data: product, isLoading } = trpc.products.byId.useQuery(
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = trpc.products.byId.useQuery(
     { id: productId },
     { enabled: productId > 0 }
   );
@@ -28,7 +45,7 @@ export default function ProductDetail() {
       toast.success("تم إضافة المنتج إلى السلة");
       setQuantity(1);
     },
-    onError: (error) => {
+    onError: error => {
       toast.error(error.message || "فشل إضافة المنتج إلى السلة");
     },
   });
@@ -54,6 +71,14 @@ export default function ProductDetail() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <Loader2 className="animate-spin text-[#00c57d]" size={48} />
       </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="p-6" role="alert">
+        {error.message}
+      </main>
     );
   }
 
@@ -112,25 +137,21 @@ export default function ProductDetail() {
           <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
             <div className="flex items-start justify-between mb-3">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">{product.name}</h2>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  {product.name}
+                </h2>
                 <p className="text-sm text-gray-600 mt-1">{product.category}</p>
               </div>
-              <button
-                onClick={() => setIsWishlisted(!isWishlisted)}
-                className="p-2 text-gray-400 hover:text-red-500 transition-colors"
-              >
-                <Heart
-                  size={24}
-                  fill={isWishlisted ? "currentColor" : "none"}
-                  className={isWishlisted ? "text-red-500" : ""}
-                />
-              </button>
             </div>
 
             {/* Price */}
             <div className="mb-4">
-              <p className="text-3xl font-bold text-[#00c57d]">${product.price}</p>
-              <p className="text-sm text-gray-600 mt-1">السعر شامل الضريبة</p>
+              <p className="text-3xl font-bold text-[#00c57d]">
+                {product.price} JD
+              </p>
+              <p className="text-sm text-gray-600 mt-1">
+                سعر محاكاة — لا دفع حقيقي
+              </p>
             </div>
 
             {/* Stock Status */}
@@ -149,11 +170,16 @@ export default function ProductDetail() {
             {/* Prescription Required */}
             {product.requiresPrescription && (
               <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-4 flex items-start gap-2">
-                <AlertCircle className="text-orange-600 flex-shrink-0 mt-0.5" size={18} />
+                <AlertCircle
+                  className="text-orange-600 flex-shrink-0 mt-0.5"
+                  size={18}
+                />
                 <div>
-                  <p className="font-semibold text-orange-900 text-sm">يلزم وصفة طبية</p>
+                  <p className="font-semibold text-orange-900 text-sm">
+                    يلزم وصفة طبية
+                  </p>
                   <p className="text-xs text-orange-700 mt-1">
-                    هذا المنتج يتطلب وصفة طبية صحيحة للشراء
+                    محظور في النسخة التجريبية
                   </p>
                 </div>
               </div>
@@ -181,7 +207,9 @@ export default function ProductDetail() {
                   {quantity}
                 </span>
                 <button
-                  onClick={() => setQuantity(quantity + 1)}
+                  onClick={() =>
+                    setQuantity(Math.min(99, product.stock, quantity + 1))
+                  }
                   className="w-10 h-10 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-colors"
                 >
                   +
@@ -189,43 +217,20 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            {/* Rating */}
-            <div className="mb-6 pb-6 border-b border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">التقييم</h3>
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={16}
-                      className={i < 4 ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}
-                    />
-                  ))}
-                </div>
-                <span className="text-sm text-gray-600">4.0 (128 تقييم)</span>
-              </div>
-            </div>
-
             {/* Add to Cart Button */}
             <Button
               onClick={handleAddToCart}
-              disabled={product.stock === 0 || addToCartMutation.isPending}
+              disabled={
+                product.requiresPrescription ||
+                product.stock === 0 ||
+                addToCartMutation.isPending
+              }
               className="w-full bg-[#00c57d] hover:bg-[#00a86a] text-white py-3 rounded-lg font-semibold flex items-center justify-center gap-2 mb-3"
             >
               <ShoppingCart size={20} />
-              {addToCartMutation.isPending ? "جاري الإضافة..." : "أضف إلى السلة"}
-            </Button>
-
-            {/* Buy Now Button */}
-            <Button
-              onClick={() => {
-                handleAddToCart();
-                navigate("/cart");
-              }}
-              disabled={product.stock === 0}
-              className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 rounded-lg font-semibold"
-            >
-              اشتري الآن
+              {addToCartMutation.isPending
+                ? "جاري الإضافة..."
+                : "أضف إلى السلة"}
             </Button>
           </div>
 
@@ -235,7 +240,9 @@ export default function ProductDetail() {
             <div className="space-y-3">
               <div className="flex justify-between items-center pb-3 border-b border-gray-200">
                 <span className="text-gray-600">الفئة</span>
-                <span className="font-semibold text-gray-900">{product.category}</span>
+                <span className="font-semibold text-gray-900">
+                  {product.category}
+                </span>
               </div>
               <div className="flex justify-between items-center pb-3 border-b border-gray-200">
                 <span className="text-gray-600">التوفر</span>
@@ -245,56 +252,13 @@ export default function ProductDetail() {
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">الشحن</span>
-                <span className="font-semibold text-gray-900">مجاني فوق 50 دولار</span>
+                <span className="font-semibold text-gray-900">
+                  مجاني فوق 50 دولار
+                </span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom Navigation */}
-      <div className="app-bottom-nav">
-        <a href="/">
-          <div className="app-nav-item">
-            <HomeIcon className="w-6 h-6" />
-            <span className="text-xs">الرئيسية</span>
-          </div>
-        </a>
-
-        <a href="/products">
-          <div className="app-nav-item active">
-            <ShoppingCart className="w-6 h-6" />
-            <span className="text-xs">الأدوية</span>
-          </div>
-        </a>
-
-        <a href="/doctors">
-          <div className="app-nav-item">
-            <Users className="w-6 h-6" />
-            <span className="text-xs">الأطباء</span>
-          </div>
-        </a>
-
-        <a href="/appointments">
-          <div className="app-nav-item">
-            <Clock className="w-6 h-6" />
-            <span className="text-xs">المواعيد</span>
-          </div>
-        </a>
-
-        <a href="/reminders">
-          <div className="app-nav-item">
-            <Pill className="w-6 h-6" />
-            <span className="text-xs">التذكيرات</span>
-          </div>
-        </a>
-
-        <a href="/profile">
-          <div className="app-nav-item">
-            <User className="w-6 h-6" />
-            <span className="text-xs">الملف الشخصي</span>
-          </div>
-        </a>
       </div>
     </div>
   );

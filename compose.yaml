@@ -1,0 +1,35 @@
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: go_pharmacy_beta
+      MYSQL_USER: go_pharmacy
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  app:
+    build: .
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      DATABASE_URL: ${DATABASE_URL:?Set URL with db host and percent-encoded password}
+      APP_ORIGIN: ${APP_ORIGIN:?Set public HTTPS origin}
+      PRIVATE_BETA: "true"
+      BETA_ALLOWED_EMAILS: ${BETA_ALLOWED_EMAILS:?Set invited emails}
+      BETA_INVITE_SECRET: ${BETA_INVITE_SECRET:?Set random invitation secret}
+      TRUST_PROXY: ${TRUST_PROXY:-}
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  mysql_data:

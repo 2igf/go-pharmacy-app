@@ -1,3 +1,8 @@
+import { resetFixtures } from "./test-support";
+import { beforeEach as resetBeforeEach } from "vitest";
+resetBeforeEach(async () => {
+  if (process.env.TEST_DATABASE_URL) await resetFixtures();
+});
 import { describe, expect, it } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
@@ -14,7 +19,7 @@ function createPublicContext(): TrpcContext {
   };
 }
 
-describe("products router", () => {
+describe.skipIf(!process.env.TEST_DATABASE_URL)("products router", () => {
   it("should list products", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);

@@ -1,7 +1,24 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
+import {
+  publicProcedure,
+  protectedProcedure,
+  adminProcedure,
+  medicalProcedure,
+  disabledProcedure,
+  router,
+} from "./_core/trpc";
+import { TRPCError } from "@trpc/server";
+import {
+  checkout,
+  changeCart,
+  cartQuote,
+  orderDetail,
+  updateOrderStatus,
+} from "./commerce";
+import { statuses } from "./commerce-rules";
+import { authRouter } from "./auth";
 import { z } from "zod";
 import { getDb } from "./db";
 import {
@@ -42,64 +59,91 @@ import {
 
 export const appRouter = router({
   system: systemRouter,
-  auth: router({
-    me: publicProcedure.query(opts => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
-      return {
-        success: true,
-      } as const;
-    }),
-  }),
+  auth: authRouter,
 
   // ============= PRODUCTS ROUTER =============
   products: router({
     list: publicProcedure
-      .input(z.object({
-        limit: z.number().default(20),
-        offset: z.number().default(0),
-      }))
+      .input(
+        z.object({
+          limit: z.number().int().min(1).max(100).default(20),
+          offset: z.number().int().min(0).max(100000).default(0),
+        })
+      )
       .query(async ({ input }) => {
         return await getProducts(input.limit, input.offset);
       }),
 
     byCategory: publicProcedure
-      .input(z.object({
-        category: z.string(),
-        limit: z.number().default(20),
-        offset: z.number().default(0),
-      }))
+      .input(
+        z.object({
+          category: z.enum([
+            "medications",
+            "medical_supplies",
+            "natural_products",
+            "skincare",
+            "baby_care",
+            "pet_care",
+          ]),
+          limit: z.number().int().min(1).max(100).default(20),
+          offset: z.number().int().min(0).max(100000).default(0),
+        })
+      )
       .query(async ({ input }) => {
-        return await getProductsByCategory(input.category, input.limit, input.offset);
+        return await getProductsByCategory(
+          input.category,
+          input.limit,
+          input.offset
+        );
       }),
 
     byId: publicProcedure
-      .input(z.object({ id: z.number() }))
+      .input(z.object({ id: z.number().int().positive() }))
       .query(async ({ input }) => {
         return await getProductById(input.id);
       }),
 
     search: publicProcedure
-      .input(z.object({
-        query: z.string(),
-        limit: z.number().default(20),
-      }))
+      .input(
+        z.object({
+          query: z.string().trim().min(1).max(100),
+          limit: z.number().int().min(1).max(100).default(20),
+        })
+      )
       .query(async ({ input }) => {
         return await searchProducts(input.query, input.limit);
       }),
 
-    create: protectedProcedure
-      .input(z.object({
-        name: z.string(),
-        price: z.string(),
-        category: z.enum(["medications", "medical_supplies", "natural_products", "skincare", "baby_care", "pet_care"]),
-        description: z.string().optional(),
-        stock: z.string().optional(),
-        requiresPrescription: z.boolean().optional(),
-        image: z.string().optional(),
-        manufacturer: z.string().optional(),
-      }))
+    create: adminProcedure
+      .input(
+        z.object({
+          name: z.string().trim().min(1).max(255),
+          price: z.string().regex(/^\d{1,8}(\.\d{1,2})?$/),
+          category: z.enum([
+            "medications",
+            "medical_supplies",
+            "natural_products",
+            "skincare",
+            "baby_care",
+            "pet_care",
+          ]),
+          description: z.string().max(5000).optional(),
+          stock: z
+            .string()
+            .regex(/^\d{1,6}$/)
+            .optional(),
+          requiresPrescription: z.boolean().optional(),
+          image: z
+            .string()
+            .max(2048)
+            .refine(
+              v => !v || /^https:\/\//.test(v),
+              "Image must be an HTTPS URL"
+            )
+            .optional(),
+          manufacturer: z.string().max(255).optional(),
+        })
+      )
       .mutation(async ({ input, ctx }) => {
         if (ctx.user?.role !== "admin") {
           throw new Error("Only admins can create products");
@@ -108,7 +152,7 @@ export const appRouter = router({
         if (!db) throw new Error("Database connection failed");
         const [result] = await db.insert(products).values({
           name: input.name,
-          price: input.price as any,
+          price: input.price,
           category: input.category,
           description: input.description || null,
           stock: input.stock ? parseInt(input.stock) : 0,
@@ -119,88 +163,127 @@ export const appRouter = router({
         return { id: result?.insertId || 0 };
       }),
 
-    update: protectedProcedure
-      .input(z.object({
-        id: z.number(),
-        name: z.string().optional(),
-        price: z.string().optional(),
-        category: z.enum(["medications", "medical_supplies", "natural_products", "skincare", "baby_care", "pet_care"]).optional(),
-        description: z.string().optional(),
-        stock: z.string().optional(),
-        requiresPrescription: z.boolean().optional(),
-        image: z.string().optional(),
-        manufacturer: z.string().optional(),
-      }))
+    update: adminProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          name: z.string().trim().min(1).max(255).optional(),
+          price: z
+            .string()
+            .regex(/^\d{1,8}(\.\d{1,2})?$/)
+            .optional(),
+          category: z
+            .enum([
+              "medications",
+              "medical_supplies",
+              "natural_products",
+              "skincare",
+              "baby_care",
+              "pet_care",
+            ])
+            .optional(),
+          description: z.string().max(5000).optional(),
+          stock: z
+            .string()
+            .regex(/^\d{1,6}$/)
+            .optional(),
+          requiresPrescription: z.boolean().optional(),
+          image: z
+            .string()
+            .max(2048)
+            .refine(
+              v => !v || /^https:\/\//.test(v),
+              "Image must be an HTTPS URL"
+            )
+            .optional(),
+          manufacturer: z.string().max(255).optional(),
+        })
+      )
       .mutation(async ({ input, ctx }) => {
         if (ctx.user?.role !== "admin") {
           throw new Error("Only admins can update products");
         }
         const db = await getDb();
         if (!db) throw new Error("Database connection failed");
-        const updateData: any = {};
+        const updateData: Partial<typeof products.$inferInsert> = {};
         if (input.name) updateData.name = input.name;
-        if (input.price) updateData.price = input.price as any;
+        if (input.price) updateData.price = input.price;
         if (input.category) updateData.category = input.category;
-        if (input.description !== undefined) updateData.description = input.description || null;
-        if (input.stock) updateData.stock = parseInt(input.stock);
-        if (input.requiresPrescription !== undefined) updateData.requiresPrescription = input.requiresPrescription;
+        if (input.description !== undefined)
+          updateData.description = input.description || null;
+        if (input.stock !== undefined) updateData.stock = parseInt(input.stock);
+        if (input.requiresPrescription !== undefined)
+          updateData.requiresPrescription = input.requiresPrescription;
         if (input.image !== undefined) updateData.image = input.image || null;
-        if (input.manufacturer !== undefined) updateData.manufacturer = input.manufacturer || null;
-        
-        await db.update(products)
+        if (input.manufacturer !== undefined)
+          updateData.manufacturer = input.manufacturer || null;
+
+        await db
+          .update(products)
           .set(updateData)
           .where(eq(products.id, input.id));
         return { success: true };
       }),
 
-    delete: protectedProcedure
-      .input(z.object({ id: z.number() }))
+    delete: adminProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .mutation(async ({ input, ctx }) => {
         if (ctx.user?.role !== "admin") {
           throw new Error("Only admins can delete products");
         }
         const db = await getDb();
         if (!db) throw new Error("Database connection failed");
-        await db.delete(products).where(eq(products.id, input.id));
+        await db
+          .update(products)
+          .set({ isActive: false })
+          .where(eq(products.id, input.id));
         return { success: true };
       }),
   }),
 
   // ============= DOCTORS ROUTER =============
   doctors: router({
-    list: publicProcedure
-      .input(z.object({
-        limit: z.number().default(20),
-        offset: z.number().default(0),
-      }))
+    list: medicalProcedure
+      .input(
+        z.object({
+          limit: z.number().int().min(1).max(100).default(20),
+          offset: z.number().int().min(0).max(100000).default(0),
+        })
+      )
       .query(async ({ input }) => {
         return await getDoctors(input.limit, input.offset);
       }),
 
-    bySpecialty: publicProcedure
-      .input(z.object({
-        specialty: z.string(),
-        limit: z.number().default(20),
-        offset: z.number().default(0),
-      }))
+    bySpecialty: medicalProcedure
+      .input(
+        z.object({
+          specialty: z.string(),
+          limit: z.number().int().min(1).max(100).default(20),
+          offset: z.number().int().min(0).max(100000).default(0),
+        })
+      )
       .query(async ({ input }) => {
-        return await getDoctorsBySpecialty(input.specialty, input.limit, input.offset);
+        return await getDoctorsBySpecialty(
+          input.specialty,
+          input.limit,
+          input.offset
+        );
       }),
 
-    byId: publicProcedure
-      .input(z.object({ id: z.number() }))
+    byId: medicalProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .query(async ({ input }) => {
         return await getDoctorById(input.id);
       }),
 
-    timeSlots: publicProcedure
-      .input(z.object({ doctorId: z.number() }))
+    timeSlots: medicalProcedure
+      .input(z.object({ doctorId: z.number().int().positive() }))
       .query(async ({ input }) => {
         return await getDoctorTimeSlots(input.doctorId);
       }),
 
-    delete: protectedProcedure
-      .input(z.object({ id: z.number() }))
+    delete: medicalProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .mutation(async ({ input, ctx }) => {
         if (ctx.user?.role !== "admin") {
           throw new Error("Only admins can delete doctors");
@@ -215,29 +298,31 @@ export const appRouter = router({
 
   // ============= APPOINTMENTS ROUTER =============
   appointments: router({
-    list: protectedProcedure.query(async ({ ctx }) => {
+    list: medicalProcedure.query(async ({ ctx }) => {
       return await getUserAppointments(ctx.user.id);
     }),
 
-    byId: publicProcedure
-      .input(z.object({ id: z.number() }))
+    byId: medicalProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .query(async ({ input }) => {
         return await getAppointmentById(input.id);
       }),
 
-    byDoctor: publicProcedure
-      .input(z.object({ doctorId: z.number() }))
+    byDoctor: medicalProcedure
+      .input(z.object({ doctorId: z.number().int().positive() }))
       .query(async ({ input }) => {
         return await getDoctorAppointments(input.doctorId);
       }),
 
-    create: protectedProcedure
-      .input(z.object({
-        doctorId: z.number(),
-        appointmentDate: z.date(),
-        consultationType: z.enum(["in_clinic", "video", "chat"]),
-        notes: z.string().optional(),
-      }))
+    create: medicalProcedure
+      .input(
+        z.object({
+          doctorId: z.number(),
+          appointmentDate: z.date(),
+          consultationType: z.enum(["in_clinic", "video", "chat"]),
+          notes: z.string().optional(),
+        })
+      )
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
@@ -254,8 +339,8 @@ export const appRouter = router({
         return result;
       }),
 
-    cancel: protectedProcedure
-      .input(z.object({ id: z.number() }))
+    cancel: medicalProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
@@ -265,7 +350,8 @@ export const appRouter = router({
           throw new Error("Appointment not found or unauthorized");
         }
 
-        await db.update(appointments)
+        await db
+          .update(appointments)
           .set({ status: "cancelled" })
           .where(eq(appointments.id, input.id));
 
@@ -275,182 +361,80 @@ export const appRouter = router({
 
   // ============= CART ROUTER =============
   cart: router({
-    list: protectedProcedure.query(async ({ ctx }) => {
-      return await getUserCartItems(ctx.user.id);
-    }),
-
+    list: protectedProcedure.query(({ ctx }) => getUserCartItems(ctx.user.id)),
+    quote: protectedProcedure.query(({ ctx }) => cartQuote(ctx.user.id)),
     add: protectedProcedure
-      .input(z.object({
-        productId: z.number(),
-        quantity: z.number().min(1),
-        prescriptionId: z.number().optional(),
-      }))
-      .mutation(async ({ input, ctx }) => {
-        const db = await getDb();
-        if (!db) throw new Error("Database not available");
-
-        // Check if product exists
-        const product = await getProductById(input.productId);
-        if (!product) throw new Error("Product not found");
-
-        // Check if item already in cart
-        const existing = await db.select().from(cartItems)
-          .where(
-            eq(cartItems.userId, ctx.user.id) &&
-            eq(cartItems.productId, input.productId)
-          );
-
-        if (existing.length > 0) {
-          // Update quantity
-          await db.update(cartItems)
-            .set({ quantity: existing[0].quantity + input.quantity })
-            .where(eq(cartItems.id, existing[0].id));
-        } else {
-          // Add new item
-          await db.insert(cartItems).values({
-            userId: ctx.user.id,
-            productId: input.productId,
-            quantity: input.quantity,
-            prescriptionId: input.prescriptionId,
-          });
-        }
-
-        return { success: true };
-      }),
-
+      .input(
+        z.object({
+          productId: z.number().int().positive(),
+          quantity: z.number().int().min(1).max(99),
+        })
+      )
+      .mutation(({ ctx, input }) => changeCart(ctx.user.id, input)),
     remove: protectedProcedure
-      .input(z.object({ id: z.number() }))
-      .mutation(async ({ input, ctx }) => {
-        const db = await getDb();
-        if (!db) throw new Error("Database not available");
-
-        const item = await getCartItemById(input.id);
-        if (!item || item.userId !== ctx.user.id) {
-          throw new Error("Cart item not found or unauthorized");
-        }
-
-        await db.delete(cartItems).where(eq(cartItems.id, input.id));
-        return { success: true };
-      }),
-
+      .input(z.object({ id: z.number().int().positive() }))
+      .mutation(({ ctx, input }) => changeCart(ctx.user.id, input)),
     updateQuantity: protectedProcedure
-      .input(z.object({
-        id: z.number(),
-        quantity: z.number().min(1),
-      }))
-      .mutation(async ({ input, ctx }) => {
-        const db = await getDb();
-        if (!db) throw new Error("Database not available");
-
-        const item = await getCartItemById(input.id);
-        if (!item || item.userId !== ctx.user.id) {
-          throw new Error("Cart item not found or unauthorized");
-        }
-
-        await db.update(cartItems)
-          .set({ quantity: input.quantity })
-          .where(eq(cartItems.id, input.id));
-
-        return { success: true };
-      }),
-
-    clear: protectedProcedure.mutation(async ({ ctx }) => {
-      const db = await getDb();
-      if (!db) throw new Error("Database not available");
-
-      await db.delete(cartItems).where(eq(cartItems.userId, ctx.user.id));
-      return { success: true };
-    }),
+      .input(
+        z.object({
+          id: z.number().int().positive(),
+          quantity: z.number().int().min(1).max(99),
+        })
+      )
+      .mutation(({ ctx, input }) => changeCart(ctx.user.id, input)),
+    clear: protectedProcedure.mutation(({ ctx }) =>
+      changeCart(ctx.user.id, { clear: true })
+    ),
   }),
-
-  // ============= ORDERS ROUTER =============
   orders: router({
-    list: protectedProcedure.query(async ({ ctx }) => {
-      return await getUserOrders(ctx.user.id);
-    }),
-
+    list: protectedProcedure.query(({ ctx }) => getUserOrders(ctx.user.id)),
     byId: protectedProcedure
-      .input(z.object({ id: z.number() }))
-      .query(async ({ input, ctx }) => {
-        const order = await getOrderById(input.id);
-        if (!order || order.userId !== ctx.user.id) {
-          throw new Error("Order not found or unauthorized");
-        }
-        return order;
-      }),
-
+      .input(z.object({ id: z.number().int().positive() }))
+      .query(({ ctx, input }) => orderDetail(input.id, ctx.user.id)),
     create: protectedProcedure
-      .input(z.object({
-        addressId: z.number(),
-        paymentMethod: z.enum(["cash", "card"]),
-      }))
-      .mutation(async ({ input, ctx }) => {
-        const db = await getDb();
-        if (!db) throw new Error("Database not available");
-
-        // Get cart items
-        const userCartItems = await getUserCartItems(ctx.user.id);
-        if (userCartItems.length === 0) {
-          throw new Error("Cart is empty");
-        }
-
-        // Get address
-        const address = await getAddressById(input.addressId);
-        if (!address || address.userId !== ctx.user.id) {
-          throw new Error("Address not found or unauthorized");
-        }
-
-        // Calculate total
-        let totalAmount = "0";
-        for (const cartItem of userCartItems) {
-          const product = await getProductById(cartItem.productId);
-          if (product) {
-            totalAmount = (parseFloat(totalAmount) + parseFloat(product.price) * cartItem.quantity).toString();
-          }
-        }
-
-        // Create order
-        const orderNumber = `ORD-${Date.now()}`;
-        const [orderResult] = await db.insert(orders).values({
-          userId: ctx.user.id,
-          orderNumber,
-          totalAmount: totalAmount as any,
-          status: "pending",
-          deliveryAddress: address.address,
-          deliveryLatitude: address.latitude,
-          deliveryLongitude: address.longitude,
-          paymentMethod: input.paymentMethod,
-          paymentStatus: "pending",
-        });
-
-        // Add order items
-        for (const cartItem of userCartItems) {
-          const product = await getProductById(cartItem.productId);
-          if (product) {
-            await db.insert(orderItems).values({
-              orderId: orderResult?.insertId || 0,
-              productId: cartItem.productId,
-              quantity: cartItem.quantity,
-              price: product.price as any,
-            });
-          }
-        }
-
-        // Clear cart
-        await db.delete(cartItems).where(eq(cartItems.userId, ctx.user.id));
-
-        return { orderId: orderResult?.insertId || 0, orderNumber };
-      }),
+      .input(
+        z
+          .object({
+            addressId: z.number().int().positive(),
+            idempotencyKey: z.string().uuid(),
+            contactName: z.string().trim().min(2).max(100),
+            contactPhone: z.string().regex(/^[+0-9 ()-]{6,30}$/),
+            expectedTotal: z.string().regex(/^\d{1,8}\.\d{2}$/),
+            paymentMethod: z.literal("cash"),
+            simulationAcknowledged: z.literal(true),
+            expectedCartHash: z.string().regex(/^[a-f0-9]{64}$/),
+          })
+          .strict()
+      )
+      .mutation(({ ctx, input }) => checkout(ctx.user.id, input)),
+  }),
+  admin: router({
+    orders: adminProcedure.query(async () => {
+      const db = await getDb();
+      return db
+        .select()
+        .from(orders)
+        .orderBy(desc(orders.createdAt))
+        .limit(100);
+    }),
+    order: adminProcedure
+      .input(z.object({ id: z.number().int().positive() }))
+      .query(({ ctx, input }) => orderDetail(input.id, ctx.user.id, true)),
+    updateStatus: adminProcedure
+      .input(
+        z.object({ id: z.number().int().positive(), status: z.enum(statuses) })
+      )
+      .mutation(({ input }) => updateOrderStatus(input.id, input.status)),
   }),
 
   // ============= MEDICATION REMINDERS ROUTER =============
   medicationReminders: router({
-    list: protectedProcedure.query(async ({ ctx }) => {
+    list: medicalProcedure.query(async ({ ctx }) => {
       return await getUserMedicationReminders(ctx.user.id);
     }),
 
-    byId: protectedProcedure
-      .input(z.object({ id: z.number() }))
+    byId: medicalProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .query(async ({ input, ctx }) => {
         const reminder = await getMedicationReminderById(input.id);
         if (!reminder || reminder.userId !== ctx.user.id) {
@@ -459,8 +443,8 @@ export const appRouter = router({
         return reminder;
       }),
 
-    logs: protectedProcedure
-      .input(z.object({ reminderId: z.number() }))
+    logs: medicalProcedure
+      .input(z.object({ reminderId: z.number().int().positive() }))
       .query(async ({ input, ctx }) => {
         const reminder = await getMedicationReminderById(input.reminderId);
         if (!reminder || reminder.userId !== ctx.user.id) {
@@ -469,26 +453,28 @@ export const appRouter = router({
         return await getMedicationReminderLogs(input.reminderId);
       }),
 
-    create: protectedProcedure
-      .input(z.object({
-        medicationName: z.string(),
-        dosage: z.string().optional(),
-        frequency: z.enum([
-          "once_daily",
-          "twice_daily",
-          "three_times_daily",
-          "four_times_daily",
-          "every_6_hours",
-          "every_8_hours",
-          "every_12_hours",
-          "weekly",
-          "as_needed"
-        ]),
-        startDate: z.date(),
-        endDate: z.date().optional(),
-        reminderTimes: z.array(z.string()),
-        notes: z.string().optional(),
-      }))
+    create: medicalProcedure
+      .input(
+        z.object({
+          medicationName: z.string(),
+          dosage: z.string().optional(),
+          frequency: z.enum([
+            "once_daily",
+            "twice_daily",
+            "three_times_daily",
+            "four_times_daily",
+            "every_6_hours",
+            "every_8_hours",
+            "every_12_hours",
+            "weekly",
+            "as_needed",
+          ]),
+          startDate: z.date(),
+          endDate: z.date().optional(),
+          reminderTimes: z.array(z.string()),
+          notes: z.string().optional(),
+        })
+      )
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
@@ -508,12 +494,14 @@ export const appRouter = router({
         return { id: result.insertId };
       }),
 
-    update: protectedProcedure
-      .input(z.object({
-        id: z.number(),
-        isActive: z.boolean().optional(),
-        notes: z.string().optional(),
-      }))
+    update: medicalProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          isActive: z.boolean().optional(),
+          notes: z.string().optional(),
+        })
+      )
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
@@ -523,9 +511,11 @@ export const appRouter = router({
           throw new Error("Reminder not found or unauthorized");
         }
 
-        await db.update(medicationReminders)
+        await db
+          .update(medicationReminders)
           .set({
-            isActive: input.isActive !== undefined ? input.isActive : reminder.isActive,
+            isActive:
+              input.isActive !== undefined ? input.isActive : reminder.isActive,
             notes: input.notes !== undefined ? input.notes : reminder.notes,
           })
           .where(eq(medicationReminders.id, input.id));
@@ -533,8 +523,8 @@ export const appRouter = router({
         return { success: true };
       }),
 
-    delete: protectedProcedure
-      .input(z.object({ id: z.number() }))
+    delete: medicalProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
@@ -544,7 +534,9 @@ export const appRouter = router({
           throw new Error("Reminder not found or unauthorized");
         }
 
-        await db.delete(medicationReminders).where(eq(medicationReminders.id, input.id));
+        await db
+          .delete(medicationReminders)
+          .where(eq(medicationReminders.id, input.id));
         return { success: true };
       }),
   }),
@@ -556,23 +548,36 @@ export const appRouter = router({
     }),
 
     byId: protectedProcedure
-      .input(z.object({ id: z.number() }))
+      .input(z.object({ id: z.number().int().positive() }))
       .query(async ({ input, ctx }) => {
         const address = await getAddressById(input.id);
         if (!address || address.userId !== ctx.user.id) {
-          throw new Error("Address not found or unauthorized");
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Address not found",
+          });
         }
         return address;
       }),
 
     create: protectedProcedure
-      .input(z.object({
-        label: z.string().optional(),
-        address: z.string(),
-        latitude: z.string().optional(),
-        longitude: z.string().optional(),
-        isDefault: z.boolean().optional(),
-      }))
+      .input(
+        z.object({
+          label: z.string().trim().max(50).optional(),
+          address: z.string().trim().min(5).max(500),
+          latitude: z
+            .string()
+            .regex(/^-?\d{1,2}(\.\d{1,8})?$/)
+            .refine(v => Math.abs(Number(v)) <= 90)
+            .optional(),
+          longitude: z
+            .string()
+            .regex(/^-?\d{1,3}(\.\d{1,8})?$/)
+            .refine(v => Math.abs(Number(v)) <= 180)
+            .optional(),
+          isDefault: z.boolean().optional(),
+        })
+      )
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
@@ -590,14 +595,17 @@ export const appRouter = router({
       }),
 
     delete: protectedProcedure
-      .input(z.object({ id: z.number() }))
+      .input(z.object({ id: z.number().int().positive() }))
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new Error("Database not available");
 
         const address = await getAddressById(input.id);
         if (!address || address.userId !== ctx.user.id) {
-          throw new Error("Address not found or unauthorized");
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Address not found",
+          });
         }
 
         await db.delete(userAddresses).where(eq(userAddresses.id, input.id));
@@ -618,28 +626,28 @@ export const appRouter = router({
     }),
 
     markAsRead: protectedProcedure
-      .input(z.object({ id: z.number() }))
-      .mutation(async ({ input }) => {
+      .input(z.object({ id: z.number().int().positive() }))
+      .mutation(async ({ input, ctx }) => {
         const { markNotificationAsRead } = await import("./db");
-        return await markNotificationAsRead(input.id);
+        return await markNotificationAsRead(input.id, ctx.user.id);
       }),
 
     delete: protectedProcedure
-      .input(z.object({ id: z.number() }))
-      .mutation(async ({ input }) => {
+      .input(z.object({ id: z.number().int().positive() }))
+      .mutation(async ({ input, ctx }) => {
         const { deleteNotification } = await import("./db");
-        return await deleteNotification(input.id);
+        return await deleteNotification(input.id, ctx.user.id);
       }),
   }),
 
   // ============= PRESCRIPTIONS ROUTER =============
   prescriptions: router({
-    list: protectedProcedure.query(async ({ ctx }) => {
+    list: medicalProcedure.query(async ({ ctx }) => {
       return await getUserPrescriptions(ctx.user.id);
     }),
 
-    byId: protectedProcedure
-      .input(z.object({ id: z.number() }))
+    byId: medicalProcedure
+      .input(z.object({ id: z.number().int().positive() }))
       .query(async ({ input, ctx }) => {
         const prescription = await getPrescriptionById(input.id);
         if (!prescription || prescription.userId !== ctx.user.id) {
@@ -653,4 +661,4 @@ export const appRouter = router({
 export type AppRouter = typeof appRouter;
 
 // Import eq from drizzle-orm for use in mutations
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";

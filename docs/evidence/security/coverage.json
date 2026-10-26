@@ -1,0 +1,133 @@
+{
+  "completeness": "partial",
+  "deferred": [
+    {
+      "id": "unreviewed-support-code",
+      "paths": [
+        "client/src/components/ui",
+        "client/src/pages/ComponentShowcase.tsx",
+        "client/src/pages/AdminPanel.tsx"
+      ],
+      "reason": "Generic UI/support and unused pages were not all fully source-audited."
+    },
+    {
+      "id": "hosted-deployment-runtime",
+      "paths": [
+        "Dockerfile",
+        "compose.yaml"
+      ],
+      "reason": "No Docker runtime or authorized hosted HTTPS deployment was available for runtime verification."
+    }
+  ],
+  "documentType": "codex-security.coverage",
+  "excludePaths": [],
+  "explicitExclusions": [
+    {
+      "pattern": "node_modules/**",
+      "reason": "Dependency source not exhaustively reviewed; registry advisory audit performed separately."
+    }
+  ],
+  "includePaths": [
+    "."
+  ],
+  "inventoryStrategy": "repository",
+  "mode": "repository",
+  "openQuestions": [
+    {
+      "question": "Verify deployment through the actual HTTPS reverse proxy before admitting testers."
+    },
+    {
+      "question": "Complete a broader source security review of unused UI/support code before expanding Beta scope."
+    }
+  ],
+  "resolvedDeferred": [
+    {
+      "id": "baseline-validation",
+      "reason": "All seven baseline mechanism classes were repaired or disabled; targeted source review, negative tests, real MySQL and browser checks validated the active Beta controls. Remaining broad/deployment limits are explicitly deferred."
+    }
+  ],
+  "scanId": "70694699-bd37-407f-b67a-f5e3fc489a93",
+  "schemaVersion": "1.0",
+  "surfaces": [
+    {
+      "disposition": "needs_follow_up",
+      "id": "surface-715299474770e3c4",
+      "label": "Generic UI/support source outside traced workflows",
+      "notes": "Not every generic UI component, unused showcase/dashboard source, test implementation and dependency internal was fully security-audited. This is a targeted sensitive-path review with partial repository coverage, not exhaustive certification.",
+      "receiptRefs": [],
+      "riskArea": "Broad audit coverage"
+    },
+    {
+      "disposition": "needs_follow_up",
+      "id": "surface-f04c2cf7802b967e",
+      "label": "Hosted HTTPS and Docker runtime",
+      "notes": "Local compiled server/MySQL/browser verified. Docker unavailable and public deployment prohibited; actual TLS reverse-proxy integration and hosted backup operations remain unexecuted.",
+      "receiptRefs": [],
+      "riskArea": "Deployment"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface-894dcf97e6579246",
+      "label": "Portable authentication and invitation boundary",
+      "notes": "Reviewed server/auth.ts, context, cookies, trpc and startup. Replaced active legacy OAuth/JWT route with hashed opaque revocable sessions, scrypt and email-bound HMAC invitations. Registration role is fixed to user. Source and real-MySQL credential/session/expiry tests verified; placeholder invitation secret rejected.",
+      "receiptRefs": [],
+      "riskArea": "Authentication"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface-dfef7c3052e90d47",
+      "label": "Cart, orders, addresses and notification ownership",
+      "notes": "Baseline had public appointment reads, JS && cart predicate and ID-only notification mutations. Clinical APIs now fail closed; cart SQL and notification writes include acting user; cross-user negative tests verified against actual MySQL.",
+      "receiptRefs": [],
+      "riskArea": "Authorization"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface-c5671db1e17e2bee",
+      "label": "Inventory, checkout idempotency and cancellation",
+      "notes": "Reviewed commerce.ts and commerce-rules.ts. User/product locks, integer cents, current prescription/expiry validation, expected basket fingerprint, unique user/key and atomic order/items/stock/cart/notification transaction. Real concurrent checkout, duplicate replay, adapter fault rollback and repeated cancellation tests passed.",
+      "receiptRefs": [],
+      "riskArea": "Business logic"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface-e338d79d89145113",
+      "label": "HTTP request and browser boundary",
+      "notes": "Reviewed app.ts/http-security.ts/static/vite/systemRouter. Exact-origin JSON writes, batch/auth limits, security headers, redacted logs, body cap, loopback default and Vite host checks. Legacy OAuth callback and outbound notifyOwner are disabled. Actual Express HTTP negative tests passed.",
+      "receiptRefs": [],
+      "riskArea": "CSRF and exposure"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface-b7f9bbd7dd508c26",
+      "label": "Medical and prescription services",
+      "notes": "All doctor, appointment, prescription and reminder procedures use fail-closed medicalProcedure before legacy handlers. Restricted products blocked in cart and locked checkout. No real patient information, payment or dispensing integration exercised.",
+      "receiptRefs": [],
+      "riskArea": "Sensitive health data"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface-ee4bee9e36eebea3",
+      "label": "Checkout recovery and key preservation",
+      "notes": "Independent review identified a definitive-rejection recovery trap. Reproduced whitespace-name rejection in actual browser, added reset for BAD_REQUEST/NOT_FOUND/FORBIDDEN/CONFLICT while preserving keys after ambiguous failures; browser verified correction followed by successful order.",
+      "receiptRefs": [],
+      "riskArea": "Client/server consistency"
+    },
+    {
+      "disposition": "no_issue_found",
+      "id": "surface-60f7e330733bfadd",
+      "label": "Migration and local operator tooling",
+      "notes": "Reviewed schema, additive migration, preflight and seed/admin/invite scripts. Actual fresh migrations applied. A duplicate legacy cart fixture exposed Windows lowercase table-name handling; corrected and verified preflight exit1 retaining both rows. Actual dump/restore retained the fictional 8.50 JD confirmed order.",
+      "receiptRefs": [],
+      "riskArea": "Persistent data integrity"
+    },
+    {
+      "disposition": "not_applicable",
+      "id": "surface-8191edcace11b95f",
+      "label": "Inactive provider helpers",
+      "notes": "Baseline auditor traced storage, LLM, maps, image, voice and data helpers; no active customer route invokes these. Legacy source is retained. No cloud keys or live provider calls used.",
+      "receiptRefs": [],
+      "riskArea": "External services"
+    }
+  ]
+}

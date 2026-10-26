@@ -3,8 +3,24 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Search, ArrowLeft, ShoppingCart, Home, Users, Calendar, Pill, User } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Loader2,
+  Search,
+  ArrowLeft,
+  ShoppingCart,
+  Home,
+  Users,
+  Calendar,
+  Pill,
+  User,
+} from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState } from "react";
 import ProductModal from "@/components/ProductModal";
@@ -19,34 +35,45 @@ const CATEGORIES = [
 ];
 
 export default function ProductsPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(
+    new URLSearchParams(location.search).get("search") ?? ""
+  );
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("name");
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Fetch products
-  const { data: products, isLoading } = trpc.products.list.useQuery({
+  const {
+    data: products,
+    isLoading,
+    error,
+  } = trpc.products.list.useQuery({
     limit: 100,
     offset: 0,
   });
 
-  const filteredProducts = products?.filter((product) => {
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (product.manufacturer?.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (product.description?.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  }) || [];
+  const filteredProducts =
+    products?.filter(product => {
+      const matchesSearch =
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.manufacturer
+          ?.toLowerCase()
+          .includes(searchQuery.toLowerCase()) ||
+        product.description?.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory =
+        selectedCategory === "all" || product.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    }) || [];
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     switch (sortBy) {
       case "price_low":
-        return (Number(a.price)) - (Number(b.price));
+        return Number(a.price) - Number(b.price);
       case "price_high":
-        return (Number(b.price)) - (Number(a.price));
+        return Number(b.price) - Number(a.price);
       case "name":
-        return (String(a.name)).localeCompare(String(b.name));
+        return String(a.name).localeCompare(String(b.name));
       default:
         return 0;
     }
@@ -58,12 +85,18 @@ export default function ProductsPage() {
       <div className="app-header sticky top-0 z-40 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-4">
           <Link href="/">
-            <Button variant="ghost" size="sm" className="mb-4 text-[#00c57d] hover:bg-green-50">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="mb-4 text-[#00c57d] hover:bg-green-50"
+            >
               <ArrowLeft className="w-4 h-4 mr-2" />
               العودة
             </Button>
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">الأدوية والمنتجات</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            الأدوية والمنتجات
+          </h1>
 
           {/* Search and Filters */}
           <div className="space-y-3">
@@ -72,21 +105,33 @@ export default function ProductsPage() {
                 type="text"
                 placeholder="ابحث عن أدوية..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={e => setSearchQuery(e.target.value)}
                 className="flex-1 rounded-full bg-gray-100 border-0 text-right"
               />
-              <Button size="icon" className="rounded-full bg-[#00c57d] hover:bg-[#00a86a]">
+              <Button
+                aria-label="بحث المنتجات"
+                onClick={() =>
+                  document
+                    .querySelector<HTMLInputElement>('input[type="text"]')
+                    ?.focus()
+                }
+                size="icon"
+                className="rounded-full bg-[#00c57d] hover:bg-[#00a86a]"
+              >
                 <Search className="w-5 h-5" />
               </Button>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
-              <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <Select
+                value={selectedCategory}
+                onValueChange={setSelectedCategory}
+              >
                 <SelectTrigger className="text-right bg-white">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {CATEGORIES.map((cat) => (
+                  {CATEGORIES.map(cat => (
                     <SelectItem key={cat.value} value={cat.value}>
                       {cat.label}
                     </SelectItem>
@@ -101,7 +146,9 @@ export default function ProductsPage() {
                 <SelectContent>
                   <SelectItem value="name">الاسم: أ-ي</SelectItem>
                   <SelectItem value="price_low">السعر: الأقل أولاً</SelectItem>
-                  <SelectItem value="price_high">السعر: الأعلى أولاً</SelectItem>
+                  <SelectItem value="price_high">
+                    السعر: الأعلى أولاً
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -112,13 +159,15 @@ export default function ProductsPage() {
       {/* Products Grid */}
       <div className="app-content pb-24">
         <div className="container mx-auto px-4 py-6">
-          {isLoading ? (
+          {error ? (
+            <p role="alert">{error.message}</p>
+          ) : isLoading ? (
             <div className="flex justify-center py-12">
               <Loader2 className="w-8 h-8 animate-spin text-[#00c57d]" />
             </div>
           ) : sortedProducts.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {sortedProducts.map((product) => (
+              {sortedProducts.map(product => (
                 <Card
                   key={product.id}
                   onClick={() => {
@@ -137,14 +186,20 @@ export default function ProductsPage() {
                       {product.name}
                     </h3>
                     {product.manufacturer && (
-                      <p className="text-xs text-gray-600 mb-2">{product.manufacturer}</p>
+                      <p className="text-xs text-gray-600 mb-2">
+                        {product.manufacturer}
+                      </p>
                     )}
                     {product.description && (
-                      <p className="text-xs text-gray-500 line-clamp-1 mb-2">{product.description}</p>
+                      <p className="text-xs text-gray-500 line-clamp-1 mb-2">
+                        {product.description}
+                      </p>
                     )}
-                    
+
                     <div className="flex items-center justify-between mt-auto mb-3">
-                      <span className="text-lg font-bold text-[#00c57d]">${product.price}</span>
+                      <span className="text-lg font-bold text-[#00c57d]">
+                        {product.price} JD
+                      </span>
                       {product.requiresPrescription && (
                         <Badge className="bg-orange-100 text-orange-700 text-xs border-0">
                           وصفة
@@ -152,7 +207,7 @@ export default function ProductsPage() {
                       )}
                     </div>
                     <Button
-                      onClick={(e) => {
+                      onClick={e => {
                         e.stopPropagation();
                         setSelectedProduct(product);
                         setIsModalOpen(true);
@@ -169,8 +224,12 @@ export default function ProductsPage() {
           ) : (
             <div className="text-center py-12">
               <Pill className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-600 text-lg font-semibold">لم يتم العثور على منتجات</p>
-              <p className="text-gray-500 text-sm mt-2">جرب البحث عن منتجات أخرى أو غير الفئة</p>
+              <p className="text-gray-600 text-lg font-semibold">
+                لم يتم العثور على منتجات
+              </p>
+              <p className="text-gray-500 text-sm mt-2">
+                جرب البحث عن منتجات أخرى أو غير الفئة
+              </p>
             </div>
           )}
         </div>
@@ -184,51 +243,6 @@ export default function ProductsPage() {
           onClose={() => setIsModalOpen(false)}
         />
       )}
-
-      {/* Bottom Navigation */}
-      <div className="app-bottom-nav">
-        <Link href="/">
-          <div className="app-nav-item">
-            <Home className="w-6 h-6" />
-            <span className="text-xs">الرئيسية</span>
-          </div>
-        </Link>
-
-        <Link href="/doctors">
-          <div className="app-nav-item">
-            <Users className="w-6 h-6" />
-            <span className="text-xs">الأطباء</span>
-          </div>
-        </Link>
-
-        <Link href="/appointments">
-          <div className="app-nav-item">
-            <Calendar className="w-6 h-6" />
-            <span className="text-xs">المواعيد</span>
-          </div>
-        </Link>
-
-        <Link href="/reminders">
-          <div className="app-nav-item">
-            <Pill className="w-6 h-6" />
-            <span className="text-xs">التذكيرات</span>
-          </div>
-        </Link>
-
-        <Link href="/cart">
-          <div className="app-nav-item">
-            <ShoppingCart className="w-6 h-6" />
-            <span className="text-xs">السلة</span>
-          </div>
-        </Link>
-
-        <Link href="/profile">
-          <div className="app-nav-item">
-            <User className="w-6 h-6" />
-            <span className="text-xs">الملف الشخصي</span>
-          </div>
-        </Link>
-      </div>
     </div>
   );
 }
