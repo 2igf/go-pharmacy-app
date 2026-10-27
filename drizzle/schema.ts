@@ -10,8 +10,12 @@ import {
   datetime,
   json,
   uniqueIndex,
-  index
+  index,
+  primaryKey,
+  check,
+  foreignKey
 } from "drizzle-orm/mysql-core";
+import { sql } from "drizzle-orm";
 
 /**
  * Core user table backing auth flow.
@@ -357,3 +361,198 @@ export const sessions = mysqlTable('sessions', {
   userId: int('userId').notNull().references(() => users.id, { onDelete: 'cascade' }),
   expiresAt: datetime('expiresAt').notNull(),
 }, table => [index('sessions_expiry_idx').on(table.expiresAt)]);
+
+// Additive tenant foundation. Legacy global catalog/stock/prices are unchanged.
+export const pricingJurisdictions = mysqlTable(
+  "pricingJurisdictions",
+  {
+    countryCode: varchar("countryCode", { length: 2 }).primaryKey(),
+    currencyCode: varchar("currencyCode", { length: 3 }).notNull(),
+    minorUnitDigits: int("minorUnitDigits").notNull(),
+  },
+  t => [
+    check(
+      "jurisdiction_digits_check",
+      sql`${t.minorUnitDigits} BETWEEN 0 AND 3`
+    ),
+  ]
+);
+
+export const organizations = mysqlTable(
+  "organizations",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    type: mysqlEnum("type", ["pharmacy", "clinic", "provider"]).notNull(),
+    name: varchar("name", { length: 200 }).notNull(),
+    countryCode: varchar("countryCode", { length: 2 })
+      .notNull()
+      .references(() => pricingJurisdictions.countryCode, {
+        onDelete: "restrict",
+      }),
+    registrationNumber: varchar("registrationNumber", {
+      length: 100,
+    }).notNull(),
+    status: mysqlEnum("status", [
+      "pending",
+      "approved",
+      "rejected",
+      "suspended",
+    ])
+      .default("pending")
+      .notNull(),
+    createdBy: int("createdBy")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  t => [
+    uniqueIndex("organization_country_registration_unique").on(
+      t.countryCode,
+      t.registrationNumber
+    ),
+    index("organization_status_id_idx").on(t.status, t.id),
+    index("organization_creator_idx").on(t.createdBy),
+  ]
+);
+
+export const organizationMemberships = mysqlTable(
+  "organizationMemberships",
+  {
+    organizationId: int("organizationId")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "restrict" }),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    role: mysqlEnum("role", [
+      "owner",
+      "manager",
+      "inventory_staff",
+      "viewer",
+    ]).notNull(),
+    status: mysqlEnum("status", ["pending", "active", "suspended"])
+      .default("pending")
+      .notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  t => [
+    primaryKey({ columns: [t.organizationId, t.userId] }),
+    index("membership_user_status_idx").on(
+      t.userId,
+      t.status,
+      t.organizationId
+    ),
+  ]
+);
+
+export const pharmacyInventory = mysqlTable(
+  "pharmacyInventory",
+  {
+    organizationId: int("organizationId")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "restrict" }),
+    productId: int("productId")
+      .notNull()
+      .references(() => products.id, { onDelete: "restrict" }),
+    quantity: int("quantity").default(0).notNull(),
+    version: int("version").default(0).notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  t => [
+    primaryKey({ columns: [t.organizationId, t.productId] }),
+    index("inventory_product_idx").on(t.productId),
+    check("inventory_quantity_check", sql`${t.quantity} BETWEEN 0 AND 1000000`),
+    check("inventory_version_check", sql`${t.version} >= 0`),
+  ]
+);
+
+export const organizationAuditEvents = mysqlTable(
+  "organizationAuditEvents",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    organizationId: int("organizationId")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "restrict" }),
+    actorUserId: int("actorUserId")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    action: mysqlEnum("action", [
+      "organization_applied",
+      "organization_reviewed",
+      "membership_updated",
+      "stock_adjusted",
+    ]).notNull(),
+    reason: varchar("reason", { length: 500 }).notNull(),
+    details: json("details").notNull(),
+    requestId: varchar("requestId", { length: 36 }),
+    requestHash: varchar("requestHash", { length: 64 }),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    index("organization_audit_id_idx").on(t.organizationId, t.id),
+    index("audit_actor_idx").on(t.actorUserId),
+    uniqueIndex("organization_request_unique").on(
+      t.organizationId,
+      t.requestId
+    ),
+  ]
+);
+
+// No price rows are seeded, imported, used by checkout or writable through V1 APIs.
+export const officialMedicinePrices = mysqlTable(
+  "officialMedicinePrices",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    countryCode: varchar("countryCode", { length: 2 }).notNull(),
+    productId: int("productId")
+      .notNull()
+      .references(() => products.id, { onDelete: "restrict" }),
+    amount: decimal("amount", { precision: 12, scale: 3 }).notNull(),
+    sourceAuthority: varchar("sourceAuthority", { length: 200 }).notNull(),
+    sourceReference: varchar("sourceReference", { length: 500 }).notNull(),
+    effectiveFrom: datetime("effectiveFrom").notNull(),
+    effectiveTo: datetime("effectiveTo"),
+    verifiedAt: datetime("verifiedAt").notNull(),
+  },
+  t => [
+    foreignKey({
+      name: "official_price_jurisdiction_fk",
+      columns: [t.countryCode],
+      foreignColumns: [pricingJurisdictions.countryCode],
+    }).onDelete("restrict"),
+    uniqueIndex("official_price_effective_unique").on(
+      t.countryCode,
+      t.productId,
+      t.effectiveFrom
+    ),
+    index("official_price_product_idx").on(t.productId),
+    check("official_price_nonnegative", sql`${t.amount} >= 0`),
+    check(
+      "official_price_dates",
+      sql`${t.effectiveTo} IS NULL OR ${t.effectiveTo} > ${t.effectiveFrom}`
+    ),
+  ]
+);
+
+// Relationship only: no assignment procedure, checkout mutation, backfill or sale.
+export const pharmacyOrderAssignments = mysqlTable(
+  "pharmacyOrderAssignments",
+  {
+    orderId: int("orderId")
+      .primaryKey()
+      .references(() => orders.id, { onDelete: "restrict" }),
+    organizationId: int("organizationId")
+      .notNull()
+      .references(() => organizations.id, { onDelete: "restrict" }),
+    assignedBy: int("assignedBy")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    assignedAt: timestamp("assignedAt").defaultNow().notNull(),
+  },
+  t => [
+    index("assignment_organization_idx").on(t.organizationId),
+    index("assignment_actor_idx").on(t.assignedBy),
+  ]
+);

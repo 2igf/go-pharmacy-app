@@ -1,0 +1,9 @@
+C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\scripts\db-preflight.ts:53
+    throw new Error(
+          ^
+
+Error: Partial/untracked tenancy DDL detected. MySQL DDL is not transactional; restore/reconcile before retrying
+    at <anonymous> (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\scripts\db-preflight.ts:53:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.22.1

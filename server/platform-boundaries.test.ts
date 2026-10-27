@@ -15,7 +15,19 @@ const context = (role: string | null) =>
 describe("multi-app service boundaries", () => {
   it("preserves the installed client API surface, with one additive discovery query", () => {
     expect(Object.keys(appRouter._def.procedures).sort()).toEqual(
-      [...legacyApiManifest, "platform.capabilities"].sort()
+      [
+        ...legacyApiManifest,
+        "platform.capabilities",
+        "pharmacies.submitApplication",
+        "pharmacies.mine",
+        "pharmacies.inventory.list",
+        "pharmacies.inventory.adjust",
+        "pharmacies.members.list",
+        "pharmacies.audit.list",
+        "pharmacies.administration.list",
+        "pharmacies.administration.review",
+        "pharmacies.administration.setMembership",
+      ].sort()
     );
   });
 

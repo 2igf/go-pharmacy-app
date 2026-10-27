@@ -1,0 +1,26 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/migration-policy.test.ts (3 tests | 1 failed) 14ms
+   ❯ migration target guard (3)
+     × accepts exact LF/CRLF equivalents but rejects SQL changes 7ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/migration-policy.test.ts > migration target guard > accepts exact LF/CRLF equivalents but rejects SQL changes
+TypeError: acceptedMigrationHashes is not a function
+ ❯ server/migration-policy.test.ts:5:18
+      3| describe("migration target guard", () => {
+      4|   it("accepts exact LF/CRLF equivalents but rejects SQL changes", () =…
+      5|     const unix = acceptedMigrationHashes("CREATE TABLE sample (id int)…
+       |                  ^
+      6|     const windows = acceptedMigrationHashes("CREATE TABLE sample (id i…
+      7|     expect(unix).toEqual(windows);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  18:34:36
+   Duration  465ms (transform 56%, import 23%, tests 11%, worker 10%)

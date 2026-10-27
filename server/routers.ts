@@ -2,6 +2,7 @@ import { router } from "./_core/trpc";
 import { systemRouter } from "./_core/systemRouter";
 import { authRouter } from "./auth";
 import { platformRouter } from "./platform";
+import { pharmaciesRouter } from "./domains/pharmacies";
 import { productsRouter } from "./domains/catalog";
 import { cartRouter, ordersRouter } from "./domains/shopping";
 import { adminRouter } from "./domains/administration";
@@ -18,6 +19,7 @@ export const appRouter = router({
   system: systemRouter,
   auth: authRouter,
   platform: platformRouter,
+  pharmacies: pharmaciesRouter,
   products: productsRouter,
   cart: cartRouter,
   orders: ordersRouter,

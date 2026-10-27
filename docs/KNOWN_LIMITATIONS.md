@@ -1,5 +1,9 @@
 # Known limitations and release gates
 
+Current pharmacy scope/issues are in [PHARMACY_VERIFICATION_V1.md](PHARMACY_VERIFICATION_V1.md).
+Scoped inventory APIs exist in the new branch, but demo was not migrated/deployed.
+**Android Checkout validation remains unresolved.** No medical/sales workflow was activated.
+
 - This is fictional-data Private Beta software. Regulatory authorization, licensed pharmacy operations, prescription review, clinical privacy controls, medical safety processes, commercial accounting, real payments, fulfillment and legal terms are outside the release.
 - Clinical modules and old role-specific fulfillment dashboards remain preserved but inaccessible. No appointment-conflict engine is claimed because appointments are disabled.
 - No email delivery, mailbox verification, self-service password recovery, MFA or public role management. Operator-mediated per-email invitation codes and allowlist access are required. Rotate the invitation secret if a code is exposed.

@@ -1,0 +1,12 @@
+{
+  "foreignKeys": 13,
+  "checks": 5,
+  "testConstraintsRemaining": 0,
+  "jurisdiction": [
+    {
+      "countryCode": "JO",
+      "currencyCode": "JOD",
+      "minorUnitDigits": 3
+    }
+  ]
+}

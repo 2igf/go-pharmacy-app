@@ -1,0 +1,36 @@
+
+> go-pharmacy@1.0.0 db:generate C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation
+> drizzle-kit generate
+
+No config path provided, using default 'drizzle.config.ts'
+Reading config file 'C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\drizzle.config.ts'
+Reading schema files:
+C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\drizzle\schema.ts
+
+24 tables
+appointments 9 columns 0 indexes 0 fks
+cartItems 7 columns 1 indexes 2 fks
+credentials 3 columns 0 indexes 1 fks
+doctorReviews 9 columns 0 indexes 0 fks
+doctorTimeSlots 7 columns 0 indexes 0 fks
+doctors 17 columns 0 indexes 0 fks
+medicationReminderLogs 8 columns 0 indexes 0 fks
+medicationReminders 12 columns 0 indexes 0 fks
+notifications 8 columns 1 indexes 1 fks
+officialMedicinePrices 9 columns 2 indexes 2 fks
+orderItems 7 columns 0 indexes 2 fks
+orders 20 columns 2 indexes 1 fks
+organizationAuditEvents 9 columns 3 indexes 2 fks
+organizationMemberships 6 columns 1 indexes 2 fks
+organizations 9 columns 3 indexes 2 fks
+pharmacyInventory 5 columns 1 indexes 2 fks
+pharmacyOrderAssignments 4 columns 2 indexes 3 fks
+prescriptions 11 columns 0 indexes 0 fks
+pricingJurisdictions 3 columns 0 indexes 0 fks
+productReviews 8 columns 0 indexes 0 fks
+products 16 columns 0 indexes 0 fks
+sessions 3 columns 1 indexes 1 fks
+userAddresses 9 columns 0 indexes 1 fks
+users 11 columns 0 indexes 0 fks
+
+No schema changes, nothing to migrate 😴

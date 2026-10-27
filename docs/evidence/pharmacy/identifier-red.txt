@@ -1,0 +1,35 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/migration-policy.test.ts (4 tests | 1 failed) 26ms
+   ❯ migration target guard (4)
+     × keeps every generated MySQL migration identifier within 64 characters 17ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/migration-policy.test.ts > migration target guard > keeps every generated MySQL migration identifier within 64 characters
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "officialMedicinePrices_countryCode_pricingJurisdictions_countryCode_fk",
++ ]
+
+ ❯ server/migration-policy.test.ts:7:112
+      5|   it("keeps every generated MySQL migration identifier within 64 chara…
+      6|     const migration = readFileSync("drizzle/0004_pharmacy_tenancy.sql"…
+      7|     expect([...migration.matchAll(/`([^`]+)`/g)].filter(match => match…
+       |                                                                                                                ^
+      8|   });
+      9|   it("accepts exact LF/CRLF equivalents but rejects SQL changes", () =…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  18:36:17
+   Duration  504ms (transform 50%, import 25%, tests 16%, worker 9%)

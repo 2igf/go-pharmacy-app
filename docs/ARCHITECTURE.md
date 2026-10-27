@@ -1,5 +1,10 @@
 # Architecture
 
+Latest backend extension: [Pharmacy tenancy and inventory V1](PHARMACY_TENANCY_V1.md),
+with [migration safety](PHARMACY_MIGRATION_V1.md) and
+[executed verification](PHARMACY_VERIFICATION_V1.md). The earlier multi-app report
+is a historical baseline; pharmacy inventory now has explicit scoped APIs.
+
 React 19 and Tailwind retain the existing green/white identity and Arabic RTL. A shared BetaLayout owns navigation and the simulation notice. Existing catalog/product components remain; incomplete checkout/account/admin interactions have been replaced with connected forms. tRPC uses SuperJSON on the same origin; Zod validates procedures server-side.
 
 Express in `server/app.ts` applies request IDs, redacted structural logs, security headers, bounded request/auth limits, exact-origin JSON mutation checks and API 404s. `server/_core/index.ts` validates environment, binds the configured host/port and chooses Vite development or static build serving. No alternate-port fallback masks configuration errors.

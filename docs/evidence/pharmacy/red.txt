@@ -1,0 +1,176 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/pharmacy.integration.test.ts (11 tests | 11 failed) 694ms
+   ❯ real MySQL pharmacy tenancy (11)
+     × requires separate organization approval and membership activation 122ms
+     × isolates two pharmacies, never changes central stock/price, and denies cross-tenant/private reads and writes 56ms
+     × denies admin operational access without membership and ignores spoofed role/organization headers 59ms
+     × enforces viewer/staff/manager permissions without changing platform roles 58ms
+     × revokes access on membership/org suspension and does not silently reactivate suspended members 60ms
+     × handles rejection/reopening and blocks invalid transitions, owner reassignment and self approval 50ms
+     × validates deltas, prevents negative/overflow stock and leaves no successful audit on rejected updates 55ms
+     × serializes concurrent updates with optimistic versions and atomically audits only one winner 60ms
+     × replays duplicate requests once and rejects changed request payloads 60ms
+     × rolls back inventory when audit insertion fails 55ms
+     × database constraints reject orphan/duplicate membership and invalid quantities 54ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > requires separate organization approval and membership activation
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/pharmacy.integration.test.ts:31:17
+     29|     const owner = appRouter.createCaller(await testContext(1));
+     30|     const admin = appRouter.createCaller(await testContext(3));
+     31|     const org = await owner.pharmacies.apply(application("pending"));
+       |                 ^
+     32|     expect((await owner.pharmacies.mine({}))[0]).toMatchObject({ organ…
+     33|     await expect(owner.pharmacies.inventory.list({ organizationId: org…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > isolates two pharmacies, never changes central stock/price, and denies cross-tenant/private reads and writes
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:42:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > denies admin operational access without membership and ignores spoofed role/organization headers
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:59:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > enforces viewer/staff/manager permissions without changing platform roles
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:71:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > revokes access on membership/org suspension and does not silently reactivate suspended members
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:83:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > handles rejection/reopening and blocks invalid transitions, owner reassignment and self approval
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/pharmacy.integration.test.ts:98:17
+     96|     const admin = appRouter.createCaller(await testContext(3));
+     97|     const owner = appRouter.createCaller(await testContext(1));
+     98|     const org = await owner.pharmacies.apply(application("reject"));
+       |                 ^
+     99|     await admin.pharmacies.administration.review({ organizationId: org…
+    100|     await expect(admin.pharmacies.administration.review({ organization…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > validates deltas, prevents negative/overflow stock and leaves no successful audit on rejected updates
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:109:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > serializes concurrent updates with optimistic versions and atomically audits only one winner
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:119:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > replays duplicate requests once and rejects changed request payloads
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:129:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > rolls back inventory when audit insertion fails
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:138:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/11]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > database constraints reject orphan/duplicate membership and invalid quantities
+TRPCError: No procedure found on path "pharmacies"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ fixtures server/pharmacy.integration.test.ts:19:13
+     17|   const ownerB = appRouter.createCaller(await testContext(2));
+     18|   const admin = appRouter.createCaller(await testContext(3));
+     19|   const a = await ownerA.pharmacies.apply(application("A"));
+       |             ^
+     20|   const b = await ownerB.pharmacies.apply(application("B"));
+     21|   for (const id of [a.id, b.id]) await admin.pharmacies.administration…
+ ❯ server/pharmacy.integration.test.ts:148:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/11]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  11 failed (11)
+   Start at  18:30:34
+   Duration  3.15s (import 65%, tests 25%, transform 9%, worker 1%)

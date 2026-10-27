@@ -1,0 +1,12 @@
+{
+  "emptyPartialTestTablesRemoved": [
+    "pharmacyOrderAssignments",
+    "officialMedicinePrices",
+    "organizationAuditEvents",
+    "pharmacyInventory",
+    "organizationMemberships",
+    "organizations",
+    "pricingJurisdictions"
+  ],
+  "existingRowsUnchanged": true
+}

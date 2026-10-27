@@ -1,13 +1,64 @@
 import "dotenv/config";
 import mysql, { type RowDataPacket } from "mysql2/promise";
-if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required");
-const db = await mysql.createConnection(process.env.DATABASE_URL);
+import { readFileSync } from "node:fs";
+import {
+  assertMigrationTarget,
+  acceptedMigrationHashes,
+  assertMigrationHistory,
+} from "./migration-policy";
+const expectedDatabase = assertMigrationTarget(
+  process.env.DATABASE_URL,
+  process.env.MIGRATION_EXPECTED_DATABASE,
+  process.env.MIGRATION_DATA_APPROVAL,
+  process.env.MIGRATION_BACKUP_VERIFIED
+);
+const db = await mysql.createConnection(process.env.DATABASE_URL!);
 try {
+  const [target] = await db.query<RowDataPacket[]>(
+    "SELECT DATABASE() AS name, VERSION() AS version"
+  );
+  const version = String(target[0].version)
+    .split(".")
+    .map(part => Number.parseInt(part, 10));
+  if (
+    target[0].name !== expectedDatabase ||
+    version[0] !== 8 ||
+    (version[1] === 0 && version[2] < 16)
+  )
+    throw new Error("Target identity or supported MySQL8 version mismatch");
   const [tables] = await db.query<RowDataPacket[]>(
     "SELECT table_name AS name FROM information_schema.tables WHERE table_schema = DATABASE()"
   );
   // MySQL on Windows may normalize table names to lowercase.
   const names = new Set(tables.map(row => String(row.name).toLowerCase()));
+  const localJournal = JSON.parse(
+    readFileSync("drizzle/meta/_journal.json", "utf8")
+  ) as { entries: { when: number; tag: string }[] };
+  const [journal] = names.has("__drizzle_migrations")
+    ? await db.query<RowDataPacket[]>(
+        "SELECT hash, created_at FROM __drizzle_migrations ORDER BY created_at"
+      )
+    : [[]];
+  const tenantTables = [
+    "pricingjurisdictions",
+    "organizations",
+    "organizationmemberships",
+    "pharmacyinventory",
+    "organizationauditevents",
+    "officialmedicineprices",
+    "pharmacyorderassignments",
+  ];
+  const present = tenantTables.filter(name => names.has(name)).length;
+  assertMigrationHistory(
+    localJournal.entries.map(entry => ({
+      ...entry,
+      hashes: acceptedMigrationHashes(
+        readFileSync(`drizzle/${entry.tag}.sql`, "utf8")
+      ),
+    })),
+    journal as { created_at: string | number; hash: string }[],
+    present
+  );
   const checks: [string, string][] = [
     [
       "cartItems",

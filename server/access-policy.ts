@@ -32,8 +32,8 @@ export function canUseService(
       return true;
     case "administration":
       return role === "admin";
-    // No tenant memberships, patient relationships or delivery assignments yet.
-    // No administrator bypass, environment switch or client-selected audience.
+    // Organization inventory requires pharmacy.ts membership authorization;
+    // it is never a global role grant. Medical/delivery remain unavailable.
     default:
       return false;
   }

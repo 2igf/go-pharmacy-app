@@ -44,3 +44,10 @@ The app port is published only on host loopback. Terminate TLS using the operato
 Seed only an empty non-production development/demo database. The production Docker runtime deliberately rejects the fictional seed command by default; for a private staging demo, explicitly run with NODE_ENV=staging and CONFIRM_FICTIONAL_SEED=yes. Create admin and invitations using the local source tools with a private environment. The production image does not contain invitation generation tools.
 
 For source deployment, `pnpm build`; provide the production environment; `pnpm start`. Keep database storage outside the app release directory and use a supervisor. Verify HTTPS cookies and CSRF through the actual proxy before admitting testers.
+# Pharmacy migration safety update
+
+Before migration0004 or any later migration, use the explicit target and backup
+requirements in [PHARMACY_MIGRATION_V1.md](PHARMACY_MIGRATION_V1.md).
+The migration command now requires MIGRATION_EXPECTED_DATABASE, and non-test
+targets require prior authorization and verified backup/restore attestations.
+This work did not migrate or deploy the demo backend.

@@ -71,6 +71,26 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
           role: "customer",
           services: ["identity", "catalog", "personal"],
         });
+        expect(
+          (
+            await get(
+              "pharmacies.mine?input=" +
+                encodeURIComponent(JSON.stringify({ json: {} }))
+            )
+          ).status
+        ).toBe(200);
+        expect(
+          (
+            await post("pharmacies.inventory.adjust", {
+              organizationId: 999999,
+              productId: 1,
+              delta: 1,
+              expectedVersion: 0,
+              requestId: "891254fc-f27c-4b75-ae9c-b20ad96a4b6f",
+              reason: "Fictional unauthorized stock request",
+            })
+          ).status
+        ).toBe(403);
         const spoofedAdmin = await fetch(`${origin}/api/trpc/admin.orders`, {
           headers: {
             ...headers(),
@@ -83,6 +103,14 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
         expect((await post("auth.logout", undefined)).status).toBe(200);
         expect((await get("cart.list")).status).toBe(401);
         expect((await get("platform.capabilities")).status).toBe(401);
+        expect(
+          (
+            await get(
+              "pharmacies.mine?input=" +
+                encodeURIComponent(JSON.stringify({ json: {} }))
+            )
+          ).status
+        ).toBe(401);
         const login = await post("auth.login", {
           email: "customer-a@example.test",
           password: "fictional-only-android-password",

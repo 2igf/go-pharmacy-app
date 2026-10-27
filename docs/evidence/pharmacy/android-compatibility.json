@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-27T15:45:08.2714748Z",
+  "apk": "C:\\Users\\Issax\\Documents\\Codex\\2026-10-26\\files-pasted-by-the-user-go\\outputs\\GO-Pharmacy-Multi-App-Foundation-V1-debug.apk",
+  "assets": [
+    {
+      "name": "index-6GS6AVC_.css",
+      "sha256": "E95B02826F0EE0FE9427CC12B0B0FA4C822A6B81F1B1FF794BF96886F05E73F8",
+      "matches": true
+    },
+    {
+      "name": "index-BxSgcSf0.js",
+      "sha256": "31EBC189FF06A081F0DBC510E101FA7883B21AEE87D10762B135F309C199A082",
+      "matches": true
+    }
+  ],
+  "apkSha256": "FF89BCA8963B16F2156CF5735C4D1AEB9AEEC63EF8DA5C0A9116203585E2411A"
+}

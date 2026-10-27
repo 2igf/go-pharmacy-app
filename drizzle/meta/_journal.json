@@ -29,6 +29,13 @@
       "when": 1793035919103,
       "tag": "0003_private_beta",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1793115069744,
+      "tag": "0004_pharmacy_tenancy",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,3 @@
+
+> go-pharmacy@1.0.0 test:types C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation
+> tsc --noEmit -p tsconfig.tests.json

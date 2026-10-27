@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/migration-policy.test.ts (5 tests | 1 failed) 23ms
+   ❯ migration target guard (5)
+     × allows a future pending migration after 0004, but rejects partial DDL and skipped history 13ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/migration-policy.test.ts > migration target guard > allows a future pending migration after 0004, but rejects partial DDL and skipped history
+AssertionError: expected [Function] to not throw an error but 'TypeError: (0 , __vite_ssr_import_2__…' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: (0 , __vite_ssr_import_2__.assertMigrationHistory) is not a function"
+
+ ❯ server/migration-policy.test.ts:8:65
+      6|     const local = [{ when: 1, tag: "0000_base", hashes: ["base"] }, { …
+      7|     const applied = [{ created_at: 1, hash: "base" }, { created_at: 4,…
+      8|     expect(() => assertMigrationHistory(local, applied, 7)).not.toThro…
+       |                                                                 ^
+      9|     expect(() => assertMigrationHistory(local, applied, 6)).toThrow(/P…
+     10|     expect(() => assertMigrationHistory(local, applied.slice(1), 7)).t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  18:36:48
+   Duration  492ms (transform 49%, import 26%, tests 17%, worker 8%)
