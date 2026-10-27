@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-27T14:31:06.671Z",
+  "unchanged": true,
+  "tables": {
+    "users": {
+      "count": 3,
+      "sha256": "51a4de09c0f9991675dc766f065653a0dcb1c77fb64f2dcc42e2fed2df46c15d"
+    },
+    "orders": {
+      "count": 2,
+      "sha256": "6f61d60a2743e00f07aaaf3f33f2939ee01bb05a74060bdebe101f6a6d88fb68"
+    },
+    "orderItems": {
+      "count": 2,
+      "sha256": "19d6359ef3cec136106b00a28eecfd13d44158281be531e3f16838b60dbc877d"
+    },
+    "products": {
+      "count": 4,
+      "sha256": "c10251a5625f32613e4b574d187b8bb5b761181f01e5cfb5a63d7e7ad63916f3"
+    }
+  }
+}

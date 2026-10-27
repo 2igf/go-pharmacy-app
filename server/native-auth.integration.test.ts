@@ -65,9 +65,24 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
         cookie = setCookie.split(";")[0];
         const me = await (await get("auth.me")).json();
         expect(me.result.data.json.email).toBe("customer-a@example.test");
+        const capabilities = await (await get("platform.capabilities")).json();
+        expect(capabilities.result.data.json).toMatchObject({
+          contractVersion: 1,
+          role: "customer",
+          services: ["identity", "catalog", "personal"],
+        });
+        const spoofedAdmin = await fetch(`${origin}/api/trpc/admin.orders`, {
+          headers: {
+            ...headers(),
+            "X-Go-Pharmacy-Role": "admin",
+            "X-Go-Pharmacy-App": "go_admin",
+          },
+        });
+        expect(spoofedAdmin.status).toBe(403);
         expect((await get("cart.list")).status).toBe(200);
         expect((await post("auth.logout", undefined)).status).toBe(200);
         expect((await get("cart.list")).status).toBe(401);
+        expect((await get("platform.capabilities")).status).toBe(401);
         const login = await post("auth.login", {
           email: "customer-a@example.test",
           password: "fictional-only-android-password",

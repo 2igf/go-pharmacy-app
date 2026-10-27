@@ -1,0 +1,58 @@
+[
+  {
+    "id": "GradleDependency",
+    "severity": "Warning"
+  },
+  {
+    "id": "ObsoleteSdkInt",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "UnusedResources",
+    "severity": "Warning"
+  },
+  {
+    "id": "IconDipSize",
+    "severity": "Warning"
+  },
+  {
+    "id": "IconDuplicatesConfig",
+    "severity": "Warning"
+  },
+  {
+    "id": "IconLocation",
+    "severity": "Warning"
+  }
+]

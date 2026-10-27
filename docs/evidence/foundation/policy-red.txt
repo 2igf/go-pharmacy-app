@@ -1,0 +1,23 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/platform-boundaries.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/platform-boundaries.test.ts [ server/platform-boundaries.test.ts ]
+Error: Cannot find module './access-policy' imported from C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation/server/platform-boundaries.test.ts
+ ❯ server/platform-boundaries.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import { resolvePersistedRole, canUseService } from "./access-policy";
+       | ^
+      3| import { platformRoles, applicationContracts } from "../shared/applica…
+      4| import { appRouter } from "./routers";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  17:18:55
+   Duration  2.19s (worker 99%, environment 1%)

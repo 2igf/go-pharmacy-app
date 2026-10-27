@@ -3,6 +3,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 import type { TrpcContext } from "./context";
+import { canUseService } from "../access-policy";
 
 const t = initTRPC.context<TrpcContext>().create({
   transformer: superjson,
@@ -41,7 +42,12 @@ const requireUser = t.middleware(async opts => {
   });
 });
 
-export const protectedProcedure = t.procedure.use(requireUser);
+export const protectedProcedure = t.procedure.use(requireUser).use(({ ctx, next }) => {
+  if (!canUseService(ctx.user.role, "personal")) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "Account role unavailable" });
+  }
+  return next({ ctx });
+});
 
 export const medicalProcedure = protectedProcedure.use(() => {
   throw new TRPCError({
@@ -61,7 +67,7 @@ export const adminProcedure = t.procedure.use(
   t.middleware(async opts => {
     const { ctx, next } = opts;
 
-    if (!ctx.user || ctx.user.role !== "admin") {
+    if (!ctx.user || !canUseService(ctx.user.role, "administration")) {
       throw new TRPCError({ code: "FORBIDDEN", message: NOT_ADMIN_ERR_MSG });
     }
 

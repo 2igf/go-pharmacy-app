@@ -1,0 +1,10 @@
+Performing Streamed Install
+Success
+Performing Streamed Install
+Success
+
+com.gopharmacy.beta.PackagedAppTest:..
+
+Time: 0.055
+
+OK (2 tests)

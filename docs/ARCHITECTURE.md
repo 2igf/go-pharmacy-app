@@ -13,3 +13,10 @@ Checkout persists a user-scoped idempotency key and request digest. Existing req
 Cancellation follows the same user/order locks and restores inventory only on the first valid transition. State graph: pending → confirmed → processing → shipped → delivered; cancellation is permitted before shipped. Terminal states cannot reopen. Product deletion archives the record so order references remain.
 
 MySQL migrations are additive. Core commerce/auth relationships have restrictive FKs; sessions cascade on user removal. Legacy clinical relationships remain unmodified and inaccessible. Database DDL is not assumed transactional. See recovery procedures.
+# Multi-application foundation update
+
+The current modular boundaries and reserved roles are documented in
+[Multi-App Architecture Foundation V1](MULTI_APP_FOUNDATION_V1.md), with
+[historical inventory](MULTI_APP_INVENTORY_V1.md) and
+[executed verification / Android limits](MULTI_APP_VERIFICATION_V1.md).
+The underlying MVP architecture below remains applicable.

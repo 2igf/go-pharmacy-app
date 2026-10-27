@@ -14,3 +14,11 @@
 - Current dependency audit, browser/device coverage and release verdict are in IMPLEMENTATION_REPORT.md. No test or security scan claims exhaustive proof of absence of vulnerabilities.
 
 Legacy OAuth identities are retained without automatic email-based attachment to new local credentials. Invite/re-registration creates a distinct local account; any historical account linking requires a separately reviewed operator migration.
+# Foundation V1 acceptance note — 2026-10-27
+
+**Android checkout validation remains OPEN and unresolved.** The foundation work
+does not fix or reproduce the known physical-phone validation problem. Existing
+checkout recovery, idempotency and API tests do not establish phone acceptance.
+See [current verification report](MULTI_APP_VERIFICATION_V1.md) for exact limits.
+Provider/clinic/driver/super-admin workflows remain inactive; planned role names
+do not grant access. See [architecture](MULTI_APP_FOUNDATION_V1.md).

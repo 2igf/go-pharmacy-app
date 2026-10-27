@@ -1,0 +1,52 @@
+[
+  {
+    "name": "addresses",
+    "unchanged": true,
+    "sha256": "97e452d6fafa77874bd2cbc4bfa244dc7348d56d927d67bb7a75aa9f2a6bb59b"
+  },
+  {
+    "name": "notifications",
+    "unchanged": true,
+    "sha256": "a43f01c7e7e470dfdd6118c1503943de22c34bd842122d2b5e4ef242f6e77aca"
+  },
+  {
+    "name": "admin",
+    "unchanged": true,
+    "sha256": "b5032151957a7332cd1f728d98205fa7e059815d2173528e180665eb9b9c357a"
+  },
+  {
+    "name": "products",
+    "unchanged": true,
+    "sha256": "7e11646f4f1475c8f77ad8d30b38bee2d8a8511395560b052ac39d6eb464fc02"
+  },
+  {
+    "name": "doctors",
+    "unchanged": true,
+    "sha256": "1f9d9a473041a09b3391b24aaa59fb373d165a66d2e82ba92aa074a9d0c5e7fd"
+  },
+  {
+    "name": "appointments",
+    "unchanged": true,
+    "sha256": "0a48219b59df79ca5d5c39989c3c4159dd445f251cb3520cb103ec0d0a4dab19"
+  },
+  {
+    "name": "medicationReminders",
+    "unchanged": true,
+    "sha256": "39eb33445449d4a2aa922e67ecdb0e2673d2b8662f305122c61779e3134d29dc"
+  },
+  {
+    "name": "prescriptions",
+    "unchanged": true,
+    "sha256": "fef3572b61291be0f524485eb888971f6f291319e6a57a491783127c05dcf4bb"
+  },
+  {
+    "name": "cart",
+    "unchanged": true,
+    "sha256": "4763c71c77741191e3e0ee6def81bc38fc7c33d12587a5b860589986d0396c6c"
+  },
+  {
+    "name": "orders",
+    "unchanged": true,
+    "sha256": "83a50170635c589d480cbe5601743e0abb6c556a7b6ff52b54df08260ada6eb7"
+  }
+]

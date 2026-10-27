@@ -1,0 +1,27 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/platform-boundaries.test.ts (18 tests | 1 failed) 29ms
+   ❯ multi-app service boundaries (18)
+     × returns additive versioned capabilities without promoting a role from headers 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/platform-boundaries.test.ts > multi-app service boundaries > returns additive versioned capabilities without promoting a role from headers
+TRPCError: No procedure found on path "platform,capabilities"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/platform-boundaries.test.ts:46:20
+     44|
+     45|   it("returns additive versioned capabilities without promoting a role…
+     46|     const result = await appRouter.createCaller(context("pharmacist"))…
+       |                    ^
+     47|     expect(result.contractVersion).toBe(1);
+     48|     expect(result.role).toBe("pharmacist");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 passed (18)
+   Start at  17:19:53
+   Duration  2.31s (import 87%, transform 10%, tests 2%, worker 1%)
