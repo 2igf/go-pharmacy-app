@@ -21,7 +21,9 @@ type Permission =
   | "inventory_read"
   | "inventory_write"
   | "membership_read"
-  | "audit_read";
+  | "audit_read"
+  | "order_read"
+  | "order_write";
 const forbidden = (): never => {
   throw new TRPCError({
     code: "FORBIDDEN",
@@ -48,7 +50,7 @@ async function lockOrganization(tx: Tx, id: number): Promise<Organization> {
 /** All private operations, approval and revocation acquire this same parent lock.
  * Role/organization inputs and platform roles never substitute for membership.
  */
-async function authorize(
+export async function authorizePharmacy(
   tx: Tx,
   organizationId: number,
   userId: number,
@@ -67,7 +69,11 @@ async function authorize(
     )
     .for("update");
   if (!member || member.status !== "active") forbidden();
-  if (permission === "inventory_write" && member.role === "viewer") forbidden();
+  if (
+    (permission === "inventory_write" || permission === "order_write") &&
+    member.role === "viewer"
+  )
+    forbidden();
   if (
     (permission === "membership_read" || permission === "audit_read") &&
     !["owner", "manager"].includes(member.role)
@@ -261,7 +267,7 @@ export async function listPharmacyInventory(
   input: { organizationId: number; afterProductId: number; limit: number }
 ) {
   return (await getDb()).transaction(async tx => {
-    await authorize(tx, input.organizationId, userId, "inventory_read");
+    await authorizePharmacy(tx, input.organizationId, userId, "inventory_read");
     return tx
       .select({
         productId: pharmacyInventory.productId,
@@ -296,7 +302,12 @@ export async function adjustPharmacyInventory(
   }
 ) {
   return (await getDb()).transaction(async tx => {
-    await authorize(tx, input.organizationId, userId, "inventory_write");
+    await authorizePharmacy(
+      tx,
+      input.organizationId,
+      userId,
+      "inventory_write"
+    );
     const requestHash = createHash("sha256")
       .update(
         JSON.stringify([
@@ -395,7 +406,12 @@ export async function listPharmacyMembers(
   input: { organizationId: number; afterUserId: number; limit: number }
 ) {
   return (await getDb()).transaction(async tx => {
-    await authorize(tx, input.organizationId, userId, "membership_read");
+    await authorizePharmacy(
+      tx,
+      input.organizationId,
+      userId,
+      "membership_read"
+    );
     return tx
       .select({
         userId: organizationMemberships.userId,
@@ -419,7 +435,7 @@ export async function listPharmacyAudit(
   input: { organizationId: number; beforeId?: number; limit: number }
 ) {
   return (await getDb()).transaction(async tx => {
-    await authorize(tx, input.organizationId, userId, "audit_read");
+    await authorizePharmacy(tx, input.organizationId, userId, "audit_read");
     // requestHash is internal idempotency metadata, not part of the audit DTO.
     return tx
       .select({

@@ -19,6 +19,9 @@ export async function resetFixtures() {
   try {
     // Only test tables in an explicitly named disposable database. Never disable FK enforcement.
     for (const table of [
+      "fulfillmentEvents",
+      "fulfillmentStockLines",
+      "fulfillmentOrders",
       "pharmacyOrderAssignments",
       "officialMedicinePrices",
       "organizationAuditEvents",

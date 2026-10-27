@@ -6,6 +6,33 @@ import {
   assertMigrationHistory,
 } from "../scripts/migration-policy";
 describe("migration target guard", () => {
+  it("refuses partial or untracked fulfillment DDL and allows the intact additive prefix", () => {
+    const local = [
+      { when: 4, tag: "0004_pharmacy_tenancy", hashes: ["t"] },
+      { when: 5, tag: "0005_simulated_fulfillment", hashes: ["f"] },
+    ];
+    const prefix = [{ created_at: 4, hash: "t" }];
+    expect(() => assertMigrationHistory(local, prefix, 7, 0)).not.toThrow();
+    expect(() => assertMigrationHistory(local, prefix, 7, 1)).toThrow(
+      /fulfillment/i
+    );
+    expect(() =>
+      assertMigrationHistory(
+        local,
+        [...prefix, { created_at: 5, hash: "f" }],
+        7,
+        2
+      )
+    ).toThrow(/fulfillment/i);
+    expect(() =>
+      assertMigrationHistory(
+        local,
+        [...prefix, { created_at: 5, hash: "f" }],
+        7,
+        3
+      )
+    ).not.toThrow();
+  });
   it("allows a future pending migration after 0004, but rejects partial DDL and skipped history", () => {
     const local = [
       { when: 1, tag: "0000_base", hashes: ["base"] },
@@ -26,7 +53,9 @@ describe("migration target guard", () => {
     );
   });
   it("keeps every generated MySQL migration identifier within 64 characters", () => {
-    const migration = readFileSync("drizzle/0004_pharmacy_tenancy.sql", "utf8");
+    const migration =
+      readFileSync("drizzle/0004_pharmacy_tenancy.sql", "utf8") +
+      readFileSync("drizzle/0005_simulated_fulfillment.sql", "utf8");
     expect(
       [...migration.matchAll(/`([^`]+)`/g)]
         .filter(match => match[1].length > 64)

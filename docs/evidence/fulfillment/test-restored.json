@@ -1,0 +1,130 @@
+{
+  "checks": [
+    {
+      "table": "__drizzle_migrations",
+      "count": 6,
+      "unchanged": true
+    },
+    {
+      "table": "appointments",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "cartitems",
+      "count": 1,
+      "unchanged": true
+    },
+    {
+      "table": "credentials",
+      "count": 8,
+      "unchanged": true
+    },
+    {
+      "table": "doctorreviews",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "doctors",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "doctortimeslots",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "medicationreminderlogs",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "medicationreminders",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "notifications",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "officialmedicineprices",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "orderitems",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "orders",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "organizationauditevents",
+      "count": 34,
+      "unchanged": true
+    },
+    {
+      "table": "organizationmemberships",
+      "count": 14,
+      "unchanged": true
+    },
+    {
+      "table": "organizations",
+      "count": 8,
+      "unchanged": true
+    },
+    {
+      "table": "pharmacyinventory",
+      "count": 3,
+      "unchanged": true
+    },
+    {
+      "table": "pharmacyorderassignments",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "prescriptions",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "pricingjurisdictions",
+      "count": 1,
+      "unchanged": true
+    },
+    {
+      "table": "productreviews",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "products",
+      "count": 3,
+      "unchanged": true
+    },
+    {
+      "table": "sessions",
+      "count": 1,
+      "unchanged": true
+    },
+    {
+      "table": "useraddresses",
+      "count": 2,
+      "unchanged": true
+    },
+    {
+      "table": "users",
+      "count": 11,
+      "unchanged": true
+    }
+  ],
+  "migrationAdded": true
+}

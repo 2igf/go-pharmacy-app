@@ -23,6 +23,7 @@ import {
 } from "./policy";
 import Inventory from "./Inventory";
 import { Members, Activity } from "./Records";
+import PharmacyOrders from "./Orders";
 
 export default function PartnersPortal() {
   const { user, loading, error, logout } = useAuth();
@@ -125,6 +126,11 @@ function PortalAccount({ userId, path }: { userId: number; path: string }) {
     {
       href: "/partners/pharmacy/inventory",
       label: "المخزون والكتالوج",
+      allowed: permissions.inventory,
+    },
+    {
+      href: "/partners/pharmacy/orders",
+      label: "الطلبات التجريبية",
       allowed: permissions.inventory,
     },
     {
@@ -271,6 +277,8 @@ function OrganizationPage({
   onBusy(value: boolean): void;
 }) {
   const permission = portalPermissions(member);
+  if (path === "/partners/pharmacy/orders")
+    return <PharmacyOrders member={member} onBusy={onBusy} />;
   if (path === "/partners/pharmacy/inventory")
     return <Inventory userId={userId} member={member} onBusy={onBusy} />;
   if (path === "/partners/pharmacy/members")

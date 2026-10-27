@@ -27,6 +27,14 @@ describe("multi-app service boundaries", () => {
         "pharmacies.administration.list",
         "pharmacies.administration.review",
         "pharmacies.administration.setMembership",
+        "fulfillment.configuration",
+        "fulfillment.enroll",
+        "fulfillment.assign",
+        "fulfillment.eligible",
+        "fulfillment.administration.list",
+        "fulfillment.list",
+        "fulfillment.detail",
+        "fulfillment.transition",
       ].sort()
     );
   });

@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/migration-policy.test.ts (6 tests | 1 failed) 28ms
+   ❯ migration target guard (6)
+     × refuses partial or untracked fulfillment DDL and allows the intact additive prefix 15ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  01:09:44
+   Duration  526ms (transform 47%, import 28%, tests 17%, worker 8%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/migration-policy.test.ts > migration target guard > refuses partial or untracked fulfillment DDL and allows the intact additive prefix
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ server/migration-policy.test.ts:13:58
+     11|     const prefix=[{created_at:4,hash:"t"}];
+     12|     expect(()=>assertMigrationHistory(local,prefix,7,0)).not.toThrow();
+     13|     expect(()=>assertMigrationHistory(local,prefix,7,1)).toThrow(/fulf…
+       |                                                          ^
+     14|     expect(()=>assertMigrationHistory(local,[...prefix,{created_at:5,h…
+     15|     expect(()=>assertMigrationHistory(local,[...prefix,{created_at:5,h…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

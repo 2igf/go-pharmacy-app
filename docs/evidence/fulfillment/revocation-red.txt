@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/fulfillment.integration.test.ts (15 tests | 1 failed | 14 skipped) 473ms
+   ❯ real MySQL simulated pharmacy fulfillment (15)
+     × rechecks active management after waiting for concurrent membership suspension 469ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 14 skipped (15)
+   Start at  01:13:40
+   Duration  2.85s (import 69%, tests 19%, transform 11%, worker 1%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rechecks active management after waiting for concurrent membership suspension
+AssertionError: expected undefined to be 'CONFLICT' // Object.is equality
+
+- Expected:
+"CONFLICT"
+
++ Received:
+undefined
+
+ ❯ server/fulfillment.integration.test.ts:31:39
+     29|    outcome=f.assign().then(()=>({}),error=>({error}));await new Promis…
+     30|   });
+     31|   expect((await outcome).error?.code).toBe("CONFLICT");expect(await f.…
+       |                                       ^
+     32|  });
+     33|  it("rolls back cancellation if stock return would overflow, then reco…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

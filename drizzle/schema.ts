@@ -536,7 +536,7 @@ export const officialMedicinePrices = mysqlTable(
   ]
 );
 
-// Relationship only: no assignment procedure, checkout mutation, backfill or sale.
+// Immutable single-pharmacy relationship. No historical-order backfill.
 export const pharmacyOrderAssignments = mysqlTable(
   "pharmacyOrderAssignments",
   {
@@ -554,5 +554,96 @@ export const pharmacyOrderAssignments = mysqlTable(
   t => [
     index("assignment_organization_idx").on(t.organizationId),
     index("assignment_actor_idx").on(t.assignedBy),
+  ]
+);
+
+// Opt-in simulated fulfillment; existing orders and their statuses remain intact.
+export const fulfillmentOrders = mysqlTable(
+  "fulfillmentOrders",
+  {
+    orderId: int("orderId")
+      .primaryKey()
+      .references(() => orders.id, { onDelete: "restrict" }),
+    state: mysqlEnum("state", [
+      "assignment_pending",
+      "assigned",
+      "accepted",
+      "rejected",
+      "preparing",
+      "ready",
+      "cancelled",
+    ])
+      .default("assignment_pending")
+      .notNull(),
+    version: int("version").default(0).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  t => [
+    index("fulfillment_state_order_idx").on(t.state, t.orderId),
+    check("fulfillment_version_check", sql`${t.version} >= 0`),
+  ]
+);
+
+export const fulfillmentStockLines = mysqlTable(
+  "fulfillmentStockLines",
+  {
+    orderId: int("orderId").notNull(),
+    productId: int("productId")
+      .notNull()
+      .references(() => products.id, { onDelete: "restrict" }),
+    quantity: int("quantity").notNull(),
+    state: mysqlEnum("state", ["held", "consumed", "released"])
+      .default("held")
+      .notNull(),
+  },
+  t => [
+    primaryKey({ columns: [t.orderId, t.productId] }),
+    foreignKey({
+      name: "fulfillment_line_assignment_fk",
+      columns: [t.orderId],
+      foreignColumns: [pharmacyOrderAssignments.orderId],
+    }).onDelete("restrict"),
+    check(
+      "fulfillment_line_quantity_check",
+      sql`${t.quantity} BETWEEN 1 AND 1000000`
+    ),
+  ]
+);
+
+export const fulfillmentEvents = mysqlTable(
+  "fulfillmentEvents",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    orderId: int("orderId")
+      .notNull()
+      .references(() => fulfillmentOrders.orderId, { onDelete: "restrict" }),
+    organizationId: int("organizationId").references(() => organizations.id, {
+      onDelete: "restrict",
+    }),
+    actorUserId: int("actorUserId")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    action: mysqlEnum("action", [
+      "enrolled",
+      "assigned",
+      "accepted",
+      "rejected",
+      "preparing",
+      "ready",
+      "cancelled",
+      "shipped",
+      "delivered",
+    ]).notNull(),
+    reason: varchar("reason", { length: 500 }).notNull(),
+    requestId: varchar("requestId", { length: 36 }).unique(),
+    requestHash: varchar("requestHash", { length: 64 }),
+    details: json("details").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  t => [
+    index("fulfillment_event_order_idx").on(t.orderId, t.id),
+    index("fulfillment_event_org_idx").on(t.organizationId, t.id),
+    index("fulfillment_event_actor_idx").on(t.actorUserId),
   ]
 );

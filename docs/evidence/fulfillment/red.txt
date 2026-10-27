@@ -1,0 +1,205 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/fulfillment.integration.test.ts (13 tests | 13 failed) 3154ms
+   ❯ real MySQL simulated pharmacy fulfillment (13)
+     × explicitly enrolls and assigns an eligible pharmacy without auto-enrolling historical orders 333ms
+     × runs accept/prepare/ready and exposes only a safe customer summary 262ms
+     × denies cross-pharmacy IDs, platform admin bypass, customer/driver and viewer writes 258ms
+     × rechecks organization and membership suspension before reads, actions and exact retries 212ms
+     × serializes competing assignments and reserves exactly once 247ms
+     × binds idempotency to actor and payload and rejects stale versions 235ms
+     × returns stock once on rejection and forbids reassigning the same order 228ms
+     × cancels atomically through the existing API and prevents legacy status bypass 204ms
+     × does not allow disabling the feature to bypass a managed order 226ms
+     × requires available stock, an approved pharmacy and active management 221ms
+     × rolls back all reservations on an invalid second line and on audit failure 276ms
+     × handles invalid transitions, shipment readiness and terminal delivery 216ms
+     × rejects real/nonpending/restricted enrollment and leaves legacy orders unchanged 230ms
+ ❯ server/fulfillment-policy.test.ts (0 test)
+
+ Test Files  2 failed (2)
+      Tests  13 failed (13)
+   Start at  01:08:54
+   Duration  5.89s (tests 62%, import 33%, transform 5%)
+
+    Isolate  2 workers spawned · ~323ms startup each (spawn + environment, per file)
+             at least ~323ms faster with isolate: false — reuses workers across files instead of one per file
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/fulfillment-policy.test.ts [ server/fulfillment-policy.test.ts ]
+Error: Cannot find module '../shared/fulfillment' imported from C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation/server/fulfillment-policy.test.ts
+ ❯ server/fulfillment-policy.test.ts:3:1
+      1| import { describe, it, expect } from "vitest";
+      2| import { randomUUID } from "node:crypto";
+      3| import { fulfillmentTransition, fulfillmentMutationSchema, deliveryHan…
+       | ^
+      4|
+      5| describe("simulated fulfillment contracts", () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 13 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > explicitly enrolls and assigns an eligible pharmacy without auto-enrolling historical orders
+AssertionError: expected undefined to be null
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ server/fulfillment.integration.test.ts:25:95
+     23| describe.skipIf(!process.env.TEST_DATABASE_URL)("real MySQL simulated …
+     24|  it("explicitly enrolls and assigns an eligible pharmacy without auto-…
+     25|   const f=await fixtures();expect((await f.customer.orders.byId({id:f.…
+       |                                                                                               ^
+     26|   expect(await f.enroll()).toMatchObject({state:"assignment_pending",v…
+     27|   const candidates=await f.admin.fulfillment.eligible({orderId:f.order…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > runs accept/prepare/ready and exposes only a safe customer summary
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:33:28
+     31|  });
+     32|  it("runs accept/prepare/ready and exposes only a safe customer summar…
+     33|   const f=await fixtures();await f.enroll();await f.assign();await f.m…
+       |                            ^
+     34|   const detail=await f.customer.orders.byId({id:f.orderId});expect(det…
+     35|   expect(Object.keys(detail.fulfillment!).sort()).toEqual(["pharmacyNa…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > denies cross-pharmacy IDs, platform admin bypass, customer/driver and viewer writes
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:42:28
+     40|  });
+     41|  it("denies cross-pharmacy IDs, platform admin bypass, customer/driver…
+     42|   const f=await fixtures();await f.enroll();await f.assign();
+       |                            ^
+     43|   for(const caller of [f.other,f.admin,f.driver]){
+     44|    await expect(caller.fulfillment.list({organizationId:f.a})).rejects…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rechecks organization and membership suspension before reads, actions and exact retries
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:55:28
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > serializes competing assignments and reserves exactly once
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:62:28
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > binds idempotency to actor and payload and rejects stale versions
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:66:85
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > returns stock once on rejection and forbids reassigning the same order
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:75:28
+     73|  });
+     74|  it("returns stock once on rejection and forbids reassigning the same …
+     75|   const f=await fixtures();await f.enroll();await f.assign();await f.m…
+       |                            ^
+     76|   await expect(f.assign(f.b,2)).rejects.toMatchObject({code:"CONFLICT"…
+     77|   await f.admin.admin.updateStatus({id:f.orderId,status:"cancelled"});…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > cancels atomically through the existing API and prevents legacy status bypass
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:80:28
+     78|  });
+     79|  it("cancels atomically through the existing API and prevents legacy s…
+     80|   const f=await fixtures();await f.enroll();await f.assign();await exp…
+       |                            ^
+     81|   await f.move("accept",1);await f.move("prepare",2);await expect(f.ad…
+     82|   await f.admin.admin.updateStatus({id:f.orderId,status:"cancelled"});…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > does not allow disabling the feature to bypass a managed order
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:87:28
+     85|  });
+     86|  it("does not allow disabling the feature to bypass a managed order",a…
+     87|   const f=await fixtures();await f.enroll();await f.assign();vi.stubEn…
+       |                            ^
+     88|   await expect(f.admin.admin.updateStatus({id:f.orderId,status:"confir…
+     89|   await expect(f.staff.fulfillment.list({organizationId:f.a})).rejects…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > requires available stock, an approved pharmacy and active management
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:92:28
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rolls back all reservations on an invalid second line and on audit failure
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:97:28
+     95|  });
+     96|  it("rolls back all reservations on an invalid second line and on audi…
+     97|   const f=await fixtures();await f.enroll();await f.db.insert(orderIte…
+       |                            ^
+     98|   await expect(f.assign()).rejects.toMatchObject({code:"CONFLICT"});ex…
+     99|   await f.db.delete(orderItems).where(and(eq(orderItems.orderId,f.orde…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > handles invalid transitions, shipment readiness and terminal delivery
+TRPCError: No procedure found on path "fulfillment,enroll"
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:464:21
+ ❯ server/fulfillment.integration.test.ts:105:28
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/14]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rejects real/nonpending/restricted enrollment and leaves legacy orders unchanged
+AssertionError: expected TRPCError: No procedure found on path "fu… { code: '…' } to match object { code: 'CONFLICT' }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- {
+-   "code": "CONFLICT",
++ TRPCError {
++   "code": "NOT_FOUND",
+  }
+
+ ❯ server/fulfillment.integration.test.ts:109:133
+    107|  });
+    108|  it("rejects real/nonpending/restricted enrollment and leaves legacy o…
+    109|   const f=await fixtures();await f.db.update(orders).set({isSimulated:…
+       |                                                                                                                                     ^
+    110|   await f.db.update(orders).set({isSimulated:true,status:"confirmed"})…
+    111|   await f.admin.admin.updateStatus({id:f.orderId,status:"processing"})…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/14]⎯

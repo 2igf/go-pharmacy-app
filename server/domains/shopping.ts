@@ -2,6 +2,7 @@ import { z } from "zod";
 import { protectedProcedure, router } from "../_core/trpc";
 import { checkout, changeCart, cartQuote, orderDetail } from "../commerce";
 import { getUserCartItems, getUserOrders } from "../db";
+import { withCustomerFulfillment } from "../fulfillment";
 
 export const cartRouter = router({
   list: protectedProcedure.query(({ ctx }) => getUserCartItems(ctx.user.id)),
@@ -31,7 +32,9 @@ export const cartRouter = router({
 });
 
 export const ordersRouter = router({
-  list: protectedProcedure.query(({ ctx }) => getUserOrders(ctx.user.id)),
+  list: protectedProcedure.query(async ({ ctx }) =>
+    withCustomerFulfillment(await getUserOrders(ctx.user.id))
+  ),
   byId: protectedProcedure
     .input(z.object({ id: z.number().int().positive() }))
     .query(({ ctx, input }) => orderDetail(input.id, ctx.user.id)),

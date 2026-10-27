@@ -1,0 +1,36 @@
+Browser tab: 9, Title: "GO Pharmacy", URL: "http://localhost:3022/admin/fulfillment".
+1 AXWebArea GO Pharmacy, URL: localhost:3022/admin/fulfillment
+	2 container root
+		3 container Notifications alt+T
+		4 text نسخة تجريبية خاصة — جميع الطلبات محاكاة. لا دفع أو توصيل أو صرف أدوية. استخدم بيانات خيالية فقط.
+		5 container التنقل الرئيسي
+			6 link Description: الرئيسية, Value: localhost:3022/
+			7 link Description: المنتجات, Value: localhost:3022/products
+			8 link Description: السلة, Value: localhost:3022/cart
+			9 link Description: حسابي وطلباتي, Value: localhost:3022/profile
+			10 link Description: الإشعارات, Value: localhost:3022/notifications
+			11 link Description: الإدارة, Value: localhost:3022/admin
+		12 container
+			13 heading إسناد وتنفيذ الطلبات التجريبية, Value: 1
+				14 text إسناد وتنفيذ الطلبات التجريبية
+			15 text اختبار داخلي بمنتجات DEMO غير دوائية فقط. الإدراج والإسناد صريحان؛ لا تُسند الطلبات التاريخية تلقائيًا.
+			16 heading إدراج طلب تجريبي صريح, Value: 2
+				17 text إدراج طلب تجريبي صريح
+			18 text الاختيار من آخر 100 طلب. يتحقق الخادم من المنتجات الوهمية والسلامة قبل الإدراج. لا يحدث إسناد تلقائي.
+			19 text Unable to transform response from server
+			20 text النتيجة غير مؤكدة. تعيد المحاولة الطلب نفسه ومعرّفه؛ لا تُنشئ عملية أخرى.
+			21 button إعادة الطلب نفسه
+			22 button إلغاء المراجعة
+			23 heading الطلبات المدرجة في مسار التنفيذ, Value: 2
+				24 text الطلبات المدرجة في مسار التنفيذ
+			25 content list
+				26 container
+					27 text طلب # 186  —  بانتظار الإسناد  — لم تُحدد صيدلية
+					28 button اختيار صيدلية للطلب #186
+						29 text اختيار صيدلية للطلب #
+						30 text 186
+			31 button (disabled) السابق
+			32 text 1  سجل في الصفحة
+			33 button (disabled) التالي
+
+The focused UI element is 1 AXWebArea GO Pharmacy, URL: localhost:3022/admin/fulfillment

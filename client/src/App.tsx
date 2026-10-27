@@ -18,6 +18,7 @@ import BetaAdmin from "./pages/BetaAdmin";
 import NotFound from "./pages/NotFound";
 const PartnersPortal = lazy(() => import("./partners/Portal"));
 const AdminPharmacies = lazy(() => import("./partners/AdminPharmacies"));
+const AdminFulfillment = lazy(() => import("./partners/AdminFulfillment"));
 
 function SurfaceRouter() {
   const [path] = useLocation();
@@ -29,7 +30,11 @@ function SurfaceRouter() {
     );
   return (
     <BetaLayout>
-      {path === "/admin/pharmacies" ? (
+      {path === "/admin/fulfillment" ? (
+        <Suspense fallback={<p role="status">جار تحميل تنفيذ الطلبات…</p>}>
+          <AdminFulfillment />
+        </Suspense>
+      ) : path === "/admin/pharmacies" ? (
         <Suspense fallback={<p role="status">جار تحميل الإدارة…</p>}>
           <AdminPharmacies />
         </Suspense>

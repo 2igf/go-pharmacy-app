@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/fulfillment.integration.test.ts (13 tests | 1 failed) 4638ms
+   ❯ real MySQL simulated pharmacy fulfillment (13)
+     × binds idempotency to actor and payload and rejects stale versions 303ms
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 21 passed (22)
+   Start at  01:12:03
+   Duration  8.18s (tests 65%, import 28%, transform 6%, worker 1%)
+
+    Isolate  3 workers spawned · ~325ms startup each (spawn + environment, per file)
+             at least ~650ms faster with isolate: false — reuses workers across files instead of one per file
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > binds idempotency to actor and payload and rejects stale versions
+TRPCError: Fulfillment version changed; refresh and review
+ ❯ conflict server/fulfillment.ts:17:47
+     15| type Mutation=z.infer<typeof fulfillmentMutationSchema>;
+     16| type Result={orderId:number;state:Aggregate["state"];version:number};
+     17| const conflict=(message:string):never=>{throw new TRPCError({code:"CON…
+       |                                               ^
+     18| const missing=():never=>{throw new TRPCError({code:"NOT_FOUND",message…
+     19| const forbidden=():never=>{throw new TRPCError({code:"FORBIDDEN",messa…
+ ❯ version server/fulfillment.ts:65:112
+ ❯ server/fulfillment.ts:79:2
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:311:19
+ ❯ transaction server/fulfillment.ts:23:13
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:576:22
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

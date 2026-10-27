@@ -57,7 +57,10 @@ try {
       ),
     })),
     journal as { created_at: string | number; hash: string }[],
-    present
+    present,
+    ["fulfillmentorders", "fulfillmentevents", "fulfillmentstocklines"].filter(
+      name => names.has(name)
+    ).length
   );
   const checks: [string, string][] = [
     [

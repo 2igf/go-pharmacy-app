@@ -1,6 +1,11 @@
 # Architecture
 
-Current interface phase: [GO Partners Pharmacy Portal V1](GO_PARTNERS_PHARMACY_PORTAL_V1.md)
+Current extension: [Simulated pharmacy fulfillment V1](PHARMACY_FULFILLMENT_V1.md),
+with [test-only migration safety](PHARMACY_FULFILLMENT_MIGRATION_V1.md) and
+[local testing](PHARMACY_FULFILLMENT_LOCAL_TESTING.md). Explicit enrollment and
+single-pharmacy reservation are opt-in; existing checkout and Demo remain intact.
+
+Previous interface phase: [GO Partners Pharmacy Portal V1](GO_PARTNERS_PHARMACY_PORTAL_V1.md)
 and [local controlled testing](GO_PARTNERS_LOCAL_TESTING.md). This adds the
 pharmacy/admin frontend above the existing nine scoped APIs; no new schema/API.
 

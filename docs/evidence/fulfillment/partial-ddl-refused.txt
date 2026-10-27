@@ -1,0 +1,10 @@
+C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\scripts\migration-policy.ts:44
+    throw new Error("Partial/untracked fulfillment DDL detected; restore/reconcile before retrying");
+          ^
+
+Error: Partial/untracked fulfillment DDL detected; restore/reconcile before retrying
+    at assertMigrationHistory (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\scripts\migration-policy.ts:44:11)
+    at <anonymous> (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\scripts\db-preflight.ts:52:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+
+Node.js v24.22.1

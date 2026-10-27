@@ -1,0 +1,145 @@
+{
+  "checkedAt": "2026-10-27T22:28:19.980Z",
+  "checks": [
+    {
+      "table": "__drizzle_migrations",
+      "count": 6,
+      "unchanged": true
+    },
+    {
+      "table": "appointments",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "cartitems",
+      "count": 1,
+      "unchanged": true
+    },
+    {
+      "table": "credentials",
+      "count": 8,
+      "unchanged": true
+    },
+    {
+      "table": "doctorreviews",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "doctors",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "doctortimeslots",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "fulfillmentevents",
+      "count": 8,
+      "unchanged": true
+    },
+    {
+      "table": "fulfillmentorders",
+      "count": 2,
+      "unchanged": true
+    },
+    {
+      "table": "fulfillmentstocklines",
+      "count": 2,
+      "unchanged": true
+    },
+    {
+      "table": "medicationreminderlogs",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "medicationreminders",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "notifications",
+      "count": 10,
+      "unchanged": true
+    },
+    {
+      "table": "officialmedicineprices",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "orderitems",
+      "count": 4,
+      "unchanged": true
+    },
+    {
+      "table": "orders",
+      "count": 4,
+      "unchanged": true
+    },
+    {
+      "table": "organizationauditevents",
+      "count": 36,
+      "unchanged": true
+    },
+    {
+      "table": "organizationmemberships",
+      "count": 14,
+      "unchanged": true
+    },
+    {
+      "table": "organizations",
+      "count": 8,
+      "unchanged": true
+    },
+    {
+      "table": "pharmacyinventory",
+      "count": 5,
+      "unchanged": true
+    },
+    {
+      "table": "pharmacyorderassignments",
+      "count": 2,
+      "unchanged": true
+    },
+    {
+      "table": "prescriptions",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "pricingjurisdictions",
+      "count": 1,
+      "unchanged": true
+    },
+    {
+      "table": "productreviews",
+      "count": 0,
+      "unchanged": true
+    },
+    {
+      "table": "products",
+      "count": 4,
+      "unchanged": true
+    },
+    {
+      "table": "sessions",
+      "count": 8,
+      "unchanged": true
+    },
+    {
+      "table": "useraddresses",
+      "count": 3,
+      "unchanged": true
+    },
+    {
+      "table": "users",
+      "count": 11,
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+Database preflight passed. Keep writes stopped during migration; take a backup first.
+C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\session.ts:79
+				throw new DrizzleQueryError(queryString, params, e as Error);
+				      ^
+
+DrizzleQueryError: Failed query:
+ALTER TABLE `fulfillmentStockLines` ADD CONSTRAINT `fulfillmentStockLines_orderId_pharmacyOrderAssignments_orderId_fk` FOREIGN KEY (`orderId`) REFERENCES `pharmacyOrderAssignments`(`orderId`) ON DELETE restrict ON UPDATE no action;
+params:
+    at MySql2PreparedQuery.queryWithCache (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\session.ts:79:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async MySql2PreparedQuery.execute (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql2\session.ts:100:16)
+    at async <anonymous> (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\dialect.ts:86:7)
+    at async MySql2Session.transaction (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql2\session.ts:311:19)
+    at async MySqlDialect.migrate (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\dialect.ts:79:3)
+    at async migrate (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql2\migrator.ts:10:2)
+    at async <anonymous> (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\scripts\migrate.ts:6:3) {
+  query: '\n' +
+    'ALTER TABLE `fulfillmentStockLines` ADD CONSTRAINT `fulfillmentStockLines_orderId_pharmacyOrderAssignments_orderId_fk` FOREIGN KEY (`orderId`) REFERENCES `pharmacyOrderAssignments`(`orderId`) ON DELETE restrict ON UPDATE no action;',
+  params: [],
+  cause: Error: Identifier name 'fulfillmentStockLines_orderId_pharmacyOrderAssignments_orderId_fk' is too long
+      at <anonymous> (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql2\session.ts:101:25)
+      at MySql2PreparedQuery.queryWithCache (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\session.ts:77:18)
+      at MySql2PreparedQuery.execute (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql2\session.ts:100:27)
+      at MySql2Session.execute (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\session.ts:197:5)
+      at MySql2Transaction.execute (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\db.ts:477:23)
+      at <anonymous> (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\dialect.ts:86:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async MySql2Session.transaction (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql2\session.ts:311:19)
+      at async MySqlDialect.migrate (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql-core\dialect.ts:79:3)
+      at async migrate (C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation\node_modules\.pnpm\drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_\node_modules\src\mysql2\migrator.ts:10:2) {
+    code: 'ER_TOO_LONG_IDENT',
+    errno: 1059,
+    sqlState: '42000',
+    sqlMessage: "Identifier name 'fulfillmentStockLines_orderId_pharmacyOrderAssignments_orderId_fk' is too long",
+    sql: '\n' +
+      'ALTER TABLE `fulfillmentStockLines` ADD CONSTRAINT `fulfillmentStockLines_orderId_pharmacyOrderAssignments_orderId_fk` FOREIGN KEY (`orderId`) REFERENCES `pharmacyOrderAssignments`(`orderId`) ON DELETE restrict ON UPDATE no action;'
+  }
+}
+
+Node.js v24.22.1

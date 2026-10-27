@@ -1,0 +1,58 @@
+{
+  "origin": "http://localhost:3022",
+  "source": "Actual browser, real backend and dedicated MySQL test DB",
+  "checks": [
+    {
+      "case": "lost_response_red_green",
+      "result": "Confirmed old dialog discarded request; fixed dialog retained exact retry after controlled 503 following backend commit; retry succeeded."
+    },
+    {
+      "case": "admin_assignment",
+      "result": "Order187 assigned to approved Pharmacy95 through actual UI."
+    },
+    {
+      "case": "staff_accept",
+      "result": "Staff30 accepted order187; state accepted/version2, actual audit actor visible."
+    },
+    {
+      "case": "staff_prepare_ready",
+      "result": "Order187 progressed accepted v2 -> preparing v3 -> ready v4, with read-only audit actors/reasons and future-handoff notice."
+    },
+    {
+      "case": "foreign_context",
+      "result": "Foreign org96 denied; no previous order detail rendered."
+    },
+    {
+      "case": "pharmacy_b_isolation",
+      "result": "Owner29 sees zero assigned orders for org96; no order187."
+    },
+    {
+      "case": "viewer_read_only",
+      "result": "Viewer31 can inspect assigned order but sees explicit read-only notice and no mutation form."
+    },
+    {
+      "case": "customer_portal_denied",
+      "result": "Customer32 has no organization membership and cannot render operational orders."
+    },
+    {
+      "case": "customer_order_compatibility",
+      "result": "Existing customer order187 screen renders processing and fictional items/total; additive fulfillment API tested separately with real HTTP."
+    },
+    {
+      "case": "customer_admin_denied",
+      "result": "Customer32 denied administrative fulfillment route."
+    },
+    {
+      "case": "staff_reject_release",
+      "result": "Staff30 rejected order186 at version1; state rejected/version2, stock lines released and actor/reason audited."
+    },
+    {
+      "case": "inventory_after_ready_and_rejection",
+      "result": "Actual inventory table shows product18 quantity18/version4: initial20 minus ready order2; rejected order2 returned. Existing product17 remains14/version3."
+    },
+    {
+      "case": "suspended_membership",
+      "result": "Account34 with suspended membership sees blocked operational access and no assigned order records."
+    }
+  ]
+}

@@ -18,5 +18,7 @@ export const adminRouter = router({
     .input(
       z.object({ id: z.number().int().positive(), status: z.enum(statuses) })
     )
-    .mutation(({ input }) => updateOrderStatus(input.id, input.status)),
+    .mutation(({ ctx, input }) =>
+      updateOrderStatus(input.id, input.status, ctx.user.id)
+    ),
 });

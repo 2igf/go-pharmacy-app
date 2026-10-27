@@ -1,0 +1,39 @@
+Browser tab: 9, Title: "GO Pharmacy", URL: "http://localhost:3022/admin/fulfillment".
+0 AXWebArea GO Pharmacy, URL: localhost:3022/admin/fulfillment
+	1 container root
+		2 container Notifications alt+T
+		3 text نسخة تجريبية خاصة — جميع الطلبات محاكاة. لا دفع أو توصيل أو صرف أدوية. استخدم بيانات خيالية فقط.
+		4 container التنقل الرئيسي
+			5 link Description: الرئيسية, Value: localhost:3022/
+			6 link Description: المنتجات, Value: localhost:3022/products
+			7 link Description: السلة, Value: localhost:3022/cart
+			8 link Description: حسابي وطلباتي, Value: localhost:3022/profile
+			9 link Description: الإشعارات, Value: localhost:3022/notifications
+			10 link Description: الإدارة, Value: localhost:3022/admin
+		11 container
+			12 heading إسناد وتنفيذ الطلبات التجريبية, Value: 1
+				13 text إسناد وتنفيذ الطلبات التجريبية
+			14 text اختبار داخلي بمنتجات DEMO غير دوائية فقط. الإدراج والإسناد صريحان؛ لا تُسند الطلبات التاريخية تلقائيًا.
+			15 heading إدراج طلب تجريبي صريح, Value: 2
+				16 text إدراج طلب تجريبي صريح
+			17 text الاختيار من آخر 100 طلب. يتحقق الخادم من المنتجات الوهمية والسلامة قبل الإدراج. لا يحدث إسناد تلقائي.
+			18 container
+				19 text الطلب التجريبي
+				20 pop up button (collapsed, settable) الطلب التجريبي, Value: طلب #186 — SIM-8dade2d8-e73d-4cc5-a78b-5b562d26bc64, Secondary Actions: Expand
+					21 menu
+						22 اختر طلبًا
+						23 (selected) طلب #186 — SIM-8dade2d8-e73d-4cc5-a78b-5b562d26bc64
+						24 طلب #187 — SIM-fde2b1d8-4d38-40ba-873d-4a6b80926e74
+						25 طلب #188 — SIM-5e6b04c7-95ca-4f38-a43d-3736ae347974
+						26 طلب #189 — SIM-aa47b0b9-2f31-4788-86a9-defa42576176
+				27 text سبب الإدراج
+				28 text field (settable) سبب الإدراج, Value: اختبار فقد استجابة الإدراج الخيالي
+				29 button مراجعة إدراج الطلب
+			30 heading الطلبات المدرجة في مسار التنفيذ, Value: 2
+				31 text الطلبات المدرجة في مسار التنفيذ
+			32 text لا توجد طلبات مدرجة في هذه الصفحة.
+			33 button (disabled) السابق
+			34 text 0  سجل في الصفحة
+			35 button (disabled) التالي
+
+The focused UI element is 0 AXWebArea GO Pharmacy, URL: localhost:3022/admin/fulfillment

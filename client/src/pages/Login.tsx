@@ -7,7 +7,11 @@ import { Page, Feedback } from "@/components/BetaLayout";
 export default function Login({
   successPath = "/products",
 }: {
-  successPath?: "/products" | "/partners/pharmacy" | "/admin/pharmacies";
+  successPath?:
+    | "/products"
+    | "/partners/pharmacy"
+    | "/admin/pharmacies"
+    | "/admin/fulfillment";
 }) {
   const [register, setRegister] = useState(false);
   const [email, setEmail] = useState("");

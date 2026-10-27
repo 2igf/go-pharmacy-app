@@ -1,0 +1,35 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/migration-policy.test.ts (6 tests | 1 failed) 29ms
+   ❯ migration target guard (6)
+     × keeps every generated MySQL migration identifier within 64 characters 16ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  01:10:09
+   Duration  533ms (transform 50%, import 26%, tests 17%, worker 7%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/migration-policy.test.ts > migration target guard > keeps every generated MySQL migration identifier within 64 characters
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "fulfillmentStockLines_orderId_pharmacyOrderAssignments_orderId_fk",
++ ]
+
+ ❯ server/migration-policy.test.ts:42:7
+     40|         .filter(match => match[1].length > 64)
+     41|         .map(match => match[1])
+     42|     ).toEqual([]);
+       |       ^
+     43|   });
+     44|   it("accepts exact LF/CRLF equivalents but rejects SQL changes", () =…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

@@ -1,0 +1,40 @@
+
+> go-pharmacy@1.0.0 build C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation
+> vite build && esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+
+vite v7.3.7 building client environment for production...
+transforming...
+node_modules/.pnpm/zod@4.6.6/node_modules/zod/v4/core/util.js (400:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/.pnpm/zod@4.6.6/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/.pnpm/zod@4.6.6/node_modules/zod/v4/core/regexes.js (74:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/.pnpm/zod@4.6.6/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 1882 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/public/index.html                               0.89 kB │ gzip:   0.49 kB
+../dist/public/assets/index-DMig0ico.css              132.96 kB │ gzip:  20.77 kB
+../dist/public/assets/FulfillmentRequest-DdclfkS3.js    2.57 kB │ gzip:   1.39 kB
+../dist/public/assets/Records-DkTKdlT0.js               3.64 kB │ gzip:   1.57 kB
+../dist/public/assets/AdminFulfillment-CME49T2B.js      6.66 kB │ gzip:   2.48 kB
+../dist/public/assets/AdminPharmacies-Bf1NK_wf.js       9.05 kB │ gzip:   3.16 kB
+../dist/public/assets/Portal-BpfR8To-.js               23.51 kB │ gzip:   7.38 kB
+../dist/public/assets/policy-CN4lR2rw.js               94.03 kB │ gzip:  28.04 kB
+../dist/public/assets/index-BC__2P10.js               505.08 kB │ gzip: 157.90 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 11.34s
+
+  dist\index.js  119.0kb
+
+Done in 32ms

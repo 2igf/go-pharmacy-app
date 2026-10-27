@@ -1,0 +1,78 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/fulfillment.integration.test.ts (15 tests | 1 failed) 5538ms
+   ❯ real MySQL simulated pharmacy fulfillment (15)
+     × rolls back cancellation if stock return would overflow, then recovers without losing units 331ms
+
+ Test Files  1 failed | 27 passed (28)
+      Tests  1 failed | 160 passed (161)
+   Start at  01:15:41
+   Duration  65.43s (import 70%, tests 28%, transform 1%, worker 1%)
+
+     Import  74 modules were evaluated 95 times · 39.11s total, 70% of tracked time
+             ~8.64s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+Tue, 27 Oct 2026 22:16:09 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:155:13
+Tue, 27 Oct 2026 22:16:21 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:155:13
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rolls back cancellation if stock return would overflow, then recovers without losing units
+TRPCError: [
+  {
+    "origin": "number",
+    "code": "too_big",
+    "maximum": 100000,
+    "inclusive": true,
+    "path": [
+      "delta"
+    ],
+    "message": "Too big: expected number to be <=100000"
+  }
+]
+ ❯ inputValidatorMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/middleware.ts:196:15
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ procedure node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:682:20
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:473:20
+ ❯ server/fulfillment.integration.test.ts:181:7
+    179|       await f.enroll();
+    180|       await f.assign();
+    181|       await f.customer.pharmacies.inventory.adjust({
+       |       ^
+    182|         organizationId: f.a,
+    183|         productId: 1,
+
+Caused by: ZodError: [
+  {
+    "origin": "number",
+    "code": "too_big",
+    "maximum": 100000,
+    "inclusive": true,
+    "path": [
+      "delta"
+    ],
+    "message": "Too big: expected number to be <=100000"
+  }
+]
+ ❯ inputValidatorMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:40:24
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { _zod: { def: [ { origin: 'number', code: 'too_big', maximum: 100000, inclusive: true, path: [ 'delta' ], message: 'Too big: expected number to be <=100000' } ], constr: 'Function<ZodError>', traits: { constructor: 'Function<Set>', has: 'Function<has>', add: 'Function<add>', delete: 'Function<delete>', difference: 'Function<difference>', clear: 'Function<clear>', entries: 'Function<entries>', forEach: 'Function<forEach>', intersection: 'Function<intersection>', isSubsetOf: 'Function<isSubsetOf>', isSupersetOf: 'Function<isSupersetOf>', isDisjointFrom: 'Function<isDisjointFrom>', size: 2, symmetricDifference: 'Function<symmetricDifference>', union: 'Function<union>', values: 'Function<values>', keys: 'Function<values>' }, message: '[
+  {
+    "origin": "number",
+    "code": "too_big",
+    "maximum": 100000,
+    "inclusive": true,
+    "path": [
+      "delta"
+    ],
+    "message": "Too big: expected number to be <=100000"
+  }
+]' }, issues: [ { origin: 'number', code: 'too_big', maximum: 100000, inclusive: true, path: [ 'delta' ], message: 'Too big: expected number to be <=100000' } ], format: 'Function<anonymous>', flatten: 'Function<anonymous>', addIssue: 'Function<anonymous>', addIssues: 'Function<anonymous>', isEmpty: false }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

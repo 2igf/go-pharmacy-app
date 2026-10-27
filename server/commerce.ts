@@ -11,6 +11,7 @@ import {
   notifications,
 } from "../drizzle/schema";
 import { getDb } from "./db";
+import { guardLegacyFulfillment, withCustomerFulfillment } from "./fulfillment";
 import {
   quoteLines,
   assertTransition,
@@ -301,9 +302,10 @@ export async function orderDetail(id: number, userId: number, admin = false) {
     .select()
     .from(orderItems)
     .where(eq(orderItems.orderId, id));
-  return { ...order, items };
+  const [result] = await withCustomerFulfillment([{ ...order, items }]);
+  return result;
 }
-export async function updateOrderStatus(id: number, status: OrderStatus) {
+export async function updateOrderStatus(id: number, status: OrderStatus, actorUserId?: number) {
   const db = await getDb();
   const [summary] = await db
     .select({ userId: orders.userId })
@@ -321,6 +323,7 @@ export async function updateOrderStatus(id: number, status: OrderStatus) {
       unavailable("Only Beta simulation orders can be managed");
     assertTransition(order.status, status);
     if (order.status === status) return { success: true };
+    await guardLegacyFulfillment(tx, order, status, actorUserId);
     if (status === "cancelled") {
       const lines = await tx
         .select()

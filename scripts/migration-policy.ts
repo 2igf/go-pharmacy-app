@@ -13,7 +13,8 @@ export function acceptedMigrationHashes(contents: string) {
 export function assertMigrationHistory(
   local: { when: number; tag: string; hashes: string[] }[],
   applied: { created_at: string | number; hash: string }[],
-  tenantTableCount: number
+  tenantTableCount: number,
+  fulfillmentTableCount = 0
 ) {
   for (let i = 0; i < applied.length; i++) {
     if (
@@ -36,6 +37,21 @@ export function assertMigrationHistory(
   )
     throw new Error(
       "Partial/untracked tenancy DDL detected. MySQL DDL is not transactional; restore/reconcile before retrying"
+    );
+  const fulfillment = local.find(
+    entry => entry.tag === "0005_simulated_fulfillment"
+  );
+  const fulfillmentApplied =
+    fulfillment &&
+    applied.some(
+      entry => String(entry.created_at) === String(fulfillment.when)
+    );
+  if (
+    (fulfillmentTableCount > 0 && !fulfillmentApplied) ||
+    (fulfillmentApplied && fulfillmentTableCount !== 3)
+  )
+    throw new Error(
+      "Partial/untracked fulfillment DDL detected; restore/reconcile before retrying"
     );
 }
 

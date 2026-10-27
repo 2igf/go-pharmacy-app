@@ -139,12 +139,14 @@ export function ConfirmAction({
   children,
   onCancel,
   onConfirm,
+  manualConfirmClose = false,
 }: {
   open: boolean;
   title: string;
   children: ReactNode;
   onCancel(): void;
   onConfirm(): void;
+  manualConfirmClose?: boolean;
 }) {
   return (
     <AlertDialog
@@ -162,9 +164,13 @@ export function ConfirmAction({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel onClick={onCancel}>رجوع</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>
-            تأكيد العملية
-          </AlertDialogAction>
+          {manualConfirmClose ? (
+            <Button onClick={onConfirm}>تأكيد العملية</Button>
+          ) : (
+            <AlertDialogAction onClick={onConfirm}>
+              تأكيد العملية
+            </AlertDialogAction>
+          )}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

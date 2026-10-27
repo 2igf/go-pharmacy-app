@@ -1,0 +1,21 @@
+{
+  "baseline": {
+    "tests": 141,
+    "files": 25
+  },
+  "final": {
+    "tests": 161,
+    "files": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "applicationTypesExit": 0,
+  "testTypesExit": 0,
+  "productionBuildExit": 0,
+  "androidBuildExit": 0,
+  "androidBuildJava": "21.0.11",
+  "androidSignatureExit": 0,
+  "checkoutFunctionByteIdenticalToBase": true,
+  "packagedAssetCount": 8,
+  "apkSha256": "f3dc0030b81552bdad7e35ec4bbb39a70b16da32fe5390f0f7abd691895c3cf5"
+}

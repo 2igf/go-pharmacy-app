@@ -68,6 +68,12 @@ export default function BetaAdmin() {
   return (
     <Page title="إدارة النسخة التجريبية">
       <Link
+        href="/admin/fulfillment"
+        className="inline-block text-primary underline"
+      >
+        إسناد وتنفيذ الطلبات التجريبية
+      </Link>
+      <Link
         href="/admin/pharmacies"
         className="inline-block text-primary underline"
       >
