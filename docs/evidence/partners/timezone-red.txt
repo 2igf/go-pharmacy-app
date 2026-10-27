@@ -1,0 +1,37 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/database-timezone.integration.test.ts (1 test | 1 failed) 90ms
+   ❯ UTC timestamp transport (1)
+     × sets UTC for every pooled connection so audit timestamps are not shifted 84ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/database-timezone.integration.test.ts > UTC timestamp transport > sets UTC for every pooled connection so audit timestamps are not shifted
+AssertionError: expected { Object (zone, offsetSeconds) } to match object { zone: '+00:00', offsetSeconds: +0 }
+
+- Expected
++ Received
+
+  {
+-   "offsetSeconds": 0,
+-   "zone": "+00:00",
++   "offsetSeconds": 10800,
++   "zone": "SYSTEM",
+  }
+
+ ❯ server/database-timezone.integration.test.ts:11:23
+      9|     for (const result of results) {
+     10|       const rows = result[0] as {zone:string;offsetSeconds:number}[];
+     11|       expect(rows[0]).toMatchObject({zone:"+00:00",offsetSeconds:0});
+       |                       ^
+     12|     }
+     13|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  20:45:14
+   Duration  1.92s (import 85%, transform 8%, tests 6%, worker 1%)

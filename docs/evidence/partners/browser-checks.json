@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-10-27T19:27:12.245Z",
+  "source": "Actual CUA browser interactions with real Express/tRPC/MySQL test backend",
+  "initialOrigin": "http://127.0.0.1:3022",
+  "finalOrigin": "http://localhost:3022",
+  "cases": [
+    {
+      "case": "Admin reviewed and approved fictional application97, explicitly activated owner28",
+      "result": "passed"
+    },
+    {
+      "case": "Applicant admin cannot select approval for own application99",
+      "result": "passed"
+    },
+    {
+      "case": "Audit/application timestamp is displayed without the observed three-hour offset after UTC session fix",
+      "result": "passed"
+    },
+    {
+      "case": "Admin rejected fictional application99 with a reason",
+      "result": "passed"
+    },
+    {
+      "case": "Admin with explicit manager membership can inspect members of95",
+      "result": "passed"
+    },
+    {
+      "case": "Approved application97 with explicitly active owner opens its own empty dashboard",
+      "result": "passed"
+    },
+    {
+      "case": "Owner adjusts pharmacy95 product17 from10 to13/version2 with confirmation and reason",
+      "result": "passed"
+    },
+    {
+      "case": "Owner sees immutable audit with actor28, before10/after13, reason and time",
+      "result": "passed"
+    },
+    {
+      "case": "Staff sees own inventory and frontend rejects zero delta",
+      "result": "passed"
+    },
+    {
+      "case": "Inventory staff adjusts its own pharmacy from13 to14",
+      "result": "passed"
+    },
+    {
+      "case": "Staff cannot open owner audit or foreign organization96 URL; prior account audit is absent",
+      "result": "passed"
+    },
+    {
+      "case": "Dual member switches95 to96: different stock25, no unsubmitted A draft",
+      "result": "passed"
+    },
+    {
+      "case": "Central catalog search and selected-pharmacy stock remain separate",
+      "result": "passed"
+    },
+    {
+      "case": "Viewer can inspect own stock but has no adjustment form",
+      "result": "passed"
+    },
+    {
+      "case": "Customer has no operational portal data and cannot open pharmacy administration",
+      "result": "passed"
+    },
+    {
+      "case": "Suspended membership sees no operational interface",
+      "result": "passed"
+    },
+    {
+      "case": "Rejected pharmacy cannot open operational interface",
+      "result": "passed"
+    },
+    {
+      "case": "Admin suspension of95 confirmed in full DOM: owner has no operational routes or data",
+      "result": "passed"
+    },
+    {
+      "case": "Admin suspends staff30 membership; same account loses operational UI",
+      "result": "passed"
+    },
+    {
+      "case": "Admin restores test staff membership after revocation test without changing platform role",
+      "result": "passed"
+    },
+    {
+      "case": "Application form submits a fictional pharmacy and returns pending membership without operations",
+      "result": "passed"
+    },
+    {
+      "case": "Logout removes operational UI and shows invitation login without prior inventory",
+      "result": "passed"
+    },
+    {
+      "case": "Final localhost UI confirms submission explicitly and keeps new membership pending",
+      "result": "passed"
+    },
+    {
+      "case": "Stock filter presents an explicit empty state without substituting central stock",
+      "result": "passed"
+    },
+    {
+      "case": "Final catalog search narrows actual API results to product17",
+      "result": "passed"
+    },
+    {
+      "case": "Existing customer catalog/navigation renders against the same real test backend",
+      "result": "passed"
+    },
+    {
+      "case": "Existing BetaAdmin products/orders surface remains functional and links new pharmacy management",
+      "result": "passed"
+    }
+  ]
+}

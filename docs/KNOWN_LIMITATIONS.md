@@ -1,5 +1,10 @@
 # Known limitations and release gates
 
+GO Partners Pharmacy Portal V1 is implemented for controlled internal testing;
+see [current report](GO_PARTNERS_PHARMACY_PORTAL_V1.md). Older phase reports are
+historical. Android Checkout validation remains OPEN; no real commercial,
+dispensing, medical consultation or pharmacy-assignment operation is enabled.
+
 Current pharmacy scope/issues are in [PHARMACY_VERIFICATION_V1.md](PHARMACY_VERIFICATION_V1.md).
 Scoped inventory APIs exist in the new branch, but demo was not migrated/deployed.
 **Android Checkout validation remains unresolved.** No medical/sales workflow was activated.

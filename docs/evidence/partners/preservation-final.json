@@ -1,0 +1,227 @@
+{
+  "checkedAt": "2026-10-27T19:28:34.620Z",
+  "originalTestRowsPreserved": true,
+  "originalTestRows": 13,
+  "currentTestRows": 88,
+  "testChecks": [
+    {
+      "table": "__drizzle_migrations",
+      "originalRows": 5,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "appointments",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "cartitems",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "credentials",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "doctorreviews",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "doctors",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "doctortimeslots",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "medicationreminderlogs",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "medicationreminders",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "notifications",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "officialmedicineprices",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "orderitems",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "orders",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "organizationauditevents",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "organizationmemberships",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "organizations",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "pharmacyinventory",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "pharmacyorderassignments",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "prescriptions",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "pricingjurisdictions",
+      "originalRows": 1,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "productreviews",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "products",
+      "originalRows": 2,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "sessions",
+      "originalRows": 0,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "useraddresses",
+      "originalRows": 2,
+      "originalRowsPreserved": true
+    },
+    {
+      "table": "users",
+      "originalRows": 3,
+      "originalRowsPreserved": true
+    }
+  ],
+  "temporaryTestConstraints": 0,
+  "demoUnchanged": true,
+  "demoChecks": [
+    {
+      "table": "__drizzle_migrations",
+      "unchanged": true,
+      "count": 4
+    },
+    {
+      "table": "appointments",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "cartitems",
+      "unchanged": true,
+      "count": 4
+    },
+    {
+      "table": "credentials",
+      "unchanged": true,
+      "count": 3
+    },
+    {
+      "table": "doctorreviews",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "doctors",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "doctortimeslots",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "medicationreminderlogs",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "medicationreminders",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "notifications",
+      "unchanged": true,
+      "count": 3
+    },
+    {
+      "table": "orderitems",
+      "unchanged": true,
+      "count": 2
+    },
+    {
+      "table": "orders",
+      "unchanged": true,
+      "count": 2
+    },
+    {
+      "table": "prescriptions",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "productreviews",
+      "unchanged": true,
+      "count": 0
+    },
+    {
+      "table": "products",
+      "unchanged": true,
+      "count": 4
+    },
+    {
+      "table": "sessions",
+      "unchanged": true,
+      "count": 3
+    },
+    {
+      "table": "useraddresses",
+      "unchanged": true,
+      "count": 2
+    },
+    {
+      "table": "users",
+      "unchanged": true,
+      "count": 3
+    }
+  ]
+}

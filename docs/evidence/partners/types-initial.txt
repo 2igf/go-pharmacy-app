@@ -1,0 +1,9 @@
+
+> go-pharmacy@1.0.0 check C:\Users\Issax\Documents\Codex\2026-10-26\files-pasted-by-the-user-go\outputs\go-pharmacy-foundation
+> tsc --noEmit
+
+client/src/App.tsx(56,28): error TS2322: Type '({ successPath, }: { successPath?: "/admin/pharmacies" | "/products" | "/partners/pharmacy" | undefined; }) => Element' is not assignable to type 'ComponentType<RouteComponentProps<{ [param: number]: string | undefined; }>> | undefined'.
+  Type '({ successPath, }: { successPath?: "/admin/pharmacies" | "/products" | "/partners/pharmacy" | undefined; }) => Element' is not assignable to type 'FunctionComponent<RouteComponentProps<{ [param: number]: string | undefined; }>>'.
+    Types of parameters '__0' and 'props' are incompatible.
+      Type 'RouteComponentProps<{ [param: number]: string | undefined; }>' has no properties in common with type '{ successPath?: "/admin/pharmacies" | "/products" | "/partners/pharmacy" | undefined; }'.
+ ELIFECYCLE  Command failed with exit code 2.

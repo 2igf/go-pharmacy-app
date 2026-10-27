@@ -1,0 +1,23 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/partners-ui-policy.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/partners-ui-policy.test.ts [ server/partners-ui-policy.test.ts ]
+Error: Cannot find module '../client/src/partners/policy' imported from C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation/server/partners-ui-policy.test.ts
+ ❯ server/partners-ui-policy.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import { portalPermissions, selectPortalMembership, stockRequestKey, r…
+       | ^
+      3| import { organizationTransitions, stockAdjustmentSchema } from "../sha…
+      4| const member = { organizationId: 11, name: "Fictional A", countryCode:…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  20:26:31
+   Duration  538ms (worker 96%, environment 4%)

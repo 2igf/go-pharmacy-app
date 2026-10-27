@@ -1,0 +1,45 @@
+{
+  "orgs": {
+    "A": 95,
+    "B": 96,
+    "pending": 97,
+    "rejected": 98,
+    "self": 99,
+    "suspended": 100
+  },
+  "productId": 17,
+  "accounts": {
+    "admin": {
+      "id": 27,
+      "email": "partners-admin@example.test"
+    },
+    "ownerA": {
+      "id": 28,
+      "email": "partners-ownera@example.test"
+    },
+    "ownerB": {
+      "id": 29,
+      "email": "partners-ownerb@example.test"
+    },
+    "staffA": {
+      "id": 30,
+      "email": "partners-staffa@example.test"
+    },
+    "viewer": {
+      "id": 31,
+      "email": "partners-viewer@example.test"
+    },
+    "customer": {
+      "id": 32,
+      "email": "partners-customer@example.test"
+    },
+    "dual": {
+      "id": 33,
+      "email": "partners-dual@example.test"
+    },
+    "suspendedMember": {
+      "id": 34,
+      "email": "partners-suspendedmember@example.test"
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { and, asc, desc, eq, gt, lt } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { getDb } from "./db";
+import { organizationTransitions } from "../shared/pharmacy-policy";
 import {
   organizations,
   organizationMemberships,
@@ -175,13 +176,11 @@ export async function reviewPharmacy(
     const org = await lockOrganization(tx, input.organizationId);
     if (org.createdBy === actorUserId && input.status === "approved")
       forbidden();
-    const transitions: Record<ReviewStatus, readonly ReviewStatus[]> = {
-      pending: ["approved", "rejected"],
-      approved: ["suspended"],
-      rejected: ["pending"],
-      suspended: ["approved", "rejected"],
-    };
-    if (!transitions[org.status].includes(input.status))
+    if (
+      !(
+        organizationTransitions[org.status] as readonly ReviewStatus[]
+      ).includes(input.status)
+    )
       conflict("Invalid organization status transition");
     await tx
       .update(organizations)

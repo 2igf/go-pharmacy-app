@@ -1,0 +1,39 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/partners-ui-policy.test.ts (7 tests | 2 failed) 23ms
+   ❯ Partners UI boundaries and request state (7)
+     × hides retained private data on background errors 9ms
+     × rejects confirmation on a failed/loading detail or changed version, including zero-stock records 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/partners-ui-policy.test.ts > Partners UI boundaries and request state > hides retained private data on background errors
+TypeError: privateQueryData is not a function
+ ❯ server/partners-ui-policy.test.ts:25:12
+     23| describe("Partners UI boundaries and request state", () => {
+     24|   it("hides retained private data on background errors", () => {
+     25|     expect(privateQueryData({ data: [member], error: null })).toEqual(…
+       |            ^
+     26|     expect(privateQueryData({ data: [member], error: new Error("Access…
+     27|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  server/partners-ui-policy.test.ts > Partners UI boundaries and request state > rejects confirmation on a failed/loading detail or changed version, including zero-stock records
+TypeError: canConfirmStockReview is not a function
+ ❯ server/partners-ui-policy.test.ts:29:12
+     27|   });
+     28|   it("rejects confirmation on a failed/loading detail or changed versi…
+     29|     expect(canConfirmStockReview(0, 0, false, false)).toBe(true);
+       |            ^
+     30|     expect(canConfirmStockReview(0, 0, true, false)).toBe(false);
+     31|     expect(canConfirmStockReview(0, 0, false, true)).toBe(false);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 5 passed (7)
+   Start at  20:37:43
+   Duration  819ms (import 73%, transform 18%, tests 5%, worker 3%)

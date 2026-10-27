@@ -4,7 +4,11 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Page, Feedback } from "@/components/BetaLayout";
-export default function Login() {
+export default function Login({
+  successPath = "/products",
+}: {
+  successPath?: "/products" | "/partners/pharmacy" | "/admin/pharmacies";
+}) {
   const [register, setRegister] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +18,7 @@ export default function Login() {
   const utils = trpc.useUtils();
   const onSuccess = async () => {
     await utils.auth.me.invalidate();
-    navigate("/products");
+    navigate(successPath);
   };
   const login = trpc.auth.login.useMutation({ onSuccess });
   const signup = trpc.auth.register.useMutation({ onSuccess });

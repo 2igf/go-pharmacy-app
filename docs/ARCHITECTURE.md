@@ -1,5 +1,9 @@
 # Architecture
 
+Current interface phase: [GO Partners Pharmacy Portal V1](GO_PARTNERS_PHARMACY_PORTAL_V1.md)
+and [local controlled testing](GO_PARTNERS_LOCAL_TESTING.md). This adds the
+pharmacy/admin frontend above the existing nine scoped APIs; no new schema/API.
+
 Latest backend extension: [Pharmacy tenancy and inventory V1](PHARMACY_TENANCY_V1.md),
 with [migration safety](PHARMACY_MIGRATION_V1.md) and
 [executed verification](PHARMACY_VERIFICATION_V1.md). The earlier multi-app report

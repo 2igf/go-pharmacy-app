@@ -1,0 +1,12 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+
+ Test Files  3 passed (3)
+      Tests  20 passed (20)
+   Start at  20:35:20
+   Duration  9.64s (import 50%, tests 45%, transform 5%)
+
+     Import  42 modules were evaluated 58 times · 4.27s total, 50% of tracked time
+             ~1.18s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation

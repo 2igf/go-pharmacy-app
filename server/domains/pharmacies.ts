@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { stockAdjustmentSchema } from "../../shared/pharmacy-policy";
 import { protectedProcedure, adminProcedure, router } from "../_core/trpc";
 import {
   applyPharmacy,
@@ -48,26 +49,7 @@ export const pharmaciesRouter = router({
       )
       .query(({ ctx, input }) => listPharmacyInventory(ctx.user.id, input)),
     adjust: protectedProcedure
-      .input(
-        z
-          .object({
-            organizationId: id,
-            productId: id,
-            delta: z
-              .number()
-              .int()
-              .min(-100000)
-              .max(100000)
-              .refine(v => v !== 0),
-            expectedVersion: z.number().int().min(0).max(2147483646),
-            requestId: z
-              .string()
-              .uuid()
-              .transform(v => v.toLowerCase()),
-            reason,
-          })
-          .strict()
-      )
+      .input(stockAdjustmentSchema)
       .mutation(({ ctx, input }) =>
         adjustPharmacyInventory(ctx.user.id, input)
       ),

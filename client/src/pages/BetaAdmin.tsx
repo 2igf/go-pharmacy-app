@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
@@ -66,6 +67,12 @@ export default function BetaAdmin() {
   } as const;
   return (
     <Page title="إدارة النسخة التجريبية">
+      <Link
+        href="/admin/pharmacies"
+        className="inline-block text-primary underline"
+      >
+        إدارة طلبات الصيدليات والعضويات
+      </Link>
       <Feedback
         error={
           products.error ??

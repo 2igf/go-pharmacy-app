@@ -18,6 +18,7 @@ import {
 } from "../drizzle/schema";
 import { TRPCError } from "@trpc/server";
 import mysql from "mysql2/promise";
+import type { PoolConnection } from "mysql2";
 
 let _pool: mysql.Pool | undefined;
 let _db: MySql2Database | undefined;
@@ -32,6 +33,13 @@ export async function getDb() {
       uri: process.env.DATABASE_URL,
       connectionLimit: 5,
       timezone: "Z",
+    });
+    // timezone:"Z" controls driver conversion, not MySQL's session timezone.
+    // Queue this before pooled application queries; TIMESTAMP reads must be UTC.
+    _pool.pool.on("connection", (connection: PoolConnection) => {
+      connection.query("SET time_zone = '+00:00'", error => {
+        if (error) connection.destroy(); // Never continue with inconsistent dates.
+      });
     });
     _db = drizzle(_pool);
   }
