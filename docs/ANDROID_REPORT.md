@@ -66,6 +66,9 @@ Capacitor's native bridge is privileged; only the bundled trusted scripts should
 | `npm run android:sync` | Exit0; local assets plus CSP copied into Android project |
 | build-android.ps1 / wrapper `:app:assembleDebug` | Exit0; actual APK produced, including latest origin-scoped checkout UI |
 | wrapper `:app:assembleDebug :app:lintDebug :app:assembleDebugAndroidTest` | Exit0; lint **0 errors, 15 warnings** and test APK assembled |
+| Actual emulator installation | Both the delivered application APK and test APK installed successfully on Android16/API36, emulator-5580 |
+| AndroidJUnitRunner on that emulator | **OK (2 tests)** after stabilizing the emulator; package/security and packaged-assets/config contracts verified |
+| Actual emulator GUI | Launched from green pill icon; Arabic RTL setup rendered with system-bar spacing; keyboard/input worked; entering `http://1` and saving displayed the Arabic HTTPS rejection and stayed in setup |
 | `apksigner verify --verbose --print-certs` | Valid Android Debug signer, APK Signature Scheme v2 |
 | `aapt2 dump badging` | Correct ID/name/version/min24/target36; INTERNET plus AndroidX internal signature receiver permission |
 | APK ZIP/config/private fixture checks | Bundled assets present; no remote server.url/cleartext/mixed content; logging none; no exact private fixture secret found |
@@ -78,7 +81,11 @@ The extra moderate dependency occurrence relative to the MVP lockfile is `@capac
 
 ## Emulator and physical-device status
 
-Pending: official Android36 Google APIs x86_64 image download and dedicated isolated AVD smoke/instrumentation validation. Update this section only after execution. No physical phone has been tested. No externally hosted HTTPS native registration/login/checkout flow has been tested.
+The official Android36 Google APIs x86_64 revision7 image was installed, and a dedicated `GO_Pharmacy_Beta_API36` Pixel5 AVD was created with its data under task-local work/android/avd. The new AVD is registered for discovery; existing AVDs were not replaced or launched. The delivered APK installed and launched. Two AndroidJUnitRunner installed-artifact tests passed, and actual computer-use inspection verified the green pill launcher, Arabic RTL setup, editable URL field, visible action button and Arabic rejection of HTTP. Startup and rejection screenshots are in evidence/android. No remote website or hosted API was required to display that packaged interface. The splash theme is configured and builds, but its transient animation was not separately captured/reviewed.
+
+The initial first-boot emulator instance crashed its Android system during instrumentation; that aborted run was not counted as passing. Inspection found Arabic-locale numeric memory/heap values in the generated AVD config, with explicit malformed-value warnings. Only this dedicated AVD was corrected to ASCII RAM/heap settings and restarted (3072MB, heap256MB, four virtual cores). It then completed boot, and the actual instrumentation rerun returned OK(2 tests). Native screen capture initially failed because the emulator window was outside the capturable monitor; the user moved it, after which screenshot-based inspection succeeded. Host-to-guest clipboard/keyboard injection was unreliable, so the final HTTP validation used the Android on-screen keyboard. These are test-environment observations, not hidden passing results or proven physical-device coverage.
+
+No physical phone has been tested. No externally hosted HTTPS native registration/login/checkout flow has been tested. No valid public backend address was saved into the emulator; the HTTP test was rejected before saving. The dedicated emulator remains open for review.
 
 ## Delivery and next action
 

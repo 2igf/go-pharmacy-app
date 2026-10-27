@@ -38,18 +38,18 @@ Files: shared/native-api.ts; client/src/lib/api-fetch.ts; client/src/components/
 
 Files: capacitor.config.ts; package.json; pnpm-lock.yaml; android/; client/index.html; client/src/index.css; scripts/build-android.ps1.
 
-- [ ] Pin compatible stable Capacitor dependencies and generate Android native project with packaged dist/public assets.
-- [ ] Set name/package, RTL, green/white vector icon and splash matching existing pill/green identity; disable cleartext and backups; account for system bars.
-- [ ] Discover/reuse installed SDK or document/install required official components where authorized. Use bundled Java 21 and project Gradle wrapper without global setting changes.
-- [ ] Build assembleDebug, inspect package/signature/assets/permissions and copy APK to outputs.
+- [x] Pin compatible stable Capacitor dependencies and generate Android native project with packaged dist/public assets.
+- [x] Set name/package, RTL, green/white vector icon and splash matching existing pill/green identity; disable cleartext and backups; account for system bars.
+- [x] Discover/reuse installed SDK or document/install required official components where authorized. Use bundled Java 21 and project Gradle wrapper without global setting changes.
+- [x] Build assembleDebug, inspect package/signature/assets/permissions and copy APK to outputs.
 
 ## Task 3: Regression, device validation and delivery
 
 Files: docs/ANDROID.md; docs/ANDROID_REPORT.md; docs/evidence/android/; README.md.
 
-- [ ] Run full tests on actual guarded test MySQL, both type checks, web production build and Android build/lint checks available.
-- [ ] Use an available emulator without deleting/replacing existing AVD data. Verify boot, Arabic setup, validation/navigation, screenshots and logs. Claim no physical-device or live HTTPS auth flow without execution.
-- [ ] Review final security/diff, fix material issues, commit feature branch and deliver APK hashes, installation/Studio instructions and network requirements.
+- [x] Run full tests on actual guarded test MySQL, both type checks, web production build and Android build/lint checks available.
+- [x] Use an available emulator without deleting/replacing existing AVD data. Verify boot, Arabic setup, validation/navigation, screenshots and logs. Claim no physical-device or live HTTPS auth flow without execution.
+- [x] Review final security/diff, fix material issues, commit feature branch and deliver APK hashes, installation/Studio instructions and network requirements.
 
 ## Progress ledger
 
@@ -58,3 +58,5 @@ Files: docs/ANDROID.md; docs/ANDROID_REPORT.md; docs/evidence/android/; README.m
 Task 1 complete: URL and HTTP boundary tests failed before implementation. Cookie-response filtering regression failed before correction; four transport tests passed afterward. Existing web path retained. 88 tests passed across 16 files with actual guarded MySQL; a further native-header HTTP/session/MySQL integration test passed independently. Both TypeScript commands passed. Native bridge logging disabled after discovering the vendor cookie manager logs Set-Cookie values at info level. This does not claim phone HTTPS end-to-end testing.
 
 Task 2 ruling: User approved the Android SDK agreement/download after the configured SDK path was confirmed missing. Official command-line tools SHA-256 matched Google's published 90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a. API36, Build Tools36 and platform-tools installed into task-local work/android/sdk. Emulator/image downloading. New Gradle8.14.3 downloads stalled/slow; existing complete Gradle8.13 found, and Google's AGP8.13 compatibility table explicitly supports Gradle8.13. Selected that installed distribution and pinned its official checksum. No SDK/AGP/Capacitor API version lowered, no SSL or auth bypass.
+
+Tasks 2–3 complete: Final acceptance 91/91 across18files against actual MySQL, both type checks, production build, app APK and test APK assembly. Android lint0errors15warnings; initial SDK property escaping issue fixed and Android12+ transfer exclusions added before passing rerun. APK v2 signature/identity/bundled configuration checked and no exact private fixtures found in APK or staged blobs. Demo orders1/2 preserved by read-only check. Audit0critical0high3moderate3low; extra occurrence is CLI's inactive Xcode/uuid helper. Dedicated AVD installed APK; initial Android system crash and Arabic memory config warnings were investigated, own AVD corrected/restarted, then AndroidJUnitRunner returned OK(2tests). User moved off-screen emulator window; actual CUA screenshots then verified Arabic startup, green pill launcher and HTTP rejection. External trusted HTTPS and physical phone remain untested and explicitly documented. Commit a3e11d5 contains the implementation; final verification artifacts/commit/hash live in the delivery manifest. No push, main edit, merge, DB migration or public deployment.
