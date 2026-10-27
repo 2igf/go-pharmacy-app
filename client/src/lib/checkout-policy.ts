@@ -5,3 +5,12 @@ export function mayReviewRejectedCheckout(code: string | undefined) {
     code ?? ""
   );
 }
+import { normalizeApiOrigin } from "@shared/native-api";
+
+// Browser storage is already isolated by website origin. A packaged app can
+// switch backend origins, so its pending submission must include that scope.
+export function checkoutStorageKey(userId: number, apiOrigin: string | null) {
+  return apiOrigin
+    ? `checkout:native:${encodeURIComponent(normalizeApiOrigin(apiOrigin))}:${userId}`
+    : `checkout:${userId}`;
+}

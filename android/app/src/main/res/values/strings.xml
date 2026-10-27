@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">GO Pharmacy</string>
+    <string name="title_activity_main">GO Pharmacy</string>
+    <string name="package_name">com.gopharmacy.beta</string>
+    <string name="custom_url_scheme">com.gopharmacy.beta</string>
+</resources>

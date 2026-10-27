@@ -14,6 +14,54 @@ async function withServer(test: (url: string) => Promise<void>) {
   }
 }
 describe("real Express HTTP boundaries", () => {
+  it("allows only explicitly enabled native HTTPS mutations without weakening web origin checks", async () =>
+    withServer(async url => {
+      vi.stubEnv("APP_ORIGIN", "https://beta.example.test");
+      const post = (headers: Record<string, string>) =>
+        fetch(`${url}/api/trpc/auth.logout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", ...headers },
+          body: "{}",
+        });
+      const nativeHeaders = {
+        Origin: "https://localhost",
+        "X-Go-Pharmacy-Client": "android",
+      };
+      expect((await post(nativeHeaders)).status).toBe(403);
+      vi.stubEnv("ANDROID_API_ENABLED", "true");
+      // Untrusted forwarded headers never establish secure transport.
+      expect(
+        (await post({ ...nativeHeaders, "X-Forwarded-Proto": "https" })).status
+      ).toBe(403);
+      vi.stubEnv("TRUST_PROXY", "loopback");
+      // createApp captured proxy configuration before the stub; use a new server below.
+    }));
+  it("accepts a secure native request behind an explicitly trusted proxy only", async () => {
+    vi.stubEnv("APP_ORIGIN", "https://beta.example.test");
+    vi.stubEnv("ANDROID_API_ENABLED", "true");
+    vi.stubEnv("TRUST_PROXY", "loopback");
+    await withServer(async url => {
+      const post = (origin: string, client = "android") =>
+        fetch(`${url}/api/trpc/auth.logout`, {
+          method: "POST",
+          headers: {
+            Origin: origin,
+            "X-Go-Pharmacy-Client": client,
+            "X-Forwarded-Proto": "https",
+            "Content-Type": "application/json",
+          },
+          body: "{}",
+        });
+      const response = await post("https://localhost");
+      expect(response.status).toBe(200);
+      expect(response.headers.get("set-cookie")).toContain("HttpOnly");
+      expect(response.headers.get("set-cookie")).toContain("Secure");
+      expect(response.headers.get("set-cookie")).toContain("SameSite=Lax");
+      expect(response.headers.get("access-control-allow-origin")).toBeNull();
+      expect((await post("https://attacker.example")).status).toBe(403);
+      expect((await post("https://localhost", "web")).status).toBe(403);
+    });
+  });
   it("rejects cross-origin and absent-origin writes", async () =>
     withServer(async url => {
       vi.stubEnv("APP_ORIGIN", url);

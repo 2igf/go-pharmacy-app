@@ -1,0 +1,17 @@
+
+> go-pharmacy@1.0.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-android
+
+Tue, 27 Oct 2026 04:04:23 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:155:13
+Tue, 27 Oct 2026 04:04:37 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:155:13
+
+ Test Files  18 passed (18)
+      Tests  91 passed (91)
+   Start at  07:04:17
+   Duration  33.35s (import 83%, tests 15%, transform 2%, worker 1%)
+
+    Isolate  18 workers spawned · ~338ms startup each (spawn + environment, per file)
+             at least ~5.74s faster with isolate: false — reuses workers across files instead of one per file

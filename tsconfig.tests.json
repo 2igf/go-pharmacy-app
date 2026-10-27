@@ -4,12 +4,10 @@
     "server/**/*.ts",
     "shared/**/*.ts",
     "drizzle/**/*.ts",
-    "scripts/**/*.ts"
+    "scripts/**/*.ts",
+    "capacitor.config.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "incremental": false
   }

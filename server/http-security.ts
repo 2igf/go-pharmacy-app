@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import type { RequestHandler } from "express";
+import { ANDROID_ORIGIN } from "../shared/native-api";
 // Single-process Beta limiter: bounded keys, no cookies, emails, URLs or tokens in logs.
 export function rateLimit(max: number, windowMs: number): RequestHandler {
   const buckets = new Map<string, { count: number; until: number }>();
@@ -47,10 +48,21 @@ export const sameOrigin: RequestHandler = (req, res, next) => {
     return;
   }
   const expected = process.env.APP_ORIGIN;
+  // Native HTTP uses the same opaque HttpOnly session cookies. This is an
+  // explicit transport boundary, never an identity/role or certificate bypass.
+  // No CORS permission is issued to browser fetches from localhost.
+  const native =
+    process.env.ANDROID_API_ENABLED === "true" &&
+    req.secure &&
+    expected?.startsWith("https://") &&
+    req.headers.origin === ANDROID_ORIGIN &&
+    req.headers["x-go-pharmacy-client"] === "android" &&
+    req.headers["sec-fetch-site"] !== "cross-site";
   if (
-    !expected ||
-    req.headers.origin !== expected ||
-    req.headers["sec-fetch-site"] === "cross-site"
+    !native &&
+    (!expected ||
+      req.headers.origin !== expected ||
+      req.headers["sec-fetch-site"] === "cross-site")
   ) {
     res.status(403).json({ error: "Same-origin request required" });
     return;

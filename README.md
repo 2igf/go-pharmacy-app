@@ -2,6 +2,10 @@
 
 Existing React/TypeScript/Express/tRPC/Drizzle/MySQL application, stabilized for invited fictional-data testing. **No real medicine sales, payments, patient records, consultation, dispensing or delivery.**
 
+## Android debug application
+
+This branch also packages the MVP interface locally with Capacitor 8.5.3 as `com.gopharmacy.beta`. See [Android build, Studio, installation and HTTPS configuration](docs/ANDROID.md). The APK keeps Express/MySQL external; the current loopback HTTP demo cannot serve a phone. Without a configured reachable trusted HTTPS backend, the installed Arabic connection screen is available but login/catalog/orders are not connected. No cleartext or certificate bypass is included.
+
 ## Quick start
 
 Requires Node 24, the package manager pinned in package.json, and MySQL 8.4 with a dedicated empty UTF-8 database. Copy `.env.example` to `.env`; replace every placeholder. Set `BETA_ALLOWED_EMAILS` and a cryptographically random `BETA_INVITE_SECRET` of at least 32 characters. Never use a `VITE_` variable for secrets.

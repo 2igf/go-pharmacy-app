@@ -5,7 +5,11 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Page, Feedback } from "@/components/BetaLayout";
-import { mayReviewRejectedCheckout } from "@/lib/checkout-policy";
+import {
+  checkoutStorageKey,
+  mayReviewRejectedCheckout,
+} from "@/lib/checkout-policy";
+import { getNativeApiOrigin } from "@/lib/api-fetch";
 export default function Checkout() {
   const { user } = useAuth({ redirectOnUnauthenticated: true });
   const [, navigate] = useLocation();
@@ -30,20 +34,21 @@ export default function Checkout() {
     idempotencyKey: string;
   };
   const [pending, setPending] = useState<Pending | null>(null);
+  const storageKey = user
+    ? checkoutStorageKey(user.id, getNativeApiOrigin())
+    : null;
   useEffect(() => {
     if (user) {
       try {
-        setPending(
-          JSON.parse(sessionStorage.getItem(`checkout:${user.id}`) ?? "null")
-        );
+        setPending(JSON.parse(sessionStorage.getItem(storageKey!) ?? "null"));
       } catch {
         setPending(null);
       }
     }
-  }, [user?.id]);
+  }, [storageKey]);
   const create = trpc.orders.create.useMutation({
     onSuccess: async order => {
-      sessionStorage.removeItem(`checkout:${user?.id}`);
+      if (storageKey) sessionStorage.removeItem(storageKey);
       setPending(null);
       await utils.cart.invalidate();
       await utils.orders.invalidate();
@@ -63,11 +68,11 @@ export default function Checkout() {
       idempotencyKey: crypto.randomUUID(),
     };
     setPending(request);
-    sessionStorage.setItem(`checkout:${user.id}`, JSON.stringify(request));
+    sessionStorage.setItem(storageKey!, JSON.stringify(request));
     create.mutate(request);
   };
   const reset = () => {
-    sessionStorage.removeItem(`checkout:${user?.id}`);
+    if (storageKey) sessionStorage.removeItem(storageKey);
     setPending(null);
     create.reset();
     quote.refetch();
