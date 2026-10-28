@@ -14,3 +14,14 @@ export function checkoutStorageKey(userId: number, apiOrigin: string | null) {
     ? `checkout:native:${encodeURIComponent(normalizeApiOrigin(apiOrigin))}:${userId}`
     : `checkout:${userId}`;
 }
+
+/** Cached data alone is not proof of current ownership after an account switch. */
+export function visibleCustomerOrder<T extends { userId: number }>(
+  order: T | undefined,
+  userId: number | undefined,
+  error: unknown
+): T | undefined {
+  return !error && userId !== undefined && order?.userId === userId
+    ? order
+    : undefined;
+}

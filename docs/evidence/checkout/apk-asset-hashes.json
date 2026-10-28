@@ -1,0 +1,82 @@
+[
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "AdminFulfillment-Cgdutn6a.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "AdminPharmacies-k1TQlrvU.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "FulfillmentRequest-I_ps5FmB.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "index-DMig0ico.css",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "index-u8RyHiTt.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "policy-CsRXGKac.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "Portal-B-dL14ld.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "asset": "Records-uK35vWeC.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "AdminFulfillment-Cgdutn6a.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "AdminPharmacies-k1TQlrvU.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "FulfillmentRequest-I_ps5FmB.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "index-DMig0ico.css",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "index-u8RyHiTt.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "policy-CsRXGKac.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "Portal-B-dL14ld.js",
+    "matches": true
+  },
+  {
+    "apk": "android/app/build/outputs/apk/checkoutTest/app-checkoutTest.apk",
+    "asset": "Records-uK35vWeC.js",
+    "matches": true
+  }
+]

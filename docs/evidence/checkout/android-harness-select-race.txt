@@ -1,0 +1,50 @@
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CheckoutJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.gopharmacy.beta.CheckoutJourneyTest:
+INSTRUMENTATION_STATUS: test=customerToPharmacyThroughBundledWebView
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CheckoutJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: DOM action unavailable expected:<true> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at com.gopharmacy.beta.CheckoutJourneyTest.command(CheckoutJourneyTest.java:53)
+	at com.gopharmacy.beta.CheckoutJourneyTest.select(CheckoutJourneyTest.java:60)
+	at com.gopharmacy.beta.CheckoutJourneyTest.customerToPharmacyThroughBundledWebView(CheckoutJourneyTest.java:123)
+
+INSTRUMENTATION_STATUS: stream=
+Error in customerToPharmacyThroughBundledWebView(com.gopharmacy.beta.CheckoutJourneyTest):
+java.lang.AssertionError: DOM action unavailable expected:<true> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at com.gopharmacy.beta.CheckoutJourneyTest.command(CheckoutJourneyTest.java:53)
+	at com.gopharmacy.beta.CheckoutJourneyTest.select(CheckoutJourneyTest.java:60)
+	at com.gopharmacy.beta.CheckoutJourneyTest.customerToPharmacyThroughBundledWebView(CheckoutJourneyTest.java:123)
+
+INSTRUMENTATION_STATUS: test=customerToPharmacyThroughBundledWebView
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 23.533
+There was 1 failure:
+1) customerToPharmacyThroughBundledWebView(com.gopharmacy.beta.CheckoutJourneyTest)
+java.lang.AssertionError: DOM action unavailable expected:<true> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at com.gopharmacy.beta.CheckoutJourneyTest.command(CheckoutJourneyTest.java:53)
+	at com.gopharmacy.beta.CheckoutJourneyTest.select(CheckoutJourneyTest.java:60)
+	at com.gopharmacy.beta.CheckoutJourneyTest.customerToPharmacyThroughBundledWebView(CheckoutJourneyTest.java:123)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

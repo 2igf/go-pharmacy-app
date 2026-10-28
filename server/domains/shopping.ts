@@ -3,6 +3,7 @@ import { protectedProcedure, router } from "../_core/trpc";
 import { checkout, changeCart, cartQuote, orderDetail } from "../commerce";
 import { getUserCartItems, getUserOrders } from "../db";
 import { withCustomerFulfillment } from "../fulfillment";
+import { checkoutSchema } from "../../shared/checkout";
 
 export const cartRouter = router({
   list: protectedProcedure.query(({ ctx }) => getUserCartItems(ctx.user.id)),
@@ -39,19 +40,6 @@ export const ordersRouter = router({
     .input(z.object({ id: z.number().int().positive() }))
     .query(({ ctx, input }) => orderDetail(input.id, ctx.user.id)),
   create: protectedProcedure
-    .input(
-      z
-        .object({
-          addressId: z.number().int().positive(),
-          idempotencyKey: z.string().uuid(),
-          contactName: z.string().trim().min(2).max(100),
-          contactPhone: z.string().regex(/^[+0-9 ()-]{6,30}$/),
-          expectedTotal: z.string().regex(/^\d{1,8}\.\d{2}$/),
-          paymentMethod: z.literal("cash"),
-          simulationAcknowledged: z.literal(true),
-          expectedCartHash: z.string().regex(/^[a-f0-9]{64}$/),
-        })
-        .strict()
-    )
+    .input(checkoutSchema)
     .mutation(({ ctx, input }) => checkout(ctx.user.id, input)),
 });

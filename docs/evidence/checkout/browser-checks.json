@@ -1,0 +1,34 @@
+{
+  "origin": "http://localhost:3022",
+  "checks": [
+    {
+      "case": "fictional_address_and_cart",
+      "passed": true
+    },
+    {
+      "case": "arabic_field_error",
+      "passed": true
+    },
+    {
+      "case": "persian_numerals_checkout",
+      "passed": true,
+      "orderId": 194
+    },
+    {
+      "case": "explicit_admin_enrollment_assignment",
+      "passed": true,
+      "orderId": 194,
+      "organizationId": 95
+    },
+    {
+      "case": "staff_accept_prepare_ready",
+      "passed": true,
+      "orderId": 194
+    },
+    {
+      "case": "customer_fulfillment_visible",
+      "passed": true,
+      "orderId": 194
+    }
+  ]
+}

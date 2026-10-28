@@ -1,0 +1,8 @@
+{
+  "normalApk": "android/app/build/outputs/apk/debug/app-debug.apk",
+  "normalContainsTestCa": false,
+  "normalContainsTestNetworkConfig": false,
+  "testContainsTestCa": true,
+  "apkSha256": "788476245f7a817d911bc65c214eaa6ecf1c653da77b35592b03c95312ed011c",
+  "bytes": 4546452
+}

@@ -17,10 +17,22 @@ android {
         }
     }
     buildTypes {
+        // Explicit local instrumentation variant. Ordinary debug/release never trust this CA.
+        if (project.hasProperty('checkoutTestCaDir')) {
+            checkoutTest {
+                initWith debug
+                applicationIdSuffix ".checkouttest"
+                matchingFallbacks = ['debug']
+            }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    if (project.hasProperty('checkoutTestCaDir')) {
+        testBuildType "checkoutTest"
+        sourceSets.checkoutTest.res.srcDir rootProject.file(project.property('checkoutTestCaDir'))
     }
 }
 

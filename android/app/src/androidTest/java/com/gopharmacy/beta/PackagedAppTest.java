@@ -36,6 +36,7 @@ public class PackagedAppTest {
         assertEquals(0, app.getApplicationInfo().flags & ApplicationInfo.FLAG_ALLOW_BACKUP);
         assertNotEquals(0, app.getApplicationInfo().flags & ApplicationInfo.FLAG_SUPPORTS_RTL);
         assertFalse(NetworkSecurityPolicy.getInstance().isCleartextTrafficPermitted());
+        assertEquals(0, app.getResources().getIdentifier("checkout_test_ca", "raw", app.getPackageName()));
     }
 
     @Test

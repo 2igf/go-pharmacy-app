@@ -1,0 +1,15 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+
+ Test Files  28 passed (28)
+      Tests  161 passed (161)
+   Start at  06:42:39
+   Duration  91.98s (import 73%, tests 25%, transform 2%)
+
+     Import  74 modules were evaluated 95 times · 59.10s total, 73% of tracked time
+             ~13.07s faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+Wed, 28 Oct 2026 03:43:33 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:155:13
+Wed, 28 Oct 2026 03:43:45 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:155:13

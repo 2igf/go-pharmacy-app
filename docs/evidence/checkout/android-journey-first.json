@@ -1,0 +1,11 @@
+{
+  "wrongHostnameRejected": true,
+  "arabicFieldMessage": true,
+  "phoneHtmlValidBeforeSubmit": true,
+  "orderId": 190,
+  "checkoutResponseLossRecovered": true,
+  "pharmacyReady": true,
+  "customerSeesFulfillment": true,
+  "cachedForeignOrderHidden": true,
+  "mode": "journey"
+}

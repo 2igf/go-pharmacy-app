@@ -1,0 +1,6 @@
+{
+  "wrongHostnameRejected": true,
+  "phoneHtmlValidBeforeSubmit": true,
+  "originalValidationReproduced": true,
+  "mode": "reproduce"
+}

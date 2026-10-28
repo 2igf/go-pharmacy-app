@@ -1,0 +1,73 @@
+{
+  "orders": [
+    {
+      "id": 190,
+      "userId": 32,
+      "isSimulated": 1,
+      "totalAmount": "0.10",
+      "quantity": 1,
+      "assignmentCount": 1,
+      "reservationCount": 1,
+      "assignmentAuditCount": 1,
+      "canonicalPhone": true
+    },
+    {
+      "id": 191,
+      "userId": 32,
+      "isSimulated": 1,
+      "totalAmount": "0.10",
+      "quantity": 1,
+      "assignmentCount": 1,
+      "reservationCount": 1,
+      "assignmentAuditCount": 1,
+      "canonicalPhone": true
+    },
+    {
+      "id": 192,
+      "userId": 32,
+      "isSimulated": 1,
+      "totalAmount": "0.10",
+      "quantity": 1,
+      "assignmentCount": 0,
+      "reservationCount": 0,
+      "assignmentAuditCount": 0,
+      "canonicalPhone": true
+    },
+    {
+      "id": 193,
+      "userId": 32,
+      "isSimulated": 1,
+      "totalAmount": "0.10",
+      "quantity": 1,
+      "assignmentCount": 0,
+      "reservationCount": 0,
+      "assignmentAuditCount": 0,
+      "canonicalPhone": true
+    },
+    {
+      "id": 194,
+      "userId": 29,
+      "isSimulated": 1,
+      "totalAmount": "0.10",
+      "quantity": 1,
+      "assignmentCount": 1,
+      "reservationCount": 1,
+      "assignmentAuditCount": 1,
+      "canonicalPhone": true
+    },
+    {
+      "id": 195,
+      "userId": 32,
+      "isSimulated": 1,
+      "totalAmount": "0.10",
+      "quantity": 1,
+      "assignmentCount": 1,
+      "reservationCount": 1,
+      "assignmentAuditCount": 1,
+      "canonicalPhone": true
+    }
+  ],
+  "duplicateOrderKeys": 0,
+  "centralStock": 14,
+  "pharmacyAvailable": 6
+}

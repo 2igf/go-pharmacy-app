@@ -10,6 +10,13 @@ import {
   mayReviewRejectedCheckout,
 } from "@/lib/checkout-policy";
 import { getNativeApiOrigin } from "@/lib/api-fetch";
+import {
+  checkoutSchema,
+  checkoutPhonePattern,
+  checkoutValidationIssues,
+  parsePendingCheckout,
+  type CheckoutRequest,
+} from "@shared/checkout";
 export default function Checkout() {
   const { user } = useAuth({ redirectOnUnauthenticated: true });
   const [, navigate] = useLocation();
@@ -23,24 +30,19 @@ export default function Checkout() {
   const [contactPhone, setPhone] = useState("");
   const [ack, setAck] = useState(false);
   // Preserve the request and key on ambiguous network failure, including navigation/reload.
-  type Pending = {
-    addressId: number;
-    contactName: string;
-    contactPhone: string;
-    expectedTotal: string;
-    expectedCartHash: string;
-    paymentMethod: "cash";
-    simulationAcknowledged: true;
-    idempotencyKey: string;
-  };
-  const [pending, setPending] = useState<Pending | null>(null);
+  const [pending, setPending] = useState<CheckoutRequest | null>(null);
+  const [invalidSaved, setInvalidSaved] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const storageKey = user
     ? checkoutStorageKey(user.id, getNativeApiOrigin())
     : null;
   useEffect(() => {
     if (user) {
       try {
-        setPending(JSON.parse(sessionStorage.getItem(storageKey!) ?? "null"));
+        const saved = sessionStorage.getItem(storageKey!);
+        const restored = parsePendingCheckout(saved);
+        setPending(restored);
+        setInvalidSaved(!!saved && !restored);
       } catch {
         setPending(null);
       }
@@ -57,6 +59,7 @@ export default function Checkout() {
   });
   const submit = () => {
     if (!user || !quote.data) return;
+    if (invalidSaved) return;
     const request = pending ?? {
       addressId: Number(addressId),
       contactName,
@@ -67,13 +70,25 @@ export default function Checkout() {
       simulationAcknowledged: true as const,
       idempotencyKey: crypto.randomUUID(),
     };
-    setPending(request);
-    sessionStorage.setItem(storageKey!, JSON.stringify(request));
-    create.mutate(request);
+    const parsed = checkoutSchema.safeParse(request);
+    if (!parsed.success) {
+      setValidationErrors(
+        checkoutValidationIssues(parsed.error.issues).map(
+          issue => issue.message
+        )
+      );
+      return;
+    }
+    setValidationErrors([]);
+    setPending(parsed.data);
+    sessionStorage.setItem(storageKey!, JSON.stringify(parsed.data));
+    create.mutate(parsed.data);
   };
   const reset = () => {
     if (storageKey) sessionStorage.removeItem(storageKey);
     setPending(null);
+    setInvalidSaved(false);
+    setValidationErrors([]);
     create.reset();
     quote.refetch();
   };
@@ -83,6 +98,13 @@ export default function Checkout() {
         loading={quote.isLoading || addresses.isLoading}
         error={quote.error ?? addresses.error ?? create.error}
       />
+      {validationErrors.length > 0 && (
+        <ul role="alert" className="text-red-700">
+          {validationErrors.map(message => (
+            <li key={message}>{message}</li>
+          ))}
+        </ul>
+      )}
       {quote.data?.items.map(item => (
         <p key={item.id}>
           {item.name} × {item.quantity}: {item.lineTotal} JD
@@ -93,7 +115,17 @@ export default function Checkout() {
           الإجمالي من الخادم: {quote.data.total} JD (شحن 0.00، ضريبة 0.00)
         </p>
       )}
-      {pending ? (
+      {invalidSaved ? (
+        <div role="alert" className="space-y-3">
+          <p>
+            بيانات الإرسال المحفوظ غير صالحة. راجع طلباتك قبل بدء إرسال جديد.
+          </p>
+          <Link href="/profile">مراجعة الطلبات</Link>
+          <Button variant="outline" onClick={reset}>
+            مراجعة السلة وتصحيح البيانات
+          </Button>
+        </div>
+      ) : pending ? (
         <div className="space-y-3">
           <p>
             يوجد إرسال محفوظ. أعد المحاولة بالمفتاح نفسه لاسترجاع الطلب دون
@@ -121,7 +153,17 @@ export default function Checkout() {
             <select
               required
               value={addressId}
-              onChange={e => setAddressId(e.target.value)}
+              onInvalid={e =>
+                e.currentTarget.setCustomValidity(
+                  checkoutValidationIssues([
+                    { path: ["addressId"], code: "invalid_format" },
+                  ])[0].message
+                )
+              }
+              onChange={e => {
+                e.target.setCustomValidity("");
+                setAddressId(e.target.value);
+              }}
               className="block border p-2 rounded w-full"
             >
               <option value="">اختر العنوان</option>
@@ -142,16 +184,38 @@ export default function Checkout() {
               minLength={2}
               maxLength={100}
               value={contactName}
-              onChange={e => setName(e.target.value)}
+              onInvalid={e =>
+                e.currentTarget.setCustomValidity(
+                  checkoutValidationIssues([
+                    { path: ["contactName"], code: "invalid_format" },
+                  ])[0].message
+                )
+              }
+              onChange={e => {
+                e.target.setCustomValidity("");
+                setName(e.target.value);
+              }}
             />
           </label>
           <label className="block">
             رقم اختبار
             <Input
               required
-              pattern="[+0-9 ()-]{6,30}"
+              pattern={checkoutPhonePattern}
+              inputMode="tel"
+              maxLength={30}
               value={contactPhone}
-              onChange={e => setPhone(e.target.value)}
+              onInvalid={e =>
+                e.currentTarget.setCustomValidity(
+                  checkoutValidationIssues([
+                    { path: ["contactPhone"], code: "invalid_format" },
+                  ])[0].message
+                )
+              }
+              onChange={e => {
+                e.target.setCustomValidity("");
+                setPhone(e.target.value);
+              }}
             />
           </label>
           <label className="flex gap-3">

@@ -1,5 +1,11 @@
 # Architecture
 
+Latest checkout verification: [Android Checkout & E2E V1](ANDROID_CHECKOUT_E2E_V1.md),
+[test procedure](ANDROID_CHECKOUT_TESTING.md) and
+[inventory reconciliation requirements](SIMULATED_INVENTORY_RECONCILIATION.md).
+The reproduced Arabic-number validation failure is corrected and the full simulated
+journey is verified on API36 WebView; physical-phone acceptance remains untested.
+
 Current extension: [Simulated pharmacy fulfillment V1](PHARMACY_FULFILLMENT_V1.md),
 with [test-only migration safety](PHARMACY_FULFILLMENT_MIGRATION_V1.md) and
 [local testing](PHARMACY_FULFILLMENT_LOCAL_TESTING.md). Explicit enrollment and

@@ -1,0 +1,39 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/order-visibility.test.ts (2 tests | 2 failed) 11ms
+   ❯ customer order cache visibility (2)
+     × hides a retained record immediately when the account changes or disappears 7ms
+     × hides retained order and fulfillment details after a failed authorization refresh 1ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  06:57:54
+   Duration  511ms (transform 54%, import 26%, worker 10%, tests 9%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/order-visibility.test.ts > customer order cache visibility > hides a retained record immediately when the account changes or disappears
+TypeError: visibleCustomerOrder is not a function
+ ❯ server/order-visibility.test.ts:6:10
+      4|  it("hides a retained record immediately when the account changes or d…
+      5|   const order={id:7,userId:1,deliveryAddress:"Fictional private addres…
+      6|   expect(visibleCustomerOrder(order,1,null)).toBe(order);
+       |          ^
+      7|   expect(visibleCustomerOrder(order,2,null)).toBeUndefined();
+      8|   expect(visibleCustomerOrder(order,undefined,null)).toBeUndefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  server/order-visibility.test.ts > customer order cache visibility > hides retained order and fulfillment details after a failed authorization refresh
+TypeError: visibleCustomerOrder is not a function
+ ❯ server/order-visibility.test.ts:11:38
+      9|  });
+     10|  it("hides retained order and fulfillment details after a failed autho…
+     11|   const order={id:7,userId:1};expect(visibleCustomerOrder(order,1,new …
+       |                                      ^
+     12|  });
+     13| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯

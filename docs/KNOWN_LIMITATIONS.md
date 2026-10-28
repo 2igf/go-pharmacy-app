@@ -1,11 +1,18 @@
 # Known limitations and release gates
 
+Current checkout status (2026-10-28): the reproduced contactPhone/Arabic numeral
+failure is fixed and the complete simulated customer-to-pharmacy journey was verified
+on Android16/API36 WebView. **Physical-phone acceptance remains untested**, and the
+existing phone HTTPS backend was not upgraded/migrated. See
+[Android Checkout & E2E V1](ANDROID_CHECKOUT_E2E_V1.md). OPEN notes in dated older
+phase reports describe their historical state, not this emulator verification.
+
 Simulated pharmacy fulfillment V1 is implemented behind an opt-in flag for controlled
 test data; see [current report](PHARMACY_FULFILLMENT_V1.md). It supports explicit
 single-pharmacy assignment, reservation and preparation only. No real commercial,
 dispensing, medical consultation or delivery operation is enabled. Demo and the
 mobile HTTPS environment were not migrated or reconfigured.
-**Android Checkout validation remains OPEN and unresolved.** Previous phase reports,
+The previous phase left Android Checkout OPEN; the qualified current status is above. Previous phase reports,
 including [the Partners portal report](GO_PARTNERS_PHARMACY_PORTAL_V1.md), are historical.
 
 Current pharmacy scope/issues are in [PHARMACY_VERIFICATION_V1.md](PHARMACY_VERIFICATION_V1.md).

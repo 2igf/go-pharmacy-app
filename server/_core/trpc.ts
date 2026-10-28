@@ -4,13 +4,28 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 import type { TrpcContext } from "./context";
 import { canUseService } from "../access-policy";
+import { checkoutValidationIssues } from "../../shared/checkout";
 
 const t = initTRPC.context<TrpcContext>().create({
   transformer: superjson,
-  errorFormatter({ shape, error }) {
+  errorFormatter({ shape, error, path }) {
+    const checkoutIssues =
+      path === "orders.create" && error.cause instanceof ZodError
+        ? checkoutValidationIssues(error.cause.issues)
+        : [];
+    if (checkoutIssues.length) {
+      // Field/code only: never log the request, values, identifiers or credentials.
+      console.info(
+        JSON.stringify({
+          event: "checkout_validation",
+          issues: checkoutIssues.map(({ field, code }) => ({ field, code })),
+        })
+      );
+    }
     const { stack: _stack, ...safeData } = shape.data;
-    const message =
-      error.cause instanceof ZodError
+    const message = checkoutIssues.length
+      ? [...new Set(checkoutIssues.map(issue => issue.message))].join(" ")
+      : error.cause instanceof ZodError
         ? "البيانات غير صالحة. تحقق من الحقول المطلوبة وصيغة الاسم والأرقام."
         : shape.message;
     return {
@@ -19,7 +34,10 @@ const t = initTRPC.context<TrpcContext>().create({
         error.code === "INTERNAL_SERVER_ERROR"
           ? "Service error. Please try again."
           : message,
-      data: safeData,
+      data: {
+        ...safeData,
+        validationFields: checkoutIssues.map(issue => issue.field),
+      },
     };
   },
 });
@@ -42,12 +60,17 @@ const requireUser = t.middleware(async opts => {
   });
 });
 
-export const protectedProcedure = t.procedure.use(requireUser).use(({ ctx, next }) => {
-  if (!canUseService(ctx.user.role, "personal")) {
-    throw new TRPCError({ code: "FORBIDDEN", message: "Account role unavailable" });
-  }
-  return next({ ctx });
-});
+export const protectedProcedure = t.procedure
+  .use(requireUser)
+  .use(({ ctx, next }) => {
+    if (!canUseService(ctx.user.role, "personal")) {
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message: "Account role unavailable",
+      });
+    }
+    return next({ ctx });
+  });
 
 export const medicalProcedure = protectedProcedure.use(() => {
   throw new TRPCError({

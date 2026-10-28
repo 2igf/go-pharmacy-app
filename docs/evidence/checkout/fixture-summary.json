@@ -1,0 +1,9 @@
+{
+  "productId": 19,
+  "organizationId": 95,
+  "accounts": {
+    "customer": 32,
+    "admin": 27,
+    "staff": 30
+  }
+}

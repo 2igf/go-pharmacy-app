@@ -1,0 +1,19 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/checkout-validation.test.ts (0 test)
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  06:50:45
+   Duration  764ms (worker 94%, environment 6%)
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/checkout-validation.test.ts [ server/checkout-validation.test.ts ]
+Error: Cannot find module '../shared/checkout' imported from C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation/server/checkout-validation.test.ts
+ ❯ server/checkout-validation.test.ts:3:1
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

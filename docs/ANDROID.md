@@ -1,5 +1,10 @@
 # GO Pharmacy Android debug
 
+Current checkout verification and emulator-only TLS fixture:
+[Android Checkout & E2E V1](ANDROID_CHECKOUT_E2E_V1.md) and
+[step-by-step test procedure](ANDROID_CHECKOUT_TESTING.md). Older implementation
+reports are historical; physical-phone acceptance for this correction is not claimed.
+
 This Android project starts from the completed MVP commit `943498797d8adc11af7fde0fb9f681df1021857c`, on branch `feat/android-capacitor-debug`. It packages the existing React/Vite interface into the APK with Capacitor 8.5.3. There is no remote `server.url`. The Express backend and MySQL database remain separate services.
 
 ## Open in Android Studio on this Windows machine

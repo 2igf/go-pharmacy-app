@@ -1,0 +1,44 @@
+{
+  "source": "eb4a97961f05dc912eaae897a88bff05bb4e3f02",
+  "baseline": {
+    "tests": 161,
+    "files": 28
+  },
+  "vitest": {
+    "passed": 168,
+    "failed": 0,
+    "skipped": 0,
+    "files": 31
+  },
+  "applicationTypesExit": 0,
+  "testTypesExit": 0,
+  "productionBuildExit": 0,
+  "debugBuildSucceeded": true,
+  "packageTestsPassed": 2,
+  "androidJourneyTestsPassed": 1,
+  "androidJourneySeconds": 45.523,
+  "native": {
+    "wrongHostnameRejected": true,
+    "arabicFieldMessage": true,
+    "phoneHtmlValidBeforeSubmit": true,
+    "orderId": 195,
+    "checkoutResponseLossRecovered": true,
+    "pharmacyReady": true,
+    "customerSeesFulfillment": true,
+    "cachedForeignOrderHidden": true,
+    "mode": "journey"
+  },
+  "normalApk": {
+    "normalApk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "normalContainsTestCa": false,
+    "normalContainsTestNetworkConfig": false,
+    "testContainsTestCa": true,
+    "apkSha256": "788476245f7a817d911bc65c214eaa6ecf1c653da77b35592b03c95312ed011c",
+    "bytes": 4546452
+  },
+  "originalRowsPreserved": 138,
+  "demoTablesUnchanged": 18,
+  "physicalDeviceTested": false,
+  "checkoutTransactionAndNativeTransportUnchanged": true,
+  "actualApkAssetChecksMatched": 16
+}
