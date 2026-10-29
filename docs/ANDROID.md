@@ -1,5 +1,11 @@
 # GO Pharmacy Android debug
 
+Latest customer build: [Canva restoration V1](CUSTOMER_CANVA_RESTORATION_V1.md).
+Its current project is `outputs/go-pharmacy-foundation/android` on
+`feat/customer-canva-ui-restoration-v1`; use that project and its Debug APK rather
+than the historical original checkout path below. The original connection controls,
+trusted HTTPS requirement and native transport remain intact.
+
 Current checkout verification and emulator-only TLS fixture:
 [Android Checkout & E2E V1](ANDROID_CHECKOUT_E2E_V1.md) and
 [step-by-step test procedure](ANDROID_CHECKOUT_TESTING.md). Older implementation

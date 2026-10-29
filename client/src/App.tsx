@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import Notifications from "./pages/Notifications";
 import BetaAdmin from "./pages/BetaAdmin";
 import NotFound from "./pages/NotFound";
+import CustomerLayout from "./customer/CustomerLayout";
 const PartnersPortal = lazy(() => import("./partners/Portal"));
 const AdminPharmacies = lazy(() => import("./partners/AdminPharmacies"));
 const AdminFulfillment = lazy(() => import("./partners/AdminFulfillment"));
@@ -28,8 +29,12 @@ function SurfaceRouter() {
         <PartnersPortal />
       </Suspense>
     );
+  const Layout =
+    path === "/admin" || path.startsWith("/admin/") || path === "/admin-panel"
+      ? BetaLayout
+      : CustomerLayout;
   return (
-    <BetaLayout>
+    <Layout>
       {path === "/admin/fulfillment" ? (
         <Suspense fallback={<p role="status">جار تحميل تنفيذ الطلبات…</p>}>
           <AdminFulfillment />
@@ -41,7 +46,7 @@ function SurfaceRouter() {
       ) : (
         <CustomerRoutes />
       )}
-    </BetaLayout>
+    </Layout>
   );
 }
 function Unavailable() {

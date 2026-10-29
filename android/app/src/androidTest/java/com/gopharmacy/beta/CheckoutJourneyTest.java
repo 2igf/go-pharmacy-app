@@ -66,8 +66,8 @@ public class CheckoutJourneyTest {
         command("[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==="+q(label)+"&&!b.disabled).click()");
     }
     private void login(String role) throws Exception {
-        navigate("/login");text("البريد الإلكتروني","login form");JSONObject user=fixture.getJSONObject("users").getJSONObject(role);
-        input("البريد الإلكتروني",user.getString("email"));input("كلمة المرور",user.getString("password"));button("دخول");until("location.pathname==='/products'","real login");text("الأدوية والمنتجات","catalog");
+        navigate("/login");text("البريد الإلكتروني","login form");if(role.equals("customer")){assertEquals(Boolean.TRUE,js("[...document.querySelectorAll('button')].some(b=>b.getAttribute('aria-label')==='إنشاء حساب مدعو'&&b.getBoundingClientRect().bottom<=innerHeight)"));screenshot("canva-login.png");}JSONObject user=fixture.getJSONObject("users").getJSONObject(role);
+        input("البريد الإلكتروني",user.getString("email"));input("كلمة المرور",user.getString("password"));button("Log in");until("location.pathname==='/products'","real login");text("الأدوية والمنتجات","catalog");
     }
     private void screenshot(String name) throws Exception {
         dismissSystemAnr();
@@ -105,19 +105,19 @@ public class CheckoutJourneyTest {
             until("document.readyState==='complete'&&!!document.body","bundled document");
             until("!!document.getElementById('api-origin')||document.body.innerText.includes('إعداد اتصال التطبيق')","connection gate");
             if(Boolean.TRUE.equals(js("!!document.getElementById('api-origin')"))){input("عنوان خادم HTTPS",fixture.getString("apiOrigin"));button("حفظ والاتصال");}
-            login("customer");navigate("/profile");text("عنوان خيالي جديد","customer address form");
+            login("customer");navigate("/");text("الأقسام","Canva home");text("DEMO Restricted","home API data");until("document.querySelectorAll('.canva-bottom-nav a').length===6","six-item navigation");until("[...document.images].every(i=>i.complete)","home raster assets");assertEquals(Boolean.TRUE,js("document.documentElement.scrollWidth<=innerWidth+1"));report.put("sixItemNavigation",true);report.put("rtlLayout",js("getComputedStyle(document.querySelector('.customer-app')).direction==='rtl'"));screenshot("canva-home.png");navigate("/products");text("ماركات مميزة","Canva discovery");text(fixture.getString("productName"),"discovery API data");until("[...document.images].every(i=>i.complete)","discovery raster assets");screenshot("canva-discovery.png");navigate("/profile");text("عنوان خيالي جديد","customer address form");
             if(Boolean.TRUE.equals(js("!document.body.innerText.includes('شارع اختبار Android الخيالي')"))){input("عنوان خيالي جديد","شارع اختبار Android الخيالي ١٢ — لا توصيل فعلي");button("إضافة العنوان");text("شارع اختبار Android الخيالي","address stored");}
             navigate("/cart");text("سلة التسوق التجريبية","cart loaded");
             until("document.body.innerText.includes('السلة فارغة')||document.body.innerText.includes("+q(fixture.getString("productName"))+")","cart data");
             if(Boolean.TRUE.equals(js("document.body.innerText.includes('السلة فارغة')"))){navigate("/product/"+fixture.getInt("productId"));text(fixture.getString("productName"),"fictional product");button("أضف إلى السلة");text("تم إضافة المنتج إلى السلة","cart committed");navigate("/cart");text(fixture.getString("productName"),"server cart");}
-            button("متابعة الطلب التجريبي");text("اسم المستلم الخيالي","checkout form");
+            screenshot("canva-cart.png");button("متابعة الطلب التجريبي");text("اسم المستلم الخيالي","checkout form");
             if(Boolean.TRUE.equals(js("[...document.querySelectorAll('button')].some(b=>b.textContent.trim()==='إعادة المحاولة بأمان')"))){button("إعادة المحاولة بأمان");text("مراجعة السلة وتصحيح البيانات","saved rejected checkout");button("مراجعة السلة وتصحيح البيانات");}
             until("[...document.querySelectorAll('select option')].some(o=>o.textContent.includes('شارع اختبار Android الخيالي'))","owned address loaded");command("const s=document.querySelector('select');const o=[...s.options].find(o=>o.textContent.includes('شارع اختبار Android الخيالي'));if(!o)throw Error('address option');s.value=o.value;s.dispatchEvent(new Event('change',{bubbles:true}))");
             input("اسم المستلم الخيالي","عميل اختبار Android");
             if(!mode.equals("reproduce")){input("رقم اختبار","abc123456");command("[...document.querySelectorAll('input')].find(e=>e.parentElement.textContent.trim()==='رقم اختبار').reportValidity()");assertEquals(Boolean.TRUE,js("[...document.querySelectorAll('input')].find(e=>e.parentElement.textContent.trim()==='رقم اختبار').validationMessage.includes('رقم الاختبار')"));report.put("arabicFieldMessage",true);}
             input("رقم اختبار","٠٧٩ ١٢٣ ٤٥٦٧");command("document.querySelector('input[type=checkbox]').click()");
             report.put("phoneHtmlValidBeforeSubmit",js("[...document.querySelectorAll('input')].find(e=>e.parentElement.textContent.trim()==='رقم اختبار').checkValidity()"));
-            button("تأكيد الطلب التجريبي");
+            screenshot("canva-checkout.png");button("تأكيد الطلب التجريبي");
             if(mode.equals("reproduce")){
                 text("البيانات غير صالحة","original rejection");report.put("originalValidationReproduced",true);screenshot("checkout-before.png");return;
             }
@@ -127,7 +127,7 @@ public class CheckoutJourneyTest {
             login("staff");navigate("/partners/pharmacy/orders?org="+fixture.getInt("organizationId"));button("عرض الطلب #"+orderId);text("تفاصيل الطلب التجريبي","assigned detail");transition("قبول طلب Android الخيالي");text("بدء التحضير","accepted");transition("بدء التحضير الخيالي Android");text("جاهز للتوصيل التجريبي","preparing");transition("جاهزية Android دون توصيل فعلي");text("جاهز لعقد التسليم المستقبلي","ready");report.put("pharmacyReady",true);screenshot("checkout-pharmacy-ready.png");
             login("customer");navigate("/order/"+orderId);text("جاهز للتوصيل التجريبي","customer sees fulfillment");report.put("customerSeesFulfillment",true);screenshot("checkout-customer-ready.png");
             // Same-document navigation retains the React Query cache across login.
-            spaNavigate("/login");text("البريد الإلكتروني","SPA login");JSONObject admin=fixture.getJSONObject("users").getJSONObject("admin");input("البريد الإلكتروني",admin.getString("email"));input("كلمة المرور",admin.getString("password"));button("دخول");until("location.pathname==='/products'","SPA account switch");spaNavigate("/order/"+orderId);text("Record not found","server ownership rejection");assertEquals(Boolean.TRUE,js("!document.querySelector('article')&&!document.body.innerText.includes("+q(fixture.getString("productName"))+")"));report.put("cachedForeignOrderHidden",true);
+            spaNavigate("/login");text("البريد الإلكتروني","SPA login");JSONObject admin=fixture.getJSONObject("users").getJSONObject("admin");input("البريد الإلكتروني",admin.getString("email"));input("كلمة المرور",admin.getString("password"));button("Log in");until("location.pathname==='/products'","SPA account switch");spaNavigate("/order/"+orderId);text("Record not found","server ownership rejection");assertEquals(Boolean.TRUE,js("!document.querySelector('article')&&!document.body.innerText.includes("+q(fixture.getString("productName"))+")"));report.put("cachedForeignOrderHidden",true);
         } finally {
             report.put("mode",mode);try(FileOutputStream output=new FileOutputStream(new File(app.getFilesDir(),"checkout-report.json"))){output.write(report.toString(2).getBytes(StandardCharsets.UTF_8));}
             if(activity!=null)instrumentation.runOnMainSync(()->activity.finish());

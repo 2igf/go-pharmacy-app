@@ -15,7 +15,10 @@ export function NativeConnectionGate({ children }: { children: ReactNode }) {
   if (origin && !editing)
     return (
       <>
-        <div className="border-b bg-emerald-50 p-2 text-center text-sm">
+        <div
+          data-native-connection-bar
+          className="border-b bg-emerald-50 p-2 text-center text-sm"
+        >
           <p className="break-all" dir="ltr">
             {origin}
           </p>

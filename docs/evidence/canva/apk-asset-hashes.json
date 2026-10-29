@@ -1,0 +1,402 @@
+[
+  {
+    "variant": "debug",
+    "asset": "index.html",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/AdminFulfillment-DBfXK2wd.js",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/AdminPharmacies-BH5Zp6J1.js",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/FulfillmentRequest-keAOvsfP.js",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/index-BouPntvc.js",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/index-DY8-X6gv.css",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/policy-DJ1prc9F.js",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/Portal-XrZblZCg.js",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "assets/Records-C6CvW8vn.js",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/banner-dozova.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/brand-babyjoy.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/brand-beesline.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/brand-dove.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/brand-gillette.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/brand-pampers.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/category-baby.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/category-medications.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/category-natural.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/category-pets.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/category-skincare.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/category-supplies.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/clinic-bones.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/clinic-child.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/clinic-internal.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/clinic-skin.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/clinic-teeth.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/doctor.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/login-header.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/logo.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/nav-cart.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/nav-doctor.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/nav-home.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/nav-profile.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/nav-reminder.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/nav-search.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/pin.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/product-melatonin.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/product-panadol.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/product-votrex.png",
+    "matches": true
+  },
+  {
+    "variant": "debug",
+    "asset": "canva/scan.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "index.html",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/AdminFulfillment-DBfXK2wd.js",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/AdminPharmacies-BH5Zp6J1.js",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/FulfillmentRequest-keAOvsfP.js",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/index-BouPntvc.js",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/index-DY8-X6gv.css",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/policy-DJ1prc9F.js",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/Portal-XrZblZCg.js",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "assets/Records-C6CvW8vn.js",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/banner-dozova.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/brand-babyjoy.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/brand-beesline.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/brand-dove.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/brand-gillette.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/brand-pampers.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/category-baby.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/category-medications.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/category-natural.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/category-pets.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/category-skincare.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/category-supplies.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/clinic-bones.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/clinic-child.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/clinic-internal.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/clinic-skin.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/clinic-teeth.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/doctor.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/login-header.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/logo.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/nav-cart.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/nav-doctor.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/nav-home.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/nav-profile.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/nav-reminder.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/nav-search.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/pin.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/product-melatonin.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/product-panadol.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/product-votrex.png",
+    "matches": true
+  },
+  {
+    "variant": "checkoutTest",
+    "asset": "canva/scan.png",
+    "matches": true
+  }
+]

@@ -1,0 +1,23 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/customer-presentation.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/customer-presentation.test.ts [ server/customer-presentation.test.ts ]
+Error: Cannot find module '../client/src/customer/policy' imported from C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation/server/customer-presentation.test.ts
+ ❯ server/customer-presentation.test.ts:2:1
+      1| import { describe, expect, it } from "vitest";
+      2| import { customerNavigation, productArtwork, filterCatalog } from "../…
+       | ^
+      3|
+      4| describe("Canva customer presentation boundaries", () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  17:53:39
+   Duration  518ms (worker 97%, environment 3%)

@@ -17,6 +17,7 @@ import { useLocation, useRoute } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { ProductImage } from "@/customer/CustomerPieces";
 
 export default function ProductDetail() {
   const { user, loading: authLoading } = useAuth();
@@ -130,7 +131,9 @@ export default function ProductDetail() {
         <div className="container py-6">
           {/* Product Image */}
           <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg h-64 mb-6 flex items-center justify-center">
-            <Pill className="text-[#00c57d]" size={80} />
+            <ProductImage
+              product={{ name: product.name, imageUrl: product.image }}
+            />
           </div>
 
           {/* Product Info */}
@@ -253,7 +256,7 @@ export default function ProductDetail() {
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">الشحن</span>
                 <span className="font-semibold text-gray-900">
-                  مجاني فوق 50 دولار
+                  محاكاة فقط — لا توصيل فعلي
                 </span>
               </div>
             </div>

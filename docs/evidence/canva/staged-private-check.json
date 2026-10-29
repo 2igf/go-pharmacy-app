@@ -1,0 +1,6 @@
+{
+  "filesChecked": 132,
+  "knownExactSecretMatches": 0,
+  "privatePathsStaged": false,
+  "note": "Exact-value/path check only, not an exhaustive secret scanner."
+}

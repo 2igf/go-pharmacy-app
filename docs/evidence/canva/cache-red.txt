@@ -1,0 +1,26 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/customer-presentation.test.ts (4 tests | 1 failed) 19ms
+   ❯ Canva customer presentation boundaries (4)
+     × hides foreign cached addresses during account changes and any failed refetch 10ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/customer-presentation.test.ts > Canva customer presentation boundaries > hides foreign cached addresses during account changes and any failed refetch
+TypeError: ownedCustomerRecords is not a function
+ ❯ server/customer-presentation.test.ts:12:12
+     10|   it("hides foreign cached addresses during account changes and any fa…
+     11|     const cached = [{ userId: 1, address: "Fictional A" }, { userId: 2…
+     12|     expect(ownedCustomerRecords(cached, 2, null)).toEqual([cached[1]]);
+       |            ^
+     13|     expect(ownedCustomerRecords(cached, 2, new Error("failed refetch")…
+     14|     expect(ownedCustomerRecords(cached, undefined, null)).toEqual([]);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  18:08:02
+   Duration  627ms (transform 56%, import 23%, tests 11%, worker 9%)

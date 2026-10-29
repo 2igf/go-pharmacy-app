@@ -1,0 +1,91 @@
+{
+  "checks": [
+    {
+      "check": "existing invited account login",
+      "passed": true
+    },
+    {
+      "check": "catalog text search narrows to actual Android fixture",
+      "passed": true
+    },
+    {
+      "check": "clinic control explains unavailable status",
+      "passed": true
+    },
+    {
+      "check": "quantity mutation updates server total to0.40",
+      "passed": true
+    },
+    {
+      "check": "cart three API products, server0.30total, action above fixed nav",
+      "passed": true
+    },
+    {
+      "check": "invalid phone still produces field-specific Arabic message",
+      "passed": true
+    },
+    {
+      "check": "Persian-digit checkout creates simulated order from real server quote",
+      "passed": true,
+      "orderId": 198
+    },
+    {
+      "check": "explicit full catalog shows all5APIproducts",
+      "passed": true
+    },
+    {
+      "check": "brand search truthfully returns no matching catalog products",
+      "passed": true
+    },
+    {
+      "check": "unavailable medical dialog closes with Escape",
+      "passed": true
+    },
+    {
+      "check": "home category route filters to one actual medicine",
+      "passed": true
+    },
+    {
+      "check": "prescription item remains blocked in product detail",
+      "passed": true
+    },
+    {
+      "check": "reminder route stays unavailable",
+      "passed": true
+    },
+    {
+      "check": "profile, address and order management remain reachable",
+      "passed": true
+    },
+    {
+      "check": "admin pharmacy screen retains noncustomer layout",
+      "passed": true
+    },
+    {
+      "check": "GO Partners remains separate and loads pharmacyA actual active membership",
+      "passed": true
+    },
+    {
+      "check": "password recovery gives honest unavailable explanation",
+      "passed": true
+    },
+    {
+      "check": "registration still requires invitation and email",
+      "passed": true
+    },
+    {
+      "check": "remove mutation deletes only selected cart line and recomputes server total",
+      "passed": true
+    },
+    {
+      "check": "360393430phone widths retain RTL sixitem nav without horizontal overflow",
+      "passed": true
+    },
+    {
+      "check": "price sort uses existing API values",
+      "passed": true
+    }
+  ],
+  "failed": 0,
+  "browserOrderId": 198
+}

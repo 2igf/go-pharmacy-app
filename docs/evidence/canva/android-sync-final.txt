@@ -1,0 +1,7 @@
+Prepared bundled Android assets with a restrictive CSP; no server credentials included.
+√ Copying web assets from public to android\app\src\main\assets\public in 55.48ms
+√ Creating capacitor.config.json in android\app\src\main\assets in 1.61ms
+√ copy android in 317.32ms
+√ Updating Android plugins in 70.71ms
+√ update android in 315.39ms
+[info] Sync finished in 0.996s

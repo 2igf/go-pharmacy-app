@@ -1,0 +1,312 @@
+[
+  {
+    "asset": "/canva/scan.png",
+    "source": "1000073025.jpg",
+    "box": [
+      21,
+      24,
+      73,
+      73
+    ]
+  },
+  {
+    "asset": "/canva/pin.png",
+    "source": "1000073025.jpg",
+    "box": [
+      653,
+      26,
+      684,
+      62
+    ]
+  },
+  {
+    "asset": "/canva/login-header.png",
+    "source": "1000073027.jpg",
+    "box": [
+      24,
+      163,
+      552,
+      538
+    ]
+  },
+  {
+    "asset": "/canva/logo.png",
+    "source": "1000073027.jpg",
+    "box": [
+      212,
+      300,
+      370,
+      441
+    ]
+  },
+  {
+    "asset": "/canva/doctor.png",
+    "source": "1000073025.jpg",
+    "box": [
+      435,
+      301,
+      678,
+      560
+    ]
+  },
+  {
+    "asset": "/canva/banner-dozova.png",
+    "source": "1000073024.jpg",
+    "box": [
+      53,
+      893,
+      675,
+      1151
+    ]
+  },
+  {
+    "asset": "/canva/category-medications.png",
+    "source": "1000073025.jpg",
+    "box": [
+      633,
+      161,
+      707,
+      234
+    ]
+  },
+  {
+    "asset": "/canva/category-natural.png",
+    "source": "1000073025.jpg",
+    "box": [
+      508,
+      161,
+      581,
+      234
+    ]
+  },
+  {
+    "asset": "/canva/category-skincare.png",
+    "source": "1000073025.jpg",
+    "box": [
+      382,
+      161,
+      455,
+      234
+    ]
+  },
+  {
+    "asset": "/canva/category-baby.png",
+    "source": "1000073025.jpg",
+    "box": [
+      263,
+      161,
+      336,
+      234
+    ]
+  },
+  {
+    "asset": "/canva/category-supplies.png",
+    "source": "1000073025.jpg",
+    "box": [
+      141,
+      161,
+      214,
+      234
+    ]
+  },
+  {
+    "asset": "/canva/category-pets.png",
+    "source": "1000073025.jpg",
+    "box": [
+      24,
+      161,
+      97,
+      234
+    ]
+  },
+  {
+    "asset": "/canva/clinic-skin.png",
+    "source": "1000073024.jpg",
+    "box": [
+      593,
+      722,
+      707,
+      835
+    ]
+  },
+  {
+    "asset": "/canva/clinic-teeth.png",
+    "source": "1000073024.jpg",
+    "box": [
+      443,
+      722,
+      558,
+      835
+    ]
+  },
+  {
+    "asset": "/canva/clinic-bones.png",
+    "source": "1000073024.jpg",
+    "box": [
+      306,
+      722,
+      423,
+      835
+    ]
+  },
+  {
+    "asset": "/canva/clinic-child.png",
+    "source": "1000073024.jpg",
+    "box": [
+      173,
+      722,
+      287,
+      835
+    ]
+  },
+  {
+    "asset": "/canva/clinic-internal.png",
+    "source": "1000073024.jpg",
+    "box": [
+      20,
+      722,
+      136,
+      835
+    ]
+  },
+  {
+    "asset": "/canva/brand-beesline.png",
+    "source": "1000073024.jpg",
+    "box": [
+      591,
+      501,
+      706,
+      616
+    ]
+  },
+  {
+    "asset": "/canva/brand-gillette.png",
+    "source": "1000073024.jpg",
+    "box": [
+      446,
+      501,
+      563,
+      616
+    ]
+  },
+  {
+    "asset": "/canva/brand-dove.png",
+    "source": "1000073024.jpg",
+    "box": [
+      304,
+      501,
+      420,
+      616
+    ]
+  },
+  {
+    "asset": "/canva/brand-pampers.png",
+    "source": "1000073024.jpg",
+    "box": [
+      159,
+      501,
+      276,
+      616
+    ]
+  },
+  {
+    "asset": "/canva/brand-babyjoy.png",
+    "source": "1000073024.jpg",
+    "box": [
+      19,
+      501,
+      135,
+      616
+    ]
+  },
+  {
+    "asset": "/canva/product-panadol.png",
+    "source": "1000073025.jpg",
+    "box": [
+      549,
+      640,
+      663,
+      788
+    ]
+  },
+  {
+    "asset": "/canva/product-votrex.png",
+    "source": "1000073025.jpg",
+    "box": [
+      318,
+      638,
+      378,
+      792
+    ]
+  },
+  {
+    "asset": "/canva/product-melatonin.png",
+    "source": "1000073025.jpg",
+    "box": [
+      51,
+      636,
+      176,
+      790
+    ]
+  },
+  {
+    "asset": "/canva/nav-home.png",
+    "source": "1000073024.jpg",
+    "box": [
+      612,
+      1206,
+      649,
+      1244
+    ]
+  },
+  {
+    "asset": "/canva/nav-search.png",
+    "source": "1000073024.jpg",
+    "box": [
+      504,
+      1206,
+      546,
+      1246
+    ]
+  },
+  {
+    "asset": "/canva/nav-cart.png",
+    "source": "1000073024.jpg",
+    "box": [
+      391,
+      1204,
+      437,
+      1247
+    ]
+  },
+  {
+    "asset": "/canva/nav-doctor.png",
+    "source": "1000073024.jpg",
+    "box": [
+      280,
+      1204,
+      327,
+      1247
+    ]
+  },
+  {
+    "asset": "/canva/nav-reminder.png",
+    "source": "1000073024.jpg",
+    "box": [
+      176,
+      1204,
+      219,
+      1247
+    ]
+  },
+  {
+    "asset": "/canva/nav-profile.png",
+    "source": "1000073024.jpg",
+    "box": [
+      68,
+      1204,
+      108,
+      1247
+    ]
+  }
+]

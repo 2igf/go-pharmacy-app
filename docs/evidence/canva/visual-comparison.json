@@ -1,0 +1,73 @@
+{
+  "note": "Descriptive raw image difference, not an acceptance score. Text/fonts/live product counts, prices, imagery and safety notices differ. See discrepancy report.",
+  "screens": [
+    {
+      "screen": "login",
+      "referenceSize": [
+        528,
+        941
+      ],
+      "browserScreenshotSize": [
+        393,
+        700
+      ],
+      "comparisonSize": [
+        393,
+        700
+      ],
+      "meanAbsoluteRgbDifference": 4.837,
+      "pixelPerfect": false
+    },
+    {
+      "screen": "home",
+      "referenceSize": [
+        718,
+        1274
+      ],
+      "browserScreenshotSize": [
+        393,
+        698
+      ],
+      "comparisonSize": [
+        393,
+        697
+      ],
+      "meanAbsoluteRgbDifference": 23.654,
+      "pixelPerfect": false
+    },
+    {
+      "screen": "discovery",
+      "referenceSize": [
+        724,
+        1280
+      ],
+      "browserScreenshotSize": [
+        393,
+        695
+      ],
+      "comparisonSize": [
+        393,
+        695
+      ],
+      "meanAbsoluteRgbDifference": 36.861,
+      "pixelPerfect": false
+    },
+    {
+      "screen": "cart",
+      "referenceSize": [
+        720,
+        1280
+      ],
+      "browserScreenshotSize": [
+        393,
+        699
+      ],
+      "comparisonSize": [
+        393,
+        699
+      ],
+      "meanAbsoluteRgbDifference": 18.413,
+      "pixelPerfect": false
+    }
+  ]
+}

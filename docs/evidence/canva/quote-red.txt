@@ -1,0 +1,26 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/customer-presentation.test.ts (5 tests | 1 failed) 18ms
+   ❯ Canva customer presentation boundaries (5)
+     × does not display another customer's cached quote, totals or products 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/customer-presentation.test.ts > Canva customer presentation boundaries > does not display another customer's cached quote, totals or products
+TypeError: ownedCustomerQuote is not a function
+ ❯ server/customer-presentation.test.ts:13:12
+     11|   it("does not display another customer's cached quote, totals or prod…
+     12|     const quote = { items: [{ userId: 1, productId: 3 }], total: "10.0…
+     13|     expect(ownedCustomerQuote(quote, 2, null)).toBeUndefined();
+       |            ^
+     14|     expect(ownedCustomerQuote(quote, 1, null)).toBe(quote);
+     15|     expect(ownedCustomerQuote(quote, 1, new Error("failed refetch"))).…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  18:13:38
+   Duration  620ms (transform 55%, import 24%, tests 11%, worker 9%)

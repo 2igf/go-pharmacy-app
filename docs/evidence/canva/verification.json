@@ -1,0 +1,90 @@
+{
+  "sourceCommit": "6e3d11877b18a13656d7638c2ce0aeef12d8438b",
+  "branch": "feat/customer-canva-ui-restoration-v1",
+  "baseline": {
+    "tests": 168,
+    "files": 31
+  },
+  "vitest": {
+    "passed": 173,
+    "failed": 0,
+    "skipped": 0,
+    "files": 32,
+    "seconds": 88.5
+  },
+  "applicationTypesExit": 0,
+  "testTypesExit": 0,
+  "productionBuildExit": 0,
+  "capacitorSyncSucceeded": true,
+  "androidDebugBuildSucceeded": true,
+  "androidIsolatedTestBuildSucceeded": true,
+  "androidJourney": {
+    "passed": 1,
+    "seconds": 53.135,
+    "wrongHostnameRejected": true,
+    "sixItemNavigation": true,
+    "rtlLayout": true,
+    "arabicFieldMessage": true,
+    "phoneHtmlValidBeforeSubmit": true,
+    "orderId": 200,
+    "checkoutResponseLossRecovered": true,
+    "pharmacyReady": true,
+    "customerSeesFulfillment": true,
+    "cachedForeignOrderHidden": true,
+    "mode": "journey"
+  },
+  "normalPackageTestsPassed": 2,
+  "browser": {
+    "observations": 21,
+    "failed": 0,
+    "orderId": 198
+  },
+  "responsive": [
+    {
+      "height": 640,
+      "navInViewport": true,
+      "noHorizontalOverflow": true,
+      "rtl": true,
+      "sixItems": true,
+      "width": 360
+    },
+    {
+      "height": 699,
+      "navInViewport": true,
+      "noHorizontalOverflow": true,
+      "rtl": true,
+      "sixItems": true,
+      "width": 394
+    },
+    {
+      "height": 764,
+      "navInViewport": true,
+      "noHorizontalOverflow": true,
+      "rtl": true,
+      "sixItems": true,
+      "width": 430
+    }
+  ],
+  "apk": {
+    "normalApk": "android/app/build/outputs/apk/debug/app-debug.apk",
+    "normalContainsTestCa": false,
+    "normalContainsTestNetworkConfig": false,
+    "testContainsTestCa": true,
+    "apkSha256": "f00914aa089f4e7e8d808fb25b6b80446bf897b3dd55c03c7b63741df6576eeb",
+    "bytes": 5261290
+  },
+  "actualApkArchiveFilesPerVariant": 40,
+  "actualApkArchiveComparisons": 80,
+  "allMatched": true,
+  "privateExactValueMatches": 0,
+  "originalTestRowsRetained": 239,
+  "demoTablesUnchanged": 18,
+  "duplicateNewOrderKeys": 0,
+  "stockConserved": true,
+  "backendSchemaAuthPartnersAdminRuntimeUnchanged": true,
+  "migrations": 0,
+  "physicalDeviceTested": false,
+  "pixelPerfectClaim": false,
+  "visualEvidence": "visual-comparison.json",
+  "limitations": "../../CUSTOMER_CANVA_RESTORATION_V1.md"
+}

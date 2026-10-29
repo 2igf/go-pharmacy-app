@@ -1,5 +1,10 @@
 # Known limitations and release gates
 
+Customer Canva restoration (2026-10-29): customer screens and six-item navigation
+are restored and verified in browser/API36 WebView. **Pixel-perfect identity is not
+claimed**: original font/vector/photo exports are missing and the real DEMO catalog
+differs from screenshot sample content. See [restoration and discrepancies](CUSTOMER_CANVA_RESTORATION_V1.md).
+
 Current checkout status (2026-10-28): the reproduced contactPhone/Arabic numeral
 failure is fixed and the complete simulated customer-to-pharmacy journey was verified
 on Android16/API36 WebView. **Physical-phone acceptance remains untested**, and the
@@ -17,7 +22,8 @@ including [the Partners portal report](GO_PARTNERS_PHARMACY_PORTAL_V1.md), are h
 
 Current pharmacy scope/issues are in [PHARMACY_VERIFICATION_V1.md](PHARMACY_VERIFICATION_V1.md).
 Scoped inventory APIs exist in the new branch, but demo was not migrated/deployed.
-**Android Checkout validation remains unresolved.** No medical/sales workflow was activated.
+That historical tenancy phase left Android Checkout unresolved; the qualified current
+verified status is above. No medical/sales workflow was activated.
 
 - This is fictional-data Private Beta software. Regulatory authorization, licensed pharmacy operations, prescription review, clinical privacy controls, medical safety processes, commercial accounting, real payments, fulfillment and legal terms are outside the release.
 - Clinical modules and old role-specific fulfillment dashboards remain preserved but inaccessible. No appointment-conflict engine is claimed because appointments are disabled.

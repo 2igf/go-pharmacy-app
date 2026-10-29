@@ -1,5 +1,9 @@
 # Architecture
 
+Latest customer surface: [Canva restoration V1](CUSTOMER_CANVA_RESTORATION_V1.md).
+This is a scoped React/CSS/asset change; operational Partners/Admin layouts and
+the backend/database/authentication contracts remain unchanged.
+
 Latest checkout verification: [Android Checkout & E2E V1](ANDROID_CHECKOUT_E2E_V1.md),
 [test procedure](ANDROID_CHECKOUT_TESTING.md) and
 [inventory reconciliation requirements](SIMULATED_INVENTORY_RECONCILIATION.md).
