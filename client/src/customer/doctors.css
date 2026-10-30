@@ -1,0 +1,197 @@
+.customer-app .canva-doctors {
+  width: 100%;
+  container-type: inline-size;
+  padding-bottom: 5cqw;
+  color: #505050;
+}
+
+.customer-app .canva-doctors__header {
+  padding: 3.3cqw 2.8cqw 2.2cqw;
+  border-bottom: 1px solid #b9b9b9;
+  background: linear-gradient(#55dfa0, #d9f2e4 66%, #ececec);
+}
+
+.customer-app .canva-doctors__search {
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+  margin: 0 6.2cqw 5.2cqw;
+  padding: 1.4cqw 2.5cqw;
+  min-height: 9.5cqw;
+  border-radius: 4.5cqw;
+  background: white;
+}
+
+.customer-app .canva-doctors__search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  text-align: right;
+  color: #505050;
+  font-size: clamp(12px, 2.8cqw, 20px);
+}
+
+.customer-app .canva-doctors__search button {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  width: 5cqw;
+  min-width: 26px;
+  min-height: 32px;
+  border: 0;
+  background: transparent;
+  color: #5d5d5d;
+}
+
+.customer-app .canva-doctors__search svg {
+  width: 4.5cqw;
+  height: 4.5cqw;
+}
+
+.customer-app .canva-doctors__specialties {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4.4cqw;
+}
+
+.customer-app .canva-doctors__specialties button {
+  min-height: 6.1cqw;
+  padding: 0.5cqw;
+  border: 0;
+  border-radius: 1.6cqw;
+  background: white;
+  font-size: clamp(12px, 2.8cqw, 20px);
+  color: #555;
+}
+
+.customer-app .canva-doctors__notice,
+.customer-app .canva-doctors__search-status {
+  margin: 2cqw 4.5cqw;
+  font-size: clamp(10px, 1.8cqw, 13px);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.customer-app .canva-doctors__list {
+  display: grid;
+  gap: 3.6cqw;
+  padding: 1cqw 4.6cqw 0;
+}
+
+.customer-app .canva-doctors__card {
+  display: grid;
+  grid-template-columns: 22.5% minmax(0, 1fr) 22%;
+  align-items: stretch;
+  gap: 1.2cqw;
+  min-height: 27cqw;
+  overflow: hidden;
+  border-radius: 3.5cqw;
+  background: white;
+  padding: 1cqw 1.1cqw 1cqw 6.8cqw;
+}
+
+.customer-app .canva-doctors__photo {
+  width: 100%;
+  height: 25cqw;
+  align-self: end;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.customer-app .canva-doctors__details {
+  padding: 3.4cqw 0 1cqw;
+}
+
+.customer-app .canva-doctors__details h2 {
+  font-size: clamp(12px, 2.6cqw, 19px);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 2cqw;
+  white-space: nowrap;
+}
+
+.customer-app .canva-doctors__details p,
+.customer-app .canva-doctors__metadata,
+.customer-app .canva-doctors__metadata span {
+  display: flex;
+  align-items: center;
+  gap: 0.7cqw;
+  font-size: clamp(9px, 1.6cqw, 12px);
+  line-height: 1.7;
+}
+
+.customer-app .canva-doctors__details p + p {
+  margin-top: 1cqw;
+}
+
+.customer-app .canva-doctors__details svg {
+  flex-shrink: 0;
+  width: 2.6cqw;
+  height: 2.6cqw;
+  color: #008b59;
+}
+
+.customer-app .canva-doctors__metadata {
+  margin-top: 3.6cqw;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.customer-app .canva-doctors__metadata span:first-child svg {
+  color: #bc8900;
+}
+
+.customer-app .canva-doctors__actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 2cqw;
+  padding-block: 2cqw;
+}
+
+.customer-app .canva-doctors__actions button {
+  min-height: 8.6cqw;
+  padding: 0.8cqw 0.4cqw;
+  border: 0;
+  border-radius: 2.6cqw;
+  background: #00cf7c;
+  color: #064a33;
+  font-size: clamp(11px, 2.4cqw, 17px);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.customer-app .canva-doctors__clinics {
+  padding: 5cqw 5.5cqw 0;
+}
+
+.customer-app .canva-doctors__clinics h2 {
+  margin-bottom: 4.5cqw;
+  font-size: 4.4cqw;
+  color: #111;
+}
+
+.customer-app .canva-doctors__clinics > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9cqw;
+  padding-inline: 2cqw;
+}
+
+.customer-app .canva-doctors__clinics button {
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 4cqw;
+  overflow: hidden;
+  background: white;
+}
+
+.customer-app .canva-doctors__clinics img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

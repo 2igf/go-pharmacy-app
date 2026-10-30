@@ -1,0 +1,16 @@
+{
+  "scenario": "dedicated emulator reboot only",
+  "startedAt": "2026-10-30T09:03:37.192Z",
+  "bootCompleted": true,
+  "alarmRestored": false,
+  "bootCompletedAt": "2026-10-30T09:05:08.905Z",
+  "laterObservation": {
+    "observedAt": "2026-10-30T09:16:49.223Z",
+    "bootCompleted": true,
+    "alarmRestored": true,
+    "actualNotificationDelivered": true,
+    "receiverProcessStartedAt": "2026-10-30T09:06:11.161Z",
+    "evidence": "android-reboot-inspect.txt",
+    "note": "AndroiddeferredBOOTreceiverbeyondinitial20swindow; actualalarmdeliveredandnextdayrecurrencepersisted. No precise timingguarantee."
+  }
+}

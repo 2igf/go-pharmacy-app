@@ -1,0 +1,125 @@
+{
+  "executedAt": "2026-10-30T08:29:15.720Z",
+  "database": "go_pharmacy_test_v2",
+  "network": "real fixed HTTPS RxNorm API",
+  "ids": [
+    "161",
+    "202433"
+  ],
+  "result": {
+    "batchId": 94,
+    "applied": 2,
+    "skipped": 0,
+    "status": "applied"
+  },
+  "internationalRecords": [
+    {
+      "id": 70,
+      "externalId": "161",
+      "name": "acetaminophen",
+      "termType": "IN",
+      "names": [
+        {
+          "name": "acetaminophen",
+          "kind": "generic",
+          "language": "en"
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "ingredients": [
+        {
+          "externalId": "161",
+          "name": "acetaminophen",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "registrations": [],
+      "labels": [],
+      "unknown": {
+        "jordanRegistration": true,
+        "jordanPrice": true,
+        "clinicalLabel": true,
+        "localAvailability": true
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/161/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-30T08:29:15.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      },
+      "updatedAt": "2026-10-30T08:29:16.000Z"
+    },
+    {
+      "id": 71,
+      "externalId": "202433",
+      "name": "Tylenol",
+      "termType": "BN",
+      "names": [
+        {
+          "name": "Tylenol",
+          "kind": "brand",
+          "language": "en"
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "ingredients": [
+        {
+          "externalId": "161",
+          "name": "acetaminophen",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "registrations": [],
+      "labels": [],
+      "unknown": {
+        "jordanRegistration": true,
+        "jordanPrice": true,
+        "clinicalLabel": true,
+        "localAvailability": true
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-30T08:29:15.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      },
+      "updatedAt": "2026-10-30T08:29:16.000Z"
+    }
+  ],
+  "jordanVerifiedCount": 0,
+  "note": "Vocabulary only; no Jordan approval, registration, price, availability or clinical content inferred. Dedicated fictional admin; no user medication data."
+}

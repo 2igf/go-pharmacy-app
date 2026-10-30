@@ -13,11 +13,28 @@ const context = (role: string | null) =>
   }) as unknown as TrpcContext;
 
 describe("multi-app service boundaries", () => {
-  it("preserves the installed client API surface, with one additive discovery query", () => {
+  it("preserves the installed client API surface, with explicitly enumerated additive procedures", () => {
     expect(Object.keys(appRouter._def.procedures).sort()).toEqual(
       [
         ...legacyApiManifest,
         "platform.capabilities",
+        "manualReminders.list",
+        "manualReminders.detail",
+        "manualReminders.create",
+        "manualReminders.update",
+        "manualReminders.remove",
+        "manualReminders.history",
+        "manualReminders.record",
+        "medicationKnowledge.search",
+        "medicationKnowledge.detail",
+        "medicationKnowledge.previewStructured",
+        "medicationKnowledge.importStructured",
+        "medicationKnowledge.importRxNorm",
+        "medicationKnowledge.batches",
+        "medicationKnowledge.rollback",
+        "auth.accountStatus",
+        "auth.requestPasswordReset",
+        "auth.resetPassword",
         "pharmacies.submitApplication",
         "pharmacies.mine",
         "pharmacies.inventory.list",

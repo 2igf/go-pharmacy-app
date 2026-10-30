@@ -1,0 +1,629 @@
+{
+  "method": "Reference resized proportionally to actual screenshot width with Lanczos. Actual screenshot pixels copied unchanged. White padding; PNG output. No quality score or pixel-perfect claim.",
+  "references": {
+    "login-original": {
+      "source": "docs/design/canva/1000073027.jpg",
+      "originalSize": [
+        576,
+        1280
+      ],
+      "sourceSha256": "19acb3d3d8584fc46e3c9c555ab4e92a6c32a3ebed4792a7623382b00646de3d",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073027.jpg",
+      "retainedFullImageSha256": "19acb3d3d8584fc46e3c9c555ab4e92a6c32a3ebed4792a7623382b00646de3d",
+      "cropBoxLeftTopRightBottom": [
+        24,
+        163,
+        552,
+        1104
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        528,
+        941
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/login-original.png",
+      "cropPngSha256": "5751f8345c8c3b0f6bd4b1194d0ea6c88d8aa4019d6b1dd7955a2e919c02bca6"
+    },
+    "home-new": {
+      "source": "docs/design/canva-v2/1000073171.jpg",
+      "originalSize": [
+        719,
+        1280
+      ],
+      "sourceSha256": "7d22087f18a3a016a982653bd59d9a513eaaa9c971f85920af7511a38b708079",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073171.jpg",
+      "retainedFullImageSha256": "7d22087f18a3a016a982653bd59d9a513eaaa9c971f85920af7511a38b708079",
+      "cropBoxLeftTopRightBottom": [
+        0,
+        0,
+        719,
+        1280
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        719,
+        1280
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/home-new.png",
+      "cropPngSha256": "0994b26cb6db0cdb88e8dc38788f1396aa50dd2f6155d198712eca8b4eac34f1"
+    },
+    "discovery-new": {
+      "source": "docs/design/canva-v2/1000073162.jpg",
+      "originalSize": [
+        720,
+        1280
+      ],
+      "sourceSha256": "00954c6e133ca005ee0b0bbbd3a2d46e8c284f625fb3b84263deffedcbff0fdd",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073162.jpg",
+      "retainedFullImageSha256": "00954c6e133ca005ee0b0bbbd3a2d46e8c284f625fb3b84263deffedcbff0fdd",
+      "cropBoxLeftTopRightBottom": [
+        0,
+        0,
+        720,
+        1280
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        720,
+        1280
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/discovery-new.png",
+      "cropPngSha256": "dc68a2b9065c95517951fd5cce2eba66bdb5e483992ef17220044d5a48cc0355"
+    },
+    "doctors-new": {
+      "source": "docs/design/canva-v2/1000073159.jpg",
+      "originalSize": [
+        720,
+        1280
+      ],
+      "sourceSha256": "d9e4c4f5840e421e09d1210ce78ec21d7a45f1b414a7a60865b47a775bea7e4e",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073159.jpg",
+      "retainedFullImageSha256": "d9e4c4f5840e421e09d1210ce78ec21d7a45f1b414a7a60865b47a775bea7e4e",
+      "cropBoxLeftTopRightBottom": [
+        0,
+        0,
+        720,
+        1280
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        720,
+        1280
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/doctors-new.png",
+      "cropPngSha256": "39519d84a2f9f74186cde4473a93c837e747e5cb936d17c9b92eb5de0394747e"
+    },
+    "cart-new": {
+      "source": "docs/design/canva-v2/1000073174.jpg",
+      "originalSize": [
+        719,
+        1280
+      ],
+      "sourceSha256": "ad2bd282c74d640dd4bca082b302cf7e85bfc82b01a63c6e4bb769319798f078",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073174.jpg",
+      "retainedFullImageSha256": "ad2bd282c74d640dd4bca082b302cf7e85bfc82b01a63c6e4bb769319798f078",
+      "cropBoxLeftTopRightBottom": [
+        0,
+        0,
+        719,
+        1280
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        719,
+        1280
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/cart-new.png",
+      "cropPngSha256": "f0f51a6933922fbe4e562ae9426795ffad6d7c2452d53f8a51529691604d773d"
+    },
+    "home-original": {
+      "source": "docs/design/canva/1000073025.jpg",
+      "originalSize": [
+        725,
+        1280
+      ],
+      "sourceSha256": "2872b976fb745733ded136d3580aeeeb0c3f5b81cdcf17e8f0b9fd7a9f8f95a0",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073025.jpg",
+      "retainedFullImageSha256": "2872b976fb745733ded136d3580aeeeb0c3f5b81cdcf17e8f0b9fd7a9f8f95a0",
+      "cropBoxLeftTopRightBottom": [
+        5,
+        3,
+        723,
+        1277
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        718,
+        1274
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/home-original.png",
+      "cropPngSha256": "91f4bb789f92674a5562e07ec56c1fa215b3f0f04e9d218407b1f0fd8f0b7dab"
+    },
+    "discovery-original": {
+      "source": "docs/design/canva/1000073024.jpg",
+      "originalSize": [
+        724,
+        1280
+      ],
+      "sourceSha256": "386f800aaee4680cdd6636c268196435f153463b6dc3ea4d1947cc36b513096d",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073024.jpg",
+      "retainedFullImageSha256": "386f800aaee4680cdd6636c268196435f153463b6dc3ea4d1947cc36b513096d",
+      "cropBoxLeftTopRightBottom": [
+        0,
+        0,
+        724,
+        1280
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        724,
+        1280
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/discovery-original.png",
+      "cropPngSha256": "117b069ed9fa3c06f1ed4511a0b4098fc01d61efa0361dd85b484254001dd4a9"
+    },
+    "cart-original": {
+      "source": "docs/design/canva/1000073026.jpg",
+      "originalSize": [
+        720,
+        1280
+      ],
+      "sourceSha256": "c29af3007dbf77fdad535e1014c050287ee5e36e2376b4cf606118f502130aca",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073026.jpg",
+      "retainedFullImageSha256": "c29af3007dbf77fdad535e1014c050287ee5e36e2376b4cf606118f502130aca",
+      "cropBoxLeftTopRightBottom": [
+        0,
+        0,
+        720,
+        1280
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        720,
+        1280
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/cart-original.png",
+      "cropPngSha256": "93f085e57360cb96293c71f98b4ffcddaddb6901257f5c0aae730116f6dca3f5"
+    },
+    "logo-new": {
+      "source": "docs/design/canva-v2/1000073150.jpg",
+      "originalSize": [
+        1280,
+        1280
+      ],
+      "sourceSha256": "88143cb541d853e6cc3d2753574cbef749970482749973f9ce2a4ff6e27c0790",
+      "retainedFullImage": "docs/evidence/v2/comparisons/reference-originals/1000073150.jpg",
+      "retainedFullImageSha256": "88143cb541d853e6cc3d2753574cbef749970482749973f9ce2a4ff6e27c0790",
+      "cropBoxLeftTopRightBottom": [
+        0,
+        0,
+        1280,
+        1280
+      ],
+      "cropCoordinateConvention": "Pillow: left/top inclusive, right/bottom exclusive",
+      "cropSize": [
+        1280,
+        1280
+      ],
+      "cropPng": "docs/evidence/v2/comparisons/reference-crops/logo-new.png",
+      "cropPngSha256": "f43fd9f391d11dd10683c28322ba2c44e783bb7a1337a44d3ace0eba06860bfd"
+    }
+  },
+  "comparisons": [
+    {
+      "screen": "login",
+      "priority": "primary",
+      "requestedViewportWidth": 360,
+      "referenceKey": "login-original",
+      "referenceResizedSize": [
+        360,
+        642
+      ],
+      "actual": "docs/evidence/v2/browser/login-360.png",
+      "actualSize": [
+        360,
+        640
+      ],
+      "actualSha256": "143d07ddaf729f9d62801db31a895dc53fb5db60766137433927f5d6eb30a702",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-login-360.png",
+      "compositeSize": [
+        776,
+        774
+      ],
+      "compositeSha256": "e0b7c85e6dabcccc9ab5a22d66a838095cb4661f67b01c4cee78196117280c23"
+    },
+    {
+      "screen": "login",
+      "priority": "primary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "login-original",
+      "referenceResizedSize": [
+        393,
+        700
+      ],
+      "actual": "docs/evidence/v2/browser/login-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "23533ade9e1f287e683fa0324c5731063801294316c26fced4c5a4bded82fe92",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-login-393.png",
+      "compositeSize": [
+        842,
+        832
+      ],
+      "compositeSha256": "59a79377e020a035e678833327402365499b910e2817f3fd6639e7fe2176a5f9"
+    },
+    {
+      "screen": "login",
+      "priority": "primary",
+      "requestedViewportWidth": 430,
+      "referenceKey": "login-original",
+      "referenceResizedSize": [
+        430,
+        766
+      ],
+      "actual": "docs/evidence/v2/browser/login-430.png",
+      "actualSize": [
+        430,
+        763
+      ],
+      "actualSha256": "58395c9894ce472b4d5f81d90c65cfc585e04df0fae260b92bf92c6191ff98b9",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-login-430.png",
+      "compositeSize": [
+        916,
+        898
+      ],
+      "compositeSha256": "db8546ce053d152019c6a78d01c1b7922d8529af218fbeb2261d0a1ead43bd79"
+    },
+    {
+      "screen": "home",
+      "priority": "primary",
+      "requestedViewportWidth": 360,
+      "referenceKey": "home-new",
+      "referenceResizedSize": [
+        360,
+        641
+      ],
+      "actual": "docs/evidence/v2/browser/home-360.png",
+      "actualSize": [
+        360,
+        640
+      ],
+      "actualSha256": "3b9277c5aaba3a3c8eed87c71894721d12f880842227a4fa4c483e625572f99a",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-home-360.png",
+      "compositeSize": [
+        776,
+        773
+      ],
+      "compositeSha256": "f87421c83d5d8b2cf98034d1d4d1a2642a066baa5ea79092433f7c337988bb1f"
+    },
+    {
+      "screen": "home",
+      "priority": "primary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "home-new",
+      "referenceResizedSize": [
+        393,
+        700
+      ],
+      "actual": "docs/evidence/v2/browser/home-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "fb500aa0896cace4e2b25eafe093430eedaea1eeeaa26fed3fdce2741d50b708",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-home-393.png",
+      "compositeSize": [
+        842,
+        832
+      ],
+      "compositeSha256": "54fd969132ed0fee9d8cab747d2ac98d67f65da449916f7aa31163b9c62613c0"
+    },
+    {
+      "screen": "home",
+      "priority": "primary",
+      "requestedViewportWidth": 430,
+      "referenceKey": "home-new",
+      "referenceResizedSize": [
+        430,
+        766
+      ],
+      "actual": "docs/evidence/v2/browser/home-430.png",
+      "actualSize": [
+        430,
+        763
+      ],
+      "actualSha256": "6fda078dad8fc898c82919030024385b22ff8b50bd09d06eba017a1b1bb471f9",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-home-430.png",
+      "compositeSize": [
+        916,
+        898
+      ],
+      "compositeSha256": "5454f8b405f386bdce3835f42bcfb87504ed37803de56c6ffd53f73e4f238a2d"
+    },
+    {
+      "screen": "discovery",
+      "priority": "primary",
+      "requestedViewportWidth": 360,
+      "referenceKey": "discovery-new",
+      "referenceResizedSize": [
+        360,
+        640
+      ],
+      "actual": "docs/evidence/v2/browser/discovery-360.png",
+      "actualSize": [
+        360,
+        640
+      ],
+      "actualSha256": "1897eb9ea4ee278dc7d2cc653f9abf5c76a11f67d6cd5fd0dbe29ba816beab2f",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-discovery-360.png",
+      "compositeSize": [
+        776,
+        772
+      ],
+      "compositeSha256": "6978384feb246ab5c0657beda4b127192a4a1677c8f13cea84b039eb5e1520df"
+    },
+    {
+      "screen": "discovery",
+      "priority": "primary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "discovery-new",
+      "referenceResizedSize": [
+        393,
+        699
+      ],
+      "actual": "docs/evidence/v2/browser/discovery-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "7fdd010c8a86e13284a73ea93eb12f0b2d56b8484079e23373b7cb91b1788358",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-discovery-393.png",
+      "compositeSize": [
+        842,
+        831
+      ],
+      "compositeSha256": "4ed8208632afdebb296a6e5b78b663874424abadece6206a3d12717d8344a798"
+    },
+    {
+      "screen": "discovery",
+      "priority": "primary",
+      "requestedViewportWidth": 430,
+      "referenceKey": "discovery-new",
+      "referenceResizedSize": [
+        430,
+        764
+      ],
+      "actual": "docs/evidence/v2/browser/discovery-430.png",
+      "actualSize": [
+        430,
+        763
+      ],
+      "actualSha256": "82442b82ea46018fc05720b8761b25fa929a4df8457b4547a7bd805d7d9df3dd",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-discovery-430.png",
+      "compositeSize": [
+        916,
+        896
+      ],
+      "compositeSha256": "8c5040c6e625c3b8c6385247fa63ce8caaaa748c1349490cd86eea87a3308138"
+    },
+    {
+      "screen": "doctors",
+      "priority": "primary",
+      "requestedViewportWidth": 360,
+      "referenceKey": "doctors-new",
+      "referenceResizedSize": [
+        360,
+        640
+      ],
+      "actual": "docs/evidence/v2/browser/doctors-360.png",
+      "actualSize": [
+        360,
+        640
+      ],
+      "actualSha256": "635bdce1e6111985e9ed0221187348dfbf2a82480e605a57de9ca0f721fa2a0a",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-doctors-360.png",
+      "compositeSize": [
+        776,
+        772
+      ],
+      "compositeSha256": "98540e62d00da146637e92b97c7573edef1f7808575ab1c4ee5985a37f04369d"
+    },
+    {
+      "screen": "doctors",
+      "priority": "primary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "doctors-new",
+      "referenceResizedSize": [
+        393,
+        699
+      ],
+      "actual": "docs/evidence/v2/browser/doctors-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "7a87dcf8c9a1a5516e3c9c6bba40028a2ad1c5c94e512e60e0023c67219ef80d",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-doctors-393.png",
+      "compositeSize": [
+        842,
+        831
+      ],
+      "compositeSha256": "1444e47b4f0c666cc9c43266f1accaf5ba0b226894001278c05bf7de81434bfc"
+    },
+    {
+      "screen": "doctors",
+      "priority": "primary",
+      "requestedViewportWidth": 430,
+      "referenceKey": "doctors-new",
+      "referenceResizedSize": [
+        430,
+        764
+      ],
+      "actual": "docs/evidence/v2/browser/doctors-430.png",
+      "actualSize": [
+        430,
+        763
+      ],
+      "actualSha256": "a8de6c889385b5cdfe360b9501dce3dcb0402a84a25a6e4e046dc44c1ac4622c",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-doctors-430.png",
+      "compositeSize": [
+        916,
+        896
+      ],
+      "compositeSha256": "fea92dabac69019562436cdab9a99bbda7de256de69e8ca18874dab6bdf5f5b2"
+    },
+    {
+      "screen": "cart",
+      "priority": "primary",
+      "requestedViewportWidth": 360,
+      "referenceKey": "cart-new",
+      "referenceResizedSize": [
+        360,
+        641
+      ],
+      "actual": "docs/evidence/v2/browser/cart-360.png",
+      "actualSize": [
+        360,
+        640
+      ],
+      "actualSha256": "2b75a4b64cb5754e2aa17976601a93d8bec22fbb9e4e2479484f2f2f39dfb3f4",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-cart-360.png",
+      "compositeSize": [
+        776,
+        773
+      ],
+      "compositeSha256": "434405d0ac2227fd148f15a12de74839bf05abc1d6e6695add6153055e14afce"
+    },
+    {
+      "screen": "cart",
+      "priority": "primary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "cart-new",
+      "referenceResizedSize": [
+        393,
+        700
+      ],
+      "actual": "docs/evidence/v2/browser/cart-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "1961ef4c41812f3d92481986fd1d1c8d7773cfcb814a878d8b749d300e9e2cbb",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-cart-393.png",
+      "compositeSize": [
+        842,
+        832
+      ],
+      "compositeSha256": "ddb01c8fc9f774c48681b2dd7fe16a68cd4afd77e886c909ad15ca08622a43e0"
+    },
+    {
+      "screen": "cart",
+      "priority": "primary",
+      "requestedViewportWidth": 430,
+      "referenceKey": "cart-new",
+      "referenceResizedSize": [
+        430,
+        766
+      ],
+      "actual": "docs/evidence/v2/browser/cart-430.png",
+      "actualSize": [
+        430,
+        763
+      ],
+      "actualSha256": "ff9856d1527303492163bb7d71ec326d49b61f69dffa64b40af1dd6c19e6c114",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/primary-cart-430.png",
+      "compositeSize": [
+        916,
+        898
+      ],
+      "compositeSha256": "97de5229bfd98a1e2991c6cbe1c8f04894f9a0707774b50895d916b40fca991d"
+    },
+    {
+      "screen": "home",
+      "priority": "secondary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "home-original",
+      "referenceResizedSize": [
+        393,
+        697
+      ],
+      "actual": "docs/evidence/v2/browser/home-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "fb500aa0896cace4e2b25eafe093430eedaea1eeeaa26fed3fdce2741d50b708",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/secondary-home-393.png",
+      "compositeSize": [
+        842,
+        831
+      ],
+      "compositeSha256": "b7b6cd0357684e5495f35542ddb554bb96b3b0ba2283dd54c82012df693ef272"
+    },
+    {
+      "screen": "discovery",
+      "priority": "secondary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "discovery-original",
+      "referenceResizedSize": [
+        393,
+        695
+      ],
+      "actual": "docs/evidence/v2/browser/discovery-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "7fdd010c8a86e13284a73ea93eb12f0b2d56b8484079e23373b7cb91b1788358",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/secondary-discovery-393.png",
+      "compositeSize": [
+        842,
+        831
+      ],
+      "compositeSha256": "17faef8bfb36a7fc5bd2aeb82428fde713edc960553627d08bf47ddfbba85beb"
+    },
+    {
+      "screen": "cart",
+      "priority": "secondary",
+      "requestedViewportWidth": 393,
+      "referenceKey": "cart-original",
+      "referenceResizedSize": [
+        393,
+        699
+      ],
+      "actual": "docs/evidence/v2/browser/cart-393.png",
+      "actualSize": [
+        393,
+        699
+      ],
+      "actualSha256": "1961ef4c41812f3d92481986fd1d1c8d7773cfcb814a878d8b749d300e9e2cbb",
+      "actualPixelsAltered": false,
+      "composite": "docs/evidence/v2/comparisons/secondary-cart-393.png",
+      "compositeSize": [
+        842,
+        831
+      ],
+      "compositeSha256": "8d5c2fa8646c75a68e16c8c7b604d48966e0a9f3fedff0389d65426553422e5b"
+    }
+  ],
+  "logoComparison": "docs/evidence/v2/launcher-source-comparison.png (prepared separately by root; original logo retained here)"
+}

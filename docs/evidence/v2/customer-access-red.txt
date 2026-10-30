@@ -1,0 +1,92 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/customer-access.integration.test.ts (1 test | 1 failed) 133ms
+   ❯ public customer access on real MySQL (1)
+     × registers a customer without beta allowlist or invitation and authenticates its session 129ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  21:45:23
+   Duration  2.51s (import 79%, transform 14%, tests 6%, worker 1%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/customer-access.integration.test.ts > public customer access on real MySQL > registers a customer without beta allowlist or invitation and authenticates its session
+AssertionError: promise rejected "TRPCError: [
+  {
+    "expected": "string"… { code: '…' }" instead of resolving
+ ❯ server/customer-access.integration.test.ts:15:175
+
+
+Caused by: TRPCError: [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "inviteCode"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "phone"
+    ],
+    "path": [],
+    "message": "Unrecognized key: \"phone\""
+  }
+]
+ ❯ inputValidatorMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:42:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ procedure node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:262:18
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/tracked-D4jU_Hb3.mjs:295:13
+ ❯ server/customer-access.integration.test.ts:15:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'BAD_REQUEST' }
+Caused by: ZodError: [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "inviteCode"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "phone"
+    ],
+    "path": [],
+    "message": "Unrecognized key: \"phone\""
+  }
+]
+ ❯ inputValidatorMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:40:24
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ procedure node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:262:18
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/tracked-D4jU_Hb3.mjs:295:13
+ ❯ server/customer-access.integration.test.ts:15:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { _zod: { def: [ { expected: 'string', code: 'invalid_type', path: [ 'inviteCode' ], message: 'Invalid input: expected string, received undefined' }, { code: 'unrecognized_keys', keys: [ 'phone' ], path: [], message: 'Unrecognized key: "phone"' } ], constr: 'Function<ZodError>', traits: { constructor: 'Function<Set>', has: 'Function<has>', add: 'Function<add>', delete: 'Function<delete>', difference: 'Function<difference>', clear: 'Function<clear>', entries: 'Function<entries>', forEach: 'Function<forEach>', intersection: 'Function<intersection>', isSubsetOf: 'Function<isSubsetOf>', isSupersetOf: 'Function<isSupersetOf>', isDisjointFrom: 'Function<isDisjointFrom>', size: 2, symmetricDifference: 'Function<symmetricDifference>', union: 'Function<union>', values: 'Function<values>', keys: 'Function<values>' }, message: '[
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "inviteCode"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "phone"
+    ],
+    "path": [],
+    "message": "Unrecognized key: \"phone\""
+  }
+]' }, issues: [ { expected: 'string', code: 'invalid_type', path: [ 'inviteCode' ], message: 'Invalid input: expected string, received undefined' }, { code: 'unrecognized_keys', keys: [ 'phone' ], path: [], message: 'Unrecognized key: "phone"' } ], format: 'Function<anonymous>', flatten: 'Function<anonymous>', addIssue: 'Function<anonymous>', addIssues: 'Function<anonymous>', isEmpty: false }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

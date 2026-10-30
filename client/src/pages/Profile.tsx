@@ -6,15 +6,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Page, Feedback } from "@/components/BetaLayout";
 export default function Profile() {
-  const { user, logout } = useAuth({ redirectOnUnauthenticated: true });
+  const { user, logout, loading } = useAuth({
+    redirectOnUnauthenticated: true,
+  });
   const utils = trpc.useUtils();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [draftOwnerId, setDraftOwnerId] = useState<number | null>(null);
   useEffect(() => {
     if (user) {
+      if (draftOwnerId !== user.id) setAddress("");
       setName(user.name ?? "");
       setPhone(user.phone ?? "");
+      setDraftOwnerId(user.id);
+    } else {
+      setName("");
+      setPhone("");
+      setAddress("");
+      setDraftOwnerId(null);
     }
   }, [user]);
   const orders = trpc.orders.list.useQuery(undefined, {
@@ -36,6 +46,15 @@ export default function Profile() {
   const remove = trpc.addresses.delete.useMutation({
     onSuccess: () => utils.addresses.invalidate(),
   });
+  if (!user || loading)
+    return (
+      <Page title="حسابي وطلباتي">
+        <p role="status">
+          {loading ? "جار التحقق من الجلسة…" : "سجّل الدخول للوصول إلى حسابك."}
+        </p>
+        <Link href="/login">تسجيل الدخول</Link>
+      </Page>
+    );
   return (
     <Page title="حسابي وطلباتي">
       <p>
@@ -64,7 +83,7 @@ export default function Profile() {
             required
             minLength={2}
             maxLength={100}
-            value={name}
+            value={draftOwnerId === user.id ? name : ""}
             onChange={e => setName(e.target.value)}
           />
         </label>
@@ -73,7 +92,7 @@ export default function Profile() {
           <Input
             pattern="[+0-9 ()-]{0,20}"
             maxLength={20}
-            value={phone}
+            value={draftOwnerId === user.id ? phone : ""}
             onChange={e => setPhone(e.target.value)}
           />
         </label>
@@ -106,7 +125,7 @@ export default function Profile() {
             required
             minLength={5}
             maxLength={500}
-            value={address}
+            value={draftOwnerId === user.id ? address : ""}
             onChange={e => setAddress(e.target.value)}
           />
         </label>

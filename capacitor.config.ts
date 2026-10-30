@@ -3,7 +3,9 @@ import type { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
   appId: "com.gopharmacy.beta",
   appName: "GO Pharmacy",
-  webDir: "dist/public",
+  // Optional isolated build directory lets validation preserve an already-running
+  // local web build. It selects bundled files, never a remote server URL.
+  webDir: process.env.GO_ANDROID_WEB_DIR || "dist/public",
   // Bundled React assets only. Do not set server.url or allowNavigation.
   server: { hostname: "localhost", androidScheme: "https", cleartext: false },
   android: {

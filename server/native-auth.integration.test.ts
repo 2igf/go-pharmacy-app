@@ -26,6 +26,10 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
       vi.stubEnv("ANDROID_API_ENABLED", "true");
       vi.stubEnv("TRUST_PROXY", "loopback");
       vi.stubEnv(
+        "BETA_ALLOWED_EMAILS",
+        "legacy-native-registration@example.test"
+      );
+      vi.stubEnv(
         "BETA_INVITE_SECRET",
         "fictional-native-integration-secret".repeat(2)
       );
@@ -52,10 +56,12 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
         fetch(`${origin}/api/trpc/${path}`, { headers: headers() });
       try {
         const registered = await post("auth.register", {
-          email: "customer-a@example.test",
+          email: "legacy-native-registration@example.test",
           name: "Fictional Android User",
           password: "fictional-only-android-password",
-          inviteCode: invitationCodeFor("customer-a@example.test"),
+          inviteCode: invitationCodeFor(
+            "legacy-native-registration@example.test"
+          ),
         });
         expect(registered.status).toBe(200);
         const setCookie = registered.headers.get("set-cookie")!;
@@ -64,7 +70,9 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
         expect(setCookie).toContain("SameSite=Lax");
         cookie = setCookie.split(";")[0];
         const me = await (await get("auth.me")).json();
-        expect(me.result.data.json.email).toBe("customer-a@example.test");
+        expect(me.result.data.json.email).toBe(
+          "legacy-native-registration@example.test"
+        );
         const capabilities = await (await get("platform.capabilities")).json();
         expect(capabilities.result.data.json).toMatchObject({
           contractVersion: 1,
@@ -112,7 +120,7 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
           ).status
         ).toBe(401);
         const login = await post("auth.login", {
-          email: "customer-a@example.test",
+          email: "legacy-native-registration@example.test",
           password: "fictional-only-android-password",
         });
         expect(login.status).toBe(200);

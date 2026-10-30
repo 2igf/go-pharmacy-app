@@ -1,0 +1,270 @@
+{
+  "apk": "C:\\Users\\Issax\\Documents\\Codex\\2026-10-26\\files-pasted-by-the-user-go\\outputs\\go-pharmacy-foundation\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "sha256": "bccaea5c8cc7d6b605d00f1120970cebceadfbe7e88ad71e4e73c1fd6c8e8ef2",
+  "bytes": 6110010,
+  "package": "com.gopharmacy.beta",
+  "normalContainsTestCa": false,
+  "testContainsTestCa": true,
+  "bundledAssets": 46,
+  "allBundledAssetsMatch": true,
+  "privateConfigurationAbsent": true,
+  "launcherDensities": [
+    {
+      "density": "mdpi",
+      "size": 48,
+      "sourcePixelsMatchApk": true
+    },
+    {
+      "density": "hdpi",
+      "size": 72,
+      "sourcePixelsMatchApk": true
+    },
+    {
+      "density": "xhdpi",
+      "size": 96,
+      "sourcePixelsMatchApk": true
+    },
+    {
+      "density": "xxhdpi",
+      "size": 144,
+      "sourcePixelsMatchApk": true
+    },
+    {
+      "density": "xxxhdpi",
+      "size": 192,
+      "sourcePixelsMatchApk": true
+    }
+  ],
+  "assets": [
+    {
+      "asset": "assets/AdminFulfillment-BMxZA1Qr.js",
+      "sha256": "b29a8a7b43b1a6072ccae3981d444037aa65d86c3f57df717daee67fcbe235f4",
+      "matchesApk": true
+    },
+    {
+      "asset": "assets/AdminPharmacies-CnJZSG0t.js",
+      "sha256": "857d2bb74a14413258aaad21af434a4edda6aadaa55a76548c6c25388ff07485",
+      "matchesApk": true
+    },
+    {
+      "asset": "assets/FulfillmentRequest-BVdDkOBy.js",
+      "sha256": "e39773b95a86752bd9a09a070505226daf72814966ade2a7ea3aa47b9f088ca0",
+      "matchesApk": true
+    },
+    {
+      "asset": "assets/index-C6uWhE51.js",
+      "sha256": "8191651ebd7c29f37536b7927aaab2b56d061fa37e06cb39747f176ce30f1b19",
+      "matchesApk": true
+    },
+    {
+      "asset": "assets/index-Sz2xSjBO.css",
+      "sha256": "8356a9d5350c4d612aecf8e4b41fa73361be22d314269d216b6e32242b55b915",
+      "matchesApk": true
+    },
+    {
+      "asset": "assets/policy-BFBc7gVn.js",
+      "sha256": "bb22174654535f04e44f09ba31e882e97506c8cfdaad1488817e6f538a42187f",
+      "matchesApk": true
+    },
+    {
+      "asset": "assets/Portal-0DfJYgNp.js",
+      "sha256": "3a57f55a37f423d15936c3c522dabca3aaa886bf9b7c44aecbbc5829fea10484",
+      "matchesApk": true
+    },
+    {
+      "asset": "assets/Records-B6hq-hF3.js",
+      "sha256": "fed4a7ce8e809f3336cb5b55c9934e2a8317c70d4ad6852700ca38e71cbb2dbd",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/banner-dozova.png",
+      "sha256": "6ff74fd0bd96bb3f58df4a0f19dddb08d9f6f64b0b71617954e600ceab13986e",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/brand-babyjoy.png",
+      "sha256": "7749cca87c5ebf883b621a8c2ddbd427216b61008b114041ca89def96b0da2fa",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/brand-beesline.png",
+      "sha256": "2d9ca93043c0b0abb69a01b253fb7ba87b020ed92d972e3fe471074f7423eee9",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/brand-dove.png",
+      "sha256": "26167afecd12248b9817593ec68a99d423d4c916c4fabc6b247c1194ab549768",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/brand-gillette.png",
+      "sha256": "d0c1bd71e1eacfbae751be5486040dd4adfcd3118ff0ff5ddbbf5143d8c14341",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/brand-pampers.png",
+      "sha256": "4fc940db924ee6eb350302d18e4d00f1e4dc60ab3fe3718466ccf50d68793ede",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/category-baby.png",
+      "sha256": "9389593d760bef734845be75fac47cf364a3c922718100237cfc1f7c6e1a239d",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/category-medications.png",
+      "sha256": "443f48b2dae082671c92b5c339207216e39802cdca3c4de588c005557b962184",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/category-natural.png",
+      "sha256": "de93f207e3b700d74d1bfefb4b61d373b223e82fca0b0f3270b5c8a1c68a1b90",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/category-pets.png",
+      "sha256": "e8282cbc28b8c30aabff44aaffbed7eeba10c1e567990b89718dc476eb5970d9",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/category-skincare.png",
+      "sha256": "57859bc9a8fec40101edde0995bff114709bc17269f0b7ffc2163685830dda1b",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/category-supplies.png",
+      "sha256": "6eed5b9840f3a7b9c616679cebf3a7395c0a1ec07258ecf4009c019b88868bf8",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/clinic-bones.png",
+      "sha256": "1ba2faaeb21961d3002cf1d2b4225c08c9b5d2496fef181e581a159b528658ae",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/clinic-child.png",
+      "sha256": "f385da1d968c40c3e3107a33d7e7e974c2f604d3a1a740d8eee354242fc6dea3",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/clinic-internal.png",
+      "sha256": "432d7a15e8003e4e68d60bef1c77049d2963cb89506617f1f2b284397b4b557d",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/clinic-skin.png",
+      "sha256": "54cb6b0770c3e05c3c26efc5592f731bf2258a472c7db0c50dc8305e891030b8",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/clinic-teeth.png",
+      "sha256": "82fddad3db8347c092e0e2c227981e33183adb2a0bab95dc3457cecb916f55ec",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/doctor.png",
+      "sha256": "21894418a4365e258dd1e8eea1c3f3bfd5a8e708c2d56e90e3340559d95b53bc",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/login-header.png",
+      "sha256": "db0011752e60730f5aecedb86fc0d9995d5fefff831b666fa893d0a4bef3e1d5",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/logo.png",
+      "sha256": "136f4ebb554254cd6d15d1854684a43c3ce7666237813a550fc964367d0f5128",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/nav-cart.png",
+      "sha256": "1eeda6412d340321716b6011853d72c33df819524342b9bb37a92ca51a097fbd",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/nav-doctor.png",
+      "sha256": "2041cbf6dd81d19d8b3c5b4dd5723cb3d4a511e194e36520916a2619cdfeb3d0",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/nav-home.png",
+      "sha256": "3ca646a4e2d25da29007c99ef8c871366a42e1a216df7f381fdfdee20120f54e",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/nav-profile.png",
+      "sha256": "d04a8c6d5c7567ebaad0d8e8f822100e4d07b7b9dd62cac43a60d29a8dac387b",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/nav-reminder.png",
+      "sha256": "2237d0afb0e37b77f812e2e4d5048bc2b53896f6a189e4fb39f670411ef8581c",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/nav-search.png",
+      "sha256": "e0d89ac70faf77f13991f9555cbebe826672a0dc6c9027bde16484f7cc0284ad",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/pin.png",
+      "sha256": "91e8b39e0bbd75c12fa7bf7cf7f3cccaabbe5b387df1a0f2591d5df320909a11",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/product-melatonin.png",
+      "sha256": "9f03fd9d7af4e7d64786ef81092392f9cbf3ad7d41e705bcf962a254381a2912",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/product-panadol.png",
+      "sha256": "49151e5913a59f188e53354aeb4a8caf6cf866ba10257a1bef483bb852580fe8",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/product-votrex.png",
+      "sha256": "5e6a8f3bda218c4f5860feabbbe98051214a2fa2b512c906e4d96bff499f3df5",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva/scan.png",
+      "sha256": "26b3367119b9765a1852cf2d8a8bdbcdcbb5b11f91baccac23f088cef1eaf2db",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva-v2/clinic-derma.png",
+      "sha256": "79761be5025fc941a28feb50698246587cf1881c2feb6369e8c5c6a27edd59dc",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva-v2/clinic-grande.png",
+      "sha256": "af5942449d18066d79adc4c5b290ae31d116dba004110cd60c1c84aecef1b0ff",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva-v2/doctor-preview-1.png",
+      "sha256": "612146affd5efa17f86532c253517d45dba7217d021c1a9bc308c0425875f4fb",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva-v2/doctor-preview-2.png",
+      "sha256": "7cd51c4b3b981de85ecc0c870f08f826a79aae35c341767052f80b337cfd3b8f",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva-v2/doctor-preview-3.png",
+      "sha256": "cba237aea0b2ad51b937229c91f387550a404ae4b73473be600ac77c7b088885",
+      "matchesApk": true
+    },
+    {
+      "asset": "canva-v2/logo-source.png",
+      "sha256": "f43fd9f391d11dd10683c28322ba2c44e783bb7a1337a44d3ace0eba06860bfd",
+      "matchesApk": true
+    },
+    {
+      "asset": "index.html",
+      "sha256": "1b1aa2ef55f58100ff34b5028b6cea3e6d95be5f1c3ce7abf536311a79c87be1",
+      "matchesApk": true
+    }
+  ]
+}

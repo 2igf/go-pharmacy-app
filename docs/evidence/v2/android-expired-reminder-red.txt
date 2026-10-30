@@ -1,0 +1,44 @@
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderSchedulerTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.gopharmacy.beta.ReminderSchedulerTest:
+INSTRUMENTATION_STATUS: test=delayedFinalDayAlarmCannotPostAfterLocalEndDate
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderSchedulerTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Expired final-day alarm must not post a stale reminder. Actual: go_manual_reminders_v2
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failEquals(Assert.java:187)
+	at org.junit.Assert.assertNotEquals(Assert.java:163)
+	at com.gopharmacy.beta.ReminderSchedulerTest.delayedFinalDayAlarmCannotPostAfterLocalEndDate(ReminderSchedulerTest.java:154)
+
+INSTRUMENTATION_STATUS: stream=
+Error in delayedFinalDayAlarmCannotPostAfterLocalEndDate(com.gopharmacy.beta.ReminderSchedulerTest):
+java.lang.AssertionError: Expired final-day alarm must not post a stale reminder. Actual: go_manual_reminders_v2
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failEquals(Assert.java:187)
+	at org.junit.Assert.assertNotEquals(Assert.java:163)
+	at com.gopharmacy.beta.ReminderSchedulerTest.delayedFinalDayAlarmCannotPostAfterLocalEndDate(ReminderSchedulerTest.java:154)
+
+INSTRUMENTATION_STATUS: test=delayedFinalDayAlarmCannotPostAfterLocalEndDate
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.507
+There was 1 failure:
+1) delayedFinalDayAlarmCannotPostAfterLocalEndDate(com.gopharmacy.beta.ReminderSchedulerTest)
+java.lang.AssertionError: Expired final-day alarm must not post a stale reminder. Actual: go_manual_reminders_v2
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failEquals(Assert.java:187)
+	at org.junit.Assert.assertNotEquals(Assert.java:163)
+	at com.gopharmacy.beta.ReminderSchedulerTest.delayedFinalDayAlarmCannotPostAfterLocalEndDate(ReminderSchedulerTest.java:154)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

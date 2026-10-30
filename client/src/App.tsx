@@ -13,6 +13,10 @@ import Checkout from "./pages/Checkout";
 import OrderTracking from "./pages/OrderTracking";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
+import PasswordRecovery from "./pages/PasswordRecovery";
+import DoctorsPreview from "./pages/DoctorsPreview";
+import ManualReminders from "./pages/ManualReminders";
+import MedicationKnowledge from "./pages/MedicationKnowledge";
 import Notifications from "./pages/Notifications";
 import BetaAdmin from "./pages/BetaAdmin";
 import NotFound from "./pages/NotFound";
@@ -66,6 +70,12 @@ function CustomerRoutes() {
       <Route path="/login">
         <Login />
       </Route>
+      <Route path="/forgot-password">
+        <PasswordRecovery />
+      </Route>
+      <Route path="/reset-password">
+        <PasswordRecovery mode="reset" />
+      </Route>
       <Route path="/cart" component={Cart} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/order/:id" component={OrderTracking} />
@@ -73,15 +83,16 @@ function CustomerRoutes() {
       <Route path="/profile" component={Profile} />
       <Route path="/addresses" component={Profile} />
       <Route path="/notifications" component={Notifications} />
+      <Route path="/doctors" component={DoctorsPreview} />
+      <Route path="/reminders/new" component={ManualReminders} />
+      <Route path="/reminders/:id/edit" component={ManualReminders} />
+      <Route path="/reminders/:id" component={ManualReminders} />
+      <Route path="/reminders" component={ManualReminders} />
+      <Route path="/medicines/:id" component={MedicationKnowledge} />
+      <Route path="/medicines" component={MedicationKnowledge} />
       <Route path="/admin" component={BetaAdmin} />
       <Route path="/admin-panel" component={BetaAdmin} />
-      {[
-        "/doctors",
-        "/appointments",
-        "/reminders",
-        "/pharmacy",
-        "/delivery",
-      ].map(path => (
+      {["/appointments", "/pharmacy", "/delivery"].map(path => (
         <Route key={path} path={path} component={Unavailable} />
       ))}
       <Route component={NotFound} />

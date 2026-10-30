@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Feedback } from "@/components/BetaLayout";
+import PromotionalCarousel from "@/customer/PromotionalCarousel";
 import {
   DeliveryAddress,
   ProductCard,
@@ -93,6 +94,7 @@ export default function Home() {
           )
         )}
       </section>
+      <PromotionalCarousel />
       <Link className="canva-catalog-link" href="/products?view=all">
         عرض جميع المنتجات والبحث
       </Link>

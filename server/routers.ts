@@ -1,3 +1,5 @@
+import { medicationKnowledgeRouter } from "./medication-knowledge/router";
+import { manualRemindersRouter } from "./customer-reminders/router";
 import { router } from "./_core/trpc";
 import { systemRouter } from "./_core/systemRouter";
 import { authRouter } from "./auth";
@@ -19,6 +21,8 @@ import {
 export const appRouter = router({
   system: systemRouter,
   auth: authRouter,
+  manualReminders: manualRemindersRouter,
+  medicationKnowledge: medicationKnowledgeRouter,
   platform: platformRouter,
   pharmacies: pharmaciesRouter,
   fulfillment: fulfillmentRouter,

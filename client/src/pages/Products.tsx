@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useSearch } from "wouter";
+import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Feedback } from "@/components/BetaLayout";
+import PromotionalCarousel from "@/customer/PromotionalCarousel";
 import {
   ProductCard,
   SearchField,
@@ -70,6 +71,9 @@ export default function ProductsPage() {
         onChange={setSearchQuery}
         onSubmit={() => setSearching(true)}
       />
+      <Link className="canva-knowledge-entry" href="/medicines">
+        دليل معلومات الأدوية — المصادر والتسجيل
+      </Link>
       <Feedback loading={products.isLoading} error={products.error} />
       <section className="canva-popular">
         <h2>{results ? "نتائج البحث" : "الأكثر رواجاً"}</h2>
@@ -136,15 +140,7 @@ export default function ProductsPage() {
         </div>
         <p className="canva-data-note">العيادات والحجوزات غير متاحة حاليًا</p>
       </section>
-      <figure className="canva-advert">
-        <img
-          src="/canva/banner-dozova.png"
-          alt="بنر Dozova من تصميم Canva الأصلي — مادة بصرية مرجعية فقط"
-        />
-        <figcaption>
-          من التصميم الأصلي — لا يمثل عرضًا أو توفرًا للبيع
-        </figcaption>
-      </figure>
+      <PromotionalCarousel />
       <details className="canva-search-options">
         <summary>خيارات البحث والترتيب</summary>
         <label>

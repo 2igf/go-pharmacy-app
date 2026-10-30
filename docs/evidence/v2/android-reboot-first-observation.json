@@ -1,0 +1,14 @@
+{
+  "scenario": "dedicated emulator reboot only",
+  "startedAt": "2026-10-30T08:55:19.081Z",
+  "bootCompleted": false,
+  "alarmRestored": false,
+  "laterObservation": {
+    "bootCompleted": true,
+    "bootReason": "reboot,shell",
+    "futureAlarmRestored": true,
+    "missedStartupSlotSkipped": true,
+    "nextObservedUtc": "2026-10-31T08:57:00.000Z",
+    "note": "Boot exceeded first bounded observation; later actual bootcompleted and persisted next-day alarm verified. No catch-up dose reminder."
+  }
+}

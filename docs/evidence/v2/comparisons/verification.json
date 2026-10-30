@@ -1,0 +1,101 @@
+{
+  "comparisonCount": 18,
+  "primaryCount": 15,
+  "secondaryCount": 3,
+  "originalReferenceCount": 9,
+  "allOriginalCopiesByteIdentical": true,
+  "allActualPanelsPixelIdentical": true,
+  "allReferenceHeightsProportional": true,
+  "results": [
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-login-360.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-login-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-login-430.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-home-360.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-home-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-home-430.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-discovery-360.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-discovery-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-discovery-430.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-doctors-360.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-doctors-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-doctors-430.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-cart-360.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-cart-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/primary-cart-430.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/secondary-home-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/secondary-discovery-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    },
+    {
+      "composite": "docs/evidence/v2/comparisons/secondary-cart-393.png",
+      "actualPixelsUnchanged": true,
+      "proportionalReferenceHeight": true
+    }
+  ]
+}

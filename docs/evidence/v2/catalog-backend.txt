@@ -1,0 +1,8 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+
+ Test Files  1 passed (1)
+      Tests  22 passed (22)
+   Start at  00:03:04
+   Duration  4.96s (tests 53%, import 39%, transform 8%)

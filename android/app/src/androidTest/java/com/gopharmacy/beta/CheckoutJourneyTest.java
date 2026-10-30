@@ -66,7 +66,7 @@ public class CheckoutJourneyTest {
         command("[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==="+q(label)+"&&!b.disabled).click()");
     }
     private void login(String role) throws Exception {
-        navigate("/login");text("البريد الإلكتروني","login form");if(role.equals("customer")){assertEquals(Boolean.TRUE,js("[...document.querySelectorAll('button')].some(b=>b.getAttribute('aria-label')==='إنشاء حساب مدعو'&&b.getBoundingClientRect().bottom<=innerHeight)"));screenshot("canva-login.png");}JSONObject user=fixture.getJSONObject("users").getJSONObject(role);
+        navigate("/login");text("البريد الإلكتروني","login form");if(role.equals("customer")){assertEquals(Boolean.TRUE,js("[...document.querySelectorAll('button')].some(b=>b.getAttribute('aria-label')==='إنشاء حساب عميل'&&b.getBoundingClientRect().bottom<=innerHeight)"));screenshot("canva-login.png");}JSONObject user=fixture.getJSONObject("users").getJSONObject(role);
         input("البريد الإلكتروني",user.getString("email"));input("كلمة المرور",user.getString("password"));button("Log in");until("location.pathname==='/products'","real login");text("الأدوية والمنتجات","catalog");
     }
     private void screenshot(String name) throws Exception {
@@ -97,12 +97,15 @@ public class CheckoutJourneyTest {
         String mode=InstrumentationRegistry.getArguments().getString("checkoutMode","journey");
         try {
             // Chain trusted by the scoped test CA; mismatched hostname must still fail.
-            boolean rejected=false;try {HttpsURLConnection bad=(HttpsURLConnection)new URL("https://10.0.2.2:3444/healthz").openConnection();bad.setConnectTimeout(10000);bad.getInputStream().close();}catch(SSLException expected){rejected=true;}
+            boolean rejected=false;try {HttpsURLConnection bad=(HttpsURLConnection)new URL(fixture.optString("wrongHostOrigin", "https://10.0.2.2:3444")+"/healthz").openConnection();bad.setConnectTimeout(10000);bad.getInputStream().close();}catch(SSLException expected){rejected=true;}
             assertTrue("Hostname validation must remain enabled",rejected);report.put("wrongHostnameRejected",true);
+            instrumentation.getUiAutomation().performGlobalAction(android.accessibilityservice.AccessibilityService.GLOBAL_ACTION_HOME);
+            SystemClock.sleep(500);
             Intent launch=new Intent().setClassName(app.getPackageName(),"com.gopharmacy.beta.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity=(BridgeActivity)instrumentation.startActivitySync(launch);
             dismissSystemAnr();
             until("document.readyState==='complete'&&!!document.body","bundled document");
+            until("document.hasFocus()", "Android WebView foreground focus");
             until("!!document.getElementById('api-origin')||document.body.innerText.includes('إعداد اتصال التطبيق')","connection gate");
             if(Boolean.TRUE.equals(js("!!document.getElementById('api-origin')"))){input("عنوان خادم HTTPS",fixture.getString("apiOrigin"));button("حفظ والاتصال");}
             login("customer");navigate("/");text("الأقسام","Canva home");text("DEMO Restricted","home API data");until("document.querySelectorAll('.canva-bottom-nav a').length===6","six-item navigation");until("[...document.images].every(i=>i.complete)","home raster assets");assertEquals(Boolean.TRUE,js("document.documentElement.scrollWidth<=innerWidth+1"));report.put("sixItemNavigation",true);report.put("rtlLayout",js("getComputedStyle(document.querySelector('.customer-app')).direction==='rtl'"));screenshot("canva-home.png");navigate("/products");text("ماركات مميزة","Canva discovery");text(fixture.getString("productName"),"discovery API data");until("[...document.images].every(i=>i.complete)","discovery raster assets");screenshot("canva-discovery.png");navigate("/profile");text("عنوان خيالي جديد","customer address form");

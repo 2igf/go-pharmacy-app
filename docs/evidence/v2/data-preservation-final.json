@@ -1,0 +1,295 @@
+{
+  "checkedAt": "2026-10-30T13:21:48.980Z",
+  "readOnly": true,
+  "allUnchanged": true,
+  "databases": [
+    {
+      "database": "go_pharmacy_test",
+      "tables": [
+        {
+          "table": "__drizzle_migrations",
+          "count": 6,
+          "hash": "a94125651f956d7be8fe0cca78d2d30c132b83e8777bcd777190b9fe35f8f6ab",
+          "unchanged": true
+        },
+        {
+          "table": "appointments",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "cartitems",
+          "count": 4,
+          "hash": "ba799821191e0e26c13d1cc675cc56f3c7cd85185ed8c5d44f4a5a65aa295ff7",
+          "unchanged": true
+        },
+        {
+          "table": "credentials",
+          "count": 8,
+          "hash": "9edbc9c5e6824c5ad88573b7d944214cca3478058e1a2ac1e625f2a8afd4b7b7",
+          "unchanged": true
+        },
+        {
+          "table": "doctorreviews",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "doctors",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "doctortimeslots",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "fulfillmentevents",
+          "count": 43,
+          "hash": "0641449a87191f922a05f0b56889dbac0fc92500bfa98881bb6e092a75672272",
+          "unchanged": true
+        },
+        {
+          "table": "fulfillmentorders",
+          "count": 9,
+          "hash": "075eabd4ac79cd53b1bc2e35fd7feb8b79e4aa294df16165a57fd6bc4b9dd1a3",
+          "unchanged": true
+        },
+        {
+          "table": "fulfillmentstocklines",
+          "count": 9,
+          "hash": "cd7740fbda2d1d768c2a73d1fa50afa9a34c26c7da2dbd7336bc92fa492f5f24",
+          "unchanged": true
+        },
+        {
+          "table": "medicationreminderlogs",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "medicationreminders",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "notifications",
+          "count": 49,
+          "hash": "e61ef0089dd65627ec5093fb6afb0171d3a81c743851b16ae8febf36961ee8d3",
+          "unchanged": true
+        },
+        {
+          "table": "officialmedicineprices",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "orderitems",
+          "count": 17,
+          "hash": "39809d10c9ba80bcbe10d3a56e694ae99999a901cb43aac75fd413e1120ea93c",
+          "unchanged": true
+        },
+        {
+          "table": "orders",
+          "count": 15,
+          "hash": "78c98a4b52f361e8690c497f1f2d17acebf8cbc38d6eee3c12602ccf2adbd527",
+          "unchanged": true
+        },
+        {
+          "table": "organizationauditevents",
+          "count": 37,
+          "hash": "85b059d35a4414cf812a165c85a7ca9b59e57c1eab36e7227c91017f95f20b89",
+          "unchanged": true
+        },
+        {
+          "table": "organizationmemberships",
+          "count": 14,
+          "hash": "ca4b9a1c779d0602c58e262c382425ac5ded7d7eef03267c88645597912ef7f7",
+          "unchanged": true
+        },
+        {
+          "table": "organizations",
+          "count": 8,
+          "hash": "14128faa65c5734286defb06675c297f45cc8685adbaa5152acca1b9bba9cad5",
+          "unchanged": true
+        },
+        {
+          "table": "pharmacyinventory",
+          "count": 6,
+          "hash": "e99e55c3751616d80cf10a6f4864985a73104d84755f18ede5897266ab0af701",
+          "unchanged": true
+        },
+        {
+          "table": "pharmacyorderassignments",
+          "count": 9,
+          "hash": "32c83a4329fcf1cb92776e184c750d36ad4f383e076b56d04f44ccf16194eebc",
+          "unchanged": true
+        },
+        {
+          "table": "prescriptions",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "pricingjurisdictions",
+          "count": 1,
+          "hash": "568784a5b5262476256edd9a9c1845d4417061a9fac3c4756e84285cc394cccf",
+          "unchanged": true
+        },
+        {
+          "table": "productreviews",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "products",
+          "count": 5,
+          "hash": "67043362968dfdb5dc8cc8a1103a99781141f1bc1d9bf756f7f9f3900defc02d",
+          "unchanged": true
+        },
+        {
+          "table": "sessions",
+          "count": 51,
+          "hash": "f4056f8f1e03b5901433087df0b769dbdf20d950949cc0c77dd7879ada03c739",
+          "unchanged": true
+        },
+        {
+          "table": "useraddresses",
+          "count": 12,
+          "hash": "5ac257f2e883211c06d9035bf821a94b1fa01fc2e432027a556012a348b65413",
+          "unchanged": true
+        },
+        {
+          "table": "users",
+          "count": 11,
+          "hash": "a3f345405a006fbdacdfd24bb7f231b038d5e73593e51bc9f48544eb20d30c3e",
+          "unchanged": true
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "database": "go_pharmacy_demo",
+      "tables": [
+        {
+          "table": "__drizzle_migrations",
+          "count": 4,
+          "hash": "3528fdcb5ed17003ea62310bd8aa4db51955104a048fb5f078b405c17763c7ff",
+          "unchanged": true
+        },
+        {
+          "table": "appointments",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "cartitems",
+          "count": 2,
+          "hash": "2e909370a47fdf95493d41ebc44310d08f6580cedef8366631ccc4d5feabede7",
+          "unchanged": true
+        },
+        {
+          "table": "credentials",
+          "count": 3,
+          "hash": "9336e7af7041bf92cff4de3c5b206e87f8ed83101f191641b266ecd51d71a68a",
+          "unchanged": true
+        },
+        {
+          "table": "doctorreviews",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "doctors",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "doctortimeslots",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "medicationreminderlogs",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "medicationreminders",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "notifications",
+          "count": 4,
+          "hash": "2f4a485b7633e00b55e6916b86158dc5bbb6d10ff2afea86f7bee65ec8bd79db",
+          "unchanged": true
+        },
+        {
+          "table": "orderitems",
+          "count": 4,
+          "hash": "2e9e7675da8f9253d592f09b70355463ad2c5f8892578dd9cff000ec5cbde3e4",
+          "unchanged": true
+        },
+        {
+          "table": "orders",
+          "count": 3,
+          "hash": "8c6295d34610fd340b6876a30c9a66ebd557156f437072d97e2eaf31da6ed3d8",
+          "unchanged": true
+        },
+        {
+          "table": "prescriptions",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "productreviews",
+          "count": 0,
+          "hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "unchanged": true
+        },
+        {
+          "table": "products",
+          "count": 4,
+          "hash": "da81cbe9ce397df956cfb82b4b075811bc3af746c0bcbac9df8babd2da8eb397",
+          "unchanged": true
+        },
+        {
+          "table": "sessions",
+          "count": 4,
+          "hash": "39bebd27b813d7dbaa247baa2c3dc9d2b842675e7d8b6302e2f74c644ee4ee45",
+          "unchanged": true
+        },
+        {
+          "table": "useraddresses",
+          "count": 2,
+          "hash": "6d484b366b2edb0a9b54d2c323f7b0b0b690d12d38cca93d690c017579fe17a5",
+          "unchanged": true
+        },
+        {
+          "table": "users",
+          "count": 3,
+          "hash": "bbcaab3b257145a0f610841609b00f02886054b0b450b9f061690af7fa7545f6",
+          "unchanged": true
+        }
+      ],
+      "unchanged": true
+    }
+  ]
+}

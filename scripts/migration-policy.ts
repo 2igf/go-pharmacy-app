@@ -1,5 +1,19 @@
 import { createHash } from "node:crypto";
 
+/** MySQL DDL is not transactional. Never auto-repair or rerun a partial group. */
+export function assertAdditiveTableState(
+  tag: string,
+  applied: boolean,
+  expected: string[],
+  names: Set<string>
+) {
+  const present = expected.filter(name => names.has(name.toLowerCase())).length;
+  if ((!applied && present > 0) || (applied && present !== expected.length))
+    throw new Error(
+      `Partial/untracked ${tag} DDL detected; stop and restore/reconcile using a verified backup`
+    );
+}
+
 /** Git on Windows may check out identical SQL with CRLF. Permit only that exact
  * byte transformation; SQL, spaces and statements remain integrity protected.
  */

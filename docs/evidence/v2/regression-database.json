@@ -1,0 +1,12 @@
+{
+  "sourceSchema": "go_pharmacy_test_v2",
+  "target": "go_pharmacy_test_v2regression",
+  "tables": 42,
+  "sourceDataCopied": false,
+  "onlyMigrationJournalAndSourceRegistryCopied": false,
+  "referenceRegistries": [
+    "knowledgeSources",
+    "pricingJurisdictions"
+  ],
+  "note": "Fresh schema clone also requires the immutable Jordan/JOD jurisdiction seed from migration0004. Missing reference diagnosed from FKerrors, copied before final rerun; no productioncode/test weakened."
+}

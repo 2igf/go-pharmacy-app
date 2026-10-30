@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/customer-preview-render.test.ts (3 tests | 2 failed) 71ms
+   ❯ customer Canva V2 rendering (3)
+     × renders multiple slide controls using synthetic fixtures only 22ms
+     × shows one supplied artwork without pretending to rotate multiple offers 3ms
+
+ Test Files  1 failed | 36 passed (37)
+      Tests  2 failed | 199 passed (201)
+   Start at  23:45:04
+   Duration  83.70s (import 69%, tests 29%, transform 1%, worker 1%)
+
+    Isolate  37 workers spawned · ~351ms startup each (spawn + environment, per file)
+             at least ~12.64s faster with isolate: false — reuses workers across files instead of one per file
+
+Thu, 29 Oct 2026 20:45:43 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:225:13
+Thu, 29 Oct 2026 20:45:56 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:225:13
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/customer-preview-render.test.ts > customer Canva V2 rendering > renders multiple slide controls using synthetic fixtures only
+ FAIL  server/customer-preview-render.test.ts > customer Canva V2 rendering > shows one supplied artwork without pretending to rotate multiple offers
+ReferenceError: location is not defined
+ ❯ currentPathname node_modules/.pnpm/wouter@3.7.1_patch_hash=4e1_ace59d6686cce03e3f5705054809288c/node_modules/wouter/esm/use-browser-location.js:36:40
+ ❯ Object.useSyncExternalStore node_modules/.pnpm/react-dom@19.2.1_react@19.2.1/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:9752:18
+ ❯ process.env.NODE_ENV.exports.useSyncExternalStore node_modules/.pnpm/react@19.2.1/node_modules/react/cjs/react.development.js:1270:34
+ ❯ useLocationProperty node_modules/.pnpm/wouter@3.7.1_patch_hash=4e1_ace59d6686cce03e3f5705054809288c/node_modules/wouter/esm/use-browser-location.js:29:3
+ ❯ usePathname node_modules/.pnpm/wouter@3.7.1_patch_hash=4e1_ace59d6686cce03e3f5705054809288c/node_modules/wouter/esm/use-browser-location.js:39:3
+ ❯ Object.useBrowserLocation [as hook] node_modules/.pnpm/wouter@3.7.1_patch_hash=4e1_ace59d6686cce03e3f5705054809288c/node_modules/wouter/esm/use-browser-location.js:53:44
+ ❯ useLocationFromRouter node_modules/.pnpm/wouter@3.7.1_patch_hash=4e1_ace59d6686cce03e3f5705054809288c/node_modules/wouter/esm/index.js:88:39
+ ❯ node_modules/.pnpm/wouter@3.7.1_patch_hash=4e1_ace59d6686cce03e3f5705054809288c/node_modules/wouter/esm/index.js:275:35
+ ❯ Object.react_stack_bottom_frame node_modules/.pnpm/react-dom@19.2.1_react@19.2.1/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:9808:18
+ ❯ renderWithHooks node_modules/.pnpm/react-dom@19.2.1_react@19.2.1/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js:5062:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯

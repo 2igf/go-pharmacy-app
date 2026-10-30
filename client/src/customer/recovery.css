@@ -1,0 +1,51 @@
+.customer-recovery .customer-login__form {
+  margin-top: 4cqw;
+  padding-bottom: 12px;
+}
+
+.customer-recovery .customer-recovery__intro {
+  width: 78%;
+  margin: 16px auto 0;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.customer-recovery .customer-login__field > span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.customer-recovery .customer-login__submit {
+  height: auto;
+  padding: 12px 8px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.customer-recovery .customer-recovery__switch,
+.customer-recovery .customer-recovery__back {
+  display: block;
+  max-width: 85%;
+  padding: 12px 8px;
+  margin: 8px auto;
+  border: 0;
+  background: transparent;
+  color: #006743;
+  font: inherit;
+  font-size: 14px;
+  text-align: center;
+}
+
+.customer-recovery .customer-recovery__back {
+  margin-top: auto;
+  margin-bottom: 24px;
+}
+
+.customer-recovery a:focus-visible {
+  outline: 2px solid #006743;
+  outline-offset: 3px;
+}

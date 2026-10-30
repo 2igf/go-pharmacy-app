@@ -38,7 +38,9 @@ export function createApp() {
       res.status(400).json({ error: "Invalid path" });
       return;
     }
-    if (/auth\.(login|register)/.test(path)) {
+    if (
+      /auth\.(login|register|requestPasswordReset|resetPassword)/.test(path)
+    ) {
       if (path.includes(",")) {
         res.status(400).json({ error: "Authentication cannot be batched" });
         return;
@@ -74,11 +76,9 @@ export function createApp() {
         error.status === 413
           ? 413
           : 400;
-      res
-        .status(status)
-        .json({
-          error: status === 413 ? "Request too large" : "Invalid request",
-        });
+      res.status(status).json({
+        error: status === 413 ? "Request too large" : "Invalid request",
+      });
     }
   );
   return app;

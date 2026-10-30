@@ -10,7 +10,9 @@ export default function CustomerLayout({
 }) {
   const [path] = useLocation();
   const { user } = useAuth();
-  const login = path === "/login";
+  const login = ["/login", "/forgot-password", "/reset-password"].includes(
+    path
+  );
   return (
     <div
       className={`customer-app ${login ? "customer-auth-surface" : ""}`}

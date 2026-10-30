@@ -1,0 +1,27 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/customer-access.integration.test.ts (12 tests | 1 failed | 11 skipped) 5153ms
+   ❯ public customer access on real MySQL (12)
+     × completes parallel public logins when the database pool is saturated 5139ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 11 skipped (12)
+   Start at  23:43:43
+   Duration  7.70s (tests 71%, import 24%, transform 5%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/customer-access.integration.test.ts > public customer access on real MySQL > completes parallel public logins when the database pool is saturated
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ server/customer-access.integration.test.ts:398:5
+    396|       ).resolves.toMatchObject({ success: true });
+    397|     });
+    398|     it("completes parallel public logins when the database pool is sat…
+       |     ^
+    399|       const access = await register();
+    400|       const result = await Promise.all(Array.from({length:5}, () => ac…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

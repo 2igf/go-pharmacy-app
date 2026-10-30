@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-30T13:21:47.655Z",
+  "results": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "exit": 0,
+      "output": ""
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit -p tsconfig.tests.json",
+      "exit": 0,
+      "output": ""
+    }
+  ]
+}

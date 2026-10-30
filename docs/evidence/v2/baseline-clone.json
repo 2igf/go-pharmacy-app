@@ -1,0 +1,7 @@
+{
+  "source": "go_pharmacy_test",
+  "target": "go_pharmacy_test_v2",
+  "tables": 28,
+  "rows": 314,
+  "backupSha256": "f8a20be2b1ad2896aafdbfdc7e4df2bbe568b496ddb0c637a7a8652253f44625"
+}

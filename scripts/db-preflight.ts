@@ -5,6 +5,7 @@ import {
   assertMigrationTarget,
   acceptedMigrationHashes,
   assertMigrationHistory,
+  assertAdditiveTableState,
 } from "./migration-policy";
 const expectedDatabase = assertMigrationTarget(
   process.env.DATABASE_URL,
@@ -62,6 +63,22 @@ try {
       name => names.has(name)
     ).length
   );
+  for (const entry of localJournal.entries.slice(6)) {
+    const source = readFileSync(`drizzle/${entry.tag}.sql`, "utf8");
+    const expected = [...source.matchAll(/CREATE TABLE `([^`]+)`/g)].map(
+      match => match[1]
+    );
+    if (!expected.length)
+      throw new Error(
+        "Additive migration requires explicit table preflight review"
+      );
+    assertAdditiveTableState(
+      entry.tag,
+      journal.some(row => String(row.created_at) === String(entry.when)),
+      expected,
+      names
+    );
+  }
   const checks: [string, string][] = [
     [
       "cartItems",

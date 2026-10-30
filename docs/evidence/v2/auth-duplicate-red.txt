@@ -1,0 +1,36 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/customer-access.integration.test.ts (11 tests | 1 failed) 2438ms
+   ❯ public customer access on real MySQL (11)
+     × refuses duplicate signup for an existing legacy account without credentials 156ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 10 passed (11)
+   Start at  23:38:38
+   Duration  4.81s (tests 55%, import 37%, transform 8%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/customer-access.integration.test.ts > public customer access on real MySQL > refuses duplicate signup for an existing legacy account without credentials
+AssertionError: promise resolved "{ success: true }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "success": true,
+  }
+
+ ❯ server/customer-access.integration.test.ts:220:114
+    218|     it("refuses duplicate signup for an existing legacy account withou…
+    219|       const { caller } = await publicCaller();
+    220|       await expect(caller.auth.register({ email: "customer-a@example.t…
+       |                                                                                                                  ^
+    221|       const db = await getDb();
+    222|       expect((await db.select().from(users).where(eq(users.email, "cus…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯

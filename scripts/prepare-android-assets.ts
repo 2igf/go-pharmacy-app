@@ -1,7 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
-const file = resolve("dist/public/index.html");
+const file = resolve(
+  process.env.GO_ANDROID_WEB_DIR || "dist/public",
+  "index.html"
+);
 const html = await readFile(file, "utf8");
 const csp =
   "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; connect-src 'self' https:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'";

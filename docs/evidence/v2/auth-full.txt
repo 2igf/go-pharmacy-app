@@ -1,0 +1,101 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+stdout | server/native-auth.integration.test.ts > Android HTTP auth against real MySQL > issues, uses and revokes the existing opaque session through the native boundary
+{"event":"http","requestId":"e72b4f47-6b3a-4c98-a9a8-5c6358145612","method":"POST","status":409}
+
+ ❯ server/native-auth.integration.test.ts (1 test | 1 failed) 365ms
+   ❯ Android HTTP auth against real MySQL (1)
+     × issues, uses and revokes the existing opaque session through the native boundary 359ms
+ ❯ server/auth.integration.test.ts (1 test | 1 failed) 216ms
+   ❯ real MySQL authentication persistence (1)
+     × registers with invitation, validates credentials, revokes logout and expires sessions 212ms
+ ❯ server/platform-boundaries.test.ts (20 tests | 1 failed) 53ms
+   ❯ multi-app service boundaries (20)
+     × preserves the installed client API surface, with one additive discovery query 18ms
+
+ Test Files  3 failed | 32 passed (35)
+      Tests  3 failed | 188 passed (191)
+   Start at  23:40:10
+   Duration  80.43s (import 71%, tests 28%, transform 1%, worker 1%)
+
+    Isolate  35 workers spawned · ~350ms startup each (spawn + environment, per file)
+             at least ~11.89s faster with isolate: false — reuses workers across files instead of one per file
+
+Thu, 29 Oct 2026 20:40:59 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:225:13
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/auth.integration.test.ts > real MySQL authentication persistence > registers with invitation, validates credentials, revokes logout and expires sessions
+TRPCError: تعذر إنشاء الحساب؛ جرّب تسجيل الدخول أو استعادة كلمة المرور / Account cannot be registered; try signing in or password recovery
+ ❯ server/auth.ts:175:19
+    173|           const [legacy] = await tx.select({ id: users.id }).from(user…
+    174|           if (existing || legacy)
+    175|             throw new TRPCError({
+       |                   ^
+    176|               code: "CONFLICT",
+    177|               message: customerAuthMessages.duplicate,
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:311:19
+ ❯ server/auth.ts:168:24
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:576:22
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ procedure node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:682:20
+ ❯ node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/router.ts:473:20
+ ❯ server/auth.integration.test.ts:33:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  server/native-auth.integration.test.ts > Android HTTP auth against real MySQL > issues, uses and revokes the existing opaque session through the native boundary
+AssertionError: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ server/native-auth.integration.test.ts:60:35
+     58|           inviteCode: invitationCodeFor("customer-a@example.test"),
+     59|         });
+     60|         expect(registered.status).toBe(200);
+       |                                   ^
+     61|         const setCookie = registered.headers.get("set-cookie")!;
+     62|         expect(setCookie).toContain("HttpOnly");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  server/platform-boundaries.test.ts > multi-app service boundaries > preserves the installed client API surface, with one additive discovery query
+AssertionError: expected [ 'addresses.byId', …(72) ] to deeply equal [ 'addresses.byId', …(69) ]
+
+- Expected
++ Received
+
+@@ -9,14 +9,17 @@
+    "appointments.byDoctor",
+    "appointments.byId",
+    "appointments.cancel",
+    "appointments.create",
+    "appointments.list",
++   "auth.accountStatus",
+    "auth.login",
+    "auth.logout",
+    "auth.me",
+    "auth.register",
++   "auth.requestPasswordReset",
++   "auth.resetPassword",
+    "auth.updateProfile",
+    "cart.add",
+    "cart.clear",
+    "cart.list",
+    "cart.quote",
+
+ ❯ server/platform-boundaries.test.ts:17:59
+     15| describe("multi-app service boundaries", () => {
+     16|   it("preserves the installed client API surface, with one additive di…
+     17|     expect(Object.keys(appRouter._def.procedures).sort()).toEqual(
+       |                                                           ^
+     18|       [
+     19|         ...legacyApiManifest,
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯

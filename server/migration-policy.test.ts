@@ -4,8 +4,26 @@ import {
   assertMigrationTarget,
   acceptedMigrationHashes,
   assertMigrationHistory,
+  assertAdditiveTableState,
 } from "../scripts/migration-policy";
 describe("migration target guard", () => {
+  it("stops partial, missing or untracked new additive tables without attempting repair", () => {
+    expect(() =>
+      assertAdditiveTableState("new", false, ["a", "b"], new Set())
+    ).not.toThrow();
+    expect(() =>
+      assertAdditiveTableState("new", false, ["a", "b"], new Set(["a"]))
+    ).toThrow(/new/);
+    expect(() =>
+      assertAdditiveTableState("new", false, ["a", "b"], new Set(["a", "b"]))
+    ).toThrow(/new/);
+    expect(() =>
+      assertAdditiveTableState("new", true, ["a", "b"], new Set(["a"]))
+    ).toThrow(/new/);
+    expect(() =>
+      assertAdditiveTableState("new", true, ["a", "b"], new Set(["a", "b"]))
+    ).not.toThrow();
+  });
   it("refuses partial or untracked fulfillment DDL and allows the intact additive prefix", () => {
     const local = [
       { when: 4, tag: "0004_pharmacy_tenancy", hashes: ["t"] },

@@ -1,0 +1,7 @@
+{
+  "publicSignupWithoutInvite": true,
+  "publicSignupCustomerBoundary": true,
+  "existingCustomerLogin": true,
+  "truthfulRecoveryDelivery": true,
+  "passwordResetUiExecuted": false
+}

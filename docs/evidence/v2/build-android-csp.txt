@@ -1,0 +1,1 @@
+Prepared bundled Android assets with a restrictive CSP; no server credentials included.

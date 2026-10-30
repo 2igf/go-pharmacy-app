@@ -40,7 +40,10 @@ describe("Canva customer presentation boundaries", () => {
     ]);
     expect(
       customerNavigation.filter(n => n.unavailable).map(n => n.href)
-    ).toEqual(["/doctors", "/reminders"]);
+    ).toEqual(["/doctors"]);
+    expect(
+      customerNavigation.find(n => n.href === "/reminders")?.unavailable
+    ).toBe(false);
   });
   it("never substitutes medicine artwork for unrelated or fictional products", () => {
     expect(productArtwork({ name: "DEMO Test Product" })).toBeNull();

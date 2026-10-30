@@ -18,7 +18,7 @@
 
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/go_brand</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/go_pill</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/go_logo_splash</item>
         <item name="postSplashScreenTheme">@style/AppTheme.NoActionBar</item>
     </style>
 </resources>

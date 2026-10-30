@@ -1,4 +1,6 @@
 import { useState, type ReactNode } from "react";
+import { normalizeApiOrigin } from "@shared/native-api";
+import { clearNativeRemindersForLogout } from "@/lib/manual-notifications";
 import {
   isAndroid,
   getNativeApiOrigin,
@@ -10,6 +12,7 @@ export function NativeConnectionGate({ children }: { children: ReactNode }) {
   const [editing, setEditing] = useState(false);
   const [value, setValue] = useState(getNativeApiOrigin() ?? "");
   const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
   if (!isAndroid()) return children;
   const origin = getNativeApiOrigin();
   if (origin && !editing)
@@ -46,15 +49,30 @@ export function NativeConnectionGate({ children }: { children: ReactNode }) {
       </p>
       <form
         className="space-y-4"
-        onSubmit={event => {
+        onSubmit={async event => {
           event.preventDefault();
+          if (busy) return;
+          let candidate: string;
           try {
-            saveNativeApiOrigin(value);
-            location.reload();
+            candidate = normalizeApiOrigin(value);
           } catch {
             setError(
               "أدخل عنوان HTTPS صالحًا ومتاحًا للهاتف، دون مسار أو بيانات دخول. localhost هو الهاتف نفسه."
             );
+            return;
+          }
+          setBusy(true);
+          setError("");
+          try {
+            await clearNativeRemindersForLogout();
+            saveNativeApiOrigin(candidate);
+            location.reload();
+          } catch {
+            setError(
+              "تعذر إلغاء تنبيهات الحساب السابق أو حفظ إعداد الاتصال. لم يُغيّر التطبيق الاتصال ولم يُعد تحميله. أعد المحاولة."
+            );
+          } finally {
+            setBusy(false);
           }
         }}
       >
@@ -82,6 +100,7 @@ export function NativeConnectionGate({ children }: { children: ReactNode }) {
         <button
           className="w-full rounded p-3 bg-[#00c57d] text-white font-bold"
           type="submit"
+          disabled={busy}
         >
           حفظ والاتصال
         </button>
@@ -98,9 +117,22 @@ export function NativeConnectionGate({ children }: { children: ReactNode }) {
       {origin && (
         <button
           className="block underline text-red-700"
-          onClick={() => {
-            clearNativeApiOrigin();
-            location.reload();
+          disabled={busy}
+          onClick={async () => {
+            if (busy) return;
+            setBusy(true);
+            setError("");
+            try {
+              await clearNativeRemindersForLogout();
+              clearNativeApiOrigin();
+              location.reload();
+            } catch {
+              setError(
+                "تعذر إلغاء التنبيهات المحلية أو مسح إعداد الاتصال. بقي الاتصال الحالي دون إعادة تحميل. أعد المحاولة."
+              );
+            } finally {
+              setBusy(false);
+            }
           }}
         >
           مسح إعداد العنوان

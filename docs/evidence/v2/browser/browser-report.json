@@ -1,0 +1,818 @@
+{
+  "scope": "CUA browser UI only; localhost:3023 V2 isolated test server",
+  "timestamp": "2026-10-30T08:56:18.443Z",
+  "coreViewports": [
+    {
+      "width": 360,
+      "height": 640
+    },
+    {
+      "width": 393,
+      "height": 699
+    },
+    {
+      "width": 430,
+      "height": 764
+    }
+  ],
+  "captures": [
+    {
+      "name": "login",
+      "width": 360,
+      "file": "login-360.jpg",
+      "url": "http://localhost:3023/login",
+      "clientWidth": 360,
+      "direction": "rtl",
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "scrollWidth": 360,
+      "png": "login-360.png"
+    },
+    {
+      "name": "login",
+      "width": 393,
+      "file": "login-393.jpg",
+      "url": "http://localhost:3023/login",
+      "clientWidth": 394,
+      "direction": "rtl",
+      "innerHeight": 699,
+      "innerWidth": 394,
+      "scrollWidth": 394,
+      "png": "login-393.png"
+    },
+    {
+      "name": "login",
+      "width": 430,
+      "file": "login-430.jpg",
+      "url": "http://localhost:3023/login",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "login-430.png"
+    },
+    {
+      "name": "recovery-request",
+      "width": 430,
+      "file": "recovery-request-430.jpg",
+      "url": "http://localhost:3023/forgot-password",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "recovery-request-430.png"
+    },
+    {
+      "name": "reset-empty-validation",
+      "width": 430,
+      "file": "reset-empty-validation-430.jpg",
+      "url": "http://localhost:3023/forgot-password",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "reset-empty-validation-430.png"
+    },
+    {
+      "name": "registration-form",
+      "width": 430,
+      "file": "registration-form-430.jpg",
+      "url": "http://localhost:3023/login",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "registration-form-430.png"
+    },
+    {
+      "name": "home",
+      "width": 430,
+      "file": "home-430.jpg",
+      "url": "http://localhost:3023/",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "home-430.png"
+    },
+    {
+      "name": "home",
+      "width": 393,
+      "file": "home-393.jpg",
+      "url": "http://localhost:3023/",
+      "clientWidth": 394,
+      "direction": "rtl",
+      "innerHeight": 699,
+      "innerWidth": 394,
+      "scrollWidth": 394,
+      "png": "home-393.png"
+    },
+    {
+      "name": "home",
+      "width": 360,
+      "file": "home-360.jpg",
+      "url": "http://localhost:3023/",
+      "clientWidth": 360,
+      "direction": "rtl",
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "scrollWidth": 360,
+      "png": "home-360.png"
+    },
+    {
+      "name": "discovery",
+      "width": 360,
+      "file": "discovery-360.jpg",
+      "url": "http://localhost:3023/products",
+      "clientWidth": 360,
+      "direction": "rtl",
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "scrollWidth": 360,
+      "png": "discovery-360.png"
+    },
+    {
+      "name": "discovery",
+      "width": 393,
+      "file": "discovery-393.jpg",
+      "url": "http://localhost:3023/products",
+      "clientWidth": 394,
+      "direction": "rtl",
+      "innerHeight": 699,
+      "innerWidth": 394,
+      "scrollWidth": 394,
+      "png": "discovery-393.png"
+    },
+    {
+      "name": "discovery",
+      "width": 430,
+      "file": "discovery-430.jpg",
+      "url": "http://localhost:3023/products",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "discovery-430.png"
+    },
+    {
+      "name": "doctors",
+      "width": 430,
+      "file": "doctors-430.jpg",
+      "url": "http://localhost:3023/doctors",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "doctors-430.png"
+    },
+    {
+      "name": "doctors",
+      "width": 393,
+      "file": "doctors-393.jpg",
+      "url": "http://localhost:3023/doctors",
+      "clientWidth": 394,
+      "direction": "rtl",
+      "innerHeight": 699,
+      "innerWidth": 394,
+      "scrollWidth": 394,
+      "png": "doctors-393.png"
+    },
+    {
+      "name": "doctors",
+      "width": 360,
+      "file": "doctors-360.jpg",
+      "url": "http://localhost:3023/doctors",
+      "clientWidth": 360,
+      "direction": "rtl",
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "scrollWidth": 360,
+      "png": "doctors-360.png"
+    },
+    {
+      "name": "cart",
+      "width": 360,
+      "file": "cart-360.jpg",
+      "url": "http://localhost:3023/cart",
+      "clientWidth": 360,
+      "direction": "rtl",
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "scrollWidth": 360,
+      "png": "cart-360.png"
+    },
+    {
+      "name": "cart",
+      "width": 393,
+      "file": "cart-393.jpg",
+      "url": "http://localhost:3023/cart",
+      "clientWidth": 394,
+      "direction": "rtl",
+      "innerHeight": 699,
+      "innerWidth": 394,
+      "scrollWidth": 394,
+      "png": "cart-393.png"
+    },
+    {
+      "name": "cart",
+      "width": 430,
+      "file": "cart-430.jpg",
+      "url": "http://localhost:3023/cart",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "cart-430.png"
+    },
+    {
+      "name": "checkout-invalid-phone",
+      "width": 430,
+      "file": "checkout-invalid-phone-430.jpg",
+      "url": "http://localhost:3023/checkout",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "checkout-invalid-phone-430.png"
+    },
+    {
+      "name": "order-pending",
+      "width": 430,
+      "file": "order-pending-430.jpg",
+      "url": "http://localhost:3023/order/387",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "order-pending-430.png"
+    },
+    {
+      "name": "customer-admin-denied",
+      "width": 430,
+      "file": "customer-admin-denied-430.jpg",
+      "url": "http://localhost:3023/admin/pharmacies",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "customer-admin-denied-430.png"
+    },
+    {
+      "name": "customer-partners-denied",
+      "width": 430,
+      "file": "customer-partners-denied-430.jpg",
+      "url": "http://localhost:3023/partners/pharmacy",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "customer-partners-denied-430.png"
+    },
+    {
+      "name": "admin-pharmacies",
+      "width": 430,
+      "file": "admin-pharmacies-430.jpg",
+      "url": "http://localhost:3023/admin/pharmacies",
+      "clientWidth": 415,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 415,
+      "png": "admin-pharmacies-430.png"
+    },
+    {
+      "name": "staff-inventory",
+      "width": 430,
+      "file": "staff-inventory-430.jpg",
+      "url": "http://localhost:3023/partners/pharmacy/inventory?org=95",
+      "clientWidth": 415,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 415,
+      "png": "staff-inventory-430.png"
+    },
+    {
+      "name": "staff-order-ready",
+      "width": 430,
+      "file": "staff-order-ready-430.jpg",
+      "url": "http://localhost:3023/partners/pharmacy/orders?org=95",
+      "clientWidth": 415,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 415,
+      "png": "staff-order-ready-430.png"
+    },
+    {
+      "name": "customer-order-ready",
+      "width": 430,
+      "file": "customer-order-ready-430.jpg",
+      "url": "http://localhost:3023/order/387",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "customer-order-ready-430.png"
+    },
+    {
+      "name": "reminders-list",
+      "width": 430,
+      "file": "reminders-list-430.jpg",
+      "url": "http://localhost:3023/reminders",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "reminders-list-430.png"
+    },
+    {
+      "name": "reminder-form",
+      "width": 430,
+      "file": "reminder-form-430.jpg",
+      "url": "http://localhost:3023/reminders/new",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "reminder-form-430.png"
+    },
+    {
+      "name": "reminder-detail",
+      "width": 430,
+      "file": "reminder-detail-430.jpg",
+      "url": "http://localhost:3023/reminders/162",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "reminder-detail-430.png"
+    },
+    {
+      "name": "knowledge-jordan-empty",
+      "width": 430,
+      "file": "knowledge-jordan-empty-430.jpg",
+      "url": "http://localhost:3023/medicines",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "knowledge-jordan-empty-430.png"
+    },
+    {
+      "name": "knowledge-international",
+      "width": 430,
+      "file": "knowledge-international-430.jpg",
+      "url": "http://localhost:3023/medicines?country=international&q=",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "knowledge-international-430.png"
+    },
+    {
+      "name": "knowledge-detail-ar",
+      "width": 430,
+      "file": "knowledge-detail-ar-430.jpg",
+      "url": "http://localhost:3023/medicines/70?country=international&q=",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "knowledge-detail-ar-430.png"
+    },
+    {
+      "name": "knowledge-detail-en",
+      "width": 430,
+      "file": "knowledge-detail-en-430.jpg",
+      "url": "http://localhost:3023/medicines/70?country=international&q=",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "knowledge-detail-en-430.png"
+    },
+    {
+      "name": "knowledge-detail-lower",
+      "width": 430,
+      "file": "knowledge-detail-lower-430.jpg",
+      "url": "http://localhost:3023/medicines/70?country=international&q=",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "knowledge-detail-lower-430.png"
+    },
+    {
+      "name": "reminder-user-history",
+      "width": 430,
+      "file": "reminder-user-history-430.jpg",
+      "url": "http://localhost:3023/reminders/162",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "reminder-user-history-430.png"
+    },
+    {
+      "name": "reminder-delete-review",
+      "width": 430,
+      "file": "reminder-delete-review-430.jpg",
+      "url": "http://localhost:3023/reminders/162",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "reminder-delete-review-430.png"
+    },
+    {
+      "name": "reminder-form-top",
+      "width": 430,
+      "file": "reminder-form-top-430.jpg",
+      "url": "http://localhost:3023/reminders/162/edit",
+      "clientWidth": 430,
+      "direction": "rtl",
+      "innerHeight": 764,
+      "innerWidth": 430,
+      "scrollWidth": 430,
+      "png": "reminder-form-top-430.png"
+    },
+    {
+      "name": "reminder-paused",
+      "width": 360,
+      "file": "reminder-paused-360.jpg",
+      "url": "http://localhost:3023/reminders/162",
+      "clientWidth": 360,
+      "direction": "rtl",
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "scrollWidth": 360,
+      "png": "reminder-paused-360.png"
+    },
+    {
+      "name": "logout-back-profile-leak",
+      "width": 360,
+      "file": "logout-back-profile-leak-360.jpg",
+      "url": "http://localhost:3023/profile",
+      "clientWidth": 360,
+      "direction": "rtl",
+      "innerHeight": 640,
+      "innerWidth": 360,
+      "scrollWidth": 360,
+      "png": "logout-back-profile-leak-360.png"
+    }
+  ],
+  "observations": [
+    {
+      "check": "emptyLoginValidation",
+      "passed": true
+    },
+    {
+      "check": "doctorsBookingUnavailable",
+      "passed": true
+    },
+    {
+      "check": "arabicPhoneCheckout",
+      "passed": true,
+      "orderId": 387,
+      "productId": 27,
+      "quantity": 1
+    },
+    {
+      "check": "customerAdminDenied",
+      "passed": true
+    },
+    {
+      "check": "customerPartnerDataDenied",
+      "passed": true
+    },
+    {
+      "check": "adminPharmacyListLoaded",
+      "passed": true
+    },
+    {
+      "check": "staffInventoryLoaded",
+      "passed": true
+    },
+    {
+      "check": "staffAcceptedPreparingReady",
+      "passed": true,
+      "orderId": 387
+    },
+    {
+      "check": "customerSeesReady",
+      "passed": true,
+      "orderId": 387
+    },
+    {
+      "check": "reminderCreateEdit",
+      "passed": true,
+      "reminderId": 162,
+      "realFutureTime": "11:42",
+      "automationNote": "Native time field required a real keyboard change after value assignment to trigger React change handler."
+    },
+    {
+      "check": "knowledgeJordanEmptyInternationalTwo",
+      "passed": true
+    },
+    {
+      "check": "knowledgeUnknownsProvenanceAndLanguage",
+      "passed": true
+    },
+    {
+      "check": "reminderUserReportAndPause",
+      "passed": true,
+      "reminderId": 162,
+      "occurrenceLocal": "2026-10-30 11:42 Asia/Amman",
+      "finalState": "paused",
+      "clinicalVerification": false
+    },
+    {
+      "check": "singleApprovedBannerNoControls",
+      "passed": true
+    },
+    {
+      "check": "singleBannerCatalogLink",
+      "passed": true
+    },
+    {
+      "check": "recoveryTruthfulDevelopmentNoEmail",
+      "passed": true,
+      "passwordMutationPerformed": false
+    },
+    {
+      "check": "logoutHistoryPrivacy",
+      "passed": true,
+      "route": "/profile",
+      "observed": "Previous fictional customer name remains in editable local field after logout and Back; email/role, addresses and orders absent.",
+      "reproduction": "Profile -> logout -> login -> browser Back -> profile; repeated fresh AX confirms retained name.",
+      "previouslyReproduced": true,
+      "resolution": "Fixed and independently retested in fresh Chrome tab with rebuilt /assets/index-BPbIb3LN.js; logout then Back returns login with no profile fields or drafts."
+    },
+    {
+      "check": "accountSwitchProfilePrivacy",
+      "passed": true
+    }
+  ],
+  "orderId": 387,
+  "reminderId": 162,
+  "reminderFinalState": "paused",
+  "nativeOrPhysicalPhoneEvidence": false,
+  "viewportRestored": true,
+  "productionCodeEdited": false,
+  "imageFiles": {
+    "account-switch-profile-fixed-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "d9dde33537d65cf72151f9e5b4a3aa38fcc76257557119682479670eec218d0b"
+    },
+    "admin-pharmacies-430.png": {
+      "width": 415,
+      "height": 737,
+      "sha256": "765626ae61ff2f352e3277dface7ed1232cefc983c5b69228516b86eea79ec92"
+    },
+    "cart-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "2b75a4b64cb5754e2aa17976601a93d8bec22fbb9e4e2479484f2f2f39dfb3f4"
+    },
+    "cart-393.png": {
+      "width": 393,
+      "height": 699,
+      "sha256": "1961ef4c41812f3d92481986fd1d1c8d7773cfcb814a878d8b749d300e9e2cbb"
+    },
+    "cart-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "ff9856d1527303492163bb7d71ec326d49b61f69dffa64b40af1dd6c19e6c114"
+    },
+    "checkout-invalid-phone-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "ad8e9977e6b7d416a910e8de433c57fc33f7e51de8755c3a43691d1baad8a76c"
+    },
+    "customer-admin-denied-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "623fd4c6d04290a6dd257229dab2bc01a733dffeb8734b2e289df0cfd53bb48b"
+    },
+    "customer-order-ready-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "b8597d48f752ac62163f137d262e29e3a1728fde2853705188cac2b559fbcf52"
+    },
+    "customer-partners-denied-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "225d0709d1a691b951bf719added46a243f6f4d532114639f2bc26cb5e912918"
+    },
+    "discovery-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "1897eb9ea4ee278dc7d2cc653f9abf5c76a11f67d6cd5fd0dbe29ba816beab2f"
+    },
+    "discovery-393.png": {
+      "width": 393,
+      "height": 699,
+      "sha256": "7fdd010c8a86e13284a73ea93eb12f0b2d56b8484079e23373b7cb91b1788358"
+    },
+    "discovery-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "82442b82ea46018fc05720b8761b25fa929a4df8457b4547a7bd805d7d9df3dd"
+    },
+    "doctors-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "635bdce1e6111985e9ed0221187348dfbf2a82480e605a57de9ca0f721fa2a0a"
+    },
+    "doctors-393.png": {
+      "width": 393,
+      "height": 699,
+      "sha256": "7a87dcf8c9a1a5516e3c9c6bba40028a2ad1c5c94e512e60e0023c67219ef80d"
+    },
+    "doctors-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "a8de6c889385b5cdfe360b9501dce3dcb0402a84a25a6e4e046dc44c1ac4622c"
+    },
+    "home-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "3b9277c5aaba3a3c8eed87c71894721d12f880842227a4fa4c483e625572f99a"
+    },
+    "home-393.png": {
+      "width": 393,
+      "height": 699,
+      "sha256": "fb500aa0896cace4e2b25eafe093430eedaea1eeeaa26fed3fdce2741d50b708"
+    },
+    "home-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "6fda078dad8fc898c82919030024385b22ff8b50bd09d06eba017a1b1bb471f9"
+    },
+    "knowledge-detail-ar-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "1532a8a35deaff18a52ba868be3f475f1097c8d81a4cba6e937ecb3676b9daef"
+    },
+    "knowledge-detail-en-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "57ee5fc5e45e15032e76743df2e4090a73edee2337b4959855c5cf84040c88ae"
+    },
+    "knowledge-detail-lower-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "0e94dced8ab4732fedba436d0afce5d57d8e427936ca62cc11c75e7224c9172a"
+    },
+    "knowledge-international-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "560e893180feeaae940eef877c4f990a75f14a6b64be6f1a81988f51f77cc73a"
+    },
+    "knowledge-jordan-empty-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "2a8ffeb9c2fdf0834ff2259216a0c82bbd45047e9fc4e21889f821e21e6a3aec"
+    },
+    "login-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "143d07ddaf729f9d62801db31a895dc53fb5db60766137433927f5d6eb30a702"
+    },
+    "login-393.png": {
+      "width": 393,
+      "height": 699,
+      "sha256": "23533ade9e1f287e683fa0324c5731063801294316c26fced4c5a4bded82fe92"
+    },
+    "login-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "58395c9894ce472b4d5f81d90c65cfc585e04df0fae260b92bf92c6191ff98b9"
+    },
+    "logout-back-profile-fixed-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "143d07ddaf729f9d62801db31a895dc53fb5db60766137433927f5d6eb30a702"
+    },
+    "logout-back-profile-leak-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "71bb5e8196f00dd9ea6650a24c30b6629de6958dbda52aeeedcb49330598bbf1"
+    },
+    "order-pending-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "2d7efee8c33cfa7cbbda4a7d959c5a18119979cfae915e581cee0e39d9f285f2"
+    },
+    "recovery-request-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "596633a21ba7287d9ee0e74380388ff3f4317c488dfe361cc7c06e55c430c9e9"
+    },
+    "registration-form-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "a10a1afbd1361529bf8f2b4dfd89a80bd4f450d090d1bb25e9c0071292ed9c34"
+    },
+    "reminder-delete-review-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "66c18730ad6df1438eccb8a636b2b0cb8ed8312cae04adb556605558733ba84d"
+    },
+    "reminder-detail-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "659bdab07f7f04f0a8fa7e41b5c56a32169a924e5f7985e6f098e2352639a874"
+    },
+    "reminder-form-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "7bf67f7946916dc2ffe1be0e956d99ccfbb85739169712ab54b0cde9a3aac02b"
+    },
+    "reminder-form-top-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "e2640d477a21d7a04486ceb85f546d1e1adda1b8b9da55d6bbe371baa158ae91"
+    },
+    "reminder-paused-360.png": {
+      "width": 360,
+      "height": 640,
+      "sha256": "a22fab2f1fe7553bfb570b4f7277bd74cf2758270ce256b41b8eb689e1ab0b84"
+    },
+    "reminder-user-history-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "a9c9822b6cbec2c0198f68a41ad3c47c6061f04320ef0b75f2964d02c6eb5e04"
+    },
+    "reminders-list-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "dff2aa882985ed0129a56ea532a4a72a91e030b3135d706e502cc640ae841258"
+    },
+    "reset-empty-validation-430.png": {
+      "width": 430,
+      "height": 763,
+      "sha256": "ca622431fd3f5cebc56f2ef8f9b524e8b4534c8a861c2b07c837f1c6091eab0c"
+    },
+    "staff-inventory-430.png": {
+      "width": 415,
+      "height": 737,
+      "sha256": "16d0b181cf3785af5c7273cb2c251cd6faa16be83377be51df6d10f567317582"
+    },
+    "staff-order-ready-430.png": {
+      "width": 415,
+      "height": 737,
+      "sha256": "65ac7c1356a2f76c8d7f3426a6648476b7a2d1131e97bcb409152f13ff47e60f"
+    }
+  },
+  "horizontalOverflowCaptures": [],
+  "privacyRetest": {
+    "timestamp": "2026-10-30T08:54:31.125Z",
+    "scripts": [
+      "/assets/index-BPbIb3LN.js"
+    ],
+    "viewport": {
+      "width": 360,
+      "height": 640
+    },
+    "urlAfterBack": "http://localhost:3023/login",
+    "profileNameFieldCount": 0,
+    "addressDraftFieldCount": 0,
+    "customerDraftVisible": 0,
+    "addressDraftVisible": 0,
+    "image": "logout-back-profile-fixed-360.png"
+  },
+  "accountSwitchRetest": {
+    "timestamp": "2026-10-30T08:55:32.880Z",
+    "profileNameIsAdministrator": true,
+    "addressDraftEmpty": true,
+    "customerOrderVisible": false,
+    "customerDraftVisible": false,
+    "image": "account-switch-profile-fixed-360.png"
+  }
+}

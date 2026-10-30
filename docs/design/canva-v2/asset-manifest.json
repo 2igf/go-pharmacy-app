@@ -1,0 +1,104 @@
+[
+  {
+    "source": "1000073162.jpg",
+    "sha256": "00954c6e133ca005ee0b0bbbd3a2d46e8c284f625fb3b84263deffedcbff0fdd",
+    "dimensions": [
+      720,
+      1280
+    ]
+  },
+  {
+    "source": "1000073159.jpg",
+    "sha256": "d9e4c4f5840e421e09d1210ce78ec21d7a45f1b414a7a60865b47a775bea7e4e",
+    "dimensions": [
+      720,
+      1280
+    ]
+  },
+  {
+    "source": "1000073174.jpg",
+    "sha256": "ad2bd282c74d640dd4bca082b302cf7e85bfc82b01a63c6e4bb769319798f078",
+    "dimensions": [
+      719,
+      1280
+    ]
+  },
+  {
+    "source": "1000073150.jpg",
+    "sha256": "88143cb541d853e6cc3d2753574cbef749970482749973f9ce2a4ff6e27c0790",
+    "dimensions": [
+      1280,
+      1280
+    ]
+  },
+  {
+    "source": "1000073171.jpg",
+    "sha256": "7d22087f18a3a016a982653bd59d9a513eaaa9c971f85920af7511a38b708079",
+    "dimensions": [
+      719,
+      1280
+    ]
+  },
+  {
+    "asset": "/canva-v2/doctor-preview-1.png",
+    "source": "1000073159.jpg",
+    "crop": [
+      545,
+      224,
+      682,
+      405
+    ],
+    "use": "design preview only; no identity, clinical rating or fee claims"
+  },
+  {
+    "asset": "/canva-v2/doctor-preview-2.png",
+    "source": "1000073159.jpg",
+    "crop": [
+      547,
+      443,
+      682,
+      624
+    ],
+    "use": "design preview only; no identity, clinical rating or fee claims"
+  },
+  {
+    "asset": "/canva-v2/doctor-preview-3.png",
+    "source": "1000073159.jpg",
+    "crop": [
+      550,
+      672,
+      685,
+      847
+    ],
+    "use": "design preview only; no identity, clinical rating or fee claims"
+  },
+  {
+    "asset": "/canva-v2/clinic-derma.png",
+    "source": "1000073159.jpg",
+    "crop": [
+      89,
+      1000,
+      293,
+      1184
+    ],
+    "use": "design preview only; no identity, clinical rating or fee claims"
+  },
+  {
+    "asset": "/canva-v2/clinic-grande.png",
+    "source": "1000073159.jpg",
+    "crop": [
+      438,
+      987,
+      655,
+      1178
+    ],
+    "use": "design preview only; no identity, clinical rating or fee claims"
+  },
+  {
+    "launcher": "standard and round5densities; adaptive5foregrounds; Android12 splash; pre12 density splashes",
+    "source": "1000073150.jpg",
+    "green": "#0BDB7D",
+    "safeZone": "entire composition at60dp of108dp; no tracing/AI changes",
+    "limitation": "original JPG contains softness/compression, no original vector/font export"
+  }
+]

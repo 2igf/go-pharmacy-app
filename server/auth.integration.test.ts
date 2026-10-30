@@ -13,6 +13,7 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
   "real MySQL authentication persistence",
   () => {
     it("registers with invitation, validates credentials, revokes logout and expires sessions", async () => {
+      vi.stubEnv("BETA_ALLOWED_EMAILS", "legacy-registration@example.test");
       vi.stubEnv("BETA_INVITE_SECRET", "fictional-test-secret".repeat(3));
       const context = { ...(await testContext()), user: null };
       let cookie = "";
@@ -22,10 +23,10 @@ describe.skipIf(!process.env.TEST_DATABASE_URL)(
       }) as typeof context.res.cookie;
       const caller = appRouter.createCaller(context);
       const input = {
-        email: "customer-a@example.test",
+        email: "legacy-registration@example.test",
         name: "Fictional Registration",
         password: "fictional-only-test-password",
-        inviteCode: invitationCodeFor("customer-a@example.test"),
+        inviteCode: invitationCodeFor("legacy-registration@example.test"),
       };
       await expect(
         caller.auth.register({ ...input, inviteCode: "0".repeat(64) })

@@ -1,0 +1,135 @@
+.customer-app .medication-knowledge {
+  padding: 5cqw 4cqw;
+  font-size: clamp(14px, 3.2cqw, 20px);
+  line-height: 1.7;
+}
+.customer-app .medication-knowledge h1 {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+.customer-app .medication-knowledge h2 {
+  font-size: 1.15em;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.customer-app .medication-knowledge h3 {
+  font-weight: 700;
+  margin-block: 12px 6px;
+}
+.customer-app .medication-knowledge header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.customer-app .medication-knowledge a {
+  color: #006743;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+.customer-app .medication-knowledge__intro,
+.customer-app .medication-knowledge__scope,
+.customer-app .medication-knowledge__card,
+.customer-app .medication-knowledge__search,
+.customer-app .medication-knowledge__empty {
+  padding: 16px;
+  margin-block: 16px;
+  border-radius: 16px;
+  background: white;
+}
+.customer-app .medication-knowledge__scope {
+  background: #def2e6;
+  border-inline-start: 4px solid #008455;
+}
+.customer-app .medication-knowledge__card p + p {
+  margin-top: 8px;
+}
+.customer-app .medication-knowledge__search,
+.customer-app .medication-knowledge label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.customer-app .medication-knowledge__search {
+  gap: 16px;
+}
+.customer-app .medication-knowledge input,
+.customer-app .medication-knowledge select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid #777;
+  border-radius: 8px;
+  background: white;
+  color: #222;
+}
+.customer-app .medication-knowledge button {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #008455;
+  border-radius: 10px;
+  background: white;
+  color: #006743;
+}
+.customer-app .medication-knowledge__language {
+  margin-block: 16px;
+}
+.customer-app .medication-knowledge__facts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 12px;
+}
+.customer-app .medication-knowledge__facts dt {
+  font-weight: 700;
+}
+.customer-app .medication-knowledge__facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.customer-app .medication-knowledge__label {
+  white-space: pre-wrap;
+}
+.customer-app .medication-knowledge__registration {
+  padding-block: 12px;
+  border-top: 1px solid #b8cfc2;
+  margin-top: 12px;
+}
+.customer-app .medication-knowledge__results {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.customer-app .medication-knowledge__results a {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 14px;
+  background: white;
+  text-decoration: none;
+  color: #333;
+}
+.customer-app .medication-knowledge__attribution {
+  margin-block: 20px;
+  padding-block: 16px;
+  border-top: 1px solid #aaa;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.customer-app .medication-knowledge [role="alert"] {
+  padding: 12px;
+  color: #862424;
+  background: #fff3f3;
+}
+.customer-app .canva-knowledge-entry {
+  display: block;
+  margin: 2cqw 4cqw 3cqw;
+  color: #006743;
+  font-size: max(12px, 2.1cqw);
+  text-align: center;
+  text-decoration: underline;
+}

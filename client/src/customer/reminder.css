@@ -1,0 +1,156 @@
+.customer-app .manual-reminders {
+  padding: 5cqw 4cqw;
+  font-size: clamp(14px, 3.2cqw, 20px);
+  line-height: 1.7;
+}
+.customer-app .manual-reminders h1 {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+.customer-app .manual-reminders h2 {
+  font-size: 1.12em;
+  font-weight: 700;
+}
+.customer-app .manual-reminders header,
+.customer-app .manual-reminders__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.customer-app .manual-reminders__disclaimer,
+.customer-app .manual-reminders__notice,
+.customer-app .manual-reminders__card,
+.customer-app .manual-reminders__form {
+  margin-block: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 16px;
+}
+.customer-app .manual-reminders__disclaimer {
+  border-inline-start: 4px solid #008455;
+}
+.customer-app .manual-reminders__notice {
+  background: #e0f4e9;
+}
+.customer-app .manual-reminders p + p {
+  margin-top: 8px;
+}
+.customer-app .manual-reminders button,
+.customer-app .manual-reminders__actions a,
+.customer-app .manual-reminders > header a {
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid #008455;
+  border-radius: 10px;
+  background: #fff;
+  color: #006743;
+  text-align: center;
+}
+.customer-app .manual-reminders__form button[type="submit"] {
+  background: #00cf7c;
+  color: #064a33;
+  font-weight: 700;
+}
+.customer-app .manual-reminders__form,
+.customer-app .manual-reminders__form label,
+.customer-app .manual-reminders__card > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.customer-app .manual-reminders__form {
+  gap: 18px;
+}
+.customer-app .manual-reminders input:not([type="checkbox"]),
+.customer-app .manual-reminders textarea,
+.customer-app .manual-reminders select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid #777;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+}
+.customer-app .manual-reminders input[type="time"],
+.customer-app .manual-reminders input[type="date"] {
+  direction: ltr;
+}
+.customer-app .manual-reminders textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.customer-app .manual-reminders fieldset {
+  min-width: 0;
+  border: 1px solid #b8cfc2;
+  border-radius: 10px;
+  padding: 12px;
+}
+.customer-app .manual-reminders legend {
+  padding-inline: 5px;
+}
+.customer-app .manual-reminders__time {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.customer-app .manual-reminders__time > label {
+  flex: 1;
+}
+.customer-app .manual-reminders__weekdays {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.customer-app .manual-reminders .manual-reminders__weekdays label,
+.customer-app .manual-reminders .manual-reminders__checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.customer-app .manual-reminders input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  accent-color: #008455;
+}
+.customer-app .manual-reminders__dates {
+  display: grid;
+  gap: 12px;
+}
+.customer-app .manual-reminders__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.customer-app .manual-reminders__list a {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 14px;
+  background: white;
+  color: #333;
+  overflow-wrap: anywhere;
+}
+.customer-app .manual-reminders__card ol {
+  padding-inline-start: 20px;
+}
+.customer-app .manual-reminders__card li {
+  margin-block: 12px;
+}
+.customer-app .manual-reminders__notes {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.customer-app .manual-reminders [role="alert"] {
+  border-inline-start: 3px solid #a62b2b;
+  padding: 8px;
+  color: #862424;
+  background: #fff3f3;
+}

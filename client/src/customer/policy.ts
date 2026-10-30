@@ -7,7 +7,7 @@ export const customerNavigation = [
     href: "/reminders",
     label: "منبه الدواء",
     icon: "reminder",
-    unavailable: true,
+    unavailable: false,
   },
   {
     href: "/profile",

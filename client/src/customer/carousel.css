@@ -1,0 +1,96 @@
+.customer-app .canva-carousel {
+  margin: 3cqw 7.3cqw;
+  color: #545454;
+}
+
+.customer-app .canva-carousel__viewport {
+  aspect-ratio: 622 / 258;
+  overflow: hidden;
+  border-radius: 2.4cqw;
+  background: #fff;
+  touch-action: pan-y pinch-zoom;
+}
+
+.customer-app .canva-carousel__slide,
+.customer-app .canva-carousel__slide a,
+.customer-app .canva-carousel__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.customer-app .canva-carousel__slide img {
+  object-fit: contain;
+  user-select: none;
+}
+
+.customer-app .canva-carousel__slide--animated {
+  animation: canva-banner-appear 300ms ease-out;
+}
+
+.customer-app .canva-carousel__controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.customer-app .canva-carousel__controls > button {
+  min-width: 36px;
+  min-height: 36px;
+  border: 0;
+  background: transparent;
+  color: #006743;
+  font-size: 24px;
+}
+
+.customer-app .canva-carousel__indicators {
+  display: flex;
+}
+
+.customer-app .canva-carousel__indicators button {
+  width: 30px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.customer-app .canva-carousel__indicators button::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: auto;
+  border-radius: 50%;
+  background: #a2a2a2;
+}
+
+.customer-app .canva-carousel__indicators button[aria-current="true"]::after {
+  background: #008455;
+}
+
+.customer-app .canva-carousel__controls .canva-carousel__pause {
+  font-size: 16px;
+}
+
+.customer-app .canva-carousel__caption {
+  margin-top: 0.8cqw;
+  font-size: max(10px, 1.5cqw);
+  text-align: center;
+}
+
+@keyframes canva-banner-appear {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-app .canva-carousel__slide--animated {
+    animation: none;
+  }
+}

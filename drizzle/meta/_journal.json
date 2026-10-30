@@ -43,6 +43,34 @@
       "when": 1793138972206,
       "tag": "0005_simulated_fulfillment",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1793300000000,
+      "tag": "0006_customer_access",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1793300000001,
+      "tag": "0007_customer_reminders",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1793300000002,
+      "tag": "0008_medication_knowledge",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1793300000003,
+      "tag": "0009_knowledge_facts",
+      "breakpoints": true
     }
   ]
 }

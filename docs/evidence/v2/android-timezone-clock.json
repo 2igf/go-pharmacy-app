@@ -1,0 +1,18 @@
+{
+  "initialTimezone": "GMT",
+  "initialAlarms": [
+    1793437680000
+  ],
+  "zoneChangeSucceeded": true,
+  "clockChangeSucceeded": true,
+  "restoredTimezone": true,
+  "ammanAlarm": 1793426880000,
+  "clockForwardAlarm": [
+    1793437680000
+  ],
+  "clockRestoredAlarms": [
+    1793437680000
+  ],
+  "clockRestored": true,
+  "finalTimezone": "GMT"
+}

@@ -1,0 +1,10 @@
+{
+  "reminderId": 163,
+  "realBackendCreateAndReload": true,
+  "twoTimesAndWeekdays": true,
+  "historyInitiallyEmpty": true,
+  "pauseAndResume": true,
+  "editPersisted": true,
+  "noAutomaticDoseRecord": true,
+  "deleteCancelledThenConfirmed": true
+}

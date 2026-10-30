@@ -5,6 +5,7 @@ import { ZodError } from "zod";
 import type { TrpcContext } from "./context";
 import { canUseService } from "../access-policy";
 import { checkoutValidationIssues } from "../../shared/checkout";
+import { customerAuthMessages } from "../../shared/customer-auth";
 
 const t = initTRPC.context<TrpcContext>().create({
   transformer: superjson,
@@ -23,11 +24,24 @@ const t = initTRPC.context<TrpcContext>().create({
       );
     }
     const { stack: _stack, ...safeData } = shape.data;
+    // Only fixed, audited auth messages; never echo Zod's unknown keys/values.
+    const authMessages =
+      path?.startsWith("auth.") && error.cause instanceof ZodError
+        ? error.cause.issues
+            .map(issue => issue.message)
+            .filter(message =>
+              (Object.values(customerAuthMessages) as string[]).includes(
+                message
+              )
+            )
+        : [];
     const message = checkoutIssues.length
       ? [...new Set(checkoutIssues.map(issue => issue.message))].join(" ")
-      : error.cause instanceof ZodError
-        ? "البيانات غير صالحة. تحقق من الحقول المطلوبة وصيغة الاسم والأرقام."
-        : shape.message;
+      : authMessages.length
+        ? [...new Set(authMessages)].join(" ")
+        : error.cause instanceof ZodError
+          ? "البيانات غير صالحة. تحقق من الحقول المطلوبة وصيغة الاسم والأرقام."
+          : shape.message;
     return {
       ...shape,
       message:

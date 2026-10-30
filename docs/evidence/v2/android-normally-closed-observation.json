@@ -1,0 +1,13 @@
+{
+  "normalCloseCommand": "am kill com.gopharmacy.beta (no force-stop)",
+  "pidAbsent": true,
+  "startedAt": "2026-10-29T21:02:13.396Z",
+  "delivered": false,
+  "laterInspection": {
+    "observedAt": "2026-10-29T21:08:05.321Z",
+    "actualActiveNotificationVerified": true,
+    "receiverAdvancedToNextDay": true,
+    "evidence": "android-normally-closed-inspect.txt",
+    "note": "Initial200swindowexpired; later actualnotification and persistedrecurrence verified. Inexactdelivery has no2minuteguarantee."
+  }
+}
