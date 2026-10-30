@@ -1,0 +1,47 @@
+{
+  "physicalDevice": {
+    "available": false,
+    "source": "USER_CONFIRMATION: user away from home",
+    "deliveryObserved": false,
+    "nativeStateCollected": false
+  },
+  "server": {
+    "readOnly": true,
+    "activeDefinitions": 1,
+    "medicationNamesSelected": false,
+    "timezone": "Asia/Amman",
+    "physicalNativeRegistrationVerified": false
+  },
+  "nativeRegression": {
+    "oldFailures": 3,
+    "passedAfterFix": 15
+  },
+  "jvm": {
+    "passed": 11,
+    "failures": 0
+  },
+  "vitest": {
+    "passed": 19,
+    "files": 4,
+    "usesDatabaseFixtures": false
+  },
+  "types": {
+    "productionExit": 0,
+    "testAndScriptsExit": 0
+  },
+  "productionWebBuild": true,
+  "androidDebugBuild": true,
+  "immediateEmulatorPost": true,
+  "timedEmulatorDelivery": {
+    "passed": true,
+    "seconds": 75.995
+  },
+  "noRestartProbe": {
+    "passed": true,
+    "pidPreserved": true,
+    "encryptedPlanUnchanged": true
+  },
+  "ordinaryPackageTests": 3,
+  "inPlaceEmulatorDataPreserved": true,
+  "independentReview": "no blocking findings; fixture clock-boundary note fixed and retested"
+}

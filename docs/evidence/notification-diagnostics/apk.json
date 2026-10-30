@@ -1,0 +1,17 @@
+{
+  "apk": "C:\\Users\\Issax\\Documents\\Codex\\2026-10-26\\files-pasted-by-the-user-go\\outputs\\go-pharmacy-foundation\\android\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "sha256": "fc511f53acb3e8bcc44f4b2206640b06dbfd3db650dc477973fa6b4a11047ab7",
+  "bytes": 5881727,
+  "versionCode": 3,
+  "versionName": "1.1.0-beta.3",
+  "package": "com.gopharmacy.beta",
+  "priorV2BundledAssetsIdentical": true,
+  "checkedAssetFiles": 51,
+  "noRemoteServerUrl": true,
+  "noCleartextOrMixedContent": true,
+  "noTestCA": true,
+  "newDependencies": false,
+  "signingCertificateSha256": "15f94ad8e61d97274516aa086f0b9bb99c0aec1d5ce33f047924da6de0113703",
+  "previousV2CertificateMatched": true,
+  "physicalPhoneCertificateRead": false
+}

@@ -1,0 +1,54 @@
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.PackagedAppTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.gopharmacy.beta.PackagedAppTest:
+INSTRUMENTATION_STATUS: test=packageAndNetworkPolicyAreConstrained
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.PackagedAppTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=packageAndNetworkPolicyAreConstrained
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.PackagedAppTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=reactAssetsAreBundledWithoutRemoteNavigationOrNativeCookieLogging
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.PackagedAppTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=reactAssetsAreBundledWithoutRemoteNavigationOrNativeCookieLogging
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderPhoneProbeTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.gopharmacy.beta.ReminderPhoneProbeTest:
+INSTRUMENTATION_STATUS: test=observeOrPostWithoutReplacingCustomerPlan
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: reminderProbe={"deviceNowEpochMs":1793379206373,"timezone":"GMT","androidApi":36,"manufacturer":"Google","model":"sdk_gphone64_x86_64","postPermissionGranted":true,"globalNotificationsEnabled":true,"scheduleMode":"inexact_setAndAllowWhileIdle","exactAlarmAccess":false,"channelExists":true,"channelImportance":3,"nativeEntries":[],"stateReadable":true,"phase":"status","encryptedCustomerPlanUnchanged":true}
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderPhoneProbeTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=observeOrPostWithoutReplacingCustomerPlan
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.072
+
+OK (3 tests)
+
+
+INSTRUMENTATION_CODE: -1

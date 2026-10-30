@@ -1,0 +1,107 @@
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderResumeRegressionTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.gopharmacy.beta.ReminderResumeRegressionTest:
+INSTRUMENTATION_STATUS: test=identicalSyncDoesNotDismissDeliveredNotification
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderResumeRegressionTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Unchanged same-account sync must not dismiss an existing notification
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.identicalSyncDoesNotDismissDeliveredNotification(ReminderResumeRegressionTest.java:65)
+
+INSTRUMENTATION_STATUS: stream=
+Error in identicalSyncDoesNotDismissDeliveredNotification(com.gopharmacy.beta.ReminderResumeRegressionTest):
+java.lang.AssertionError: Unchanged same-account sync must not dismiss an existing notification
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.identicalSyncDoesNotDismissDeliveredNotification(ReminderResumeRegressionTest.java:65)
+
+INSTRUMENTATION_STATUS: test=identicalSyncDoesNotDismissDeliveredNotification
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderResumeRegressionTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=resumeDoesNotDiscardOverdueRegisteredOccurrence
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderResumeRegressionTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Resume must retain the outstanding occurrence instead of skipping it expected:<1793377140000> but was:<1793463540000>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.resumeDoesNotDiscardOverdueRegisteredOccurrence(ReminderResumeRegressionTest.java:53)
+
+INSTRUMENTATION_STATUS: stream=
+Error in resumeDoesNotDiscardOverdueRegisteredOccurrence(com.gopharmacy.beta.ReminderResumeRegressionTest):
+java.lang.AssertionError: Resume must retain the outstanding occurrence instead of skipping it expected:<1793377140000> but was:<1793463540000>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.resumeDoesNotDiscardOverdueRegisteredOccurrence(ReminderResumeRegressionTest.java:53)
+
+INSTRUMENTATION_STATUS: test=resumeDoesNotDiscardOverdueRegisteredOccurrence
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderResumeRegressionTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=identicalSyncRetainsOccurrenceAndIntentIdentity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.ReminderResumeRegressionTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Unchanged definition must retain the pending occurrence expected:<1793377140000> but was:<1793463540000>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.identicalSyncRetainsOccurrenceAndIntentIdentity(ReminderResumeRegressionTest.java:56)
+
+INSTRUMENTATION_STATUS: stream=
+Error in identicalSyncRetainsOccurrenceAndIntentIdentity(com.gopharmacy.beta.ReminderResumeRegressionTest):
+java.lang.AssertionError: Unchanged definition must retain the pending occurrence expected:<1793377140000> but was:<1793463540000>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.identicalSyncRetainsOccurrenceAndIntentIdentity(ReminderResumeRegressionTest.java:56)
+
+INSTRUMENTATION_STATUS: test=identicalSyncRetainsOccurrenceAndIntentIdentity
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.63
+There were 3 failures:
+1) identicalSyncDoesNotDismissDeliveredNotification(com.gopharmacy.beta.ReminderResumeRegressionTest)
+java.lang.AssertionError: Unchanged same-account sync must not dismiss an existing notification
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.identicalSyncDoesNotDismissDeliveredNotification(ReminderResumeRegressionTest.java:65)
+2) resumeDoesNotDiscardOverdueRegisteredOccurrence(com.gopharmacy.beta.ReminderResumeRegressionTest)
+java.lang.AssertionError: Resume must retain the outstanding occurrence instead of skipping it expected:<1793377140000> but was:<1793463540000>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.resumeDoesNotDiscardOverdueRegisteredOccurrence(ReminderResumeRegressionTest.java:53)
+3) identicalSyncRetainsOccurrenceAndIntentIdentity(com.gopharmacy.beta.ReminderResumeRegressionTest)
+java.lang.AssertionError: Unchanged definition must retain the pending occurrence expected:<1793377140000> but was:<1793463540000>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at com.gopharmacy.beta.ReminderResumeRegressionTest.identicalSyncRetainsOccurrenceAndIntentIdentity(ReminderResumeRegressionTest.java:56)
+
+FAILURES!!!
+Tests run: 3,  Failures: 3
+
+
+INSTRUMENTATION_CODE: -1

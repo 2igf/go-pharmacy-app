@@ -1,0 +1,9 @@
+{
+  "emulatorOnly": true,
+  "package": "com.gopharmacy.beta",
+  "updateInPlace": true,
+  "appReset": false,
+  "webviewAndPreferencesArchiveBefore": "6cec8118086444c588375f6729f86a1dbedcbdcc9417d79a9aecb61f429c3bbc",
+  "webviewAndPreferencesArchiveAfter": "6cec8118086444c588375f6729f86a1dbedcbdcc9417d79a9aecb61f429c3bbc",
+  "webviewAndPreferencesUnchanged": true
+}

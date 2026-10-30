@@ -132,16 +132,35 @@ final class ReminderScheduler {
                         .put("enabled", def.enabled).put("discreet", def.discreet));
             }
             sorted.sort(Comparator.comparingInt(value -> value.optInt("id")));
+            JSONObject previous = read();
+            boolean sameAccount = account.equals(previous.optString("accountKey"));
+            JSONArray oldEntries = previous.optJSONArray("entries");
             Set<Integer> used = new HashSet<>();
+            Set<Integer> retained = new HashSet<>();
             JSONArray entries = new JSONArray();
             for (JSONObject entry : sorted) {
                 int nativeId = ReminderDefinition.reserveId(ReminderDefinition.notificationId(account, entry.getInt("id")), used);
                 entry.put("nativeId", nativeId).put("token", UUID.randomUUID().toString()).put("next", 0L);
+                if (sameAccount && oldEntries != null) for (int i = 0; i < oldEntries.length(); i++) {
+                    JSONObject old = oldEntries.getJSONObject(i);
+                    if (old.getInt("nativeId") == nativeId && sameDefinition(definition(entry), definition(old))) {
+                        // A refetch is not a new occurrence. Keep queued broadcasts,
+                        // their protected nonce, and already displayed notifications.
+                        entry.put("token", old.getString("token")).put("next", old.optLong("next"));
+                        retained.add(nativeId);
+                        break;
+                    }
+                }
                 entries.put(entry);
             }
-            JSONObject previous = read();
-            cancelEntries(previous, true);
+            JSONArray obsolete = new JSONArray();
+            if (oldEntries != null) for (int i = 0; i < oldEntries.length(); i++) {
+                JSONObject old = oldEntries.getJSONObject(i);
+                if (!retained.contains(old.getInt("nativeId"))) obsolete.put(old);
+            }
+            cancelEntries(new JSONObject().put("entries", obsolete), true);
             JSONObject state = new JSONObject().put("accountKey", account).put("entries", entries);
+            if (sameAccount && previous.has("scheduledTimezone")) state.put("scheduledTimezone", previous.getString("scheduledTimezone"));
             // A fresh web query can synchronize before the cold-start navigation consumer mounts.
             JSONObject pendingOpen = previous.optJSONObject("pendingOpen");
             if (account.equals(previous.optString("accountKey")) && pendingOpen != null && account.equals(pendingOpen.optString("accountKey"))) {
@@ -165,27 +184,53 @@ final class ReminderScheduler {
     }
 
     void restore() throws Exception {
+        restore(false);
+    }
+
+    /** Clock/boot changes recalculate future wall times; ordinary resume must
+     * leave a due, still-pending inexact alarm for Android to deliver. */
+    void restore(boolean recalculate) throws Exception {
         synchronized (LOCK) {
             JSONObject state = read();
             if (!state.has("accountKey")) return;
-            try { schedule(state); }
+            try { schedule(state, recalculate); }
             catch (Exception error) { cancelEntries(state, true); store.clear(); throw error; }
         }
     }
 
     private void schedule(JSONObject state) throws Exception {
+        schedule(state, false);
+    }
+
+    private static boolean sameDefinition(ReminderDefinition a, ReminderDefinition b) {
+        return a.id == b.id && a.enabled == b.enabled && a.discreet == b.discreet
+                && a.medicationName.equals(b.medicationName) && a.times.equals(b.times)
+                && new HashSet<>(a.weekdays).equals(new HashSet<>(b.weekdays))
+                && a.startDate.equals(b.startDate) && java.util.Objects.equals(a.endDate, b.endDate);
+    }
+
+    private void schedule(JSONObject state, boolean recalculate) throws Exception {
         JSONArray entries = state.getJSONArray("entries");
         long now = System.currentTimeMillis();
         boolean allowed = "granted".equals(permission());
+        String zone = TimeZone.getDefault().getID();
+        recalculate = recalculate || !zone.equals(state.optString("scheduledTimezone"));
         for (int i = 0; i < entries.length(); i++) {
             JSONObject entry = entries.getJSONObject(i);
+            if (allowed && !recalculate && entry.optLong("next") > 0
+                    && alarmIntent(entry, PendingIntent.FLAG_NO_CREATE) != null) {
+                ReminderDiagnostics.trace(context,"pending_retained",entry.getInt("id"),entry.optLong("next"));
+                continue;
+            }
             cancelAlarm(entry);
             Long next = allowed ? definition(entry).next(now, TimeZone.getDefault()) : null;
             entry.put("next", next == null ? 0L : next);
             if (next != null) alarms.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next,
                     alarmIntent(entry, PendingIntent.FLAG_UPDATE_CURRENT));
+            ReminderDiagnostics.trace(context,recalculate?"clock_reconciled":"alarm_scheduled",entry.getInt("id"),next==null?0:next);
         }
         if (!allowed) cancelDelivered();
+        state.put("scheduledTimezone", zone);
         store.write(state);
     }
 
@@ -205,6 +250,7 @@ final class ReminderScheduler {
 
     void clear() throws Exception {
         synchronized (LOCK) {
+            ReminderDiagnostics.trace(context,"account_plan_cleared",0,0);
             cancelEntries(read(), true);
             cancelDelivered();
             store.clear();
@@ -237,7 +283,7 @@ final class ReminderScheduler {
 
     private void cancelAlarm(JSONObject entry) throws Exception {
         PendingIntent pending = alarmIntent(entry, PendingIntent.FLAG_NO_CREATE);
-        if (pending != null) { alarms.cancel(pending); pending.cancel(); }
+        if (pending != null) { alarms.cancel(pending); pending.cancel(); ReminderDiagnostics.trace(context,"alarm_cancelled",entry.getInt("id"),entry.optLong("next")); }
     }
 
     Intent openIntent(JSONObject entry) throws Exception {
@@ -264,6 +310,7 @@ final class ReminderScheduler {
             JSONObject entry = matchingEntry(state, intent);
             if (entry == null || entry.optLong("next") <= 0 || entry.optLong("next") != intent.getLongExtra("at", -1)
                     || System.currentTimeMillis() < entry.optLong("next")) return;
+            ReminderDiagnostics.trace(context,"alarm_received",entry.getInt("id"),entry.optLong("next"));
             boolean allowed = "granted".equals(permission()) && definition(entry).withinDateRange(System.currentTimeMillis(), TimeZone.getDefault());
             // Advance/persist before delivery: duplicate broadcasts cannot post the same occurrence twice.
             Long next = allowed ? definition(entry).next(System.currentTimeMillis(), TimeZone.getDefault()) : null;
@@ -271,7 +318,7 @@ final class ReminderScheduler {
             entry.put("next", next == null ? 0L : next);
             store.write(state);
             if (next != null) alarms.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next, alarmIntent(entry, PendingIntent.FLAG_UPDATE_CURRENT));
-            if (allowed) notifications.notify(NOTIFICATION_TAG, entry.getInt("nativeId"), notification(entry));
+            if (allowed) { notifications.notify(NOTIFICATION_TAG, entry.getInt("nativeId"), notification(entry)); ReminderDiagnostics.trace(context,"notification_posted",entry.getInt("id"),System.currentTimeMillis()); }
         }
     }
 

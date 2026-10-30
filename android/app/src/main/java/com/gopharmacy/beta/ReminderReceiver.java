@@ -25,7 +25,7 @@ public class ReminderReceiver extends BroadcastReceiver {
         try { WORK.execute(() -> {
             try {
                 ReminderScheduler scheduler = new ReminderScheduler(app);
-                if (alarm) scheduler.fire(intent); else scheduler.restore();
+                if (alarm) scheduler.fire(intent); else scheduler.restore(true);
             } catch (Exception ignored) { /* Authenticated local state is required; no fallback to untrusted extras. */ }
             finally { pending.finish(); }
         }); } catch (RejectedExecutionException busy) { pending.finish(); }
