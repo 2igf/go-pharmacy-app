@@ -5,6 +5,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Page, Feedback } from "@/components/BetaLayout";
+import { ownedCustomerRecords } from "@/customer/policy";
 export default function Profile() {
   const { user, logout, loading } = useAuth({
     redirectOnUnauthenticated: true,
@@ -90,8 +91,10 @@ export default function Profile() {
         <label className="block">
           رقم اختبار
           <Input
-            pattern="[+0-9 ()-]{0,20}"
-            maxLength={20}
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            maxLength={40}
             value={draftOwnerId === user.id ? phone : ""}
             onChange={e => setPhone(e.target.value)}
           />
@@ -100,13 +103,15 @@ export default function Profile() {
         {update.isSuccess && <p role="status">تم حفظ الحساب</p>}
       </form>
       <h2 className="text-xl font-bold">عناوين الاختبار</h2>
-      {addresses.data?.map(item => (
+      {ownedCustomerRecords(addresses.data, user.id, addresses.error).map(item => (
         <div key={item.id} className="flex gap-4 border rounded p-3">
           <p>{item.address}</p>
           <Button
             variant="outline"
             disabled={remove.isPending}
-            onClick={() => remove.mutate({ id: item.id })}
+            onClick={() => {
+              if (window.confirm("هل تريد حذف هذا العنوان؟")) remove.mutate({ id: item.id });
+            }}
           >
             حذف العنوان
           </Button>
@@ -133,7 +138,7 @@ export default function Profile() {
       </form>
       <h2 className="text-xl font-bold">كل الطلبات</h2>
       {orders.data?.length === 0 && <p>لا توجد طلبات بعد</p>}
-      {orders.data?.map(order => (
+      {ownedCustomerRecords(orders.data, user.id, orders.error).map(order => (
         <Link
           className="block border rounded p-4"
           key={order.id}
@@ -143,6 +148,14 @@ export default function Profile() {
           {order.isSimulated ? " — محاكاة" : " — سجل سابق"}
         </Link>
       ))}
+      <section className="space-y-3" aria-label="إعدادات الحساب">
+        <h2 className="text-xl font-bold">إعدادات الحساب</h2>
+        <p>لغة الواجهة الحالية: العربية. ترجمة الواجهة كاملة إلى الإنجليزية غير متاحة بعد؛ تتوفر لغة المصدر في دليل الأدوية.</p>
+        <Link className="block underline" href="/reminders">إعدادات إشعارات منبّه الدواء</Link>
+        <Link className="block underline" href="/notifications">إشعارات الحساب والطلبات</Link>
+        <Link className="block underline" href="/medicines">دليل معلومات الأدوية ومصادرها</Link>
+        <Link className="block underline" href="/forgot-password">استعادة كلمة المرور</Link>
+      </section>
       <Button
         variant="outline"
         onClick={async () => {

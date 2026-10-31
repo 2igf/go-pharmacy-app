@@ -1,0 +1,11 @@
+{
+  "explicitNativePermissionAccepted": true,
+  "reminderId": 164,
+  "realBackendCreateAndReload": true,
+  "twoTimesAndWeekdays": true,
+  "historyInitiallyEmpty": true,
+  "pauseAndResume": true,
+  "editPersisted": true,
+  "noAutomaticDoseRecord": true,
+  "deleteCancelledThenConfirmed": true
+}

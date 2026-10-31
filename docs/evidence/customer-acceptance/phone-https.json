@@ -1,0 +1,30 @@
+{
+  "origin": "https://zip-der-geographic-challenged.trycloudflare.com",
+  "at": "2026-10-31T01:50:18.325Z",
+  "checks": [
+    {
+      "route": "/healthz",
+      "status": 200
+    },
+    {
+      "route": "/.env",
+      "status": 404
+    },
+    {
+      "route": "/package.json",
+      "status": 404
+    },
+    {
+      "route": "/api/trpc/cart.list",
+      "status": 401
+    },
+    {
+      "route": "/api/trpc/manualReminders.list",
+      "status": 401
+    },
+    {
+      "route": "/api/trpc/orders.list",
+      "status": 401
+    }
+  ]
+}

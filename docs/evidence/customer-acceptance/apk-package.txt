@@ -1,0 +1,1 @@
+package: name='com.gopharmacy.beta' versionCode='4' versionName='1.1.0-beta.4' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'

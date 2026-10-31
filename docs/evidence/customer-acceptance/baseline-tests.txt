@@ -1,0 +1,349 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+ ❯ server/fulfillment.integration.test.ts (15 tests | 15 failed) 1751ms
+   ❯ real MySQL simulated pharmacy fulfillment (15)
+     × rechecks active management after waiting for concurrent membership suspension 257ms
+     × rolls back cancellation if stock return would overflow, then recovers without losing units 112ms
+     × explicitly enrolls and assigns an eligible pharmacy without auto-enrolling historical orders 114ms
+     × runs accept/prepare/ready and exposes only a safe customer summary 110ms
+     × denies cross-pharmacy IDs, platform admin bypass, customer/driver and viewer writes 106ms
+     × rechecks organization and membership suspension before reads, actions and exact retries 105ms
+     × serializes competing assignments and reserves exactly once 111ms
+     × binds idempotency to actor and payload and rejects stale versions 106ms
+     × returns stock once on rejection and forbids reassigning the same order 111ms
+     × cancels atomically through the existing API and prevents legacy status bypass 106ms
+     × does not allow disabling the feature to bypass a managed order 114ms
+     × requires available stock, an approved pharmacy and active management 90ms
+     × rolls back all reservations on an invalid second line and on audit failure 95ms
+     × handles invalid transitions, shipment readiness and terminal delivery 97ms
+     × rejects real/nonpending/restricted enrollment and leaves legacy orders unchanged 111ms
+ ❯ server/pharmacy.integration.test.ts (13 tests | 12 failed) 1335ms
+   ❯ real MySQL pharmacy tenancy (13)
+     × denies a waiting stock write after a concurrent organization suspension commits 97ms
+     × requires separate organization approval and membership activation 102ms
+     × isolates two pharmacies, never changes central stock/price, and denies cross-tenant/private reads and writes 91ms
+     × denies admin operational access without membership and ignores spoofed role/organization headers 92ms
+     × enforces viewer/staff/manager permissions without changing platform roles 88ms
+     × revokes access on membership/org suspension and does not silently reactivate suspended members 86ms
+     × handles rejection/reopening and blocks invalid transitions, owner reassignment and self approval 78ms
+     × validates deltas, prevents negative/overflow stock and leaves no successful audit on rejected updates 112ms
+     × serializes concurrent updates with optimistic versions and atomically audits only one winner 127ms
+     × replays duplicate requests once and rejects changed request payloads 79ms
+     × rolls back inventory when audit insertion fails 101ms
+     × database constraints reject orphan/duplicate membership and invalid quantities 80ms
+stdout | server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > reviews, activates, adjusts and audits with real sessions and tenant isolation
+{"event":"http","requestId":"ec297bb2-de3f-404a-929e-60c085850086","method":"POST","status":200}
+
+stdout | server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > reviews, activates, adjusts and audits with real sessions and tenant isolation
+{"event":"http","requestId":"85a420c9-900c-4d58-b861-696042c95a6f","method":"POST","status":200}
+
+stdout | server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > reviews, activates, adjusts and audits with real sessions and tenant isolation
+{"event":"http","requestId":"a3fc0699-1cb4-491a-8214-1c8bcc5f2bf3","method":"POST","status":200}
+
+stdout | server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > reviews, activates, adjusts and audits with real sessions and tenant isolation
+{"event":"http","requestId":"26d7d2f2-e8db-45f0-9531-fdfa98c68336","method":"POST","status":500}
+
+stdout | server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > shows rejected applications without opening inventory and blocks self approval/escalation
+{"event":"http","requestId":"78ece3c8-ea8a-45ca-a7fc-d54cdf8cc5f2","method":"POST","status":200}
+
+stdout | server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > shows rejected applications without opening inventory and blocks self approval/escalation
+{"event":"http","requestId":"973daadd-65f1-45f6-895c-fab7c06f26aa","method":"POST","status":200}
+
+stdout | server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > shows rejected applications without opening inventory and blocks self approval/escalation
+{"event":"http","requestId":"17b05aee-3fa2-4212-8703-e0c0531e9890","method":"POST","status":500}
+
+ ❯ server/partners-http.integration.test.ts (2 tests | 2 failed) 1153ms
+   ❯ GO Partners real HTTP acceptance contracts (2)
+     × reviews, activates, adjusts and audits with real sessions and tenant isolation 774ms
+     × shows rejected applications without opening inventory and blocks self approval/escalation 373ms
+stdout | server/fulfillment-http.integration.test.ts > fulfillment real HTTP session boundary > enforces session roles, strict bodies, tenant IDs and customer ownership despite forged headers
+{"event":"http","requestId":"57089c3b-8620-4d21-8bdd-bb4335a86e4e","method":"POST","status":200}
+
+stdout | server/fulfillment-http.integration.test.ts > fulfillment real HTTP session boundary > enforces session roles, strict bodies, tenant IDs and customer ownership despite forged headers
+{"event":"http","requestId":"b51ae059-1c6d-4228-8285-67c89d97a2c1","method":"POST","status":200}
+
+stdout | server/fulfillment-http.integration.test.ts > fulfillment real HTTP session boundary > enforces session roles, strict bodies, tenant IDs and customer ownership despite forged headers
+{"event":"http","requestId":"1fdc2b22-c7e6-4351-b898-d98672638a8b","method":"POST","status":200}
+
+stdout | server/fulfillment-http.integration.test.ts > fulfillment real HTTP session boundary > enforces session roles, strict bodies, tenant IDs and customer ownership despite forged headers
+{"event":"http","requestId":"bee16202-8a30-4fd2-b1d7-01e3c7dd27c6","method":"POST","status":500}
+
+ ❯ server/fulfillment-http.integration.test.ts (1 test | 1 failed) 820ms
+   ❯ fulfillment real HTTP session boundary (1)
+     × enforces session roles, strict bodies, tenant IDs and customer ownership despite forged headers 814ms
+
+ Test Files  4 failed | 41 passed (45)
+      Tests  30 failed | 259 passed (289)
+   Start at  04:02:59
+   Duration  138.27s (import 78%, tests 20%, transform 1%, worker 1%)
+
+    Isolate  45 workers spawned · ~492ms startup each (spawn + environment, per file)
+             at least ~21.64s faster with isolate: false — reuses workers across files instead of one per file
+
+Sat, 31 Oct 2026 01:03:53 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:224:13
+Sat, 31 Oct 2026 01:04:24 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:224:13
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 30 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  server/fulfillment-http.integration.test.ts > fulfillment real HTTP session boundary > enforces session roles, strict bodies, tenant IDs and customer ownership despite forged headers
+AssertionError: expected 500 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 500
+
+ ❯ Object.post server/fulfillment-http.integration.test.ts:81:30
+     79|           async post(path: string, input: unknown) {
+     80|             const r = await call(path, input, true);
+     81|             expect(r.status).toBe(200);
+       |                              ^
+     82|             return r.body.result.data.json;
+     83|           },
+ ❯ server/fulfillment-http.integration.test.ts:95:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/30]⎯
+
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rechecks active management after waiting for concurrent membership suspension
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rolls back cancellation if stock return would overflow, then recovers without losing units
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > explicitly enrolls and assigns an eligible pharmacy without auto-enrolling historical orders
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > runs accept/prepare/ready and exposes only a safe customer summary
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > denies cross-pharmacy IDs, platform admin bypass, customer/driver and viewer writes
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rechecks organization and membership suspension before reads, actions and exact retries
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > serializes competing assignments and reserves exactly once
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > binds idempotency to actor and payload and rejects stale versions
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > returns stock once on rejection and forbids reassigning the same order
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > cancels atomically through the existing API and prevents legacy status bypass
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > does not allow disabling the feature to bypass a managed order
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > requires available stock, an approved pharmacy and active management
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rolls back all reservations on an invalid second line and on audit failure
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > handles invalid transitions, shipment readiness and terminal delivery
+ FAIL  server/fulfillment.integration.test.ts > real MySQL simulated pharmacy fulfillment > rejects real/nonpending/restricted enrollment and leaves legacy orders unchanged
+TRPCError: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,DEMO Fulfillment A,JO,FULFILL-A,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql-core/session.ts:79:11
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:100:16
+ ❯ server/pharmacy.ts:99:25
+     97|   try {
+     98|     return await db.transaction(async tx => {
+     99|       const [created] = await tx.insert(organizations).values({
+       |                         ^
+    100|         ...input,
+    101|         type: "pharmacy",
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:311:19
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:576:22
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+
+Caused by: Error: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,DEMO Fulfillment A,JO,FULFILL-A,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:25:15
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:19
+ ❯ server/pharmacy.ts:99:25
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:207:22
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:203:17
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { query: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)', params: [ 'pharmacy', 'DEMO Fulfillment A', 'JO', 'FULFILL-A', 'pending', 1 ] }
+Caused by: Error: Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co
+ ❯ node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:53:29
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:23:22
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:30
+ ❯ QueryPromise.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/query-builders/insert.js:121:27
+ ❯ QueryPromise.then node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/query-promise.js:21:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ER_NO_REFERENCED_ROW_2', errno: 1452, sqlState: '23000', sqlMessage: 'Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co', sql: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, 'pharmacy', 'DEMO Fulfillment A', 'JO', 'FULFILL-A', 'pending', 1, default, default)' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/30]⎯
+
+ FAIL  server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > reviews, activates, adjusts and audits with real sessions and tenant isolation
+AssertionError: expected 500 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 500
+
+ ❯ Object.post server/partners-http.integration.test.ts:83:24
+     81|     async post(path: string, input: unknown) {
+     82|       const r = await request(path, input, "POST");
+     83|       expect(r.status).toBe(200);
+       |                        ^
+     84|       return (await r.json()).result.data.json;
+     85|     },
+ ❯ server/partners-http.integration.test.ts:101:22
+ ❯ withServer server/partners-http.integration.test.ts:50:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/30]⎯
+
+ FAIL  server/partners-http.integration.test.ts > GO Partners real HTTP acceptance contracts > shows rejected applications without opening inventory and blocks self approval/escalation
+AssertionError: expected 500 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 500
+
+ ❯ Object.post server/partners-http.integration.test.ts:83:24
+     81|     async post(path: string, input: unknown) {
+     82|       const r = await request(path, input, "POST");
+     83|       expect(r.status).toBe(200);
+       |                        ^
+     84|       return (await r.json()).result.data.json;
+     85|     },
+ ❯ server/partners-http.integration.test.ts:245:21
+ ❯ withServer server/partners-http.integration.test.ts:50:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/30]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > denies a waiting stock write after a concurrent organization suspension commits
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > isolates two pharmacies, never changes central stock/price, and denies cross-tenant/private reads and writes
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > denies admin operational access without membership and ignores spoofed role/organization headers
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > enforces viewer/staff/manager permissions without changing platform roles
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > revokes access on membership/org suspension and does not silently reactivate suspended members
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > validates deltas, prevents negative/overflow stock and leaves no successful audit on rejected updates
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > serializes concurrent updates with optimistic versions and atomically audits only one winner
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > replays duplicate requests once and rejects changed request payloads
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > rolls back inventory when audit insertion fails
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > database constraints reject orphan/duplicate membership and invalid quantities
+TRPCError: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,Fictional Pharmacy A,JO,TEST-A,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql-core/session.ts:79:11
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:100:16
+ ❯ server/pharmacy.ts:99:25
+     97|   try {
+     98|     return await db.transaction(async tx => {
+     99|       const [created] = await tx.insert(organizations).values({
+       |                         ^
+    100|         ...input,
+    101|         type: "pharmacy",
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:311:19
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:576:22
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+
+Caused by: Error: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,Fictional Pharmacy A,JO,TEST-A,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:25:15
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:19
+ ❯ server/pharmacy.ts:99:25
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:207:22
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:203:17
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { query: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)', params: [ 'pharmacy', 'Fictional Pharmacy A', 'JO', 'TEST-A', 'pending', 1 ] }
+Caused by: Error: Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co
+ ❯ node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:53:29
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:23:22
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:30
+ ❯ QueryPromise.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/query-builders/insert.js:121:27
+ ❯ QueryPromise.then node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/query-promise.js:21:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ER_NO_REFERENCED_ROW_2', errno: 1452, sqlState: '23000', sqlMessage: 'Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co', sql: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, 'pharmacy', 'Fictional Pharmacy A', 'JO', 'TEST-A', 'pending', 1, default, default)' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/30]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > requires separate organization approval and membership activation
+TRPCError: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,Fictional Pharmacy pending,JO,TEST-PENDING,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql-core/session.ts:79:11
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:100:16
+ ❯ server/pharmacy.ts:99:25
+     97|   try {
+     98|     return await db.transaction(async tx => {
+     99|       const [created] = await tx.insert(organizations).values({
+       |                         ^
+    100|         ...input,
+    101|         type: "pharmacy",
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:311:19
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:576:22
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+
+Caused by: Error: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,Fictional Pharmacy pending,JO,TEST-PENDING,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:25:15
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:19
+ ❯ server/pharmacy.ts:99:25
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:207:22
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:203:17
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { query: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)', params: [ 'pharmacy', 'Fictional Pharmacy pending', 'JO', 'TEST-PENDING', 'pending', 1 ] }
+Caused by: Error: Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co
+ ❯ node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:53:29
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:23:22
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:30
+ ❯ QueryPromise.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/query-builders/insert.js:121:27
+ ❯ QueryPromise.then node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/query-promise.js:21:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ER_NO_REFERENCED_ROW_2', errno: 1452, sqlState: '23000', sqlMessage: 'Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co', sql: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, 'pharmacy', 'Fictional Pharmacy pending', 'JO', 'TEST-PENDING', 'pending', 1, default, default)' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/30]⎯
+
+ FAIL  server/pharmacy.integration.test.ts > real MySQL pharmacy tenancy > handles rejection/reopening and blocks invalid transitions, owner reassignment and self approval
+TRPCError: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,Fictional Pharmacy reject,JO,TEST-REJECT,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql-core/session.ts:79:11
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:100:16
+ ❯ server/pharmacy.ts:99:25
+     97|   try {
+     98|     return await db.transaction(async tx => {
+     99|       const [created] = await tx.insert(organizations).values({
+       |                         ^
+    100|         ...input,
+    101|         type: "pharmacy",
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/src/mysql2/session.ts:311:19
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:576:22
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/src/unstable-core-do-not-import/procedureBuilder.ts:664:12
+
+Caused by: Error: Failed query: insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)
+params: pharmacy,Fictional Pharmacy reject,JO,TEST-REJECT,pending,1
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:25:15
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:19
+ ❯ server/pharmacy.ts:99:25
+ ❯ MySql2Session.transaction node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:207:22
+ ❯ applyPharmacy server/pharmacy.ts:98:12
+ ❯ resolveMiddleware node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:203:17
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+ ❯ callRecursive node_modules/.pnpm/@trpc+server@11.19.0_typescript@5.9.3/node_modules/@trpc/server/dist/initTRPC-B259os3T.mjs:238:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { query: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, ?, ?, ?, ?, ?, ?, default, default)', params: [ 'pharmacy', 'Fictional Pharmacy reject', 'JO', 'TEST-REJECT', 'pending', 1 ] }
+Caused by: Error: Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co
+ ❯ node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:53:29
+ ❯ MySql2PreparedQuery.queryWithCache node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/session.js:23:22
+ ❯ MySql2PreparedQuery.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql2/session.js:52:30
+ ❯ QueryPromise.execute node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/mysql-core/query-builders/insert.js:121:27
+ ❯ QueryPromise.then node_modules/.pnpm/drizzle-orm@0.45.2_mysql2@3.23.1_@types+node@24.7.0_/node_modules/drizzle-orm/query-promise.js:21:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ER_NO_REFERENCED_ROW_2', errno: 1452, sqlState: '23000', sqlMessage: 'Cannot add or update a child row: a foreign key constraint fails (`go_pharmacy_test_acceptancev1`.`organizations`, CONSTRAINT `organizations_countryCode_pricingJurisdictions_countryCode_fk` FOREIGN KEY (`countryCode`) REFERENCES `pricingjurisdictions` (`co', sql: 'insert into `organizations` (`id`, `type`, `name`, `countryCode`, `registrationNumber`, `status`, `createdBy`, `createdAt`, `updatedAt`) values (default, 'pharmacy', 'Fictional Pharmacy reject', 'JO', 'TEST-REJECT', 'pending', 1, default, default)' }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/30]⎯
+

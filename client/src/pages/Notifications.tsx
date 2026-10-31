@@ -13,6 +13,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { ownedCustomerRecords } from "@/customer/policy";
 
 export default function Notifications() {
   const { user, loading: authLoading } = useAuth({
@@ -114,6 +115,9 @@ export default function Notifications() {
     );
   }
 
+  if (!user) return <p role="status">سجّل الدخول لعرض إشعارات حسابك.</p>;
+  const visibleNotifications = ownedCustomerRecords(notifications, user.id, error);
+
   return (
     <div className="app-container">
       {/* Header */}
@@ -135,9 +139,9 @@ export default function Notifications() {
             <div className="flex justify-center py-12">
               <Loader2 className="animate-spin text-[#00c57d]" size={40} />
             </div>
-          ) : notifications && notifications.length > 0 ? (
+          ) : visibleNotifications.length > 0 ? (
             <div className="space-y-3">
-              {notifications.map(notification => (
+              {visibleNotifications.map(notification => (
                 <div
                   key={notification.id}
                   className={`p-4 rounded-lg ${getNotificationColor(
@@ -179,7 +183,9 @@ export default function Notifications() {
                             <button
                               onClick={() => handleMarkAsRead(notification.id)}
                               className="p-2 text-gray-400 hover:text-[#00c57d] transition-colors"
-                              title="Mark as read"
+                              title="تحديد كمقروء"
+                              aria-label="تحديد كمقروء"
+                              disabled={markAsReadMutation.isPending}
                             >
                               <div className="w-3 h-3 bg-[#00c57d] rounded-full" />
                             </button>
@@ -187,7 +193,9 @@ export default function Notifications() {
                           <button
                             onClick={() => handleDelete(notification.id)}
                             className="p-2 text-gray-400 hover:text-red-500 transition-colors"
-                            title="Delete"
+                            title="حذف الإشعار"
+                            aria-label="حذف الإشعار"
+                            disabled={deleteNotificationMutation.isPending}
                           >
                             <Trash2 size={18} />
                           </button>

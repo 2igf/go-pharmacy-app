@@ -1,0 +1,69 @@
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CustomerV2JourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.gopharmacy.beta.CustomerV2JourneyTest:
+INSTRUMENTATION_STATUS: test=manualReminderCrudAndHistoryThroughRealCustomerUi
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CustomerV2JourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=manualReminderCrudAndHistoryThroughRealCustomerUi
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CustomerV2JourneyTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=publicRegistrationAndTruthfulRecoveryThroughCustomerUi
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CustomerV2JourneyTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=publicRegistrationAndTruthfulRecoveryThroughCustomerUi
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CustomerV2JourneyTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=passwordRecoveryAndRecoveredLoginThroughCustomerUi
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.gopharmacy.beta.CustomerV2JourneyTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=org.json.JSONException: No value for token
+	at org.json.JSONObject.get(JSONObject.java:398)
+	at org.json.JSONObject.getString(JSONObject.java:559)
+	at com.gopharmacy.beta.CustomerV2JourneyTest.passwordRecoveryAndRecoveredLoginThroughCustomerUi(CustomerV2JourneyTest.java:188)
+
+INSTRUMENTATION_STATUS: stream=
+Error in passwordRecoveryAndRecoveredLoginThroughCustomerUi(com.gopharmacy.beta.CustomerV2JourneyTest):
+org.json.JSONException: No value for token
+	at org.json.JSONObject.get(JSONObject.java:398)
+	at org.json.JSONObject.getString(JSONObject.java:559)
+	at com.gopharmacy.beta.CustomerV2JourneyTest.passwordRecoveryAndRecoveredLoginThroughCustomerUi(CustomerV2JourneyTest.java:188)
+
+INSTRUMENTATION_STATUS: test=passwordRecoveryAndRecoveredLoginThroughCustomerUi
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 43.883
+There was 1 failure:
+1) passwordRecoveryAndRecoveredLoginThroughCustomerUi(com.gopharmacy.beta.CustomerV2JourneyTest)
+org.json.JSONException: No value for token
+	at org.json.JSONObject.get(JSONObject.java:398)
+	at org.json.JSONObject.getString(JSONObject.java:559)
+	at com.gopharmacy.beta.CustomerV2JourneyTest.passwordRecoveryAndRecoveredLoginThroughCustomerUi(CustomerV2JourneyTest.java:188)
+
+FAILURES!!!
+Tests run: 3,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
