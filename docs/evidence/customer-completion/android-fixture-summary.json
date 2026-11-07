@@ -1,0 +1,14 @@
+{
+  "database": "go_pharmacy_test_completion",
+  "port": "33318",
+  "organizationId": 1,
+  "productId": 3,
+  "syntheticPaginationProducts": 23,
+  "accounts": {
+    "customer": 4,
+    "admin": 5,
+    "staff": 6,
+    "owner": 7
+  },
+  "fictionalOnly": true
+}

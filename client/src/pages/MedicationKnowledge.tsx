@@ -326,7 +326,9 @@ export default function MedicationKnowledge() {
   const search = useSearch();
   const params = new URLSearchParams(search);
   const country =
-    params.get("country") === "international" ? "international" : "JO";
+    params.get("country") === "JO" ? "JO" : "international";
+  const rawOffset = Number(params.get("offset") ?? 0);
+  const offset = Number.isInteger(rawOffset) && rawOffset >= 0 && rawOffset <= 10000 ? rawOffset : 0;
   const q = (params.get("q") ?? "").slice(0, 100);
   const [draft, setDraft] = useState(q);
   const [language, setLanguage] = useState<"ar" | "en">("ar");
@@ -334,15 +336,15 @@ export default function MedicationKnowledge() {
   const id = match ? Number(match[1]) : 0;
   useEffect(() => setDraft(q), [q]);
   const results = trpc.medicationKnowledge.search.useQuery(
-    { q, country, limit: 20 },
+    { q, country, limit: 20, offset },
     { enabled: !id, retry: false }
   );
   const detail = trpc.medicationKnowledge.detail.useQuery(
     { id, language },
     { enabled: !!id, retry: false }
   );
-  const target = (scope: "JO" | "international", term: string) =>
-    `/medicines?country=${scope}&q=${encodeURIComponent(term.trim())}`;
+  const target = (scope: "JO" | "international", term: string, pageOffset = 0) =>
+    `/medicines?country=${scope}&q=${encodeURIComponent(term.trim())}&offset=${pageOffset}`;
   return (
     <main className="medication-knowledge" dir="rtl">
       <header>
@@ -439,8 +441,7 @@ export default function MedicationKnowledge() {
           ) : (
             <>
               <p role="status">
-                النتائج المعروضة: {results.data?.length ?? 0} — حد أقصى 20 نتيجة
-                لكل بحث.
+                النتائج في الصفحة: {results.data?.length ?? 0} — الصفحة {Math.floor(offset / 20) + 1}.
               </p>
               {!results.data?.length ? (
                 <p className="medication-knowledge__empty">
@@ -470,6 +471,10 @@ export default function MedicationKnowledge() {
                   ))}
                 </ul>
               )}
+              <nav aria-label="صفحات دليل الأدوية">
+                <button type="button" disabled={offset === 0} onClick={() => navigate(target(country, q, Math.max(0, offset - 20)))}>السابق</button>
+                <button type="button" disabled={(results.data?.length ?? 0) < 20 || offset >= 10000} onClick={() => navigate(target(country, q, offset + 20))}>التالي</button>
+              </nav>
             </>
           )}
           <NlmAttribution />

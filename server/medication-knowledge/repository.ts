@@ -187,7 +187,8 @@ function validateSource(source: Source, records: KnowledgeRecord[]) {
           `https://rxnav.nlm.nih.gov/REST/rxcui/${row.externalId}/properties.json` ||
         row.registrations.length ||
         row.labels.length ||
-        Object.values(row.facts).some(value => value !== null) ||
+        Object.entries(row.facts).some(([key, value]) => key !== "dosageForm" && value !== null) ||
+        (row.facts.dosageForm !== null && !["SCD", "SBD"].includes(row.termType)) ||
         row.names.some(name => name.language !== "en") ||
         row.ingredients.some(
           item =>
@@ -471,6 +472,7 @@ export async function searchKnowledge(input: {
   q: string;
   country: "JO" | "international";
   limit: number;
+  offset?: number;
 }) {
   const db = await getDb();
   const match = input.q.toLowerCase();
@@ -508,7 +510,8 @@ export async function searchKnowledge(input: {
       )
     )
     .orderBy(asc(knowledgeDrugs.name), asc(knowledgeDrugs.id))
-    .limit(input.limit);
+    .limit(input.limit)
+    .offset(input.offset ?? 0);
   return rows.map(row => ({
     ...row,
     scope: input.country,

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { protectedProcedure, router } from "../_core/trpc";
 import { getDb, getUserAddresses, getAddressById } from "../db";
@@ -55,6 +55,40 @@ export const addressesRouter = router({
       });
 
       return { id: result.insertId };
+    }),
+
+  update: protectedProcedure
+    .input(
+      z
+        .object({
+          id: z.number().int().positive(),
+          address: z.string().trim().min(5).max(500),
+        })
+        .strict()
+    )
+    .mutation(async ({ input, ctx }) => {
+      const address = await getAddressById(input.id);
+      if (!address || address.userId !== ctx.user.id) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Address not found",
+        });
+      }
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      // Text edits invalidate an old map location. Orders already contain their
+      // own delivery snapshot; editing a saved address never rewrites them.
+      await db
+        .update(userAddresses)
+        .set({ address: input.address, latitude: null, longitude: null })
+        .where(
+          and(
+            eq(userAddresses.id, input.id),
+            eq(userAddresses.userId, ctx.user.id)
+          )
+        );
+      return { success: true };
     }),
 
   delete: protectedProcedure

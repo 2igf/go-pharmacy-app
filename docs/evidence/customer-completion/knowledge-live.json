@@ -1,0 +1,475 @@
+{
+  "at": "2026-11-07T11:17:45.013Z",
+  "database": "go_pharmacy_test_completion",
+  "source": "RxNorm non-proprietary HTTPS API",
+  "requestedIds": [
+    "161",
+    "5640",
+    "723",
+    "7804",
+    "11289",
+    "6809",
+    "202433",
+    "153010",
+    "198440",
+    "308191",
+    "860975",
+    "310798"
+  ],
+  "batches": [
+    {
+      "batchId": 5,
+      "applied": 0,
+      "skipped": 6,
+      "status": "applied"
+    },
+    {
+      "batchId": 6,
+      "applied": 0,
+      "skipped": 6,
+      "status": "applied"
+    }
+  ],
+  "visibleCount": 12,
+  "jordanVerifiedCount": 0,
+  "languages": [
+    "en"
+  ],
+  "clinicalLabelCount": 0,
+  "withForm": 4,
+  "withStrength": 4,
+  "records": [
+    {
+      "id": 12,
+      "name": "24 HR metformin hydrochloride 500 MG Extended Release Oral Tablet",
+      "externalId": "860975",
+      "ingredients": [
+        {
+          "externalId": "6809",
+          "name": "metformin",
+          "language": "en",
+          "strength": "500 MG"
+        }
+      ],
+      "facts": {
+        "dosageForm": "Extended Release Oral Tablet",
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/860975/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:59.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 2,
+      "name": "acetaminophen",
+      "externalId": "161",
+      "ingredients": [
+        {
+          "externalId": "161",
+          "name": "acetaminophen",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/161/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:53.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 8,
+      "name": "acetaminophen 500 MG Oral Tablet",
+      "externalId": "198440",
+      "ingredients": [
+        {
+          "externalId": "161",
+          "name": "acetaminophen",
+          "language": "en",
+          "strength": "500 MG"
+        }
+      ],
+      "facts": {
+        "dosageForm": "Oral Tablet",
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/198440/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:59.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 7,
+      "name": "Advil",
+      "externalId": "153010",
+      "ingredients": [
+        {
+          "externalId": "5640",
+          "name": "ibuprofen",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/153010/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:59.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 5,
+      "name": "amoxicillin",
+      "externalId": "723",
+      "ingredients": [
+        {
+          "externalId": "723",
+          "name": "amoxicillin",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/723/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:54.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 10,
+      "name": "amoxicillin 500 MG Oral Capsule",
+      "externalId": "308191",
+      "ingredients": [
+        {
+          "externalId": "723",
+          "name": "amoxicillin",
+          "language": "en",
+          "strength": "500 MG"
+        }
+      ],
+      "facts": {
+        "dosageForm": "Oral Capsule",
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/308191/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:59.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 11,
+      "name": "hydrochlorothiazide 25 MG Oral Tablet",
+      "externalId": "310798",
+      "ingredients": [
+        {
+          "externalId": "5487",
+          "name": "hydrochlorothiazide",
+          "language": "en",
+          "strength": "25 MG"
+        }
+      ],
+      "facts": {
+        "dosageForm": "Oral Tablet",
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/310798/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:59.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 3,
+      "name": "ibuprofen",
+      "externalId": "5640",
+      "ingredients": [
+        {
+          "externalId": "5640",
+          "name": "ibuprofen",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/5640/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:53.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 4,
+      "name": "metformin",
+      "externalId": "6809",
+      "ingredients": [
+        {
+          "externalId": "6809",
+          "name": "metformin",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/6809/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:53.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 6,
+      "name": "oxycodone",
+      "externalId": "7804",
+      "ingredients": [
+        {
+          "externalId": "7804",
+          "name": "oxycodone",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/7804/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:54.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 9,
+      "name": "Tylenol",
+      "externalId": "202433",
+      "ingredients": [
+        {
+          "externalId": "161",
+          "name": "acetaminophen",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/202433/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:59.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    },
+    {
+      "id": 1,
+      "name": "warfarin",
+      "externalId": "11289",
+      "ingredients": [
+        {
+          "externalId": "11289",
+          "name": "warfarin",
+          "language": "en",
+          "strength": null
+        }
+      ],
+      "facts": {
+        "dosageForm": null,
+        "route": null,
+        "manufacturer": null,
+        "packageIdentifier": null,
+        "prescriptionStatus": null,
+        "imageReference": null,
+        "mediaRights": null,
+        "publicationDate": null,
+        "sourceUpdatedAt": null,
+        "mediaRightsVerified": false
+      },
+      "source": {
+        "code": "rxnorm",
+        "title": "RxNorm non-proprietary vocabulary / U.S. NLM",
+        "homepage": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+        "termsReference": "https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html",
+        "reference": "https://rxnav.nlm.nih.gov/REST/rxcui/11289/properties.json",
+        "scope": "international_vocabulary",
+        "version": "05-Oct-2026",
+        "importedAt": "2026-10-31T23:09:53.000Z",
+        "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services; NLM is not responsible for the product and does not endorse or recommend this or any other product."
+      }
+    }
+  ]
+}

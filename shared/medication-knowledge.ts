@@ -140,6 +140,7 @@ export const publicKnowledgeSearchSchema = z
     q: z.string().trim().max(100).default(""),
     country: z.enum(["JO", "international"]).default("JO"),
     limit: z.number().int().min(1).max(50).default(20),
+    offset: z.number().int().min(0).max(10000).default(0),
   })
   .strict();
 const permissionReference = reference;

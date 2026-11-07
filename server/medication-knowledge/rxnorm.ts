@@ -29,7 +29,9 @@ const types = [
 export function normalizeRxNorm(
   id: string,
   propertiesValue: unknown,
-  relatedValue: unknown
+  relatedValue: unknown,
+  attributesValue?: unknown,
+  formsValue?: unknown
 ): KnowledgeRecord {
   const properties = z
     .object({ properties: concept })
@@ -62,6 +64,9 @@ export function normalizeRxNorm(
       ? [properties]
       : concepts.filter(item => item.tty === "IN");
   const branded = properties.tty.startsWith("SB") || properties.tty === "BN";
+  const attributes = attributesValue === undefined ? [] : z.object({propConceptGroup:z.object({propConcept:z.array(z.object({propCategory:z.string(),propName:z.string(),propValue:z.string().max(500)})).max(100)}).optional()}).parse(attributesValue).propConceptGroup?.propConcept ?? [];
+  const strengths = attributes.filter(p => p.propCategory === "ATTRIBUTES" && p.propName === "AVAILABLE_STRENGTH").map(p => p.propValue);
+  const forms = formsValue === undefined ? [] : z.object({relatedGroup:z.object({conceptGroup:z.array(z.object({tty:z.string(),conceptProperties:z.array(concept).max(30).optional()})).optional()}).optional()}).parse(formsValue).relatedGroup?.conceptGroup?.flatMap(g=>g.tty === "DF" ? g.conceptProperties ?? [] : []) ?? [];
   const names: KnowledgeRecord["names"] = [
     {
       name: properties.name,
@@ -78,6 +83,7 @@ export function normalizeRxNorm(
   return knowledgeRecordSchema.parse({
     externalId: id,
     termType: properties.tty,
+    facts: { dosageForm: forms.length === 1 ? forms[0].name : null },
     names,
     ingredients: [
       ...new Map(
@@ -87,7 +93,7 @@ export function normalizeRxNorm(
             externalId: item.rxcui,
             name: item.name,
             language: "en",
-            strength: null,
+            strength: ingredients.length === 1 && strengths.length === 1 ? strengths[0] : null,
           },
         ])
       ).values(),
@@ -105,7 +111,7 @@ export function clearRxNormCache() {
 }
 async function fetchJson(path: string): Promise<unknown> {
   if (
-    !/^(?:version\.json|rxcui\/[1-9]\d{0,8}\/(?:properties\.json|related\.json\?tty=IN\+BN))$/.test(
+    !/^(?:version\.json|rxcui\/[1-9]\d{0,8}\/(?:properties\.json|related\.json\?tty=(?:IN\+BN|DF)|allProperties\.json\?prop=attributes))$/.test(
       path
     )
   )
@@ -178,7 +184,10 @@ export async function fetchRxNormRecords(ids: string[]) {
         parsed.tty === "IN"
           ? {}
           : await fetchJson(`rxcui/${id}/related.json?tty=IN+BN`);
-      records.push(normalizeRxNorm(id, properties, related));
+      const product = ["SCD", "SBD"].includes(parsed.tty);
+      const attributes = product ? await fetchJson(`rxcui/${id}/allProperties.json?prop=attributes`) : undefined;
+      const forms = product ? await fetchJson(`rxcui/${id}/related.json?tty=DF`) : undefined;
+      records.push(normalizeRxNorm(id, properties, related, attributes, forms));
     }
     return { sourceVersion: version, records };
   } catch {

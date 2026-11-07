@@ -1,0 +1,127 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+
+> Configure project :capacitor-cordova-android-plugins
+WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preCheckoutTestBuild UP-TO-DATE
+> Task :app:javaPreCompileCheckoutTest UP-TO-DATE
+> Task :capacitor-android:preBuild UP-TO-DATE
+> Task :capacitor-android:preDebugBuild UP-TO-DATE
+> Task :capacitor-android:writeDebugAarMetadata UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:preBuild UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:preDebugBuild UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:writeDebugAarMetadata UP-TO-DATE
+> Task :app:checkCheckoutTestAarMetadata UP-TO-DATE
+> Task :capacitor-android:processDebugNavigationResources UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:processDebugNavigationResources UP-TO-DATE
+> Task :app:processCheckoutTestNavigationResources UP-TO-DATE
+> Task :app:compileCheckoutTestNavigationResources UP-TO-DATE
+> Task :app:generateCheckoutTestResValues UP-TO-DATE
+> Task :capacitor-android:generateDebugResValues UP-TO-DATE
+> Task :capacitor-android:generateDebugResources UP-TO-DATE
+> Task :capacitor-android:packageDebugResources UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:generateDebugResValues UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:generateDebugResources UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:packageDebugResources UP-TO-DATE
+> Task :app:mapCheckoutTestSourceSetPaths UP-TO-DATE
+> Task :app:generateCheckoutTestResources UP-TO-DATE
+> Task :app:mergeCheckoutTestResources UP-TO-DATE
+> Task :app:packageCheckoutTestResources UP-TO-DATE
+> Task :app:parseCheckoutTestLocalResources UP-TO-DATE
+> Task :app:createCheckoutTestCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksCheckoutTest UP-TO-DATE
+> Task :capacitor-android:extractDeepLinksDebug UP-TO-DATE
+> Task :capacitor-android:processDebugManifest UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:extractDeepLinksDebug UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:processDebugManifest UP-TO-DATE
+> Task :app:processCheckoutTestMainManifest UP-TO-DATE
+> Task :app:processCheckoutTestManifest UP-TO-DATE
+> Task :app:processCheckoutTestManifestForPackage UP-TO-DATE
+> Task :capacitor-android:compileDebugLibraryResources UP-TO-DATE
+> Task :capacitor-android:parseDebugLocalResources UP-TO-DATE
+> Task :capacitor-android:generateDebugRFile UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:compileDebugLibraryResources UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:parseDebugLocalResources UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:generateDebugRFile UP-TO-DATE
+> Task :app:processCheckoutTestResources UP-TO-DATE
+> Task :capacitor-android:javaPreCompileDebug UP-TO-DATE
+> Task :capacitor-android:compileDebugJavaWithJavac UP-TO-DATE
+> Task :capacitor-android:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:javaPreCompileDebug UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:compileDebugJavaWithJavac NO-SOURCE
+> Task :capacitor-cordova-android-plugins:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:compileCheckoutTestJavaWithJavac UP-TO-DATE
+> Task :app:bundleCheckoutTestClassesToCompileJar UP-TO-DATE
+> Task :app:preCheckoutTestAndroidTestBuild SKIPPED
+> Task :app:javaPreCompileCheckoutTestAndroidTest UP-TO-DATE
+> Task :app:checkCheckoutTestAndroidTestAarMetadata UP-TO-DATE
+> Task :app:processCheckoutTestAndroidTestNavigationResources UP-TO-DATE
+> Task :app:compileCheckoutTestAndroidTestNavigationResources UP-TO-DATE
+> Task :app:generateCheckoutTestAndroidTestResValues UP-TO-DATE
+> Task :app:mapCheckoutTestAndroidTestSourceSetPaths UP-TO-DATE
+> Task :app:generateCheckoutTestAndroidTestResources UP-TO-DATE
+> Task :app:mergeCheckoutTestAndroidTestResources UP-TO-DATE
+> Task :app:processCheckoutTestAndroidTestManifest UP-TO-DATE
+> Task :app:processCheckoutTestAndroidTestResources UP-TO-DATE
+> Task :app:compileCheckoutTestAndroidTestJavaWithJavac
+> Task :app:mergeCheckoutTestAndroidTestShaders UP-TO-DATE
+> Task :app:compileCheckoutTestAndroidTestShaders NO-SOURCE
+> Task :app:generateCheckoutTestAndroidTestAssets UP-TO-DATE
+> Task :capacitor-android:mergeDebugShaders UP-TO-DATE
+> Task :capacitor-android:compileDebugShaders NO-SOURCE
+> Task :capacitor-android:generateDebugAssets UP-TO-DATE
+> Task :capacitor-android:mergeDebugAssets UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeDebugShaders UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:compileDebugShaders NO-SOURCE
+> Task :capacitor-cordova-android-plugins:generateDebugAssets UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeDebugAssets UP-TO-DATE
+> Task :app:mergeCheckoutTestAndroidTestAssets UP-TO-DATE
+> Task :app:compressCheckoutTestAndroidTestAssets UP-TO-DATE
+> Task :capacitor-android:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :app:desugarCheckoutTestAndroidTestFileDependencies UP-TO-DATE
+> Task :app:dexBuilderCheckoutTestAndroidTest
+> Task :app:mergeCheckoutTestAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :app:processCheckoutTestAndroidTestJavaRes NO-SOURCE
+> Task :capacitor-android:processDebugJavaRes NO-SOURCE
+> Task :capacitor-cordova-android-plugins:processDebugJavaRes NO-SOURCE
+> Task :app:mergeCheckoutTestAndroidTestJavaResource UP-TO-DATE
+> Task :app:checkCheckoutTestAndroidTestDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexCheckoutTestAndroidTest UP-TO-DATE
+> Task :capacitor-android:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:bundleLibRuntimeToDirDebug UP-TO-DATE
+> Task :app:mergeLibDexCheckoutTestAndroidTest UP-TO-DATE
+> Task :app:mergeCheckoutTestAndroidTestJniLibFolders UP-TO-DATE
+> Task :app:mergeCheckoutTestJniLibFolders UP-TO-DATE
+> Task :capacitor-android:mergeDebugJniLibFolders UP-TO-DATE
+> Task :capacitor-android:mergeDebugNativeLibs NO-SOURCE
+> Task :capacitor-android:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeDebugJniLibFolders UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeDebugNativeLibs NO-SOURCE
+> Task :capacitor-cordova-android-plugins:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :app:mergeCheckoutTestNativeLibs NO-SOURCE
+> Task :app:mergeCheckoutTestAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripCheckoutTestAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningCheckoutTestAndroidTest UP-TO-DATE
+> Task :app:writeCheckoutTestAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :app:mergeProjectDexCheckoutTestAndroidTest
+> Task :app:packageCheckoutTestAndroidTest
+> Task :app:createCheckoutTestAndroidTestApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleCheckoutTestAndroidTest
+
+[Incubating] Problems report is available at: file:///C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation/android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 48s
+٨٣ actionable tasks: ٤ executed, ٧٩ up-to-date

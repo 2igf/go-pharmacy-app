@@ -17,6 +17,8 @@ describe("multi-app service boundaries", () => {
     expect(Object.keys(appRouter._def.procedures).sort()).toEqual(
       [
         ...legacyApiManifest,
+        "addresses.update",
+        "products.browse",
         "platform.capabilities",
         "manualReminders.list",
         "manualReminders.detail",

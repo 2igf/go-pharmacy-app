@@ -4,6 +4,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Page, Feedback } from "@/components/BetaLayout";
 import { fulfillmentLabels } from "@shared/fulfillment";
 import { visibleCustomerOrder } from "@/lib/checkout-policy";
+import { customerOrderStatus } from "@/customer/profile";
 export default function OrderTracking() {
   const { user, loading: authLoading } = useAuth({
     redirectOnUnauthenticated: true,
@@ -28,14 +29,17 @@ export default function OrderTracking() {
       <Feedback loading={order.isLoading} error={order.error} />
       {currentOrder ? (
         <article className="bg-white border p-5 rounded-xl space-y-3">
-          <h2 className="font-bold">{currentOrder.orderNumber}</h2>
+          <h2 className="font-bold break-all">
+            <bdi>{currentOrder.orderNumber}</bdi>
+          </h2>
           <p>
             {currentOrder.isSimulated
               ? "طلب محاكاة محفوظ — لا دفع أو توصيل"
               : "سجل سابق"}
           </p>
           <p>
-            الحالة الحالية: <strong>{currentOrder.status}</strong>
+            الحالة الحالية:{" "}
+            <strong>{customerOrderStatus(currentOrder.status)}</strong>
           </p>
           {currentOrder.fulfillment && (
             <p>

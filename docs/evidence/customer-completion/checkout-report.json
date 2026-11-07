@@ -1,0 +1,13 @@
+{
+  "wrongHostnameRejected": true,
+  "sixItemNavigation": true,
+  "rtlLayout": true,
+  "arabicFieldMessage": true,
+  "phoneHtmlValidBeforeSubmit": true,
+  "orderId": 1,
+  "checkoutResponseLossRecovered": true,
+  "pharmacyReady": true,
+  "customerSeesFulfillment": true,
+  "cachedForeignOrderHidden": true,
+  "mode": "journey"
+}

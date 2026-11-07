@@ -1,0 +1,193 @@
+/* Existing Canva palette and rounded cards. No dedicated profile reference/photo was supplied. */
+.customer-app .customer-profile {
+  color: var(--canva-text);
+  padding-bottom: 24px;
+  font-size: clamp(14px, 3.5cqw, 20px);
+  line-height: 1.65;
+}
+.customer-app .profile-header {
+  background: linear-gradient(#55dfa0 0%, #d9f2e4 78%, var(--canva-gray) 100%);
+  padding: 22px 20px 32px;
+}
+.customer-app .profile-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.customer-app .profile-identity {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.customer-app .profile-identity > div {
+  min-width: 0;
+  flex: 1;
+}
+.customer-app .profile-identity h2 {
+  font-size: 21px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.customer-app .profile-contact {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.customer-app .profile-account-kind {
+  color: #286b50;
+  font-size: 13px;
+}
+.customer-app .profile-avatar {
+  background: white;
+  border: 2px solid #c5ebd7;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+.customer-app .profile-avatar svg {
+  width: 38px;
+  height: 38px;
+  color: #287351;
+}
+.customer-app .profile-sections {
+  display: grid;
+  gap: 16px;
+  padding-inline: 16px;
+}
+.customer-app .profile-panel {
+  border-radius: 20px;
+  padding: 18px 16px;
+  background: white;
+  min-width: 0;
+}
+.customer-app .profile-panel h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.customer-app .profile-panel h2 svg {
+  width: 22px;
+  height: 22px;
+  color: #28835a;
+}
+.customer-app .profile-form {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.customer-app .profile-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+.customer-app .profile-form input {
+  background: #fafcfb;
+  min-height: 46px;
+  height: auto;
+  border: 1px solid #cbdad1;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 12px;
+}
+.customer-app .customer-profile button {
+  min-height: 44px;
+  height: auto;
+  border-radius: 12px;
+  padding: 9px 14px;
+  font-size: 14px;
+  white-space: normal;
+}
+.customer-app .profile-form > button {
+  background: var(--canva-green);
+  color: #075c38;
+  border: 0;
+  font-weight: 700;
+}
+.customer-app .profile-success {
+  color: #216b41;
+}
+.customer-app .profile-muted {
+  color: #606a64;
+  font-size: 13px;
+}
+.customer-app .profile-records {
+  display: grid;
+  gap: 12px;
+}
+.customer-app .profile-address-card {
+  background: #f6faf7;
+  padding: 14px;
+  border: 1px solid #e0ebe4;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+.customer-app .profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.customer-app .profile-new-address {
+  border-top: 1px solid #e2e9e5;
+  margin-top: 18px;
+  padding-top: 16px;
+}
+.customer-app .profile-order-card {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #e0ebe4;
+  border-radius: 14px;
+  padding: 14px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.customer-app .profile-order-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+}
+.customer-app .profile-order-status {
+  background: #e3f7ec;
+  color: #246242;
+  border-radius: 18px;
+  padding: 3px 10px;
+}
+.customer-app .profile-order-detail {
+  display: flex;
+  align-items: center;
+  color: #216b41;
+  font-weight: 600;
+  font-size: 14px;
+}
+.customer-app .profile-order-detail svg,
+.customer-app .profile-settings a svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.customer-app .profile-settings > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding-block: 10px;
+  border-bottom: 1px solid #edf0ee;
+}
+.customer-app .profile-settings > p {
+  margin-top: 14px;
+}
+.customer-app .profile-logout {
+  width: 100%;
+  background: white;
+  border-color: #c8d6ce;
+}

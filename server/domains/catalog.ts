@@ -9,8 +9,13 @@ import {
   searchProducts,
 } from "../db";
 import { products } from "../../drizzle/schema";
+import { browseCatalog, catalogBrowseInput } from "../catalog-search";
 
 export const productsRouter = router({
+  browse: publicProcedure
+    .input(catalogBrowseInput)
+    .query(({ input }) => browseCatalog(input)),
+
   list: publicProcedure
     .input(
       z.object({

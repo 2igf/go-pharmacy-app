@@ -1,0 +1,36 @@
+{
+  "pixelPerfect": false,
+  "comparisonCanvas": "two equal-width panels; proportional contain without stretching",
+  "comparisonCrop": "actual screenshot top12.5% and bottom2.4% excluded for system/API/gesture chrome; original screenshots preserved",
+  "profileReferenceMissing": true,
+  "profileWidthsRequested": [
+    360,
+    393,
+    430
+  ],
+  "profileInnerWidthsObserved": [
+    360,
+    392,
+    430
+  ],
+  "originalScreenshotsVerified": [
+    "canva-cart.png",
+    "canva-checkout.png",
+    "canva-discovery.png",
+    "canva-home.png",
+    "canva-login.png",
+    "checkout-customer-ready.png",
+    "checkout-pharmacy-ready.png",
+    "compare-cart.png",
+    "compare-discovery.png",
+    "compare-doctors.png",
+    "compare-home.png",
+    "compare-login.png",
+    "doctors.png",
+    "knowledge-detail.png",
+    "knowledge-list.png",
+    "profile-360.png",
+    "profile-393.png",
+    "profile-430.png"
+  ]
+}

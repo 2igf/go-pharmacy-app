@@ -8,7 +8,6 @@ import {
   SearchField,
   UnavailableControl,
 } from "@/customer/CustomerPieces";
-import { filterCatalog } from "@/customer/policy";
 const categories = [
   ["all", "جميع الفئات"],
   ["medications", "الأدوية"],
@@ -16,7 +15,12 @@ const categories = [
   ["skincare", "العناية بالبشرة"],
   ["baby_care", "العناية بالأطفال"],
   ["medical_supplies", "مستلزمات طبية"],
-];
+  ["pet_care", "العناية بالحيوانات الأليفة"],
+] as const;
+type Category = (typeof categories)[number][0];
+function catalogCategory(value: string | null): Category {
+  return categories.find(([category]) => category === value)?.[0] ?? "all";
+}
 const brands = [
   ["beesline", "Beesline"],
   ["gillette", "Gillette"],
@@ -36,31 +40,31 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState(
     new URLSearchParams(location.search).get("search") ?? ""
   );
-  const [selectedCategory, setCategory] = useState(
-    new URLSearchParams(location.search).get("category") ?? "all"
+  const [selectedCategory, setCategory] = useState<Category>(
+    catalogCategory(new URLSearchParams(location.search).get("category"))
   );
-  const [sortBy, setSort] = useState("name");
+  const [sortBy, setSort] = useState<"name" | "price_low" | "price_high">(
+    "name"
+  );
+  const [page, setPage] = useState(0);
   const [searching, setSearching] = useState(
     new URLSearchParams(location.search).get("view") === "all"
   );
-  const products = trpc.products.list.useQuery({ limit: 100, offset: 0 });
+  const products = trpc.products.browse.useQuery({
+    query: searchQuery,
+    category: selectedCategory,
+    sort: sortBy,
+    limit: 20,
+    offset: page * 20,
+  });
   useEffect(() => {
     const params = new URLSearchParams(search);
-    setCategory(params.get("category") ?? "all");
+    setCategory(catalogCategory(params.get("category")));
     setSearchQuery(params.get("search") ?? "");
     setSearching(params.get("view") === "all");
+    setPage(0);
   }, [search]);
-  const filtered = filterCatalog(
-    products.data ?? [],
-    searchQuery,
-    selectedCategory
-  ).sort((a, b) =>
-    sortBy === "price_low"
-      ? Number(a.price) - Number(b.price)
-      : sortBy === "price_high"
-        ? Number(b.price) - Number(a.price)
-        : a.name.localeCompare(b.name, "ar")
-  );
+  const filtered = products.error ? [] : (products.data?.items ?? []);
   const results =
     !!searchQuery.trim() || selectedCategory !== "all" || searching;
   return (
@@ -68,7 +72,10 @@ export default function ProductsPage() {
       <h1 className="sr-only">الأدوية والمنتجات</h1>
       <SearchField
         value={searchQuery}
-        onChange={setSearchQuery}
+        onChange={value => {
+          setSearchQuery(value);
+          setPage(0);
+        }}
         onSubmit={() => setSearching(true)}
       />
       <Link className="canva-knowledge-entry" href="/medicines">
@@ -94,9 +101,29 @@ export default function ProductsPage() {
             ))}
           </div>
         ) : (
-          !products.isLoading && (
+          !products.isLoading &&
+          !products.error && (
             <p className="canva-empty">لم يتم العثور على منتجات</p>
           )
+        )}
+        {results && !products.error && (
+          <nav aria-label="صفحات المنتجات" className="canva-catalog-pagination">
+            <button
+              type="button"
+              disabled={page === 0 || products.isFetching}
+              onClick={() => setPage(current => Math.max(0, current - 1))}
+            >
+              السابق
+            </button>
+            <span aria-live="polite">صفحة {page + 1}</span>
+            <button
+              type="button"
+              disabled={!products.data?.hasMore || products.isFetching}
+              onClick={() => setPage(current => current + 1)}
+            >
+              التالي
+            </button>
+          </nav>
         )}
       </section>
       {!results && (
@@ -120,6 +147,7 @@ export default function ProductsPage() {
                 setSearchQuery(name);
                 setCategory("all");
                 setSearching(true);
+                setPage(0);
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
@@ -148,7 +176,10 @@ export default function ProductsPage() {
           <select
             aria-label="الفئة"
             value={selectedCategory}
-            onChange={e => setCategory(e.target.value)}
+            onChange={e => {
+              setCategory(catalogCategory(e.target.value));
+              setPage(0);
+            }}
           >
             {categories.map(([value, label]) => (
               <option key={value} value={value}>
@@ -162,7 +193,10 @@ export default function ProductsPage() {
           <select
             aria-label="الترتيب"
             value={sortBy}
-            onChange={e => setSort(e.target.value)}
+            onChange={e => {
+              setSort(e.target.value as typeof sortBy);
+              setPage(0);
+            }}
           >
             <option value="name">الاسم: أ-ي</option>
             <option value="price_low">السعر: الأقل أولاً</option>
@@ -175,6 +209,7 @@ export default function ProductsPage() {
             setSearchQuery("");
             setCategory("all");
             setSearching(false);
+            setPage(0);
           }}
         >
           مسح البحث

@@ -1,0 +1,9 @@
+{
+  "sha256": "7958c41fc995f6650224a13b664aaf0d41ad303942fd5919aad3f3e99f878058",
+  "bytes": 5884403,
+  "bundledFilesVerified": 46,
+  "package": "com.gopharmacy.beta",
+  "version": "1.1.0-beta.5",
+  "noRemoteServerUrl": true,
+  "noTestCA": true
+}
