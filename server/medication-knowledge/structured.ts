@@ -4,7 +4,7 @@ import {
   structuredPreviewSchema,
 } from "../../shared/medication-knowledge";
 
-function csvRows(text: string): string[][] {
+export function csvRows(text: string, maxRecords = 10): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
   let cell = "";
@@ -29,6 +29,8 @@ function csvRows(text: string): string[][] {
       closedQuote = false;
       if (character === "\n") {
         rows.push(row);
+        if (rows.length > maxRecords + 1)
+          throw new Error("CSV row limit exceeded");
         row = [];
       }
     } else if (!closedQuote) cell += character;
@@ -36,7 +38,7 @@ function csvRows(text: string): string[][] {
   if (quoted) throw new Error("Unclosed CSV quotation");
   row.push(cell.replace(/\r$/, ""));
   if (row.some(value => value.length)) rows.push(row);
-  if (rows.length > 11) throw new Error("At most ten records per import");
+  if (rows.length > maxRecords + 1) throw new Error("CSV row limit exceeded");
   return rows;
 }
 export function parseStructuredPayload(value: unknown) {

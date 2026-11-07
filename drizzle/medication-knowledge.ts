@@ -14,6 +14,7 @@ import {
 } from "drizzle-orm/mysql-core";
 import { users } from "./schema";
 import type { KnowledgeRecord } from "../shared/medication-knowledge";
+import type { HistoricalCatalog } from "../shared/historical-catalog";
 
 export const knowledgeSources = mysqlTable("knowledgeSources", {
   id: int("id").autoincrement().primaryKey(),
@@ -194,6 +195,7 @@ export const knowledgeProductFacts = mysqlTable("knowledgeProductFacts", {
   mediaRights: varchar("mediaRights", { length: 500 }),
   publicationDate: date("publicationDate", { mode: "string" }),
   sourceUpdatedAt: datetime("sourceUpdatedAt", { mode: "date", fsp: 3 }),
+  catalogMetadata: json("catalogMetadata").$type<HistoricalCatalog | null>(),
 });
 export const knowledgeDrugVersions = mysqlTable(
   "knowledgeDrugVersions",

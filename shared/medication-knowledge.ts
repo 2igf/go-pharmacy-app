@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { historicalCatalogSchema } from "./historical-catalog";
 
 const externalId = z
   .string()
@@ -132,13 +133,14 @@ export const knowledgeRecordSchema = z
       .max(10)
       .default([]),
     sourceReference: reference,
+    historicalCatalog: historicalCatalogSchema.optional(),
   })
   .strict();
 export type KnowledgeRecord = z.output<typeof knowledgeRecordSchema>;
 export const publicKnowledgeSearchSchema = z
   .object({
     q: z.string().trim().max(100).default(""),
-    country: z.enum(["JO", "international"]).default("JO"),
+    country: z.enum(["JO", "international", "historical_jo"]).default("JO"),
     limit: z.number().int().min(1).max(50).default(20),
     offset: z.number().int().min(0).max(10000).default(0),
   })

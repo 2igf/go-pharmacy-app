@@ -1,0 +1,4 @@
+package: name='com.gopharmacy.beta' versionCode='6' versionName='1.1.0-beta.6' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+sdkVersion:'24'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.INTERNET'

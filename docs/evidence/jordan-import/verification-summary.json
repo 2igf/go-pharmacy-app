@@ -1,0 +1,56 @@
+{
+  "verifiedAt": "2026-11-07T12:24:43.209Z",
+  "database": "go_pharmacy_test_jordan",
+  "regressionDatabase": "go_pharmacy_test_jordanreg",
+  "fullTests": {
+    "passed": 335,
+    "files": 52,
+    "failed": 0
+  },
+  "focusedTestsPassed": 55,
+  "types": {
+    "appTypesExit": 0,
+    "testTypesExit": 0
+  },
+  "import": {
+    "valid": 1000,
+    "firstApplied": 1000,
+    "repeatedApplied": 0,
+    "repeatedSkipped": 1000,
+    "rejected": 0,
+    "potentialDuplicates": 0,
+    "warningRows": 140
+  },
+  "androidWebView": {
+    "publicWithoutLogin": true,
+    "allThousandDistinctPackagesReachable": true,
+    "twentyRowsOnLastPage": true,
+    "noPackagesBeyondThousand": true,
+    "brandSearch": true,
+    "genericSearch": true,
+    "atcSearch": true,
+    "barcodeSearch": true,
+    "sourcedPackageId": "JO-MED-0002",
+    "localRecordId": "14",
+    "historicalWarningsAndInformationOnly": true,
+    "passed": true
+  },
+  "priorRecordsPreserved": true,
+  "sourceZipUnchanged": true,
+  "signingMatchesSavedBeta4": true,
+  "apk": {
+    "sha256": "c5f7378a0f88c8c1450f93624330bfcdcf1c1a05841d788cef63941d12b44889",
+    "bytes": 5890069,
+    "bundledFilesVerified": 46,
+    "package": "com.gopharmacy.beta",
+    "version": "1.1.0-beta.6",
+    "noRemoteServerUrl": true,
+    "noTestCA": true
+  },
+  "phoneDatabaseAccessed": false,
+  "physicalPhoneTested": false,
+  "productionPublication": false,
+  "nativeSchedulerTestsPassed": 15,
+  "nativeActualDeliveryTestsPassed": 1,
+  "androidJvmTestsPassed": 11
+}

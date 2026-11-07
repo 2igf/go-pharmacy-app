@@ -6,6 +6,7 @@ import {
   acceptedMigrationHashes,
   assertMigrationHistory,
   assertAdditiveTableState,
+  assertJordanCatalogMigrationState,
 } from "./migration-policy";
 const expectedDatabase = assertMigrationTarget(
   process.env.DATABASE_URL,
@@ -64,6 +65,22 @@ try {
     ).length
   );
   for (const entry of localJournal.entries.slice(6)) {
+    if (entry.tag === "0010_jordan_catalog") {
+      const [columns] = await db.query<RowDataPacket[]>(
+        "SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND LOWER(TABLE_NAME)='knowledgeproductfacts' AND COLUMN_NAME='catalogMetadata'"
+      );
+      const [sourceRows] = names.has("knowledgesources")
+        ? await db.query<RowDataPacket[]>(
+            "SELECT id FROM knowledgeSources WHERE code='jordan_package_2021'"
+          )
+        : [[]];
+      assertJordanCatalogMigrationState(
+        journal.some(row => String(row.created_at) === String(entry.when)),
+        columns.length === 1,
+        sourceRows.length === 1
+      );
+      continue;
+    }
     const source = readFileSync(`drizzle/${entry.tag}.sql`, "utf8");
     const expected = [...source.matchAll(/CREATE TABLE `([^`]+)`/g)].map(
       match => match[1]

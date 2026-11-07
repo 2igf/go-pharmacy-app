@@ -1,0 +1,1785 @@
+{
+  "at": "2026-11-07T11:49:26.256Z",
+  "database": "go_pharmacy_test_jordan",
+  "sourceVersion": "452b005c89d4179fd9b11f4e6d5098da7fd8b8235a511c350785b2a3349aaa1e",
+  "sourceRows": 1000,
+  "rejected": [],
+  "warnings": [
+    {
+      "row": 2,
+      "productId": "JO-MED-0001",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 9,
+      "productId": "JO-MED-0008",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 30,
+      "productId": "JO-MED-0029",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 37,
+      "productId": "JO-MED-0036",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 38,
+      "productId": "JO-MED-0037",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 47,
+      "productId": "JO-MED-0046",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 51,
+      "productId": "JO-MED-0050",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 59,
+      "productId": "JO-MED-0058",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 66,
+      "productId": "JO-MED-0065",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 75,
+      "productId": "JO-MED-0074",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 77,
+      "productId": "JO-MED-0076",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 87,
+      "productId": "JO-MED-0086",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 89,
+      "productId": "JO-MED-0088",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 90,
+      "productId": "JO-MED-0089",
+      "reasons": [
+        "barcode_non_gtin"
+      ]
+    },
+    {
+      "row": 106,
+      "productId": "JO-MED-0105",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 111,
+      "productId": "JO-MED-0110",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 112,
+      "productId": "JO-MED-0111",
+      "reasons": [
+        "atc_missing"
+      ]
+    },
+    {
+      "row": 127,
+      "productId": "JO-MED-0126",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 128,
+      "productId": "JO-MED-0127",
+      "reasons": [
+        "barcode_non_gtin"
+      ]
+    },
+    {
+      "row": 130,
+      "productId": "JO-MED-0129",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 137,
+      "productId": "JO-MED-0136",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 147,
+      "productId": "JO-MED-0146",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 148,
+      "productId": "JO-MED-0147",
+      "reasons": [
+        "barcode_missing",
+        "atc_missing"
+      ]
+    },
+    {
+      "row": 157,
+      "productId": "JO-MED-0156",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 159,
+      "productId": "JO-MED-0158",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 169,
+      "productId": "JO-MED-0168",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 186,
+      "productId": "JO-MED-0185",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 187,
+      "productId": "JO-MED-0186",
+      "reasons": [
+        "barcode_invalid_checksum",
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 188,
+      "productId": "JO-MED-0187",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 216,
+      "productId": "JO-MED-0215",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 232,
+      "productId": "JO-MED-0231",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 233,
+      "productId": "JO-MED-0232",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 239,
+      "productId": "JO-MED-0238",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 242,
+      "productId": "JO-MED-0241",
+      "reasons": [
+        "barcode_missing",
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 243,
+      "productId": "JO-MED-0242",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 250,
+      "productId": "JO-MED-0249",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 269,
+      "productId": "JO-MED-0268",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 270,
+      "productId": "JO-MED-0269",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 271,
+      "productId": "JO-MED-0270",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 272,
+      "productId": "JO-MED-0271",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 273,
+      "productId": "JO-MED-0272",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 274,
+      "productId": "JO-MED-0273",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 288,
+      "productId": "JO-MED-0287",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 294,
+      "productId": "JO-MED-0293",
+      "reasons": [
+        "atc_missing"
+      ]
+    },
+    {
+      "row": 299,
+      "productId": "JO-MED-0298",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 301,
+      "productId": "JO-MED-0300",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 308,
+      "productId": "JO-MED-0307",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 310,
+      "productId": "JO-MED-0309",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 311,
+      "productId": "JO-MED-0310",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 329,
+      "productId": "JO-MED-0328",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 331,
+      "productId": "JO-MED-0330",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 332,
+      "productId": "JO-MED-0331",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 341,
+      "productId": "JO-MED-0340",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 356,
+      "productId": "JO-MED-0355",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 367,
+      "productId": "JO-MED-0366",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 373,
+      "productId": "JO-MED-0372",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 377,
+      "productId": "JO-MED-0376",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 389,
+      "productId": "JO-MED-0388",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 397,
+      "productId": "JO-MED-0396",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 404,
+      "productId": "JO-MED-0403",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 405,
+      "productId": "JO-MED-0404",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 406,
+      "productId": "JO-MED-0405",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 411,
+      "productId": "JO-MED-0410",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 412,
+      "productId": "JO-MED-0411",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 431,
+      "productId": "JO-MED-0430",
+      "reasons": [
+        "barcode_missing",
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 433,
+      "productId": "JO-MED-0432",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 442,
+      "productId": "JO-MED-0441",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 446,
+      "productId": "JO-MED-0445",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 452,
+      "productId": "JO-MED-0451",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 467,
+      "productId": "JO-MED-0466",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 469,
+      "productId": "JO-MED-0468",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 470,
+      "productId": "JO-MED-0469",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 474,
+      "productId": "JO-MED-0473",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 479,
+      "productId": "JO-MED-0478",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 480,
+      "productId": "JO-MED-0479",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 483,
+      "productId": "JO-MED-0482",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 484,
+      "productId": "JO-MED-0483",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 487,
+      "productId": "JO-MED-0486",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 491,
+      "productId": "JO-MED-0490",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 503,
+      "productId": "JO-MED-0502",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 514,
+      "productId": "JO-MED-0513",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 524,
+      "productId": "JO-MED-0523",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 525,
+      "productId": "JO-MED-0524",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 528,
+      "productId": "JO-MED-0527",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 533,
+      "productId": "JO-MED-0532",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 539,
+      "productId": "JO-MED-0538",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 541,
+      "productId": "JO-MED-0540",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 548,
+      "productId": "JO-MED-0547",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 551,
+      "productId": "JO-MED-0550",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 555,
+      "productId": "JO-MED-0554",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 566,
+      "productId": "JO-MED-0565",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 573,
+      "productId": "JO-MED-0572",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 574,
+      "productId": "JO-MED-0573",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 576,
+      "productId": "JO-MED-0575",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 585,
+      "productId": "JO-MED-0584",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 611,
+      "productId": "JO-MED-0610",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 619,
+      "productId": "JO-MED-0618",
+      "reasons": [
+        "barcode_missing",
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 620,
+      "productId": "JO-MED-0619",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 623,
+      "productId": "JO-MED-0622",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 627,
+      "productId": "JO-MED-0626",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 634,
+      "productId": "JO-MED-0633",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 638,
+      "productId": "JO-MED-0637",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 645,
+      "productId": "JO-MED-0644",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 649,
+      "productId": "JO-MED-0648",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 653,
+      "productId": "JO-MED-0652",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 660,
+      "productId": "JO-MED-0659",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 661,
+      "productId": "JO-MED-0660",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 663,
+      "productId": "JO-MED-0662",
+      "reasons": [
+        "barcode_non_gtin"
+      ]
+    },
+    {
+      "row": 665,
+      "productId": "JO-MED-0664",
+      "reasons": [
+        "barcode_non_gtin"
+      ]
+    },
+    {
+      "row": 674,
+      "productId": "JO-MED-0673",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 688,
+      "productId": "JO-MED-0687",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 699,
+      "productId": "JO-MED-0698",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 705,
+      "productId": "JO-MED-0704",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 714,
+      "productId": "JO-MED-0713",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 719,
+      "productId": "JO-MED-0718",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 726,
+      "productId": "JO-MED-0725",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 732,
+      "productId": "JO-MED-0731",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 733,
+      "productId": "JO-MED-0732",
+      "reasons": [
+        "barcode_missing",
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 734,
+      "productId": "JO-MED-0733",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 737,
+      "productId": "JO-MED-0736",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 740,
+      "productId": "JO-MED-0739",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 751,
+      "productId": "JO-MED-0750",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 762,
+      "productId": "JO-MED-0761",
+      "reasons": [
+        "strength_missing"
+      ]
+    },
+    {
+      "row": 767,
+      "productId": "JO-MED-0766",
+      "reasons": [
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 781,
+      "productId": "JO-MED-0780",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 786,
+      "productId": "JO-MED-0785",
+      "reasons": [
+        "barcode_missing",
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 789,
+      "productId": "JO-MED-0788",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 793,
+      "productId": "JO-MED-0792",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 797,
+      "productId": "JO-MED-0796",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 800,
+      "productId": "JO-MED-0799",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 810,
+      "productId": "JO-MED-0809",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 811,
+      "productId": "JO-MED-0810",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 815,
+      "productId": "JO-MED-0814",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 833,
+      "productId": "JO-MED-0832",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 834,
+      "productId": "JO-MED-0833",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 835,
+      "productId": "JO-MED-0834",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 836,
+      "productId": "JO-MED-0835",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 842,
+      "productId": "JO-MED-0841",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 845,
+      "productId": "JO-MED-0844",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 875,
+      "productId": "JO-MED-0874",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 878,
+      "productId": "JO-MED-0877",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 888,
+      "productId": "JO-MED-0887",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 892,
+      "productId": "JO-MED-0891",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 904,
+      "productId": "JO-MED-0903",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 905,
+      "productId": "JO-MED-0904",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 909,
+      "productId": "JO-MED-0908",
+      "reasons": [
+        "atc_nonstandard"
+      ]
+    },
+    {
+      "row": 928,
+      "productId": "JO-MED-0927",
+      "reasons": [
+        "barcode_invalid_checksum"
+      ]
+    },
+    {
+      "row": 929,
+      "productId": "JO-MED-0928",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 933,
+      "productId": "JO-MED-0932",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 934,
+      "productId": "JO-MED-0933",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 937,
+      "productId": "JO-MED-0936",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 943,
+      "productId": "JO-MED-0942",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 944,
+      "productId": "JO-MED-0943",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 976,
+      "productId": "JO-MED-0975",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 978,
+      "productId": "JO-MED-0977",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 980,
+      "productId": "JO-MED-0979",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 981,
+      "productId": "JO-MED-0980",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 986,
+      "productId": "JO-MED-0985",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 991,
+      "productId": "JO-MED-0990",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 992,
+      "productId": "JO-MED-0991",
+      "reasons": [
+        "barcode_missing",
+        "atc_whitespace_trimmed"
+      ]
+    },
+    {
+      "row": 993,
+      "productId": "JO-MED-0992",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 998,
+      "productId": "JO-MED-0997",
+      "reasons": [
+        "barcode_missing"
+      ]
+    },
+    {
+      "row": 1000,
+      "productId": "JO-MED-0999",
+      "reasons": [
+        "barcode_missing"
+      ]
+    }
+  ],
+  "potentialDuplicates": [],
+  "excludedFields": [
+    "indication_general_ar",
+    "indication_reference_en",
+    "usage_instructions_ar",
+    "standard_dose_reference_ar",
+    "standard_dose_reference_en",
+    "warnings_ar",
+    "warnings_reference_en"
+  ],
+  "note": "Source claims are not independent verification; clinical/derived Arabic text excluded; package facts only, no marketplace writes",
+  "valid": 1000,
+  "applied": 0,
+  "skipped": 1000,
+  "batches": [
+    {
+      "batchId": 107,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 108,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 109,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 110,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 111,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 112,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 113,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 114,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 115,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 116,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 117,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 118,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 119,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 120,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 121,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 122,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 123,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 124,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 125,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 126,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 127,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 128,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 129,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 130,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 131,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 132,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 133,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 134,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 135,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 136,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 137,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 138,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 139,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 140,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 141,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 142,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 143,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 144,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 145,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 146,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 147,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 148,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 149,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 150,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 151,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 152,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 153,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 154,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 155,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 156,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 157,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 158,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 159,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 160,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 161,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 162,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 163,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 164,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 165,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 166,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 167,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 168,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 169,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 170,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 171,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 172,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 173,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 174,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 175,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 176,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 177,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 178,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 179,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 180,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 181,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 182,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 183,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 184,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 185,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 186,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 187,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 188,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 189,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 190,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 191,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 192,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 193,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 194,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 195,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 196,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 197,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 198,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 199,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 200,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 201,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 202,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 203,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 204,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 205,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    },
+    {
+      "batchId": 206,
+      "applied": 0,
+      "skipped": 10,
+      "status": "applied"
+    }
+  ],
+  "publication": "explicit local test preview only",
+  "phoneDatabaseAccessed": false
+}

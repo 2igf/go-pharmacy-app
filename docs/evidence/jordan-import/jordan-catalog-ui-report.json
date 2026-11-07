@@ -1,0 +1,14 @@
+{
+  "publicWithoutLogin": true,
+  "allThousandDistinctPackagesReachable": true,
+  "twentyRowsOnLastPage": true,
+  "noPackagesBeyondThousand": true,
+  "brandSearch": true,
+  "genericSearch": true,
+  "atcSearch": true,
+  "barcodeSearch": true,
+  "sourcedPackageId": "JO-MED-0002",
+  "localRecordId": "14",
+  "historicalWarningsAndInformationOnly": true,
+  "passed": true
+}

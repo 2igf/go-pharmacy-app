@@ -1,0 +1,1139 @@
+{
+  "audit_version": 1,
+  "source": {
+    "zip_filename": "jordan_medicines_1000_package.zip",
+    "zip_sha256": "9424cbca4d60a85365440bd0ba41f637aeb3a7fd5fc25a95e1f4cebdf4adaca8",
+    "csv_sha256": "452b005c89d4179fd9b11f4e6d5098da7fd8b8235a511c350785b2a3349aaa1e",
+    "xlsx_sha256": "6c5b63843b074006878ff97243f690196a961685cf6f884239033f8563f860f0",
+    "original_preserved": true,
+    "authority": "USER_SUPPLIED_DATASET",
+    "independently_verified": false
+  },
+  "counts": {
+    "rows": 1000,
+    "columns": 38,
+    "unique_product_ids": 1000,
+    "distinct_trade_name_exact": 752,
+    "distinct_trade_name_case_whitespace_normalized": 748,
+    "distinct_generics_exact": 309,
+    "distinct_therapeutic_categories_exact": 188,
+    "valid_rows_for_nonclinical_import": 1000,
+    "rejected_rows": 0
+  },
+  "headers": [
+    "product_id",
+    "barcode",
+    "trade_name",
+    "generic_name",
+    "strength",
+    "dosage_form",
+    "package_size",
+    "route",
+    "manufacturer_or_agent_ar",
+    "manufacturer_or_agent_en",
+    "therapeutic_category",
+    "therapeutic_category_ar",
+    "atc_code",
+    "jfda_item_code",
+    "prescription_status",
+    "prescription_status_ar",
+    "indication_general_ar",
+    "indication_reference_en",
+    "usage_instructions_ar",
+    "standard_dose_reference_ar",
+    "standard_dose_reference_en",
+    "warnings_ar",
+    "warnings_reference_en",
+    "public_price_jod",
+    "hospital_price_jod",
+    "price_source_year",
+    "price_currentity_note_ar",
+    "availability_status",
+    "clinical_source_url",
+    "clinical_label_date",
+    "clinical_verification_status",
+    "source_list_membership",
+    "price_source_url",
+    "jfda_list_source_url",
+    "source_date",
+    "last_checked",
+    "data_use_note_ar",
+    "verification_status"
+  ],
+  "csv_xlsx_comparison": {
+    "primary": "CSV",
+    "sheet": "products_1000",
+    "all_sheets": [
+      "products_1000",
+      "data_dictionary",
+      "sources",
+      "validation"
+    ],
+    "compared_cells_including_headers": 38038,
+    "expected_cells": 38038,
+    "differences": [
+      {
+        "cell": "X5",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0004",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "70.04",
+        "xlsx_numeric_value": "70.04000000000001",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X7",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0006",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.7",
+        "xlsx_numeric_value": "9.699999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X27",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0026",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X38",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0037",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X62",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0061",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.03",
+        "xlsx_numeric_value": "9.029999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X67",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0066",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.39",
+        "xlsx_numeric_value": "8.390000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X68",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0067",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.81",
+        "xlsx_numeric_value": "0.8100000000000001",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X89",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0088",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.81",
+        "xlsx_numeric_value": "0.8100000000000001",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X93",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0092",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "97.68",
+        "xlsx_numeric_value": "97.68000000000001",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X101",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0100",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "74.21",
+        "xlsx_numeric_value": "74.20999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X121",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0120",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X122",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0121",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "74.99",
+        "xlsx_numeric_value": "74.98999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X124",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0123",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.07",
+        "xlsx_numeric_value": "0.07000000000000001",
+        "absolute_decimal_delta": "1E-17",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X157",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0156",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.8",
+        "xlsx_numeric_value": "8.800000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X231",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0230",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.3",
+        "xlsx_numeric_value": "9.300000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X240",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0239",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "75.24",
+        "xlsx_numeric_value": "75.23999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X242",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0241",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.38",
+        "xlsx_numeric_value": "8.380000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X268",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0267",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.46",
+        "xlsx_numeric_value": "8.460000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X304",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0303",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "74.99",
+        "xlsx_numeric_value": "74.98999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X309",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0308",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.81",
+        "xlsx_numeric_value": "0.8100000000000001",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X332",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0331",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.62",
+        "xlsx_numeric_value": "9.619999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X340",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0339",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "726.69",
+        "xlsx_numeric_value": "726.6900000000001",
+        "absolute_decimal_delta": "1E-13",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X393",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0392",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.39",
+        "xlsx_numeric_value": "9.390000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X403",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0402",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "75.24",
+        "xlsx_numeric_value": "75.23999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X452",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0451",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X468",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0467",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.38",
+        "xlsx_numeric_value": "8.380000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X470",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0469",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "67.18",
+        "xlsx_numeric_value": "67.18000000000001",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X499",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0498",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X518",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0517",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.11",
+        "xlsx_numeric_value": "8.109999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X521",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0520",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.61",
+        "xlsx_numeric_value": "8.609999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X546",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0545",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "75.24",
+        "xlsx_numeric_value": "75.23999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X602",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0601",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X630",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0629",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "82.99",
+        "xlsx_numeric_value": "82.98999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X654",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0653",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X660",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0659",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "74.26",
+        "xlsx_numeric_value": "74.26000000000001",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X672",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0671",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "75.24",
+        "xlsx_numeric_value": "75.23999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X684",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0683",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "75.4",
+        "xlsx_numeric_value": "75.40000000000001",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X697",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0696",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "65.6",
+        "xlsx_numeric_value": "65.59999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X710",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0709",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.94",
+        "xlsx_numeric_value": "0.9399999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X738",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0737",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.81",
+        "xlsx_numeric_value": "0.8100000000000001",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X766",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0765",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "74.82",
+        "xlsx_numeric_value": "74.81999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X784",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0783",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "75.24",
+        "xlsx_numeric_value": "75.23999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X845",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0844",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.56",
+        "xlsx_numeric_value": "0.5600000000000001",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X847",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0846",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "78.24",
+        "xlsx_numeric_value": "78.23999999999999",
+        "absolute_decimal_delta": "1E-14",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X852",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0851",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.54",
+        "xlsx_numeric_value": "9.539999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X853",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0852",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.96",
+        "xlsx_numeric_value": "8.960000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X868",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0867",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "0.69",
+        "xlsx_numeric_value": "0.6899999999999999",
+        "absolute_decimal_delta": "1E-16",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X877",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0876",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.28",
+        "xlsx_numeric_value": "8.279999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X878",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0877",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.28",
+        "xlsx_numeric_value": "9.279999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X933",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0932",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "9.64",
+        "xlsx_numeric_value": "9.640000000000001",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      },
+      {
+        "cell": "X952",
+        "field": "public_price_jod",
+        "product_id": "JO-MED-0951",
+        "reason": "csv_xlsx_value_mismatch",
+        "csv_numeric_value": "8.54",
+        "xlsx_numeric_value": "8.539999999999999",
+        "absolute_decimal_delta": "1E-15",
+        "classification": "xlsx_numeric_serialization_precision"
+      }
+    ],
+    "strict_decimal_difference_count": 51,
+    "numeric_serialization_precision_count": 51,
+    "material_difference_count": 0,
+    "precision_classification_tolerance": "absolute Decimal delta < 0.000000000001; strict differences retained individually and CSV remains primary",
+    "equivalent_numeric_or_date_representation_counts": {
+      "decimal_numeric": 14
+    },
+    "nonempty_cells_outside_csv_extent": [],
+    "formula_cells": [],
+    "method": "Every CSV header/data cell compared against read-only OOXML value; numeric XLSX cells compared with Decimal only where literal equality fails; date serials normalized if styled as dates; strings compared literally."
+  },
+  "fields": {
+    "product_id": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 11
+    },
+    "barcode": {
+      "nonempty": 881,
+      "missing": 119,
+      "maximum_length": 14
+    },
+    "trade_name": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 49
+    },
+    "generic_name": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 104
+    },
+    "strength": {
+      "nonempty": 999,
+      "missing": 1,
+      "maximum_length": 78
+    },
+    "dosage_form": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 19
+    },
+    "package_size": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 100
+    },
+    "route": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 29
+    },
+    "manufacturer_or_agent_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 45
+    },
+    "manufacturer_or_agent_en": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 50
+    },
+    "therapeutic_category": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 58
+    },
+    "therapeutic_category_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 123
+    },
+    "atc_code": {
+      "nonempty": 997,
+      "missing": 3,
+      "maximum_length": 8
+    },
+    "jfda_item_code": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 14
+    },
+    "prescription_status": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 27
+    },
+    "prescription_status_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 53
+    },
+    "indication_general_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 123
+    },
+    "indication_reference_en": {
+      "nonempty": 689,
+      "missing": 311,
+      "maximum_length": 1600
+    },
+    "usage_instructions_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 128
+    },
+    "standard_dose_reference_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 111
+    },
+    "standard_dose_reference_en": {
+      "nonempty": 694,
+      "missing": 306,
+      "maximum_length": 1638
+    },
+    "warnings_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 86
+    },
+    "warnings_reference_en": {
+      "nonempty": 702,
+      "missing": 298,
+      "maximum_length": 1488
+    },
+    "public_price_jod": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 6
+    },
+    "hospital_price_jod": {
+      "nonempty": 0,
+      "missing": 1000,
+      "maximum_length": 0
+    },
+    "price_source_year": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 4
+    },
+    "price_currentity_note_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 94
+    },
+    "availability_status": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 29
+    },
+    "clinical_source_url": {
+      "nonempty": 718,
+      "missing": 282,
+      "maximum_length": 95
+    },
+    "clinical_label_date": {
+      "nonempty": 718,
+      "missing": 282,
+      "maximum_length": 12
+    },
+    "clinical_verification_status": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 94
+    },
+    "source_list_membership": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 71
+    },
+    "price_source_url": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 55
+    },
+    "jfda_list_source_url": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 67
+    },
+    "source_date": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 10
+    },
+    "last_checked": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 10
+    },
+    "data_use_note_ar": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 108
+    },
+    "verification_status": {
+      "nonempty": 1000,
+      "missing": 0,
+      "maximum_length": 57
+    }
+  },
+  "required_fields": [
+    "product_id",
+    "trade_name",
+    "generic_name",
+    "dosage_form",
+    "package_size",
+    "public_price_jod",
+    "manufacturer_or_agent_en",
+    "therapeutic_category",
+    "source_date",
+    "last_checked"
+  ],
+  "missing_required": {
+    "product_id": {
+      "count": 0,
+      "product_ids": []
+    },
+    "trade_name": {
+      "count": 0,
+      "product_ids": []
+    },
+    "generic_name": {
+      "count": 0,
+      "product_ids": []
+    },
+    "dosage_form": {
+      "count": 0,
+      "product_ids": []
+    },
+    "package_size": {
+      "count": 0,
+      "product_ids": []
+    },
+    "public_price_jod": {
+      "count": 0,
+      "product_ids": []
+    },
+    "manufacturer_or_agent_en": {
+      "count": 0,
+      "product_ids": []
+    },
+    "therapeutic_category": {
+      "count": 0,
+      "product_ids": []
+    },
+    "source_date": {
+      "count": 0,
+      "product_ids": []
+    },
+    "last_checked": {
+      "count": 0,
+      "product_ids": []
+    }
+  },
+  "barcode": {
+    "nonempty": 881,
+    "length_distribution": {
+      "7": 4,
+      "12": 4,
+      "13": 812,
+      "14": 61
+    },
+    "checks": {
+      "missing": 119,
+      "gtin_check_digit_valid": 875,
+      "internal_identifier_length_7": 4,
+      "gtin_bad_check_digit": 2
+    },
+    "duplicate_value_groups": 0,
+    "duplicate_rows": 0,
+    "duplicate_groups_product_ids": [],
+    "policy": "Barcode values are source strings. Seven-digit values are retained as internal identifiers with warnings and are not asserted to be GS1 GTINs. Other invalid values do not reject the whole product. Check digit validity does not prove GS1 assignment or medicine authenticity."
+  },
+  "atc": {
+    "nonempty": 997,
+    "raw_length_distribution": {
+      "4": 2,
+      "5": 27,
+      "7": 946,
+      "8": 22
+    },
+    "trimmed_length_distribution": {
+      "4": 2,
+      "5": 27,
+      "7": 968
+    },
+    "outer_whitespace_rows": 22,
+    "checks_after_outer_whitespace_trim": {
+      "syntax_valid": 997,
+      "missing": 3
+    },
+    "policy": "Hierarchical ATC lexical syntax only after outer whitespace trim; no current authoritative ATC registry or ingredient/formulation matching was verified. Original value retained privately and trimmed in normalized catalog rows."
+  },
+  "duplicates": {
+    "product_id_values": [],
+    "composite_definition": [
+      "trade_name",
+      "strength",
+      "dosage_form",
+      "package_size"
+    ],
+    "composite_normalization": "Whitespace collapsed and Unicode casefold; no ingredient or semantic equivalence inferred",
+    "composite_groups": 0,
+    "composite_rows": 0,
+    "composite_groups_product_ids": []
+  },
+  "prices": {
+    "currency": "JOD",
+    "numeric_nonnegative_public_prices": 1000,
+    "min": "0.07",
+    "max": "737.36",
+    "source_year_counts": {
+      "2021": 1000
+    },
+    "current_price_verified": false,
+    "clinical_or_purchase_approval": false
+  },
+  "source_date_counts": {
+    "2021-02-28": 1000
+  },
+  "last_checked_counts": {
+    "2026-08-27": 1000
+  },
+  "prescription_status_counts": {
+    "Verify with JFDA/pharmacist": 1000
+  },
+  "clinical": {
+    "content_imported_into_nonclinical_rows": false,
+    "review_status": "UNREVIEWED",
+    "clinical_verification_status_counts": {
+      "DailyMed label found; English excerpt retained; Arabic catalog copy requires pharmacist review": 729,
+      "No DailyMed label found; clinical fields require pharmacist verification": 271
+    },
+    "rows_with_clinical_source_url": 718,
+    "label_found_claim_without_source_url": 11,
+    "known_manual_formulation_mismatch_review_product_ids": [
+      "JO-MED-0001"
+    ],
+    "mismatch_count_scope": "One manually observed source formulation mismatch requiring review; not an exhaustive clinical review or count. Clinical excerpts omitted from this evidence."
+  },
+  "warnings": {
+    "atc_missing": {
+      "count": 3,
+      "product_ids": [
+        "JO-MED-0111",
+        "JO-MED-0147",
+        "JO-MED-0293"
+      ]
+    },
+    "atc_outer_whitespace": {
+      "count": 22,
+      "product_ids": [
+        "JO-MED-0065",
+        "JO-MED-0105",
+        "JO-MED-0158",
+        "JO-MED-0249",
+        "JO-MED-0287",
+        "JO-MED-0330",
+        "JO-MED-0388",
+        "JO-MED-0411",
+        "JO-MED-0445",
+        "JO-MED-0483",
+        "JO-MED-0532",
+        "JO-MED-0554",
+        "JO-MED-0584",
+        "JO-MED-0619",
+        "JO-MED-0652",
+        "JO-MED-0660",
+        "JO-MED-0704",
+        "JO-MED-0733",
+        "JO-MED-0766",
+        "JO-MED-0810",
+        "JO-MED-0904",
+        "JO-MED-0991"
+      ]
+    },
+    "barcode_gtin_bad_check_digit": {
+      "count": 2,
+      "product_ids": [
+        "JO-MED-0186",
+        "JO-MED-0927"
+      ]
+    },
+    "barcode_internal_identifier_length_7": {
+      "count": 4,
+      "product_ids": [
+        "JO-MED-0089",
+        "JO-MED-0127",
+        "JO-MED-0662",
+        "JO-MED-0664"
+      ]
+    },
+    "barcode_missing": {
+      "count": 119,
+      "product_ids": [
+        "JO-MED-0001",
+        "JO-MED-0008",
+        "JO-MED-0029",
+        "JO-MED-0036",
+        "JO-MED-0037",
+        "JO-MED-0046",
+        "JO-MED-0050",
+        "JO-MED-0058",
+        "JO-MED-0074",
+        "JO-MED-0076",
+        "JO-MED-0110",
+        "JO-MED-0126",
+        "JO-MED-0129",
+        "JO-MED-0146",
+        "JO-MED-0147",
+        "JO-MED-0185",
+        "JO-MED-0187",
+        "JO-MED-0215",
+        "JO-MED-0231",
+        "JO-MED-0232",
+        "JO-MED-0238",
+        "JO-MED-0241",
+        "JO-MED-0242",
+        "JO-MED-0268",
+        "JO-MED-0269",
+        "JO-MED-0271",
+        "JO-MED-0273",
+        "JO-MED-0287",
+        "JO-MED-0298",
+        "JO-MED-0300",
+        "JO-MED-0307",
+        "JO-MED-0309",
+        "JO-MED-0310",
+        "JO-MED-0330",
+        "JO-MED-0331",
+        "JO-MED-0366",
+        "JO-MED-0372",
+        "JO-MED-0376",
+        "JO-MED-0396",
+        "JO-MED-0403",
+        "JO-MED-0405",
+        "JO-MED-0410",
+        "JO-MED-0430",
+        "JO-MED-0441",
+        "JO-MED-0445",
+        "JO-MED-0466",
+        "JO-MED-0468",
+        "JO-MED-0469",
+        "JO-MED-0473",
+        "JO-MED-0478",
+        "JO-MED-0479",
+        "JO-MED-0483",
+        "JO-MED-0490",
+        "JO-MED-0513",
+        "JO-MED-0523",
+        "JO-MED-0524",
+        "JO-MED-0527",
+        "JO-MED-0538",
+        "JO-MED-0540",
+        "JO-MED-0550",
+        "JO-MED-0565",
+        "JO-MED-0572",
+        "JO-MED-0575",
+        "JO-MED-0610",
+        "JO-MED-0618",
+        "JO-MED-0619",
+        "JO-MED-0626",
+        "JO-MED-0633",
+        "JO-MED-0637",
+        "JO-MED-0644",
+        "JO-MED-0648",
+        "JO-MED-0659",
+        "JO-MED-0687",
+        "JO-MED-0698",
+        "JO-MED-0704",
+        "JO-MED-0713",
+        "JO-MED-0718",
+        "JO-MED-0725",
+        "JO-MED-0731",
+        "JO-MED-0732",
+        "JO-MED-0733",
+        "JO-MED-0739",
+        "JO-MED-0750",
+        "JO-MED-0780",
+        "JO-MED-0785",
+        "JO-MED-0788",
+        "JO-MED-0792",
+        "JO-MED-0796",
+        "JO-MED-0799",
+        "JO-MED-0809",
+        "JO-MED-0810",
+        "JO-MED-0832",
+        "JO-MED-0833",
+        "JO-MED-0834",
+        "JO-MED-0835",
+        "JO-MED-0841",
+        "JO-MED-0844",
+        "JO-MED-0874",
+        "JO-MED-0877",
+        "JO-MED-0887",
+        "JO-MED-0891",
+        "JO-MED-0903",
+        "JO-MED-0904",
+        "JO-MED-0928",
+        "JO-MED-0932",
+        "JO-MED-0933",
+        "JO-MED-0936",
+        "JO-MED-0942",
+        "JO-MED-0943",
+        "JO-MED-0975",
+        "JO-MED-0977",
+        "JO-MED-0979",
+        "JO-MED-0980",
+        "JO-MED-0985",
+        "JO-MED-0990",
+        "JO-MED-0991",
+        "JO-MED-0992",
+        "JO-MED-0997",
+        "JO-MED-0999"
+      ]
+    },
+    "clinical_label_claim_without_source_url": {
+      "count": 11,
+      "product_ids": [
+        "JO-MED-0128",
+        "JO-MED-0131",
+        "JO-MED-0185",
+        "JO-MED-0309",
+        "JO-MED-0354",
+        "JO-MED-0501",
+        "JO-MED-0537",
+        "JO-MED-0637",
+        "JO-MED-0751",
+        "JO-MED-0851",
+        "JO-MED-0942"
+      ]
+    },
+    "strength_missing": {
+      "count": 1,
+      "product_ids": [
+        "JO-MED-0761"
+      ]
+    }
+  },
+  "reject_reasons": {},
+  "rejected_product_ids": [],
+  "scope": {
+    "database_access": false,
+    "app_source_modified": false,
+    "workbook_modified": false,
+    "network_verification": false,
+    "clinical_accuracy_validated": false,
+    "prescription_classification_validated": false,
+    "live_inventory_verified": false
+  }
+}

@@ -40,6 +40,7 @@ function fixture(overrides: Partial<KnowledgeDetail> = {}): KnowledgeDetail {
     ingredients: [],
     registrations: [],
     labels: [],
+    historicalCatalog: null,
     source: {
       code: "rxnorm",
       title: "RxNorm TEST FIXTURE",
@@ -62,6 +63,116 @@ function fixture(overrides: Partial<KnowledgeDetail> = {}): KnowledgeDetail {
   };
 }
 describe("read-only medication knowledge presentation", () => {
+  it("labels the historical Jordan catalog as unreviewed without implying current registration", () => {
+    const html = renderToStaticMarkup(
+      createElement(KnowledgeScopeNotice, { country: "historical_jo" })
+    );
+    expect(html).toContain("كتالوج عبوات أردني تاريخي — قيد المراجعة");
+    expect(html).toContain("لا يثبت التسجيل الأردني الحالي");
+    expect(html).toContain("2021");
+  });
+  it("shows historical package provenance and review limits without publishing clinical text or prices", () => {
+    const data = fixture({
+      historicalCatalog: {
+        datasetId: "jordan_medicines_1000",
+        productId: "JO-MED-1001",
+        barcode: "1234567890123",
+        barcodeStatus: "invalid_checksum",
+        atcCode: "A01AA01",
+        therapeuticCategory: "TEST CATEGORY",
+        packageSize: "TEST PACKAGE 20",
+        supplierAr: "مورد اختباري",
+        supplierEn: "TEST SUPPLIER",
+        publicPriceHistoricalJod: "7.125",
+        hospitalPriceHistoricalJod: "5.625",
+        priceSourceYear: "2021",
+        priceSourceUrl: "https://example.test/prices-2021",
+        listSourceUrl: "https://example.test/catalog",
+        sourceDate: "2026-10-31",
+        lastChecked: "2026-11-01",
+        sourceClaim: "TEST CLAIM FROM SOURCE",
+        clinicalSourceUrl: "https://example.test/clinical",
+        clinicalLabelDate: "2020-04-01",
+        currentRegistration: "unverified",
+        medicalReview: "unreviewed",
+        reuseStatus: "pending",
+        clinicalTextsExcluded: true,
+        rowSha256: "a".repeat(64),
+      },
+      source: {
+        ...fixture().source,
+        code: "jordan_package_2021",
+        title: "TEST HISTORICAL SOURCE",
+        scope: "authorized_draft",
+        attribution: null,
+      },
+      names: [
+        { name: "TEST GENERIC", kind: "generic", language: "en" },
+        { name: "TEST BRAND", kind: "brand", language: "en" },
+      ],
+      facts: {
+        ...fixture().facts,
+        dosageForm: "TEST SOURCE FORM",
+        route: "TEST SOURCE ROUTE",
+        manufacturer: "UNVERIFIED MANUFACTURER MUST NOT DISPLAY",
+        prescriptionStatus: "prescription",
+      },
+      labels: [
+        {
+          section: "warnings",
+          language: "ar",
+          content: "EXCLUDED HISTORICAL CLINICAL TEXT",
+          reviewedAt: new Date(),
+        },
+      ],
+    });
+    const html = renderToStaticMarkup(
+      createElement(KnowledgeDetailContent, { data, language: "ar" })
+    );
+    for (const value of [
+      "JO-MED-1001",
+      "1234567890123",
+      "رقم تحقق غير صالح",
+      "A01AA01",
+      "TEST CATEGORY",
+      "TEST PACKAGE 20",
+      "مورد اختباري",
+      "TEST SUPPLIER",
+      "2026-10-31",
+      "2026-11-01",
+      "TEST CLAIM FROM SOURCE",
+      "TEST GENERIC",
+      "TEST BRAND",
+      "TEST SOURCE FORM",
+      "TEST SOURCE ROUTE",
+    ]) {
+      expect(html).toContain(value);
+    }
+    expect(html).toContain("المورّد لا يثبت هوية الشركة المصنّعة");
+    expect(html).toContain("التسجيل الأردني الحالي: غير موثق");
+    expect(html).toContain("المراجعة الطبية: لم تتم");
+    expect(html).toContain("حقوق إعادة الاستخدام: قيد التحقق");
+    expect(html).toContain(
+      "أسعار تاريخية من 2021؛ ليست أسعاراً حالية أو أسعار بيع"
+    );
+    expect(html).toContain("النصوص الطبية مستبعدة من هذه الحزمة");
+    expect(html).toContain('href="https://example.test/catalog"');
+    expect(html).toContain('href="https://example.test/prices-2021"');
+    for (const value of [
+      "7.125",
+      "5.625",
+      "EXCLUDED HISTORICAL CLINICAL TEXT",
+      "UNVERIFIED MANUFACTURER MUST NOT DISPLAY",
+      "بوصفة حسب المصدر",
+      "مصدر منظم مع مراجعة مستقلة",
+      "NLM is not responsible",
+      "أضف إلى العربة",
+      "<img",
+      "<button",
+    ]) {
+      expect(html).not.toContain(value);
+    }
+  });
   it("renders supplied product facts and reviewed description/interactions without inventing missing fields", () => {
     const data = fixture();
     data.facts.manufacturer = "FICTIONAL SOURCED MANUFACTURER";

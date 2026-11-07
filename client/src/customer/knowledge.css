@@ -43,6 +43,14 @@
   background: #def2e6;
   border-inline-start: 4px solid #008455;
 }
+.customer-app .medication-knowledge__historical-notice {
+  padding: 16px;
+  margin-block: 16px;
+  border-radius: 12px;
+  border-inline-start: 4px solid #946200;
+  background: #fff3d6;
+  color: #573c00;
+}
 .customer-app .medication-knowledge__card p + p {
   margin-top: 8px;
 }

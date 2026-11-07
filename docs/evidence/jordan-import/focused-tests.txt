@@ -1,0 +1,13 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+
+ Test Files  4 passed (4)
+      Tests  55 passed (55)
+   Start at  14:56:16
+   Duration  30.41s (import 49%, tests 44%, transform 7%)
+
+    Isolate  4 workers spawned · ~657ms startup each (spawn + environment, per file)
+             at least ~1.97s faster with isolate: false — reuses workers across files instead of one per file
+
+

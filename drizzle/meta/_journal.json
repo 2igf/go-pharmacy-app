@@ -71,6 +71,13 @@
       "when": 1793300000003,
       "tag": "0009_knowledge_facts",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1794000000000,
+      "tag": "0010_jordan_catalog",
+      "breakpoints": true
     }
   ]
 }

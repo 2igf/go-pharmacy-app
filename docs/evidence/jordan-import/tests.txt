@@ -1,0 +1,14 @@
+
+ RUN  v5.0.5 C:/Users/Issax/Documents/Codex/2026-10-26/files-pasted-by-the-user-go/outputs/go-pharmacy-foundation
+
+
+ Test Files  52 passed (52)
+      Tests  335 passed (335)
+   Start at  15:11:42
+   Duration  289.75s (import 68%, tests 31%, transform 1%, worker 1%)
+
+    Isolate  52 workers spawned · ~786ms startup each (spawn + environment, per file)
+             at least ~40.11s faster with isolate: false — reuses workers across files instead of one per file
+
+Sat, 07 Nov 2026 12:14:24 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:224:13
+Sat, 07 Nov 2026 12:14:47 GMT express deprecated res.clearCookie: Passing "options.maxAge" is deprecated. In v5.0.0 of Express, this option will be ignored, as res.clearCookie will automatically set cookies to expire immediately. Please update your code to omit this option. at server\auth.ts:224:13

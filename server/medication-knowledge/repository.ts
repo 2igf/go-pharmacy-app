@@ -1,6 +1,10 @@
 import { createHash } from "node:crypto";
 import { TRPCError } from "@trpc/server";
-import { and, asc, desc, eq, isNotNull, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, ne, isNotNull, or, sql } from "drizzle-orm";
+import {
+  historicalCatalogSchema,
+  HISTORICAL_CATALOG_SOURCE,
+} from "../../shared/historical-catalog";
 import { users } from "../../drizzle/schema";
 import {
   knowledgeSources,
@@ -27,7 +31,10 @@ type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
 type Source = typeof knowledgeSources.$inferSelect;
 export type KnowledgeImport = {
   requestId: string;
-  sourceCode: "rxnorm" | "authorized_structured";
+  sourceCode:
+    | "rxnorm"
+    | "authorized_structured"
+    | typeof HISTORICAL_CATALOG_SOURCE;
   sourceVersion: string | null;
   permissionReference: string | null;
   records: KnowledgeRecord[];
@@ -42,6 +49,15 @@ const conflict = () =>
   });
 const missing = () =>
   new TRPCError({ code: "NOT_FOUND", message: "Knowledge record not found" });
+export function historicalCatalogPreviewEnabled() {
+  return (
+    ["test", "development"].includes(process.env.NODE_ENV ?? "") &&
+    process.env.HISTORICAL_KNOWLEDGE_PREVIEW_ENABLED === "true"
+  );
+}
+function publishableSource(source: Source) {
+  return source.code === "rxnorm" || source.code === HISTORICAL_CATALOG_SOURCE;
+}
 export async function requireKnowledgeAdmin(
   db: Db | Tx,
   actorId: number,
@@ -109,6 +125,7 @@ async function replaceChildren(
   const facts = knowledgeFactsSchema.parse(row.facts ?? {});
   await tx.insert(knowledgeProductFacts).values({
     ...facts,
+    catalogMetadata: row.historicalCatalog ?? null,
     drugId,
     sourceUpdatedAt: facts.sourceUpdatedAt
       ? new Date(facts.sourceUpdatedAt)
@@ -178,6 +195,40 @@ async function replaceChildren(
     );
 }
 function validateSource(source: Source, records: KnowledgeRecord[]) {
+  if (source.code === HISTORICAL_CATALOG_SOURCE) {
+    if (!historicalCatalogPreviewEnabled())
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message:
+          "Historical catalog is restricted to explicit local test preview",
+      });
+    if (
+      records.some(
+        row =>
+          !row.historicalCatalog ||
+          row.externalId !== row.historicalCatalog.productId ||
+          row.labels.length ||
+          row.registrations.length ||
+          row.facts.prescriptionStatus !== null ||
+          row.facts.manufacturer !== null ||
+          row.facts.imageReference !== null ||
+          row.facts.mediaRights !== null ||
+          row.termType !== "JO_PACKAGE"
+      )
+    )
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        message:
+          "Historical catalog cannot assert clinical review, current registration, manufacturer, images or dispensing status",
+      });
+    return;
+  }
+  if (records.some(row => row.historicalCatalog))
+    throw new TRPCError({
+      code: "BAD_REQUEST",
+      message:
+        "Historical metadata requires its own explicitly restricted source",
+    });
   if (source.code !== "rxnorm") return;
   if (
     records.some(
@@ -187,8 +238,11 @@ function validateSource(source: Source, records: KnowledgeRecord[]) {
           `https://rxnav.nlm.nih.gov/REST/rxcui/${row.externalId}/properties.json` ||
         row.registrations.length ||
         row.labels.length ||
-        Object.entries(row.facts).some(([key, value]) => key !== "dosageForm" && value !== null) ||
-        (row.facts.dosageForm !== null && !["SCD", "SBD"].includes(row.termType)) ||
+        Object.entries(row.facts).some(
+          ([key, value]) => key !== "dosageForm" && value !== null
+        ) ||
+        (row.facts.dosageForm !== null &&
+          !["SCD", "SBD"].includes(row.termType)) ||
         row.names.some(name => name.language !== "en") ||
         row.ingredients.some(
           item =>
@@ -294,6 +348,13 @@ export async function applyKnowledgeImport(
             "Source identifiers differing only by case conflict in this registry",
         });
       if (
+        source.code === HISTORICAL_CATALOG_SOURCE &&
+        existing &&
+        existing.state !== "removed" &&
+        existing.contentHash !== contentHash
+      )
+        throw conflict(); // Never replace an existing package row automatically.
+      if (
         existing &&
         existing.state !== "removed" &&
         existing.contentHash === contentHash
@@ -305,10 +366,9 @@ export async function applyKnowledgeImport(
       const values = {
         name: row.names[0].name,
         termType: row.termType,
-        state:
-          source.code === "rxnorm"
-            ? ("published" as const)
-            : ("draft" as const),
+        state: publishableSource(source)
+          ? ("published" as const)
+          : ("draft" as const),
         currentVersion: version,
         contentHash,
         sourceReference: row.sourceReference,
@@ -428,7 +488,7 @@ export async function rollbackKnowledgeImport(
           currentVersion: nextVersion,
           contentHash: hash(restoredRecord),
           state: restoredRecord
-            ? source.code === "rxnorm"
+            ? publishableSource(source)
               ? "published"
               : "draft"
             : "removed",
@@ -470,15 +530,18 @@ export async function rollbackKnowledgeImport(
 }
 export async function searchKnowledge(input: {
   q: string;
-  country: "JO" | "international";
+  country: "JO" | "international" | "historical_jo";
   limit: number;
   offset?: number;
 }) {
   const db = await getDb();
+  if (input.country === "historical_jo" && !historicalCatalogPreviewEnabled())
+    return [];
   const match = input.q.toLowerCase();
   const rows = await db
     .select({
       id: knowledgeDrugs.id,
+      externalId: knowledgeDrugs.externalId,
       name: knowledgeDrugs.name,
       termType: knowledgeDrugs.termType,
       sourceCode: knowledgeSources.code,
@@ -494,17 +557,22 @@ export async function searchKnowledge(input: {
     .where(
       and(
         eq(knowledgeDrugs.state, "published"),
-        input.country === "international"
-          ? eq(knowledgeSources.scope, "international_vocabulary")
-          : and(
-              eq(knowledgeSources.scope, "authorized_draft"),
-              sql`EXISTS (SELECT 1 FROM ${knowledgeRegistrations} WHERE ${knowledgeRegistrations.drugId} = ${knowledgeDrugs.id} AND ${knowledgeRegistrations.country} = 'JO' AND ${knowledgeRegistrations.reviewState} = 'verified' AND ${knowledgeRegistrations.verifiedAt} IS NOT NULL AND ${knowledgeRegistrations.registrationNumber} IS NOT NULL)`
-            ),
+        input.country === "historical_jo"
+          ? eq(knowledgeSources.code, HISTORICAL_CATALOG_SOURCE)
+          : input.country === "international"
+            ? eq(knowledgeSources.scope, "international_vocabulary")
+            : and(
+                eq(knowledgeSources.scope, "authorized_draft"),
+                ne(knowledgeSources.code, HISTORICAL_CATALOG_SOURCE),
+                sql`EXISTS (SELECT 1 FROM ${knowledgeRegistrations} WHERE ${knowledgeRegistrations.drugId} = ${knowledgeDrugs.id} AND ${knowledgeRegistrations.country} = 'JO' AND ${knowledgeRegistrations.reviewState} = 'verified' AND ${knowledgeRegistrations.verifiedAt} IS NOT NULL AND ${knowledgeRegistrations.registrationNumber} IS NOT NULL)`
+              ),
         match
           ? or(
               sql`LOCATE(${match}, LOWER(${knowledgeDrugs.name})) > 0`,
+              sql`LOCATE(${match}, LOWER(${knowledgeDrugs.externalId})) > 0`,
               sql`EXISTS (SELECT 1 FROM ${knowledgeNames} WHERE ${knowledgeNames.drugId} = ${knowledgeDrugs.id} AND LOCATE(${match}, LOWER(${knowledgeNames.name})) > 0)`,
-              sql`EXISTS (SELECT 1 FROM ${knowledgeDrugIngredients} JOIN ${knowledgeIngredients} ON ${knowledgeIngredients.id} = ${knowledgeDrugIngredients.ingredientId} WHERE ${knowledgeDrugIngredients.drugId} = ${knowledgeDrugs.id} AND LOCATE(${match}, LOWER(${knowledgeIngredients.name})) > 0)`
+              sql`EXISTS (SELECT 1 FROM ${knowledgeDrugIngredients} JOIN ${knowledgeIngredients} ON ${knowledgeIngredients.id} = ${knowledgeDrugIngredients.ingredientId} WHERE ${knowledgeDrugIngredients.drugId} = ${knowledgeDrugs.id} AND LOCATE(${match}, LOWER(${knowledgeIngredients.name})) > 0)`,
+              sql`EXISTS (SELECT 1 FROM ${knowledgeProductFacts} WHERE ${knowledgeProductFacts.drugId} = ${knowledgeDrugs.id} AND (LOCATE(${match}, LOWER(JSON_UNQUOTE(JSON_EXTRACT(${knowledgeProductFacts.catalogMetadata}, '$.barcode')))) > 0 OR LOCATE(${match}, LOWER(JSON_UNQUOTE(JSON_EXTRACT(${knowledgeProductFacts.catalogMetadata}, '$.atcCode')))) > 0))`
             )
           : undefined
       )
@@ -537,6 +605,11 @@ export async function knowledgeDetail(id: number, language: "ar" | "en") {
       if (!joined) throw missing();
       const drug = joined.knowledgeDrugs,
         source = joined.knowledgeSources;
+      if (
+        source.code === HISTORICAL_CATALOG_SOURCE &&
+        !historicalCatalogPreviewEnabled()
+      )
+        throw missing();
       const names = await db
         .select({
           name: knowledgeNames.name,
@@ -563,41 +636,39 @@ export async function knowledgeDetail(id: number, language: "ar" | "en") {
             eq(knowledgeIngredients.sourceId, source.id)
           )
         );
-      const registrations =
-        source.code === "rxnorm"
-          ? []
-          : await db
-              .select()
-              .from(knowledgeRegistrations)
-              .where(
-                and(
-                  eq(knowledgeRegistrations.drugId, drug.id),
-                  eq(knowledgeRegistrations.reviewState, "verified"),
-                  isNotNull(knowledgeRegistrations.verifiedAt),
-                  isNotNull(knowledgeRegistrations.registrationNumber)
-                )
-              );
-      const labels =
-        source.code === "rxnorm"
-          ? []
-          : await db
-              .select({
-                section: knowledgeLabelSections.section,
-                language: knowledgeLabelSections.language,
-                content: knowledgeLabelSections.content,
-                reviewedAt: knowledgeLabelSections.reviewedAt,
-              })
-              .from(knowledgeLabelSections)
-              .innerJoin(users, eq(knowledgeLabelSections.reviewedBy, users.id))
-              .where(
-                and(
-                  eq(knowledgeLabelSections.drugId, drug.id),
-                  eq(knowledgeLabelSections.language, language),
-                  eq(knowledgeLabelSections.reviewState, "medical_reviewed"),
-                  isNotNull(knowledgeLabelSections.reviewedAt),
-                  or(eq(users.role, "doctor"), eq(users.role, "pharmacist"))
-                )
-              );
+      const registrations = publishableSource(source)
+        ? []
+        : await db
+            .select()
+            .from(knowledgeRegistrations)
+            .where(
+              and(
+                eq(knowledgeRegistrations.drugId, drug.id),
+                eq(knowledgeRegistrations.reviewState, "verified"),
+                isNotNull(knowledgeRegistrations.verifiedAt),
+                isNotNull(knowledgeRegistrations.registrationNumber)
+              )
+            );
+      const labels = publishableSource(source)
+        ? []
+        : await db
+            .select({
+              section: knowledgeLabelSections.section,
+              language: knowledgeLabelSections.language,
+              content: knowledgeLabelSections.content,
+              reviewedAt: knowledgeLabelSections.reviewedAt,
+            })
+            .from(knowledgeLabelSections)
+            .innerJoin(users, eq(knowledgeLabelSections.reviewedBy, users.id))
+            .where(
+              and(
+                eq(knowledgeLabelSections.drugId, drug.id),
+                eq(knowledgeLabelSections.language, language),
+                eq(knowledgeLabelSections.reviewState, "medical_reviewed"),
+                isNotNull(knowledgeLabelSections.reviewedAt),
+                or(eq(users.role, "doctor"), eq(users.role, "pharmacist"))
+              )
+            );
       const [version] = await db
         .select({
           snapshot: knowledgeDrugVersions.snapshot,
@@ -641,6 +712,11 @@ export async function knowledgeDetail(id: number, language: "ar" | "en") {
         updatedAt: drug.updatedAt,
         names,
         facts: { ...facts, mediaRightsVerified: false as const },
+        historicalCatalog:
+          source.code === HISTORICAL_CATALOG_SOURCE &&
+          storedFacts?.catalogMetadata
+            ? historicalCatalogSchema.parse(storedFacts.catalogMetadata)
+            : null,
         ingredients,
         registrations: publicRegistrations,
         labels,

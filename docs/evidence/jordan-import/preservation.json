@@ -1,0 +1,300 @@
+{
+  "originalRecordsPreserved": true,
+  "phoneDatabaseAccessed": false,
+  "tables": [
+    {
+      "table": "__drizzle_migrations",
+      "priorRows": 10,
+      "currentRows": 11,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "appointments",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "doctorreviews",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "doctors",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "doctortimeslots",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "knowledgesources",
+      "priorRows": 2,
+      "currentRows": 3,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "medicationreminderlogs",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "medicationreminders",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "prescriptions",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "pricingjurisdictions",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "productreviews",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "products",
+      "priorRows": 26,
+      "currentRows": 26,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "users",
+      "priorRows": 7,
+      "currentRows": 7,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "cartitems",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "credentials",
+      "priorRows": 4,
+      "currentRows": 4,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "customeraccounts",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "customerpasswordresets",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "customerreminders",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "knowledgedrugs",
+      "priorRows": 12,
+      "currentRows": 1012,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "knowledgeimportbatches",
+      "priorRows": 6,
+      "currentRows": 406,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "knowledgeingredients",
+      "priorRows": 7,
+      "currentRows": 316,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "notifications",
+      "priorRows": 5,
+      "currentRows": 5,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "officialmedicineprices",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "orders",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "organizations",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "sessions",
+      "priorRows": 8,
+      "currentRows": 8,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "useraddresses",
+      "priorRows": 5,
+      "currentRows": 5,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "customerreminderevents",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "fulfillmentorders",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "knowledgedrugingredients",
+      "priorRows": 12,
+      "currentRows": 1012,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "knowledgedrugversions",
+      "priorRows": 12,
+      "currentRows": 1012,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "knowledgelabelsections",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "knowledgenames",
+      "priorRows": 25,
+      "currentRows": 2025,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "knowledgeproductfacts",
+      "priorRows": 12,
+      "currentRows": 1012,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "knowledgeregistrations",
+      "priorRows": 0,
+      "currentRows": 0,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": true
+    },
+    {
+      "table": "orderitems",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "organizationauditevents",
+      "priorRows": 5,
+      "currentRows": 5,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "organizationmemberships",
+      "priorRows": 2,
+      "currentRows": 2,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "pharmacyinventory",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "pharmacyorderassignments",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "fulfillmentevents",
+      "priorRows": 5,
+      "currentRows": 5,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    },
+    {
+      "table": "fulfillmentstocklines",
+      "priorRows": 1,
+      "currentRows": 1,
+      "priorRowsPreserved": true,
+      "newRowsAllowed": false
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+Signer #1 certificate SHA-256 digest: 15f94ad8e61d97274516aa086f0b9bb99c0aec1d5ce33f047924da6de0113703
+package: name='com.gopharmacy.beta' versionCode='4' versionName='1.1.0-beta.4' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'

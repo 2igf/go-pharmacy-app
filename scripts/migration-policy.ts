@@ -1,4 +1,14 @@
 import { createHash } from "node:crypto";
+export function assertJordanCatalogMigrationState(
+  applied: boolean,
+  column: boolean,
+  source: boolean
+) {
+  if ((applied && (!column || !source)) || (!applied && (column || source)))
+    throw new Error(
+      "Partial/untracked Jordan catalog migration; stop and restore/reconcile a verified backup"
+    );
+}
 
 /** MySQL DDL is not transactional. Never auto-repair or rerun a partial group. */
 export function assertAdditiveTableState(

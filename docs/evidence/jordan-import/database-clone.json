@@ -1,0 +1,9 @@
+{
+  "source": "go_pharmacy_test_completion",
+  "target": "go_pharmacy_test_jordan",
+  "regression": "go_pharmacy_test_jordanreg",
+  "tables": 42,
+  "backupSha256": "f9eb1b1b240b1cc9cd9a22ef34cfe132e66bff9bf851f4ad20f91bfc77cbaaa3",
+  "sourceWrites": false,
+  "phoneDatabaseAccessed": false
+}
